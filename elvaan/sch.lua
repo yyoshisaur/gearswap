@@ -6,6 +6,7 @@ function get_sets()
     sets.midcast = {}
     sets.aftercast = {}
     
+    is_cp = false
     is_immanence = false
 
     sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ', 'ファランクス'}
