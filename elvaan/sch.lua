@@ -6,6 +6,8 @@ function get_sets()
     sets.midcast = {}
     sets.aftercast = {}
     
+    is_immanence = false
+
     sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ', 'ファランクス'}
     sets.storm = T{'熱波の陣', '吹雪の陣', '烈風の陣', '砂塵の陣', '疾雷の陣', '豪雨の陣', '極光の陣', '妖霧の陣', '熱波の陣II', '吹雪の陣II', '烈風の陣II', '砂塵の陣II', '疾雷の陣II', '豪雨の陣II', '極光の陣II', '妖霧の陣II'}
     sets.helix = T{'火門の計', '氷門の計', '風門の計', '土門の計', '雷門の計', '水門の計', '光門の計', '闇門の計', '火門の計II', '氷門の計II', '風門の計II', '土門の計II', '雷門の計II', '水門の計II', '光門の計II', '闇門の計II'}
@@ -206,7 +208,7 @@ function precast(spell)
             set_equip = sets.precast.fc
         end
     elseif spell.type == 'BlackMagic' then
-        if buffactive['震天動地の章'] then
+        if is_immanence then
             windower.add_to_chat(122,'震天pre')
             set_equip = sets.precast.magic_skill_chain
         else
@@ -217,6 +219,8 @@ function precast(spell)
             set_equip = {legs={ name="ペダゴギパンツ", augments={'Enhances "Tabula Rasa" effect',}},}
         elseif spell.name == '大悟徹底' then
             set_equip = {body={ name="ＰＤガウン+1", augments={'Enhances "Enlightenment" effect',}},}
+        elseif spell.name == '震天動地の章' then
+            is_immanence = true
         end
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
@@ -245,14 +249,15 @@ function midcast(spell)
     elseif spell.skill == '弱体魔法' or spell.skill == '暗黒魔法' then
         set_equip = sets.midcast.magic_acc
     elseif spell.skill == '精霊魔法' then
-        if buffactive['震天動地の章'] then
-            if spell.name == 'サンダーV' then
+        if is_immanence then
+            if spell.name == 'サンダーV' then -- オーメン課題 MBなし15,000ダメージ用
                 windower.add_to_chat(122,'サンダーV')
                 set_equip = sets.midcast.magic_mb
             else
                 windower.add_to_chat(122,'震天mid')
                 set_equip = sets.precast.magic_skill_chain
             end
+            is_immanence = false
         else
             if sets.helix:contains(spell.name) then
                 set_equip = sets.midcast.helix_mb
