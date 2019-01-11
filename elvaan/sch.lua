@@ -240,7 +240,11 @@ function midcast(spell)
     local set_equip = nil
     
     if string.find(spell.name, 'ケアル') then
-        set_equip = sets.midcast.cure
+        if check_storm(spell.element) then
+            set_equip = set_combine(sets.midcast.cure, {waist="光輪の帯"})
+        else
+            set_equip = sets.midcast.cure
+        end
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
             set_equip = sets.midcast.skin
