@@ -288,6 +288,8 @@ function get_sets()
     }
     
     sets.mokusya = {
+        body='フラマコラジン+2',
+        hands="レテクバングル",
         left_ear="ウエスクパール",
         right_ear="ディグニタリピアス",
         left_ring="シーリチリング+1",
@@ -298,6 +300,7 @@ function get_sets()
     
     sets.mokusya_last_resort = {
         body='フラマコラジン+2',
+        hands="レテクバングル",
         neck='コンバタントトルク',
         feet="ＦＬソルレット+3",
         left_ring="シーリチリング+1",
@@ -307,11 +310,11 @@ function get_sets()
     sets.mokusya_last_resort_ws = {}
     
     sets.enmity_down = {
-        right_ear="シテレアパール"
+        right_ear="シテレアパール",
     }
     
     sets.raetic_bangles = {
-        hands="レテクバングル"
+        hands="レテクバングル",
     }
     
     -- マクロのブック, セット変更
