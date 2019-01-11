@@ -7,6 +7,9 @@ function get_sets()
     sets.aftercast = {}
     sets.weapon = {}
     
+    is_obi = false
+    is_stp = false
+
     sets.weapon.douzi = {
         main="童子切安綱",
         sub="ウトゥグリップ",
@@ -113,7 +116,7 @@ function get_sets()
         waist="チャークベルト",
     }
     
-    sets.aftercast.melee = {
+    sets.aftercast.multi = {
         ammo="銀銭",
         head="フラマツッケット+2",
         body={ name="バロラスメイル", augments={'Accuracy+27','"Dbl.Atk."+5','VIT+4','Attack+15',}},
@@ -129,6 +132,24 @@ function get_sets()
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
     
+    sets.aftercast.stp = {
+        ammo="銀銭",
+        head="フラマツッケット+2",
+        body="フラマコラジン+2",
+        hands="極脇戸筒篭手",
+        legs="フラマディル+2",
+        feet="フラマガンビエラ+2",
+        neck="アイニアカラー",
+        waist="イオスケハベルト+1",
+        left_ear="デディションピアス",
+        right_ear="テロスピアス",
+        left_ring="フラマリング",
+        right_ring="シーリチリング+1",
+        back={ name="タカハマント", augments={'STR+4','"Zanshin"+1','"Store TP"+3','Meditate eff. dur. +6',}},
+    }
+
+    sets.aftercast.melee = sets.aftercast.multi
+
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
         head="玄冥兜",
@@ -209,7 +230,7 @@ end
 function self_command(command)
     if command == 'obi' then
         if is_obi then
-            is_cp = false
+            is_obi = false
             
             -- sets.precast.ws['壱之太刀・飛燕'] = sets.precast.ws.multi
             -- sets.precast.ws['弐之太刀・鋒縛'] = sets.precast.ws.acc
@@ -224,9 +245,9 @@ function self_command(command)
             -- sets.precast.ws['祖之太刀・不動'] = sets.precast.ws.wsd
             sets.precast.ws['十二之太刀・照破'] = sets.precast.ws.multi
             
-            windower.add_to_chat(122,'+++ 属性帯装備 OFF +++')
+            windower.add_to_chat(122,'--- 属性帯装備 OFF ---')
         else
-            is_cp = true
+            is_obi = true
             
             -- sets.precast.ws['壱之太刀・飛燕'] = set_combine(sets.precast.ws.multi, sets.obi)
             -- sets.precast.ws['弐之太刀・鋒縛'] = set_combine(sets.precast.ws.acc, sets.obi)
@@ -242,6 +263,16 @@ function self_command(command)
             sets.precast.ws['十二之太刀・照破'] = set_combine(sets.precast.ws.multi, sets.obi)
             
             windower.add_to_chat(122,'+++ 属性帯装備 ON +++')
+        end
+    elseif command == 'stp' then
+        if is_stp then
+            is_stp = false
+            sets.aftercast.melee = sets.aftercast.multi
+            windower.add_to_chat(122,'--- マルチアタック装備 OFF ---')
+        else
+            is_stp = true
+            sets.aftercast.melee = sets.aftercast.stp
+            windower.add_to_chat(122,'+++ ストアTP装備 +++')
         end
     end
 end
