@@ -202,6 +202,10 @@ end
 function precast(spell)
     local set_equip = nil
     
+    windower.add_to_chat(122,'spell.element'..spell.element)
+    windower.add_to_chat(122,'world.day_element'..world.day_element)
+    windower.add_to_chat(122,'world.weather_element'..world.weather_element)
+
     if spell.type == 'WhiteMagic' then
         if string.find(spell.name, 'ケアル') then
             set_equip = sets.precast.cure_fc
@@ -262,7 +266,7 @@ function midcast(spell)
         else
             if sets.helix:contains(spell.name) then
                 set_equip = sets.midcast.helix_mb
-            elseif check_storm() then
+            elseif check_storm(spell.element) then
                 set_equip = set_combine(sets.midcast.magic_mb, sets.obi)
             else
                 set_equip = sets.midcast.magic_mb
@@ -326,11 +330,10 @@ function self_command(command)
     end
 end
 
-function check_storm()
-    for i, strom_name in pairs(sets.storm) do
-        if buffactive[strom_name] then
-            return true
-        end
+function check_storm(spell_element)
+    if spell_element == world.day_element or spell_element == world.weather_element then
+        return true
+    else
+        return false
     end
-    return false
 end
