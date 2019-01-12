@@ -202,9 +202,11 @@ end
 function precast(spell)
     local set_equip = nil
     
-    windower.add_to_chat(122,'spell.element'..spell.element)
-    windower.add_to_chat(122,'world.day_element'..world.day_element)
-    windower.add_to_chat(122,'world.weather_element'..world.weather_element)
+    -- windower.add_to_chat(122,'spell.type: '..spell.type)
+    -- windower.add_to_chat(122,'spell.name: '..spell.name)
+    -- windower.add_to_chat(122,'spell.element: '..spell.element)
+    -- windower.add_to_chat(122,'world.day_element: '..world.day_element)
+    -- windower.add_to_chat(122,'world.weather_element: '..world.weather_element)
 
     if spell.type == 'WhiteMagic' then
         if string.find(spell.name, 'ケアル') then
@@ -214,7 +216,6 @@ function precast(spell)
         end
     elseif spell.type == 'BlackMagic' then
         if is_immanence then
-            windower.add_to_chat(122,'震天pre')
             set_equip = sets.precast.magic_skill_chain
         else
             set_equip = sets.precast.fc
@@ -224,7 +225,9 @@ function precast(spell)
             set_equip = {legs={ name="ペダゴギパンツ", augments={'Enhances "Tabula Rasa" effect',}},}
         elseif spell.name == '大悟徹底' then
             set_equip = {body={ name="ＰＤガウン+1", augments={'Enhances "Enlightenment" effect',}},}
-        elseif spell.name == '震天動地の章' then
+        end
+    elseif spell.type == 'Scholar' then
+        if spell.name == '震天動地の章' then
             is_immanence = true
         end
     elseif spell.type == 'Trust' then
@@ -260,10 +263,8 @@ function midcast(spell)
     elseif spell.skill == '精霊魔法' then
         if is_immanence then
             if spell.name == 'サンダーV' then -- オーメン課題 MBなし15,000ダメージ用
-                windower.add_to_chat(122,'サンダーV')
                 set_equip = sets.midcast.magic_mb
             else
-                windower.add_to_chat(122,'震天mid')
                 set_equip = sets.precast.magic_skill_chain
             end
             is_immanence = false
