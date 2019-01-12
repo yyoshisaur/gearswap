@@ -271,10 +271,8 @@ function midcast(spell)
         else
             if sets.helix:contains(spell.name) then
                 set_equip = sets.midcast.helix_mb
-            elseif check_storm(spell.element) then
-                set_equip = set_combine(sets.midcast.magic_mb, sets.obi)
             else
-                set_equip = sets.midcast.magic_mb
+                set_equip = set_combine(sets.midcast.magic_mb, get_elemental_obi(spell.element))
             end
         end
     end
@@ -335,10 +333,10 @@ function self_command(command)
     end
 end
 
-function check_storm(spell_element)
-    if spell_element == world.day_element or spell_element == world.weather_element then
-        return true
+function get_elemental_obi(spell_element)
+    if spell_element == world.weather_element or spell_element == world.day_element then
+        return sets.obi
     else
-        return false
+        return nil
     end
 end
