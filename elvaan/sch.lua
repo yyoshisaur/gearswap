@@ -291,11 +291,7 @@ function midcast(spell)
     local set_equip = nil
     
     if string.find(spell.name, 'ケアル') then
-        if check_storm(spell.element) then
-            set_equip = set_combine(sets.midcast.cure, {waist="光輪の帯"})
-        else
-            set_equip = sets.midcast.cure
-        end
+        set_equip = set_combine(sets.midcast.cure, get_hachirin(spell.element))
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
             set_equip = sets.midcast.skin
@@ -398,19 +394,15 @@ function get_hachirin(spell_element)
         end
     else
         if weather_strong[spell_element] == world.weather then
-            windower.add_to_chat(122,'strong')
             return hachirin
         elseif weather[spell_element] == world.weather
                and world.day_element ~= weaken_element[spell_element] then
-            windower.add_to_chat(122,'week')
             return hachirin
         elseif world.day_element == spell_element
                and world.weather ~= weather_strong[weaken_element[spell_element]]
                and world.weather ~= weather[weaken_element[spell_element]] then
-            windower.add_to_chat(122,'day')
             return hachirin
         else
-            windower.add_to_chat(122,'else')
             return nil
         end
     end
