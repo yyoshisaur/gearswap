@@ -244,7 +244,7 @@ function get_sets()
     }
     
     -- マクロのブック, セット変更
-    send_command('input /macro book 4; wait 0.5; input /macro set 10')
+    send_command('input /macro book 4; wait 0.5; input /macro set 1')
 end
 
 function precast(spell)
