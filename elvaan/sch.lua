@@ -77,7 +77,7 @@ function get_sets()
         right_ear="ロケイシャスピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.precast.cure_fc = {
@@ -93,7 +93,7 @@ function get_sets()
         right_ear="メンデカントピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.precast.magic_skill_chain = {
@@ -111,7 +111,7 @@ function get_sets()
         right_ear="ロケイシャスピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.cure = {
@@ -127,7 +127,7 @@ function get_sets()
         right_ear="メンデカントピアス",
         left_ring="守りの指輪",
         right_ring="レベッチェリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.magic_mb = {
@@ -163,7 +163,7 @@ function get_sets()
         right_ear="電界の耳",
         left_ring="ジャリリング",
         right_ring="マルクィリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
     }
 
     sets.midcast.magic_acc = {
@@ -172,16 +172,16 @@ function get_sets()
         ammo="ペムフレドタスラム",
         head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
         body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
-        hands="マルクィカフス+1",
+        hands="ＡＣブレーサー+2",
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Mag. Acc.+14','"Mag.Atk.Bns."+13',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＡＣローファー+2",
         neck="インカンタートルク",
         waist="チャネラーストーン",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     -- sets.midcast.aspir
@@ -201,7 +201,7 @@ function get_sets()
         right_ear="ロケイシャスピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="ＡＢボネット+1",})
@@ -240,7 +240,7 @@ function get_sets()
         right_ear="驕慢の耳",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     -- マクロのブック, セット変更

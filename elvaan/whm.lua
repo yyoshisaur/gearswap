@@ -32,7 +32,7 @@ function get_sets()
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
         right_ring="プロリクスリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     sets.precast.fc_cure = {
         ammo="インカントストーン",
@@ -41,7 +41,7 @@ function get_sets()
         legs="ＥＢパンタロン+1",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         right_ring="プロリクスリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.precast.na = {
@@ -57,7 +57,7 @@ function get_sets()
         right_ear="ロケイシャスピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.precast.doom = {
@@ -72,7 +72,7 @@ function get_sets()
         right_ear="驕慢の耳",
         left_ring="ハオマリング",
         right_ring="ハオマリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.enhance_duration = {
@@ -100,7 +100,7 @@ function get_sets()
         right_ear="ノーヴィアピアス",
         left_ring="守りの指輪",
         right_ring="レベッチェリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＩダックビル+1", augments={'Enhances "Protectra V" effect',}},})
@@ -124,7 +124,7 @@ function get_sets()
         right_ear="オーグメントピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.addi = {
@@ -159,7 +159,7 @@ function get_sets()
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.aftercast.idle = {
@@ -177,7 +177,7 @@ function get_sets()
         right_ear="驕慢の耳",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
-        back={ name="アラウナスケープ", augments={'"Fast Cast"+10',}},
+        back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     -- マクロのブック, セット変更
