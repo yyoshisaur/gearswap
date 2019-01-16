@@ -170,7 +170,7 @@ function get_sets()
         body="ＴＥブリオー+2",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs="インヤガシャルワ+2",
-        feet="インヤガクラッコ+1",
+        feet="インヤガクラッコ+2",
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",
         left_ear="エテオレートピアス",
