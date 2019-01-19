@@ -19,6 +19,12 @@ function get_sets()
     sets.ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
     
     sets.cp = {back="アピトマント+1"}
+
+    -- 女神の愛撫
+    sets.caress = {
+        hands="ＥＢミトン+1",
+        back={ name="メンディングケープ", augments={'Healing magic skill +9','Enha.mag. skill +9',}},
+    }
     
     sets.precast.fc = {
         ammo="インカントストーン",
@@ -34,6 +40,7 @@ function get_sets()
         right_ring="プロリクスリング",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
+
     sets.precast.fc_cure = {
         ammo="インカントストーン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
@@ -199,7 +206,11 @@ function precast(spell)
             set_equip = sets.precast.doom
             is_doom = false
         else
-            set_equip = sets.precast.na
+            if buffactive['女神の愛撫'] then
+                set_equip = set_combine(sets.precast.na, sets.caress)
+            else
+                set_equip = sets.precast.na
+            end
         end
     elseif spell.skill == '回復魔法' then
         set_equip = set_combine(sets.precast.fc, {legs="ＥＢパンタロン+1",})
