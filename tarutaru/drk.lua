@@ -396,6 +396,9 @@ function aftercast(spell)
     local set_equip = nil
     
     if player.status == 'Engaged' then
+        if spell.type == 'WeaponSkill' and spell.interrupted == false then
+            windower.add_to_chat(30, 'TP: ' .. player.tp .. ' after ' .. spell.name)
+        end
         if is_mokusya then
             if buffactive['ラストリゾート'] then
                 set_equip = set_combine(sets.aftercast.melee, sets.mokusya_last_resort)

@@ -223,6 +223,9 @@ function aftercast(spell)
     
     if player.status == 'Engaged' then
         -- set_equip = sets.midcast.ra
+        if spell.type == 'WeaponSkill' and spell.interrupted == false then
+            windower.add_to_chat(30, 'TP: ' .. player.tp .. ' after ' .. spell.name)
+        end
         set_equip = get_aftercast_equip()
     else
         set_equip = sets.aftercast.idle

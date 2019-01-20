@@ -27,7 +27,7 @@ function get_sets()
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        right_ear="テロスピアス",
+        right_ear="イシュヴァラピアス",
         left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="スメルトリオマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
@@ -166,7 +166,6 @@ function get_sets()
         back="月光の羽衣",
     }
     
-    
     -- マクロのブック, セット変更
     send_command('input /macro book 9; wait 0.5; input /macro set 1')
 end
@@ -203,6 +202,9 @@ function aftercast(spell)
     local set_equip = nil
     
     if player.status == 'Engaged' then
+        if spell.type == 'WeaponSkill' and spell.interrupted == false then
+            windower.add_to_chat(30, 'TP: ' .. player.tp .. ' after ' .. spell.name)
+        end
         set_equip = sets.aftercast.melee
     else
         set_equip = sets.aftercast.idle

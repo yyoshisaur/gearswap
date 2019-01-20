@@ -255,6 +255,9 @@ function aftercast(spell)
     local set_equip = nil
     
     if player.status == 'Engaged' then
+        if spell.type == 'WeaponSkill' and spell.interrupted == false then
+            windower.add_to_chat(30, 'TP: ' .. player.tp .. ' after ' .. spell.name)
+        end
         set_equip = sets.aftercast.melee
     else
         set_equip = sets.aftercast.idle
