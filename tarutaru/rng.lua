@@ -291,7 +291,7 @@ function get_aftercast_equip()
     if is_melee then
         return sets.melee
     else
-        return sets.midcast.ra
+        return sets.aftercast.idle
     end
 end
 
