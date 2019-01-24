@@ -161,7 +161,7 @@ function get_sets()
         legs="ＴＥパンタロン+2",
         feet="ＴＥダックビル+2",
         neck="エーラペンダント",
-        waist="ニヌルタサッシュ",
+        waist="エスカンストーン",
         -- left_ear="エテオレートピアス",
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",

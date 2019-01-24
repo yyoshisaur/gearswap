@@ -78,6 +78,7 @@ function get_sets()
         legs="ＧＯパンツ+2",
         feet="マルクィクロッグ+1",
         neck="インカンタートルク",
+        waist="エスカンストーン",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",

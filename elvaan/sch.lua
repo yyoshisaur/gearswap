@@ -119,7 +119,7 @@ function get_sets()
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        legs={ name="ペダゴギパンツ", augments={'Enhances "Tabula Rasa" effect',}},
+        legs={ name="ＰＤパンツ+1", augments={'Enhances "Tabula Rasa" effect',}},
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="ノデンズゴルゲット",
         waist="ピュシアサッシュ",
@@ -176,7 +176,7 @@ function get_sets()
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Mag. Acc.+14','"Mag.Atk.Bns."+13',}},
         feet="ＡＣローファー+2",
         neck="インカンタートルク",
-        waist="チャネラーストーン",
+        waist="エスカンストーン",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",
@@ -270,7 +270,7 @@ function precast(spell)
         end
     elseif spell.type == 'JobAbility' then
         if spell.name == '連環計' then
-            set_equip = {legs={ name="ペダゴギパンツ", augments={'Enhances "Tabula Rasa" effect',}},}
+            set_equip = {legs={ name="ＰＤパンツ+1", augments={'Enhances "Tabula Rasa" effect',}},}
         elseif spell.name == '大悟徹底' then
             set_equip = {body={ name="ＰＤガウン+1", augments={'Enhances "Enlightenment" effect',}},}
         end
@@ -299,6 +299,9 @@ function midcast(spell)
             set_equip = sets.midcast.rejen
         elseif sets.magic_enhance_skill:contains(spell.name) then
             set_equip = sets.midcast.enhance_skill
+        elseif sets.storm:contains(spell.name) then
+            set_equip = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＤローファー+1", augments={'Enhances "Stormsurge" effect',}},})
+            -- set_equip = sets.midcast.enhance_duration
         else
             set_equip = sets.midcast.enhance_duration
         end
