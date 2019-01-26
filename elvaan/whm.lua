@@ -113,7 +113,7 @@ function get_sets()
     sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＩダックビル+1", augments={'Enhances "Protectra V" effect',}},})
     sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {legs={ name="ＰＩパンタロン+3", augments={'Enhances "Shellra V" effect',}},})
     sets.midcast.auspice = set_combine(sets.midcast.enhance_duration, {feet="ＥＢダックビル+1",})
-    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="インヤガティアラ+1", body="ＰＩブリオー+1", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
+    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="インヤガティアラ+1", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス',})
     sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド",})
     
@@ -174,7 +174,7 @@ function get_sets()
         sub="玄冥盾",
         ammo="ホミリアリ",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
-        body="ＴＥブリオー+2",
+        body="ＰＩブリオー+3",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs="インヤガシャルワ+2",
         feet="インヤガクラッコ+2",
@@ -219,7 +219,7 @@ function precast(spell)
     elseif spell.name == 'デヴォーション' then
         set_equip = {head="ＰＩキャップ+1"}
     elseif spell.name == '女神の祝福' then
-        set_equip = {body="ＰＩブリオー+1"}
+        set_equip = {body="ＰＩブリオー+3"}
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
     elseif spell.type == 'Ninjutsu' then
