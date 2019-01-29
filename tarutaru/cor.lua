@@ -50,7 +50,7 @@ function get_sets()
         ['キャスターズロール'] = {}, -- {legs="ＣＳトルーズ+1"}
         ['コアサーズロール'] = {feet="ＣＳブーツ+1"},
         ['ブリッツァロール'] = {}, -- {head="ＣＳトリコルヌ+1"}
-        ['タクティックロール'] = {body="ＣＳフラックス+1",}, 
+        ['タクティックロール'] = {body="ＣＳフラック+1",}, 
         ['アライズロール'] = {hands="ＣＳガントリー+1",},
     }
 
@@ -84,7 +84,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet="ＣＳブーツ+1",
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -118,7 +118,7 @@ function get_sets()
         legs="メガナダショウス+2",
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="フォシャゴルゲット",
-        waist="フォシャベルト",
+        waist="メタルシングベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="テロスピアス",
         left_ring="イラブラットリング",
@@ -131,7 +131,7 @@ function get_sets()
         head="妖蟲の髪飾り+1",
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -147,7 +147,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -229,15 +229,32 @@ function get_sets()
         right_ring="ＶＣリング+1",
         back="月光の羽衣",
     }
+
+    -- マクロのブック, セット変更
+    send_command('input /macro book 8; wait 0.5; input /macro set 1')
 end
 
 function pretarget(spell)
+    local set_equip = nil
     if spell.type == 'CorsairRoll' then
         local enhances = sets.rolls[spell.name].enhances
         local lucky = sets.rolls[spell.name].lucky
         local unlucky = sets.rolls[spell.name].unlucky
         windower.add_to_chat(2, spell.name .. ' [' ..enhances ..'] ')
         windower.add_to_chat(2, 'Lucky = ' .. lucky .. ' '.. 'Unluck = '.. unlucky)
+        if is_luzaf then
+            set_equip = sets.midcast.roll_luzaf
+        end
+    elseif spell.type == 'JobAbility' then
+        if spell.name == 'ダブルアップ' then
+            if is_luzaf then
+                set_equip = sets.midcast.roll_luzaf
+            end
+        end
+    end
+
+    if set_equip ~= nill then
+        equip(set_equip)
     end
 end
 
@@ -355,6 +372,7 @@ function get_aftercast_equip()
 end
 
 function self_command(command)
+
     if command == 'melee' then
         if not is_melee then
             is_melee = true
@@ -363,7 +381,7 @@ function self_command(command)
             is_melee = false
             windower.add_to_chat(122,'+++ 遠隔装備 +++')
         end
-    elseif commnad == 'luzaf' then
+    elseif command == 'luzaf' then
         if is_luzaf then
             is_luzaf = false
             windower.add_to_chat(122,'--- ルザフリングなし ---')
@@ -371,5 +389,7 @@ function self_command(command)
             is_luzaf = true
             windower.add_to_chat(122,'+++ ルザフリングあり +++')
         end
+    elseif command == 'double-up-aftercast' then
+        equip(get_aftercast_equip())
     end
 end

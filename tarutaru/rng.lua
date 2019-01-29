@@ -73,7 +73,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet={ name="ヘルクリアブーツ", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Crit.hit rate+1','Mag. Acc.+15','"Mag.Atk.Bns."+13',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",

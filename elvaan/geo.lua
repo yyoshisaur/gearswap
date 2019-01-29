@@ -72,11 +72,11 @@ function get_sets()
     }
     
     sets.midcast.magic_acc = {
-        head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
+        head="ＧＯガレーロ+2",
+        body="ＧＯチュニック+2",
         hands="ＧＯミテーヌ+2",
         legs="ＧＯパンツ+2",
-        feet="マルクィクロッグ+1",
+        feet="ＧＯサンダル+2",
         neck="インカンタートルク",
         waist="エスカンストーン",
         left_ear="バーカロルピアス",
@@ -142,7 +142,7 @@ function precast(spell)
         if spell.name == 'フルサークル' then
             set_equip = {head="ＡＺフード+1",}
         elseif spell.name == 'ライフサイクル' then
-            set_equip = {body="ＧＯチュニック+1", back = "ナントセルタケープ",}
+            set_equip = {body="ＧＯチュニック+2", back = "ナントセルタケープ",}
         elseif spell.name == 'レイディアルアルカナ' then
             set_equip = {feet="ＢＡサンダル+1",}
         elseif spell.name == 'メンドハレイション' then
