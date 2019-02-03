@@ -121,9 +121,9 @@ function get_sets()
         waist="メタルシングベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="テロスピアス",
-        left_ring="イラブラットリング",
+        left_ring="ルフェセントリング",
         right_ring="王将の指輪",
-        back="ルーパインケープ",
+        back={ name="カムラスマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
     }
 
     sets.precast.ws.leaden = {
@@ -134,7 +134,7 @@ function get_sets()
         legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
-        waist="エスカンストーン",
+        waist="闇輪の帯",　-- waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="フリオミシピアス",
         left_ring="アルコンリング",
@@ -212,7 +212,7 @@ function get_sets()
         right_ear="テロスピアス",
         left_ring="イラブラットリング",
         right_ring="シーリチリング+1",
-        back="ルーパインケープ",
+        back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
 
     sets.aftercast.idle = {
@@ -224,7 +224,7 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear="エテオレートピアス",
-        right_ear="オノワイヤリング+1",
+        right_ear="玄冥耳飾り",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back="月光の羽衣",

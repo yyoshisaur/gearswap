@@ -152,11 +152,11 @@ function get_sets()
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="玄冥兜",
+        head="乾闥婆陣鉢改",
         body="タルタロスプレート",
-        hands="クーリスグローブ",
-        legs="フラマディル+2",
-        feet="アムグリーヴ",
+        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        legs="乾闥婆筒袴改",
+        feet={ name="アムグリーヴ", augments={'HP+50','VIT+10','Accuracy+15','Damage taken-2%',}},
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear="オノワイヤリング",
