@@ -59,7 +59,7 @@ function get_sets()
         neck="サンクトネックレス",
         waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        right_ear="テロスピアス",
+        right_ear="ディグニタリピアス",
         left_ring="フラマリング",
         right_ring="ニックマドゥリング",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},

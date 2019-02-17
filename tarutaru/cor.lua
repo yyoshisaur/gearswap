@@ -134,7 +134,7 @@ function get_sets()
         legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
-        waist="闇輪の帯",　-- waist="エスカンストーン",
+        waist="闇輪の帯", -- waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="フリオミシピアス",
         left_ring="アルコンリング",

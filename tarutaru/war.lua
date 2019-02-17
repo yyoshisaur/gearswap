@@ -87,8 +87,8 @@ function get_sets()
         feet="フラマガンビエラ+2",
         neck="月光の首飾り",
         waist="エスカンストーン",
-        left_ear="テロスピアス",
-        right_ear="ディグニタリピアス",
+        left_ear="ディグニタリピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="フラマリング",
         right_ring="月光の指輪",
         back={ name="シコルマント", augments={'DEX+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Waltz" potency +10%','Damage taken-5%',}},
@@ -152,7 +152,8 @@ function get_sets()
         head="フラマツッケット+2",
         body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},
         hands="スレビアガントレ+2",
-        legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}},
+        -- legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}}, --ACC 1220
+        legs="ＰＭクウィス+3", -- ACC 1250
         feet="ＰＭカリガ+3",
         neck="戦士の数珠+2",
         waist="イオスケハベルト+1",

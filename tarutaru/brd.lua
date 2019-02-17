@@ -3,6 +3,7 @@ function get_sets()
     
     sets.precast = {}
     sets.precast.ws = {}
+    sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
     
@@ -54,6 +55,10 @@ function get_sets()
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.precast.ability["ソウルボイス"] = {legs={ name="ＢＩキャニオンズ+1", augments={'Enhances "Soul Voice" effect',}},}
+    sets.precast.ability["ナイチンゲール"] = {feet={ name="ＢＩスリッパー+1", augments={'Enhances "Nightingale" effect',}},}
+    sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+1", augments={'Enhances "Troubadour" effect',}},}
+
     sets.midcast.song_duration = {
         main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
         sub="玄冥盾",
@@ -74,12 +79,12 @@ function get_sets()
     sets.midcast.magic_acc = {
         main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
         sub="アムラピシールド",
-        head="アヤモツッケット+2",
-        body="インヤガジュバ+2",
-        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="インヤガシャルワ+2",
+        head="ＢＲランドリト+3",
+        body="ＢＲジュスト+2",
+        hands="ＢＲカフス+3",
+        legs="ＦＬラングラヴ+1",
         feet="ＢＲスリッパー+3",
-        neck="月虹の呼び子",
+        neck="月虹の呼び子+1",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
         right_ear="王将の耳飾り",
@@ -88,7 +93,7 @@ function get_sets()
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.midcast.paeon = sets.midcast.song_duration
+    sets.midcast.paeon = set_combine(sets.midcast.song_duration, {hands="ＢＲカフス+3"})
     sets.midcast.ballad = set_combine(sets.midcast.song_duration, {legs="ＦＬラングラヴ+1"})
     sets.midcast.minne = sets.midcast.song_duration
     sets.midcast.mambo = sets.midcast.song_duration
@@ -96,7 +101,7 @@ function get_sets()
     sets.midcast.minuet = set_combine(sets.midcast.song_duration, {body="ＦＬオングルリヌ+1"})
     sets.midcast.madrigal = set_combine(sets.midcast.song_duration,{head="ＦＬキャロ+1", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
     sets.midcast.prelude = set_combine(sets.midcast.song_duration, {back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
-    sets.midcast.march = set_combine(sets.midcast.song_duration, {hands="ＦＬマンシェト+1"})
+    sets.midcast.march = set_combine(sets.midcast.song_duration, {hands="ＦＬマンシェト+1", waist="句芒の帯", right_ear="ダークサイドピアス", back="ラプソドスケープ"}) -- ギフトでスキルが上がれば腰、耳、背を削除する
     sets.midcast.etude = sets.midcast.song_duration
     sets.midcast.mazurka = sets.midcast.song_duration
     sets.midcast.scherzo = set_combine(sets.midcast.song_duration, {feet="ＦＬコテュルヌ+1"})
@@ -137,10 +142,10 @@ function get_sets()
     sets.aftercast.idle = {
         sub="玄冥盾",
         -- range={ name="テルパンダー", augments={'HP+30','Mag. Acc.+10','Damage Taken -3%',}},
-        head="アヤモツッケット+2",
+        head="インヤガティアラ+2",
         body="アシェーラハーネス",
-        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="アヤモコッシャレ+2",
+        hands="インヤガダスタナ+2",
+        legs="インヤガシャルワ+2",
         feet="ＦＬコテュルヌ+1",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
@@ -152,7 +157,7 @@ function get_sets()
     }
     
     sets.aftercast.melee = {
-        main="エーネアス",
+        -- main="エーネアス",
         range={ name="リノス", augments={'Accuracy+15','"Store TP"+4','Quadruple Attack +3',}},
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
@@ -198,6 +203,10 @@ function precast(spell)
             set_equip = get_song_gear(spell)
         else
             set_equip = sets.precast.song_fc
+        end
+    elseif spell.type == 'JobAbility' then
+        if sets.precast.ability[spell.name] then
+            set_equip = sets.precast.ability[spell.name]
         end
     elseif spell.type == 'WhiteMagic' then
         set_equip = sets.precast.fc
