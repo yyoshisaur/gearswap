@@ -151,7 +151,7 @@ function get_sets()
         ammo="イェットシーラ+1",
         head="フラマツッケット+2",
         body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},
-        hands="スレビアガントレ+2",
+        hands="フラママノポラ+2",
         -- legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}}, --ACC 1220
         legs="ＰＭクウィス+3", -- ACC 1250
         feet="ＰＭカリガ+3",
