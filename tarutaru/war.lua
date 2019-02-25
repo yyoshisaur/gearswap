@@ -6,6 +6,7 @@ function get_sets()
     sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
+    sets.aftercast.melee = {}
     sets.weapon = {}
 
     sets.weapon.ukon = {main="ウコンバサラ", sub="ウトゥグリップ",}
@@ -77,8 +78,6 @@ function get_sets()
     }
 
     sets.precast.ws.magic_acc = {
-        main="ウコンバサラ",
-        sub="ウトゥグリップ",
         ammo="ペムフレドタスラム",
         head="フラマツッケット+2",
         body="フラマコラジン+2",
@@ -147,18 +146,34 @@ function get_sets()
         right_ring="ラハブリング",
     }
 
-    sets.aftercast.melee = {
+    sets.aftercast.melee.ukon = {
         ammo="イェットシーラ+1",
         head="フラマツッケット+2",
         body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},
         hands="フラママノポラ+2",
-        -- legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}}, --ACC 1220
-        legs="ＰＭクウィス+3", -- ACC 1250
+        legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}}, --ACC 1220
+        -- legs="ＰＭクウィス+3", -- ACC 1250
         feet="ＰＭカリガ+3",
         neck="戦士の数珠+2",
         waist="イオスケハベルト+1",
         left_ear="テロスピアス",
         right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="月光の指輪",
+        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.aftercast.melee.chango = {
+        ammo="銀銭",
+        head="フラマツッケット+2",
+        body={ name="バロラスメイル", augments={'Accuracy+27','"Dbl.Atk."+5','VIT+4','Attack+15',}},
+        hands="スレビアガントレ+2",
+        legs="ＰＭクウィス+3",
+        feet="ＰＭカリガ+3",
+        neck="戦士の数珠+2",
+        waist="イオスケハベルト+1",
+        left_ear="テロスピアス",
+        right_ear="セサンスピアス",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
         back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
@@ -227,7 +242,14 @@ function aftercast(spell)
         if spell.type == 'WeaponSkill' and spell.interrupted == false then
             windower.add_to_chat(30, 'TP: ' .. player.tp .. ' after ' .. spell.name)
         end
-        set_equip = sets.aftercast.melee
+
+        if player.equipment.main == sets.weapon.ukon.main then
+            set_equip = sets.aftercast.melee.ukon
+        elseif player.equipment.main == sets.weapon.chango.main then
+            set_equip = sets.aftercast.melee.chango
+        else
+            set_equip = sets.aftercast.melee.chango
+        end
     else
         set_equip = sets.aftercast.idle
     end
@@ -243,10 +265,28 @@ function status_change(new, old)
     if new == 'Idle' then
         set_equip = sets.aftercast.idle
     elseif new == 'Engaged' then
-        set_equip = sets.aftercast.melee
+        if player.equipment.main == sets.weapon.ukon.main then
+            set_equip = sets.aftercast.melee.ukon
+        elseif player.equipment.main == sets.weapon.chango.main then
+            set_equip = sets.aftercast.melee.chango
+        else
+            set_equip = sets.aftercast.melee.chango
+        end
     end
     
     if set_equip ~= nil then
         equip(set_equip)
+    end
+end
+
+function self_command(command)
+    if command == 'melee' then
+        if player.equipment.main == sets.weapon.ukon.main then
+            windower.send_command('gs equip sets.aftercast.melee.ukon')
+        elseif player.equipment.main == sets.weapon.chango.main then
+            windower.send_command('gs equip sets.aftercast.melee.chango')
+        else
+            windower.send_command('gs equip sets.aftercast.melee.chango')
+        end
     end
 end
