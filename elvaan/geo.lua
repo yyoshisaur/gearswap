@@ -21,6 +21,7 @@ function get_sets()
         waist="チャネラーストーン",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
+        left_ring="キシャールリング",
         right_ring="プロリクスリング",
         back={ name="龍脈の外套", augments={'Geomancy Skill +8','Indi. eff. dur. +20','Pet: Damage taken -2%',}},
     }
@@ -112,10 +113,12 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",
         left_ear="エテオレートピアス",
-        right_ear="ハンドラーピアス+1",
+        -- right_ear="ハンドラーピアス+1",
+        right_ear="驕慢の耳",
         left_ring="守りの指輪",
-        right_ring="ゼラチナスリング+1",
-        back={ name="ナントセルタケープ", augments={'Pet: "Regen"+10','Pet: "Regen"+5',}},
+        -- right_ring="ゼラチナスリング+1",
+        right_ring="ピュリティーリング",
+        back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
     
     -- マクロのブック, セット変更

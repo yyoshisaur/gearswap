@@ -37,6 +37,7 @@ function get_sets()
         waist="チャネラーストーン",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
+        left_ring="キシャールリング",
         right_ring="プロリクスリング",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -110,8 +111,8 @@ function get_sets()
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＩダックビル+1", augments={'Enhances "Protectra V" effect',}},})
-    sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {legs={ name="ＰＩパンタロン+3", augments={'Enhances "Shellra V" effect',}},})
+    sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＩダックビル+1", augments={'Enhances "Protectra V" effect',}},right_ear="ブラキュラピアス",})
+    sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {legs={ name="ＰＩパンタロン+3", augments={'Enhances "Shellra V" effect',}},right_ear="ブラキュラピアス",})
     sets.midcast.auspice = set_combine(sets.midcast.enhance_duration, {feet="ＥＢダックビル+1",})
     sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス',})

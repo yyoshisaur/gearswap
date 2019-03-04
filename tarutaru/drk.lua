@@ -288,8 +288,6 @@ function get_sets()
     }
     
     sets.mokusya = {
-        body='フラマコラジン+2',
-        hands="レテクバングル",
         left_ear="ウエスクパール",
         right_ear="ディグニタリピアス",
         left_ring="シーリチリング+1",
@@ -299,8 +297,6 @@ function get_sets()
     sets.mokusya_ws = {}
     
     sets.mokusya_last_resort = {
-        body='フラマコラジン+2',
-        hands="レテクバングル",
         neck='コンバタントトルク',
         feet="ＦＬソルレット+3",
         left_ring="シーリチリング+1",
@@ -314,6 +310,7 @@ function get_sets()
     }
     
     sets.raetic_bangles = {
+        body='フラマコラジン+2',
         hands="レテクバングル",
     }
     
@@ -329,17 +326,21 @@ function precast(spell)
     
     if spell.type == 'WeaponSkill' then
         if sets.precast.ws[spell.name] then
+
+            set_equip = sets.precast.ws[spell.name]
+
             if is_mokusya then
                 if buffactive['ラストリゾート'] then
-                    set_equip = set_combine(sets.precast.ws[spell.name], sets.mokusya_last_resort_ws)
+                    set_equip = set_combine(set_equip, sets.mokusya_last_resort_ws)
                 else
-                    set_equip = set_combine(sets.precast.ws[spell.name], sets.mokusya_ws)
+                    set_equip = set_combine(set_equip, sets.mokusya_ws)
                 end
-            elseif is_enmity then
-                set_equip = set_combine(sets.precast.ws[spell.name], sets.enmity_down)
-            else
-                set_equip = sets.precast.ws[spell.name]
             end
+
+            if is_enmity then
+                set_equip = set_combine(set_equip, sets.enmity_down)
+            end
+
         else
             set_equip = sets.precast.ws.multi
         end
@@ -399,18 +400,23 @@ function aftercast(spell)
         if spell.type == 'WeaponSkill' and spell.interrupted == false then
             windower.add_to_chat(30, 'TP: ' .. player.tp .. ' after ' .. spell.name)
         end
+
+        set_equip = sets.aftercast.melee
+
         if is_mokusya then
             if buffactive['ラストリゾート'] then
-                set_equip = set_combine(sets.aftercast.melee, sets.mokusya_last_resort)
+                set_equip = set_combine(set_equip, sets.mokusya_last_resort)
             else
-                set_equip = set_combine(sets.aftercast.melee, sets.mokusya)
+                set_equip = set_combine(set_equip, sets.mokusya)
             end
-        elseif is_enmity then
-            set_equip = set_combine(sets.aftercast.melee, sets.enmity_down)
-        elseif is_raetic then
-            set_equip = set_combine(sets.aftercast.melee, sets.raetic_bangles)
-        else
-            set_equip = sets.aftercast.melee
+        end
+        
+        if is_enmity then
+            set_equip = set_combine(set_equip, sets.enmity_down)
+        end
+
+        if is_raetic then
+            set_equip = set_combine(set_equip, sets.raetic_bangles)
         end
     else
         set_equip = sets.aftercast.idle
@@ -427,16 +433,23 @@ function status_change(new, old)
     if new == 'Idle' then
         set_equip = sets.aftercast.idle
     elseif new == 'Engaged' then
+
+        set_equip = sets.aftercast.melee
+
          if is_mokusya then
             if buffactive['ラストリゾート'] then
-                set_equip = set_combine(sets.aftercast.melee, sets.mokusya_last_resort)
+                set_equip = set_combine(set_equip, sets.mokusya_last_resort)
             else
-                set_equip = set_combine(sets.aftercast.melee, sets.mokusya)
+                set_equip = set_combine(set_equip, sets.mokusya)
             end
-        elseif is_enmity then
-            set_equip = set_combine(sets.aftercast.melee, sets.enmity_down)
-        else
-            set_equip = sets.aftercast.melee
+        end
+
+        if is_enmity then
+            set_equip = set_combine(set_equip, sets.enmity_down)
+        end
+
+        if is_raetic then
+            set_equip = set_combine(set_equip, sets.raetic_bangles)
         end
     end
     

@@ -75,7 +75,7 @@ function get_sets()
         waist="チャネラーストーン",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
-        left_ring="守りの指輪",
+        left_ring="キシャールリング",
         right_ring="プロリクスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -109,7 +109,7 @@ function get_sets()
         waist="ニヌルタサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
-        left_ring="守りの指輪",
+        left_ring="キシャールリング",
         right_ring="プロリクスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -191,7 +191,7 @@ function get_sets()
         sub="玄冥盾",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -212,7 +212,7 @@ function get_sets()
         sub="玄冥盾",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -230,7 +230,7 @@ function get_sets()
         sub="メンシストラップ+1",
         ammo="ホミリアリ",
         head="ＡＣボード+2",
-        body={ name="ＰＤガウン+1", augments={'Enhances "Enlightenment" effect',}},
+        body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+45',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+47',}},
@@ -272,7 +272,7 @@ function precast(spell)
         if spell.name == '連環計' then
             set_equip = {legs={ name="ＰＤパンツ+1", augments={'Enhances "Tabula Rasa" effect',}},}
         elseif spell.name == '大悟徹底' then
-            set_equip = {body={ name="ＰＤガウン+1", augments={'Enhances "Enlightenment" effect',}},}
+            set_equip = {body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},}
         end
     elseif spell.type == 'Scholar' then
         if spell.name == '震天動地の章' then
