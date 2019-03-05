@@ -110,7 +110,7 @@ function get_sets()
         back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     sets.precast.ability['ディフェンダー'] = {hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},}
-    sets.precast.ability['アグレッサー'] = {body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},}
+    sets.precast.ability['アグレッサー'] = {head="ＰＭマスク+3", body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},}
     sets.precast.ability['ウォークライ'] = {head={ name="ＡＧマスク+3", augments={'Enhances "Savagery" effect',}},}
     sets.precast.ability['ブラッドレイジ'] = {body="ＢＩロリカ+1",}
     sets.precast.ability['トマホーク'] = {feet={ name="ＡＧカリガ+3", augments={'Enhances "Tomahawk" effect',}},}
@@ -181,11 +181,11 @@ function get_sets()
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="フラマツッケット+2",
-        body="タルタロスプレート",
+        head="ＰＭマスク+3",
+        body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},
         hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},
         legs="ＰＭクウィス+3",
-        feet="ＰＭカリガ+3",
+        feet="ヴォルトソルレ",
         neck="ロリケートトルク+1",
         waist="イオスケハベルト+1",
         left_ear="テロスピアス",

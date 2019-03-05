@@ -3,6 +3,7 @@ function get_sets()
     
     sets.precast = {}
     sets.precast.ws = {}
+    sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
     sets.weapon = {}
@@ -159,6 +160,12 @@ function get_sets()
     sets.precast.ws['ウェポンブレイク'] = sets.precast.ws.acc
     sets.precast.ws['フルグレイク'] = sets.precast.ws.acc
     
+    sets.precast.ability['ラストリゾート'] = {feet="ＦＬソルレット+3", back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},}
+    sets.precast.ability['ウェポンバッシュ'] = {hands="ＩＧガントレ+2",}
+    sets.precast.ability['ネザーヴォイド'] = {legs="ＨＴフランチャ+1",}
+    sets.precast.ability['アルケインサークル'] = {feet='ＩＧソルレット+1',}
+    sets.precast.ability['ブラッドウェポン'] = {body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},}
+
     sets.midcast.magic_acc = {
         ammo="ペムフレドタスラム",
         head={ name="ＦＬバーゴネット+3", augments={'Enhances "Dark Seal" effect',}},
@@ -240,7 +247,7 @@ function get_sets()
     
     sets.midcast.drain = {
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        -- right_ring="メフィタスリング+1",
+        right_ring="メフィタスリング+1",
     }
     
     sets.midcast.absorb = {back="チュパローサマント",}
@@ -343,6 +350,10 @@ function precast(spell)
 
         else
             set_equip = sets.precast.ws.multi
+        end
+    elseif spell.type == 'JobAbility' then
+        if sets.precast.ability[spell.name] then
+            set_equip = sets.precast.ability[spell.name]
         end
     elseif string.find(spell.type, 'Magic') then
         if spell.name == 'インパクト' then
