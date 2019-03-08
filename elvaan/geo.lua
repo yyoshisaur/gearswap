@@ -169,7 +169,7 @@ function midcast(spell)
         set_equip = sets.midcast.cure
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
-            set_equip = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス',})
+            set_equip = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
             -- set_equip = set_combine(sets.midcast.enhance_duration, {neck='ストーンゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
         else
             set_equip = sets.midcast.enhance_duration

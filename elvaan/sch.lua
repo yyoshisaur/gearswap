@@ -205,7 +205,7 @@ function get_sets()
     }
     
     sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="ＡＢボネット+1",})
-    sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス',})
+    sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     
     sets.midcast.enhance_skill = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},

@@ -66,7 +66,8 @@ function get_sets()
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
         feet="スレビアレギンス+2",
         neck="フォシャゴルゲット",
-        waist="フォシャベルト",
+        -- waist="フォシャベルト",
+        neck="暗黒の数珠+2",
         left_ear="イシュヴァラピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ニックマドゥリング",
@@ -81,7 +82,8 @@ function get_sets()
         hands={ name="オディシアガントレ", augments={'Accuracy+27','Weapon skill damage +4%','VIT+10',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
         feet="スレビアレギンス+2",
-        neck="フォシャゴルゲット",
+        -- neck="フォシャゴルゲット",
+        neck="暗黒の数珠+2",
         waist="フォシャベルト",
         left_ear="イシュヴァラピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -268,7 +270,7 @@ function get_sets()
         back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
-    sets.aftercast.melee_acc_1250 = {neck='コンバタントトルク',}
+    sets.aftercast.melee_acc_1250 = {neck="暗黒の数珠+2",} -- {neck='コンバタントトルク',}
     
     sets.aftercast.melee = sets.aftercast.melee_acc_1200
     
