@@ -3,6 +3,7 @@ function get_sets()
     
     sets.precast = {}
     sets.precast.ws = {}
+    sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
     sets.weapon = {}
@@ -17,6 +18,20 @@ function get_sets()
     
     sets.obi = {waist="火輪の帯",}
     
+    sets.enmity = {
+        ammo="サピエンスオーブ",
+        head="ハリタスヘルム",
+        body="エメットハーネス+1",
+        hands="クーリスグローブ",
+        neck="ロリケートトルク+1",
+        waist="カシリベルト",
+        left_ear="フリオミシピアス",
+        right_ear="クリプティクピアス",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back="月光の羽衣",
+    }
+
     sets.precast.ws.wsd = {
         ammo="ノブキエリ",
         head="フラマツッケット+2",
@@ -58,8 +73,8 @@ function get_sets()
         feet="フラマガンビエラ+2",
         neck="サンクトネックレス",
         waist="エスカンストーン",
-        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        right_ear="ディグニタリピアス",
+        left_ear="ディグニタリピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="フラマリング",
         right_ring="ニックマドゥリング",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
@@ -104,12 +119,19 @@ function get_sets()
         right_ring="ラハブリング",
     }
     
-    sets.precast.mokusou = {
+    sets.precast.ability['黙想'] =  {
         head="脇戸桃形兜改",
         hands="左近士筒篭手改",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
-    
+
+    sets.precast.ability['護摩の守護円'] = {head="脇戸桃形兜改",}
+     
+    -- サポ剣
+    sets.precast.ability['ヴァレション'] = sets.enmity
+    sets.precast.ability['ソードプレイ'] = sets.enmity
+    sets.precast.ability['フルーグ'] = sets.enmity
+
     sets.midcast.trehun = {
         head="白ララブキャップ+1",
         hands={ name="バロラスミトン", augments={'Pet: Haste+1','Rng.Acc.+16','"Treasure Hunter"+2','Accuracy+19 Attack+19','Mag. Acc.+7 "Mag.Atk.Bns."+7',}},
@@ -133,19 +155,21 @@ function get_sets()
     }
     
     sets.aftercast.stp = {
-        ammo="銀銭",
-        head="フラマツッケット+2",
-        body="フラマコラジン+2",
+        ammo="ストンチタスラム+1",
+        head="乾闥婆陣鉢改",
+        body="極脇戸胴丸",
+        -- body="デーゴンブレスト",
         hands="極脇戸筒篭手",
-        legs="フラマディル+2",
-        feet="フラマガンビエラ+2",
-        neck="アイニアカラー",
+        legs="乾闥婆筒袴改",
+        feet="乾闥婆脛当改",
+        neck="ロリケートトルク+1",
         waist="イオスケハベルト+1",
-        left_ear="デディションピアス",
+        left_ear="ディグニタリピアス",
         right_ear="テロスピアス",
-        left_ring="フラマリング",
+        left_ring="守りの指輪",
+        -- right_ring="ＶＣリング+1",
         right_ring="シーリチリング+1",
-        back={ name="タカハマント", augments={'STR+4','"Zanshin"+1','"Store TP"+3','Meditate eff. dur. +6',}},
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
 
     sets.aftercast.melee = sets.aftercast.multi
@@ -153,17 +177,17 @@ function get_sets()
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
         head="乾闥婆陣鉢改",
-        body="タルタロスプレート",
-        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        body="極脇戸胴丸",
+        hands="極脇戸筒篭手",
         legs="乾闥婆筒袴改",
-        feet={ name="アムグリーヴ", augments={'HP+50','VIT+10','Accuracy+15','Damage taken-2%',}},
+        feet="乾闥婆脛当改",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
-        left_ear="オノワイヤリング",
-        right_ear="オノワイヤリング+1",
+        left_ear="玄冥耳飾り",
+        right_ear="テロスピアス",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back="月光の羽衣",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
     -- マクロのブック, セット変更
@@ -179,13 +203,13 @@ function precast(spell)
         else
             set_equip = sets.precast.ws.multi
         end
-    elseif spell.name == '黙想' then
-        set_equip = sets.precast.mokusou
-    elseif spell.name == '護摩の守護円' then
-        set_equip = {head="脇戸桃形兜改",}
+    elseif sets.precast.ability[spell.name] then
+            set_equip = sets.precast.ability[spell.name]
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
     elseif spell.type == 'Ninjutsu' then
+        set_equip = sets.precast.fc
+    elseif string.find(spell.type, 'Magic') then
         set_equip = sets.precast.fc
     end
     
@@ -196,6 +220,14 @@ end
 
 function midcast(spell)
     local set_equip = nil
+
+    if spell.name == 'フラッシュ' then
+        set_equip = sets.enmity
+    end
+
+    if set_equip ~= nill then
+        equip(set_equip)
+    end
 end
 
 function aftercast(spell)

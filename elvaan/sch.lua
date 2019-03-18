@@ -235,7 +235,7 @@ function get_sets()
         head="ＡＣボード+2",
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+45',}},
+        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+49',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+47',}},
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",

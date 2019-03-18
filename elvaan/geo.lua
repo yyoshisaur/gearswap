@@ -7,7 +7,9 @@ function get_sets()
     sets.aftercast = {}
     
     is_cp = false
-    
+
+    sets.ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
+
     sets.cp = {back="アピトマント+1"}
     
     sets.precast.fc = {
@@ -72,6 +74,18 @@ function get_sets()
         waist="ニヌルタサッシュ",
     }
     
+    sets.midcast.enhance_skill = {
+        main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
+        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        neck="インカンタートルク",
+        waist="オリンポスサッシュ",
+        left_ear="オーグメントピアス",
+        right_ear="アンドアーピアス",
+        left_ring="スティキニリング",
+        right_ring="スティキニリング",
+        back="フィフォレケープ+1",
+    }
+
     sets.midcast.magic_acc = {
         head="ＧＯガレーロ+2",
         body="ＧＯチュニック+2",
@@ -170,7 +184,8 @@ function midcast(spell)
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
             set_equip = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
-            -- set_equip = set_combine(sets.midcast.enhance_duration, {neck='ストーンゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
+        elseif sets.ba:contains(spell.name) then
+            set_equip = set_combine(sets.midcast.enhance_duration, sets.midcast.enhance_skill)
         else
             set_equip = sets.midcast.enhance_duration
         end
