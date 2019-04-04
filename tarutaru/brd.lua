@@ -109,7 +109,7 @@ function get_sets()
 
     sets.midcast.enhance_duration = {
         sub="アムラピシールド",
-        head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +6%','Enh. Mag. eff. dur. +10',}},
+        head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -170,11 +170,11 @@ function get_sets()
         right_ear="エアバニピアス",
         left_ring="月光の指輪",
         right_ring="シーリチリング+1",
-        back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10',}},
+        back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
     
     sets.precast.ws.wsd = {
-        range={ name="リノス", augments={'Accuracy+15','Weapon skill damage +3%','DEX+7',}},
+        range={ name="リノス", augments={'Accuracy+15','Weapon skill damage +3%','DEX+8',}},
         head="アヤモツッケット+2",
         body="アヤモコラッツァ+2",
         hands="アヤモマノポラ+2",
@@ -186,7 +186,7 @@ function get_sets()
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="イラブラットリング",
         right_ring="ペトロフリング",
-        back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%',}},
+        back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
     sets.precast.ws["ルドラストーム"] = sets.precast.ws.wsd

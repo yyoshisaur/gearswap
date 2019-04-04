@@ -96,7 +96,7 @@ function get_sets()
         back={ name="ベーンケープ", augments={'Elem. magic skill +10','Dark magic skill +7',}},
     }
 
-    sets.precast.ability["魔力の泉"] = {body={ name="ＡＲコート+1", augments={'Enhances "Manafont" effect',}},}
+    sets.precast.ability["魔力の泉"] = {body={ name="ＡＲコート+3", augments={'Enhances "Manafont" effect',}},}
 
     sets.midcast.aspir = {
         ammo="ペムフレドタスラム",

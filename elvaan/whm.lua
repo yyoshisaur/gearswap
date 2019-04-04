@@ -29,7 +29,7 @@ function get_sets()
     sets.precast.fc = {
         ammo="インカントストーン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body="インヤガジュバ+1",
+        body="インヤガジュバ+2",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -85,6 +85,7 @@ function get_sets()
     
     sets.midcast.enhance_duration = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
+        sub="アムラピシールド",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -114,12 +115,13 @@ function get_sets()
     sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＩダックビル+1", augments={'Enhances "Protectra V" effect',}},right_ear="ブラキュラピアス",})
     sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {legs={ name="ＰＩパンタロン+3", augments={'Enhances "Shellra V" effect',}},right_ear="ブラキュラピアス",})
     sets.midcast.auspice = set_combine(sets.midcast.enhance_duration, {feet="ＥＢダックビル+1",})
-    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
+    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {main="ボレラブンガ", head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド",})
     
     sets.midcast.ba = {
         main="ベニフィクス",
+        sub="アムラピシールド",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body="ＥＢブリオー+1",
@@ -137,6 +139,7 @@ function get_sets()
     
     sets.midcast.addi = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
+        sub="アムラピシールド",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -154,7 +157,7 @@ function get_sets()
     
     sets.midcast.magic_acc = {
         main={ name="クェラーロッド", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
-        -- sub="玄冥盾",
+        sub="アムラピシールド",
         ammo="ペムフレドタスラム",
         head="ＴＥキャップ+2",
         body="ＴＥブリオー+2",
@@ -163,7 +166,7 @@ function get_sets()
         feet="ＴＥダックビル+2",
         neck="エーラペンダント",
         waist="エスカンストーン",
-        left_ear="グチアピアス",
+        left_ear="グアチピアス",
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
@@ -171,7 +174,7 @@ function get_sets()
     }
     
     sets.aftercast.idle = {
-        main={ name="クェラーロッド", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
+        main="ボレラブンガ",
         sub="玄冥盾",
         ammo="ホミリアリ",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},

@@ -66,6 +66,7 @@ function get_sets()
     
     sets.midcast.enhance_duration = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
+        sub="アムラピシールド",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -76,6 +77,7 @@ function get_sets()
     
     sets.midcast.enhance_skill = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
+        sub="アムラピシールド",
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
@@ -87,6 +89,7 @@ function get_sets()
     }
 
     sets.midcast.magic_acc = {
+        sub="アムラピシールド",
         head="ＧＯガレーロ+2",
         body="ＧＯチュニック+2",
         hands="ＧＯミテーヌ+2",

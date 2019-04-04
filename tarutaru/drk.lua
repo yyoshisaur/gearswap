@@ -21,11 +21,12 @@ function get_sets()
     windower.add_to_chat(122,'mokusya: モクシャ')
     windower.add_to_chat(122,'enmity: 敵対心-(レギオン)')
     windower.add_to_chat(122,'raetic: レテクバングル')
+    windower.add_to_chat(122,'khonsu: コーンスー')
     
     sets.weapon.calad = {main="カラドボルグ", sub="ウトゥグリップ",}
     sets.weapon.anguta = {main="アングータ", sub="ウトゥグリップ",}
     sets.weapon.misanth = {main="ミサンスロピー", sub="ウトゥグリップ",}
-    sets.weapon.axe = {main="ヘパテゾアクス", sub="ウトゥグリップ",}
+    sets.weapon.axe = {main="カジャチョッパー", sub="ウトゥグリップ",}
     
     sets.precast.fc = {
         ammo="サピエンスオーブ",
@@ -165,7 +166,7 @@ function get_sets()
     sets.precast.ability['ラストリゾート'] = {feet="ＦＬソルレット+3", back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},}
     sets.precast.ability['ウェポンバッシュ'] = {hands="ＩＧガントレ+2",}
     sets.precast.ability['ネザーヴォイド'] = {legs="ＨＴフランチャ+1",}
-    sets.precast.ability['アルケインサークル'] = {feet='ＩＧソルレット+1',}
+    sets.precast.ability['アルケインサークル'] = {feet='ＩＧソルレット+2',}
     sets.precast.ability['ブラッドウェポン'] = {body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},}
 
     sets.midcast.magic_acc = {
@@ -255,6 +256,7 @@ function get_sets()
     sets.midcast.absorb = {back="チュパローサマント",}
     
     sets.aftercast.melee_acc_1200 = {
+        sub="ウトゥグリップ",
         ammo="銀銭",
         head="フラマツッケット+2",
         body={ name="ＥＭオーベール+1", augments={'HP+65','DEX+12','Accuracy+20',}},
@@ -273,6 +275,23 @@ function get_sets()
     
     sets.aftercast.melee_acc_1250 = {neck="暗黒の数珠+2",} -- {neck='コンバタントトルク',}
     
+    sets.aftercast.melee_khonsu = {
+        sub="コーンスー",
+        ammo="ストンチタスラム+1",
+        head="フラマツッケット+2",
+        body="デーゴンブレスト",
+        hands="スレビアガントレ+2",
+        legs="ＩＧフランチャ+3",
+        feet="フラマガンビエラ+2",
+        neck="暗黒の数珠+2",
+        waist="イオスケハベルト+1",
+        left_ear="テロスピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="月光の指輪",
+        back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.melee = sets.aftercast.melee_acc_1200
     
     sets.aftercast.idle = {
@@ -491,6 +510,9 @@ function self_command(command)
             is_acc_1250 = true
             set_acc_1250()
         end
+    elseif command == 'khonsu' then
+        sets.aftercast.melee = sets.aftercast.melee_khonsu
+        windower.add_to_chat(122,'+++ コーンスー +++')
     elseif command == 'mokusya' then
         if is_mokusya then
             is_mokusya = false

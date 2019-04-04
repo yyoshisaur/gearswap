@@ -125,7 +125,7 @@ function get_sets()
         legs={ name="ＰＤパンツ+1", augments={'Enhances "Tabula Rasa" effect',}},
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="ノデンズゴルゲット",
-        waist="ピュシアサッシュ",
+        waist="ピュシアサッシュ+1",
         left_ear="ノーヴィアピアス",
         right_ear="メンデカントピアス",
         left_ring="守りの指輪",
@@ -191,7 +191,7 @@ function get_sets()
     
     sets.midcast.enhance_duration = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
-        sub="玄冥盾",
+        sub="アムラピシールド",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
@@ -212,7 +212,7 @@ function get_sets()
     
     sets.midcast.enhance_skill = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
-        sub="玄冥盾",
+        sub="アムラピシールド",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
