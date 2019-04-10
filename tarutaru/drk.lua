@@ -326,7 +326,6 @@ function get_sets()
     sets.mokusya_ws = {}
     
     sets.mokusya_last_resort = {
-        neck='コンバタントトルク',
         feet="ＦＬソルレット+3",
         left_ring="シーリチリング+1",
         right_ring="月光の指輪",

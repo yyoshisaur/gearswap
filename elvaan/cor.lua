@@ -9,7 +9,7 @@ function get_sets()
 
     -- self_command用フラグ
     is_melee = false
-    is_luzaf = false
+    is_luzaf = true
 
     sets.rolls = {
         ['コルセアズロール'] = {enhances='得経験値量アップ', lucky = 5, unlucky = 9,},
@@ -195,7 +195,7 @@ function get_sets()
         back="カムラスマント",
     }
 
-    sets.midcast.roll_luzaf = {right_ring="ルザフリング",}
+    sets.midcast.roll_luzaf = {left_ring="ルザフリング",}
 
     sets.midcast.cure = {
         -- neck="ファライナロケット",

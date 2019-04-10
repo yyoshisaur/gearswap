@@ -59,6 +59,7 @@ function get_sets()
 
     is_cp = false
     is_immanence = false
+    is_stromsureg = false
 
     sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ', 'ファランクス'}
     sets.storm = T{'熱波の陣', '吹雪の陣', '烈風の陣', '砂塵の陣', '疾雷の陣', '豪雨の陣', '極光の陣', '妖霧の陣', '熱波の陣II', '吹雪の陣II', '烈風の陣II', '砂塵の陣II', '疾雷の陣II', '豪雨の陣II', '極光の陣II', '妖霧の陣II'}
@@ -303,8 +304,11 @@ function midcast(spell)
         elseif sets.magic_enhance_skill:contains(spell.name) then
             set_equip = sets.midcast.enhance_skill
         elseif sets.storm:contains(spell.name) then
-            set_equip = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＤローファー+1", augments={'Enhances "Stormsurge" effect',}},})
-            -- set_equip = sets.midcast.enhance_duration
+            if is_stromsureg then
+                set_equip = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＤローファー+1", augments={'Enhances "Stormsurge" effect',}},})
+            else
+                set_equip = sets.midcast.enhance_duration
+            end
         else
             set_equip = sets.midcast.enhance_duration
         end
@@ -376,6 +380,9 @@ function self_command(command)
             disable('back')
             windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
         end
+    elseif command =='stormsurge' then
+        is_stromsureg = not is_stromsureg
+        windower.add_to_chat(122,'陣頭指揮: '..tostring(is_stromsureg))
     elseif command == '1p' then
         send_command('input /macro book 4; wait 0.5; input /macro set 10')
     elseif command == '2p' then

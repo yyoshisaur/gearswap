@@ -156,7 +156,7 @@ function get_sets()
     }
     
     sets.midcast.magic_acc = {
-        main={ name="クェラーロッド", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
+        main="マクセンチアス",
         sub="アムラピシールド",
         ammo="ペムフレドタスラム",
         head="ＴＥキャップ+2",

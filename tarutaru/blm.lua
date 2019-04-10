@@ -54,7 +54,10 @@ function get_sets()
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="ボルトサージトルク",
         waist="チャネラーストーン",
+        left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
+        left_ring={name="メフィタスリング+1", priority=15},
+        right_ring={name="メフィタスリング", priority=15},
         back={ name="タラナスケープ", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
@@ -103,7 +106,7 @@ function get_sets()
         head="妖蟲の髪飾り+1",
         body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Mag. crit. hit dmg. +1%','INT+5','Mag. Acc.+13','"Mag.Atk.Bns."+14',}},
         hands="王将の袖飾り",
-        legs="ＳＰトンバン+3",
+        legs={name="ＳＰトンバン+3", priority=15},
         feet="ＳＰサボ+3",
         neck="エーラペンダント",
         waist="風鳥の帯",
@@ -157,10 +160,11 @@ function get_sets()
     }
     
     sets.midcast.death = {
+        ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
         body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands="エアカフス+1",
-        legs="ＳＰトンバン+3",
+        legs={ name="ＳＰトンバン+3", priority=15},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="サンクトネックレス",
         waist="闇輪の帯",
@@ -338,14 +342,14 @@ function get_sets()
     }
 
         -- マクロのブック, セット変更
-        -- send_command('input /macro book 4; wait 0.5; input /macro set 1')
+        -- send_command('input /macro book 3; wait 0.5; input /macro set 10')
 end
 
 function pretarget(spell)
     local set_equip = nil
 
     if is_death then
-        set_equip = sets.mp_increase
+        -- set_equip = sets.mp_increase
     end
 
     if spell.name == 'インパクト' then

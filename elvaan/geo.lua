@@ -89,6 +89,7 @@ function get_sets()
     }
 
     sets.midcast.magic_acc = {
+        main="マクセンチアス",
         sub="アムラピシールド",
         head="ＧＯガレーロ+2",
         body="ＧＯチュニック+2",

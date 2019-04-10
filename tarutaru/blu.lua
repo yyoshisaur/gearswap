@@ -275,11 +275,27 @@ function get_sets()
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
+    sets.aftercast.melee_ambus = {
+        ammo="ストンチタスラム+1",
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands="レテクバングル",
+        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
+        neck="ロリケートトルク+1",
+        waist="霊亀腰帯",
+        left_ear="デディションピアス",
+        right_ear="テロスピアス",
+        left_ring="イラブラットリング",
+        right_ring="守りの指輪",
+        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.melee_dt = {
         ammo="ストンチタスラム+1",
         head="アヤモツッケット+2",
         body="アヤモコラッツァ+2",
-        hands="レテクバングル",
+        hands="ＡＳバズバンド+3",
         legs="アヤモコッシャレ+2",
         feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
         neck="ロリケートトルク+1",
