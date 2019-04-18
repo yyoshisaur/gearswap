@@ -23,10 +23,10 @@ function get_sets()
     windower.add_to_chat(122,'raetic: レテクバングル')
     windower.add_to_chat(122,'khonsu: コーンスー')
     
-    sets.weapon.calad = {main="カラドボルグ", sub="ウトゥグリップ",}
-    sets.weapon.anguta = {main="アングータ", sub="ウトゥグリップ",}
-    sets.weapon.misanth = {main="ミサンスロピー", sub="ウトゥグリップ",}
-    sets.weapon.axe = {main="カジャチョッパー", sub="ウトゥグリップ",}
+    sets.weapon.calad = {main="カラドボルグ",} --sub="ウトゥグリップ",}
+    sets.weapon.anguta = {main="アングータ",} --sub="ウトゥグリップ",}
+    sets.weapon.misanth = {main="ミサンスロピー",} --sub="ウトゥグリップ",}
+    sets.weapon.axe = {main="ライカーゴス",}--sub="ウトゥグリップ",}
     
     sets.precast.fc = {
         ammo="サピエンスオーブ",

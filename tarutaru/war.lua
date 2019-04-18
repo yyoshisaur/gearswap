@@ -11,7 +11,8 @@ function get_sets()
 
     sets.weapon.ukon = {main="ウコンバサラ", sub="ウトゥグリップ",}
     sets.weapon.chango = {main="シャンゴル", sub="ウトゥグリップ",}
-    sets.weapon.sword = {main="霊亀鈎", sub="ブラーシールド+1",}
+    sets.weapon.sword = {main="ネイグリング", sub="ブラーシールド+1",}
+    sets.weapon.shining = {main="シャイニングワン", sub="ウトゥグリップ",}
 
     sets.precast.ws.str_critical = {
         ammo="イェットシーラ+1",
@@ -103,6 +104,8 @@ function get_sets()
     sets.precast.ws['アップヒーバル'] = sets.precast.ws.vit_wsd
     -- 片手剣
     sets.precast.ws['サベッジブレード'] = sets.precast.ws.str_sword
+    -- 両手槍
+    sets.precast.ws['インパルスドライヴ'] = sets.precast.ws.str_critical
 
     sets.precast.ability['バーサク'] = {
         body="ＰＭロリカ+3",
@@ -133,6 +136,8 @@ function get_sets()
 
     sets.precast.waltz = {
         legs="ダッシングサブリガ",
+        left_ring="アスクレピアリング",
+        right_ring="ヴァルスールリング",
         back={ name="シコルマント", augments={'DEX+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Waltz" potency +10%','Damage taken-5%',}},
     }
 

@@ -11,11 +11,9 @@ function get_sets()
     is_obi = false
     is_stp = false
 
-    sets.weapon.douzi = {
-        main="童子切安綱",
-        sub="ウトゥグリップ",
-    }
-    
+    sets.weapon.douzi = {main="童子切安綱", sub="ウトゥグリップ",}
+    sets.weapon.shining = {main="シャイニングワン", sub="ウトゥグリップ",}
+
     sets.obi = {waist="火輪の帯",}
     
     sets.enmity = {

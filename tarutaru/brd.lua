@@ -158,7 +158,7 @@ function get_sets()
     
     sets.aftercast.melee = {
         -- main="エーネアス",
-        range={ name="リノス", augments={'Accuracy+15','"Store TP"+4','Quadruple Attack +3',}},
+        range={ name="リノス", augments={'Accuracy+12 Attack+12','"Store TP"+4','Quadruple Attack +3',}},
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
         hands="アヤモマノポラ+2",

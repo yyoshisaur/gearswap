@@ -1,3 +1,4 @@
+include('weather_obi')
 function get_sets()
     set_language('japanese')
     
@@ -6,6 +7,9 @@ function get_sets()
     sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
+
+    init_elemental_obi()
+    set_elemental_obi("闇輪の帯")
 
     -- self_command用フラグ
     is_melee = false
@@ -134,7 +138,7 @@ function get_sets()
         legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
-        waist="闇輪の帯", -- waist="エスカンストーン",
+        waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="フリオミシピアス",
         left_ring="アルコンリング",
@@ -197,7 +201,7 @@ function get_sets()
     sets.midcast.cure = {
         neck="ファライナロケット",
         right_ear="メンデカントピアス",
-        back="ソレムニティケープ",
+        -- back="ソレムニティケープ",
     }
 
     sets.aftercast.melee = {
@@ -270,7 +274,11 @@ function precast(spell)
         set_equip = sets.precast.snap
     elseif spell.type == 'WeaponSkill' then
         if sets.precast.ws[spell.name] then
-            set_equip = sets.precast.ws[spell.name]
+            if spell.name == "レデンサリュート" then
+                set_equip = set_combine(sets.precast.ws[spell.name], get_hachirin('闇'))
+            else
+                set_equip = sets.precast.ws[spell.name]
+            end
         else
             set_equip = sets.precast.ws.ra_phisical
         end
