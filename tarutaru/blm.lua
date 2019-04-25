@@ -12,6 +12,7 @@ function get_sets()
     is_no_mb = false
     is_diver_statue = false
     is_death = false
+    is_vagary = false
 
     elementally_enfeeble_magic = T{"ショック", "ラスプ", "チョーク", "フロスト", "バーン", "ドラウン",}
     aspir = T{"アスピル", "アスピルII", "アスピルIII"}
@@ -305,6 +306,22 @@ function get_sets()
 
     sets.midcast.mb = sets.midcast.mb_mid
 
+    sets.midcast.vagary_task = {
+        ammo="ストンチタスラム+1",
+        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}, mp=82},
+        body={ name="シャンゴローブ", mp=59},
+        hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}, mp=44},
+        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}, mp=109},
+        feet={ name="ミディアムサボ", augments={'MP+45','MND+9','"Conserve MP"+5','"Cure" potency +4%',}, mp=65},
+        neck={ name="ボルトサージトルク", mp=20},
+        waist="チャネラーストーン",
+        left_ear="エンチャンピアス+1",
+        right_ear={ name="ロケイシャスピアス", mp=30},
+        left_ring={ name="ラハブリング", mp=30},
+        right_ring="キシャールリング",
+        back={ name="ベーンケープ", augments={'Elem. magic skill +10','Dark magic skill +7',}, mp=90},
+    }
+
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
         head={ name="エアハット+1", mp=65},
@@ -462,6 +479,8 @@ function midcast(spell)
             elseif is_no_mb then
                 set_equip = set_combine(sets.midcast.elemental, get_hachirin(spell.element))
                 is_not_mb = false
+            elseif is_vagary then
+                set_equip = sets.midcast.vagary_task
             else
                 set_equip = set_combine(sets.midcast.mb, get_hachirin(spell.element))
             end
@@ -529,10 +548,12 @@ function self_command(command)
         end
         windower.add_to_chat(122,'---> ダイバージェンス石造: '..tostring(is_diver_statue))
         equip(sets.aftercast.idle_death)
+        set_priorities_by_mp()
     elseif command == 'death' then
         is_death = not is_death
         windower.add_to_chat(122,'---> デス: '..tostring(is_death))
         equip(sets.aftercast.idle_death)
+        set_priorities_by_mp()
     elseif command == 'mb_high' then
         sets.midcast.mb = sets.midcast.mb_high
         windower.add_to_chat(122,'---> MB: ATK high, ACC low')
@@ -542,6 +563,9 @@ function self_command(command)
     elseif command == 'mb_low' then
         sets.midcast.mb = sets.midcast.mb_low
         windower.add_to_chat(122,'---> MB: ATK low, ACC high')
+    elseif command == 'vagary' then
+        is_vagary = not is_vagary
+        windower.add_to_chat(122,'---> ベガリーお題: '..tostring(is_vagary))
     end
 end
 
