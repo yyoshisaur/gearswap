@@ -107,6 +107,9 @@ function get_sets()
     sets.precast.ws['祖之太刀・不動'] = sets.precast.ws.wsd
     sets.precast.ws['十二之太刀・照破'] = sets.precast.ws.multi
     
+    -- 両手槍
+    sets.precast.ws['インパルスドライヴ'] = set_combine(sets.precast.ws.wsd, {hands="フラママノポラ+2",})
+
     sets.precast.fc = {
         ammo="サピエンスオーブ",
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},

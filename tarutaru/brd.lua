@@ -22,7 +22,7 @@ function get_sets()
     sets.weapon_dual = {main="エーネアス", sub="ブラーナイフ+1"}
     
     sets.precast.song_fc = {
-        main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
+        -- main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
         sub="玄冥盾",
         head="ＦＬキャロ+1",
         body="インヤガジュバ+2",
@@ -31,7 +31,7 @@ function get_sets()
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="ボルトサージトルク",
         waist="フルームベルト+1",
-        left_ear="エテオレートピアス",
+        left_ear="エンチャンピアス+1",
         right_ear="ロケイシャスピアス",
         left_ring="守りの指輪",
         right_ring="キシャールリング",
@@ -60,7 +60,7 @@ function get_sets()
     sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+1", augments={'Enhances "Troubadour" effect',}},}
 
     sets.midcast.song_duration = {
-        main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
+        main="カルンウェナン",
         sub="玄冥盾",
         head="ＦＬキャロ+1",
         body="ＦＬオングルリヌ+1",
@@ -77,7 +77,7 @@ function get_sets()
     }
     
     sets.midcast.magic_acc = {
-        main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
+        -- main="カルンウェナン",
         sub="アムラピシールド",
         head="ＢＲランドリト+3",
         body="ＢＲジュスト+2",
@@ -157,8 +157,8 @@ function get_sets()
     }
     
     sets.aftercast.melee = {
-        -- main="エーネアス",
-        range={ name="リノス", augments={'Accuracy+12 Attack+12','"Store TP"+4','Quadruple Attack +3',}},
+        main="エーネアス",
+        range={ name="リノス", augments={'Accuracy+15','"Store TP"+4','Quadruple Attack +3',}},
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
         hands="アヤモマノポラ+2",
@@ -299,11 +299,11 @@ function self_command(command)
         if is_dual then
             is_dual = false
             windower.add_to_chat(122,'+++ 1刀装備モード +++')
-            enable('main','sub')
+            enable('sub')
         else
             is_dual = true
             windower.add_to_chat(122,'+++ 2刀装備モード +++')
-            disable('main','sub')
+            disable('sub')
         end
     end
 end
