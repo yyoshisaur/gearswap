@@ -102,13 +102,16 @@ function get_sets()
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
+        back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
     }
     
     sets.midcast.magic_atk = {
+        main="マクセンチアス",
+        sub="アムラピシールド",
         head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
         body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
-        hands="アマリクゲージ",
-        legs="マルクィトルーズ+2",
+        hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="チャネラーストーン",
@@ -116,7 +119,7 @@ function get_sets()
         right_ear="電界の耳",
         left_ring="ジャリリング",
         right_ring="マルクィリング",
-        -- back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
+        back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
     }
     
     sets.aftercast.idle = {
