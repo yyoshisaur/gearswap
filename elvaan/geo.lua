@@ -134,16 +134,34 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",
         left_ear="エテオレートピアス",
-        -- right_ear="ハンドラーピアス+1",
         right_ear="驕慢の耳",
+        left_ring="守りの指輪",
+        right_ring="シュネデックリング",
+        back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
+    }
+    
+    sets.aftercast.idle_luopan = {
+        main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+        sub="玄冥盾",
+        range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
+        head={ name="テルキネキャップ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        hands="ＧＯミテーヌ+2",
+        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        neck="ロリケートトルク+1",
+        waist="イーサベルト",
+        left_ear="エテオレートピアス",
+        right_ear="ハンドラーピアス+1",
         left_ring="守りの指輪",
         -- right_ring="ゼラチナスリング+1",
         right_ring="ピュリティーリング",
         back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
-    
+
     -- マクロのブック, セット変更
     send_command('input /macro book 3; wait 0.5; input /macro set 10')
+
 end
 
 function precast(spell)
@@ -199,7 +217,9 @@ function midcast(spell)
     elseif spell.skill == '弱体魔法' or spell.skill == '暗黒魔法' then
         set_equip = sets.midcast.magic_acc
     elseif spell.skill == '精霊魔法' then
-        set_equip = sets.midcast.magic_atk
+        if spell.name ~= 'ストーン' then 
+            set_equip = sets.midcast.magic_atk
+        end
     end
     
     if set_equip ~= nill then
@@ -210,8 +230,14 @@ end
 function aftercast(spell)
     local set_equip = nil
     
-    if player.status == 'Engaged' then
-        set_equip = sets.aftercast.idle
+    -- if player.status == 'Engaged' then
+    --     set_equip = sets.aftercast.idle
+    -- else
+    --     set_equip = sets.aftercast.idle
+    -- end
+
+    if pet.name then
+        set_equip = sets.aftercast.idle_luopan
     else
         set_equip = sets.aftercast.idle
     end

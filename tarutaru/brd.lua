@@ -101,7 +101,7 @@ function get_sets()
     sets.midcast.minuet = set_combine(sets.midcast.song_duration, {body="ＦＬオングルリヌ+1"})
     sets.midcast.madrigal = set_combine(sets.midcast.song_duration,{head="ＦＬキャロ+1", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
     sets.midcast.prelude = set_combine(sets.midcast.song_duration, {back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
-    sets.midcast.march = set_combine(sets.midcast.song_duration, {hands="ＦＬマンシェト+1", right_ear="ダークサイドピアス", back="ラプソドスケープ"}) -- ギフトでスキルが上がれば腰、耳、背を削除する
+    sets.midcast.march = set_combine(sets.midcast.song_duration, {hands="ＦＬマンシェト+1",}) 
     sets.midcast.etude = sets.midcast.song_duration
     sets.midcast.mazurka = sets.midcast.song_duration
     sets.midcast.scherzo = set_combine(sets.midcast.song_duration, {feet="ＦＬコテュルヌ+1"})

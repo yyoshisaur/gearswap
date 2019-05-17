@@ -162,6 +162,7 @@ function get_sets()
     sets.precast.ws['アーマーブレイク'] = sets.precast.ws.acc
     sets.precast.ws['ウェポンブレイク'] = sets.precast.ws.acc
     sets.precast.ws['フルグレイク'] = sets.precast.ws.acc
+    sets.precast.ws['アップヒーバル'] = sets.precast.ws.multi
     
     sets.precast.ability['ラストリゾート'] = {feet="ＦＬソルレット+3", back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},}
     sets.precast.ability['ウェポンバッシュ'] = {hands="ＩＧガントレ+2",}
@@ -416,7 +417,9 @@ function midcast(spell)
         if is_trehun then
             set_equip = set_combine(sets.midcast.elemental, sets.midcast.trehun)
         else
-            set_equip = sets.midcast.elemental
+            if spell.name ~= 'ストーン' then
+                set_equip = sets.midcast.elemental
+            end
         end
     end
     

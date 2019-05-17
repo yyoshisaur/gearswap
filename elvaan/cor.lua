@@ -10,7 +10,10 @@ function get_sets()
     -- self_command用フラグ
     is_melee = false
     is_luzaf = true
+    is_cp = false
 
+    sets.cp = {back="アピトマント+1"}
+    
     sets.rolls = {
         ['コルセアズロール'] = {enhances='得経験値量アップ', lucky = 5, unlucky = 9,},
         ['ニンジャロール'] = {enhances='回避アップ', lucky = 4, unlucky = 8,},
@@ -231,6 +234,9 @@ function get_sets()
 
     -- マクロのブック, セット変更
     send_command('input /macro book 6; wait 0.5; input /macro set 1')
+
+    -- autocor
+    send_command('lua load autocor')
 end
 
 function pretarget(spell)
@@ -388,7 +394,22 @@ function self_command(command)
             is_luzaf = true
             windower.add_to_chat(122,'+++ ルザフリングあり +++')
         end
+    elseif command == 'cp' then
+        if is_cp then
+            is_cp = false
+            enable('back')
+            windower.add_to_chat(122,'+++ キャパポ装備 OFF +++')
+        else
+            is_cp = true
+            equip(sets.cp)
+            disable('back')
+            windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
+        end
     elseif command == 'double-up-aftercast' then
         equip(get_aftercast_equip())
     end
+end
+
+function file_unload(file_name)
+    send_command('lua unload autocor')
 end

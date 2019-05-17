@@ -299,6 +299,22 @@ function get_sets()
         back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
+    sets.aftercast.speed = {
+        ammo="ストンチタスラム+1",
+        head={ name="トゥルムキャップ+1", hp=94,},
+        body={ name="ＲＮコート+3", hp=218,},
+        hands={ name="ＲＮミトン+3", hp=85,},
+        legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}, hp=130},
+        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        neck={ name="フサルクトルク+2", hp=60,},
+        waist="フルームベルト+1",
+        left_ear={ name="クリプティクピアス", hp=40,},
+        right_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, hp=80},
+    }
+
         -- マクロのブック, セット変更
         send_command('input /macro book 17; wait 0.5; input /macro set 1')
 end
@@ -527,6 +543,10 @@ function self_command(command)
     elseif command == 'th' then
         is_th = not is_th
         windower.add_to_chat(122,'---> トレハン装備: '..tostring(is_th))
+    elseif command == 'speed' then
+        equip(sets.aftercast.speed)
+        set_priorities_by_hp()
+        windower.add_to_chat(122,'---> 移動速度UP装備')
     end
 end
 
