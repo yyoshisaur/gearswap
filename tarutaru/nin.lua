@@ -211,7 +211,7 @@ function precast(spell)
         set_equip = sets.precast.fc
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -246,7 +246,7 @@ function midcast(spell)
         set_equip = sets.precast.enmity
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -263,7 +263,7 @@ function aftercast(spell)
         set_equip = sets.aftercast.idle
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -277,7 +277,7 @@ function status_change(new, old)
         set_equip = sets.aftercast.melee
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end

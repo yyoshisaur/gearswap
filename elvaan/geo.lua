@@ -8,8 +8,10 @@ function get_sets()
     
     is_cp = false
 
-    sets.ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
-
+    magic_ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
+    magic_geo = T{'ジオリジェネ', 'ジオポイズン', 'ジオリフレシュ', 'ジオヘイスト', 'ジオスト', 'ジオデック', 'ジオバイト', 'ジオアジル', 'ジオイン', 'ジオマイン', 'ジオカリス',
+            'ジオフューリー', 'ジオバリア', 'ジオアキュメン', 'ジオフェンド', 'ジオプレサイス', 'ジオヴォイダンス', 'ジオフォーカス', 'ジオアトゥーン', 'ジオウィルト',
+            'ジオフレイル', 'ジオフェイド', 'ジオマレーズ', 'ジオスリップ', 'ジオトーパー', 'ジオヴェックス', 'ジオランゴール', 'ジオスロウ', 'ジオパライズ', 'ジオグラビデ'}
     sets.cp = {back="アピトマント+1"}
     
     sets.precast.fc = {
@@ -50,7 +52,7 @@ function get_sets()
         hands="ＧＯミテーヌ+2",
         legs={ name="ＢＡパンツ+1", augments={'Enhances "Mending Halation" effect',}},
         feet="ＡＺゲートル+1",
-        neck="インカンタートルク",
+        neck="バグアチャーム",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
         back={ name="龍脈の外套", augments={'Geomancy Skill +8','Indi. eff. dur. +20','Pet: Damage taken -2%',}},
@@ -194,7 +196,7 @@ function precast(spell)
         end
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -209,7 +211,7 @@ function midcast(spell)
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
             set_equip = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
-        elseif sets.ba:contains(spell.name) then
+        elseif magic_ba:contains(spell.name) then
             set_equip = set_combine(sets.midcast.enhance_duration, sets.midcast.enhance_skill)
         else
             set_equip = sets.midcast.enhance_duration
@@ -217,12 +219,10 @@ function midcast(spell)
     elseif spell.skill == '弱体魔法' or spell.skill == '暗黒魔法' then
         set_equip = sets.midcast.magic_acc
     elseif spell.skill == '精霊魔法' then
-        if spell.name ~= 'ストーン' then 
-            set_equip = sets.midcast.magic_atk
-        end
+        set_equip = sets.midcast.magic_atk
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -239,10 +239,18 @@ function aftercast(spell)
     if pet.name then
         set_equip = sets.aftercast.idle_luopan
     else
-        set_equip = sets.aftercast.idle
+        if magic_geo:contains(spell.name) then
+            if spell.interrupted == true then
+                set_equip = sets.aftercast.idle
+            else
+                set_equip = sets.aftercast.idle_luopan
+            end
+        else
+            set_equip = sets.aftercast.idle
+        end
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -256,7 +264,7 @@ function status_change(new, old)
         set_equip = sets.aftercast.idle
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end

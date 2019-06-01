@@ -184,7 +184,7 @@ function get_sets()
     sets.midcast.phalanx = {
         ammo="ストンチタスラム+1",
         head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}, hp=56,},
-        body={ name="テーオンタバード", augments={'"Fast Cast"+5','Phalanx +3',}, hp=59,},
+        body={ name="ヘルクリアベスト", augments={'Magic dmg. taken -2%','Rng.Atk.+13','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}, hp=61,},
         hands={ name="ヘルクリアグローブ", augments={'INT+9','AGI+4','Phalanx +4','Accuracy+1 Attack+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}, hp=20,},
         legs={ name="ヘルクリアトラウザ", augments={'Accuracy+1 Attack+1','"Mag.Atk.Bns."+11','Phalanx +4','Mag. Acc.+11 "Mag.Atk.Bns."+11',}, hp=38,},
         feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',}, hp=9,},
@@ -348,7 +348,7 @@ function precast(spell)
         set_equip = get_fc_equip()
     end
 
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
         set_priorities_by_hp()
     end
@@ -465,7 +465,7 @@ function midcast(spell)
         is_th = false
     end
 
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
         set_priorities_by_hp()
     end
@@ -484,7 +484,7 @@ function aftercast(spell)
         set_equip = sets.aftercast.dt
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
         set_priorities_by_hp()
     end
@@ -503,7 +503,7 @@ function status_change(new, old)
         end
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
         set_priorities_by_hp()
     end

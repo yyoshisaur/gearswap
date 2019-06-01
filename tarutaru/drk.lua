@@ -389,7 +389,7 @@ function precast(spell)
         set_equip = sets.precast.fc
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -417,13 +417,11 @@ function midcast(spell)
         if is_trehun then
             set_equip = set_combine(sets.midcast.elemental, sets.midcast.trehun)
         else
-            if spell.name ~= 'ストーン' then
-                set_equip = sets.midcast.elemental
-            end
+            set_equip = sets.midcast.elemental
         end
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -457,7 +455,7 @@ function aftercast(spell)
         set_equip = sets.aftercast.idle
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -488,7 +486,7 @@ function status_change(new, old)
         end
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end

@@ -257,7 +257,7 @@ function pretarget(spell)
         end
     end
 
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -316,7 +316,7 @@ function precast(spell)
         set_equip = sets.precast.fc
     end
 
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -330,7 +330,7 @@ function midcast(spell)
         set_equip = sets.midcast.cure
     end
 
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -352,7 +352,7 @@ function aftercast(spell)
         set_equip = set_combine(set_equip, {ammo="クロノブレット",})
     end
 
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -366,7 +366,7 @@ function status_change(new, old)
         set_equip = get_aftercast_equip()
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end

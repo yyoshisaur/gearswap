@@ -73,8 +73,8 @@ function get_sets()
         waist="エスカンストーン",
         left_ear="ディグニタリピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="フラマリング",
-        right_ring="ニックマドゥリング",
+        left_ring="王将の指輪",
+        right_ring="フラマリング",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
     
@@ -145,34 +145,32 @@ function get_sets()
         body="乾闥婆作務衣改",
         hands="極脇戸筒篭手",
         legs="乾闥婆筒袴改",
-        feet="乾闥婆脛当改",
-        neck="アイニアカラー",
+        feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
+        neck="月光の喉輪",
         waist="ウィンバフベルト+1",
-        left_ear="デディションピアス",
+        left_ear="セサンスピアス",
         right_ear="テロスピアス",
-        left_ring="フラマリング",
-        right_ring="シーリチリング+1",
-        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
+        left_ring="守りの指輪",
+        right_ring="フラマリング",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
     sets.aftercast.stp = {
         ammo="ストンチタスラム+1",
         head="乾闥婆陣鉢改",
         body="極脇戸胴丸",
-        -- body="デーゴンブレスト",
         hands="極脇戸筒篭手",
         legs="乾闥婆筒袴改",
-        feet="乾闥婆脛当改",
-        neck="ロリケートトルク+1",
-        waist="イオスケハベルト+1",
+        feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
+        neck="月光の喉輪",
+        waist="ウィンバフベルト+1",
         left_ear="ディグニタリピアス",
         right_ear="テロスピアス",
         left_ring="守りの指輪",
-        -- right_ring="ＶＣリング+1",
         right_ring="シーリチリング+1",
-        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
-
+    
     sets.aftercast.melee = sets.aftercast.multi
 
     sets.aftercast.idle = {

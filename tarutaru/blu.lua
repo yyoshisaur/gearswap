@@ -235,7 +235,7 @@ function get_sets()
         legs="ＨＳタイト+1",
         feet={ name="ＬＬチャルク+3", augments={'Enhances "Diffusion" effect',}},
         neck="インカンタートルク",
-        waist="ウィトフルベルト",
+        waist="フルームベルト+1",
         left_ear="ロケイシャスピアス",
         right_ear="エンチャンピアス+1",
         left_ring="スティキニリング+1",
@@ -346,7 +346,7 @@ function precast(spell)
         set_equip = sets.precast.fc
     end
 
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -384,7 +384,7 @@ function midcast(spell)
         set_equip = set_combine(set_equip, {legs="ＨＳタイト+1",})
     end
 
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -398,7 +398,7 @@ function aftercast(spell)
         set_equip = sets.aftercast.idle
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -412,7 +412,7 @@ function status_change(new, old)
         set_equip = sets.aftercast.melee
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end
