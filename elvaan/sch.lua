@@ -1,4 +1,8 @@
 include('weather_obi')
+local texts = require('texts')
+sublimation_box = texts.new('${state}',{text={font='ＭＳ ゴシック', size=12}, pos={x=750, y=800}, padding = 5})
+sublimation_box:show()
+
 function get_sets()
     set_language('japanese')
     
@@ -94,15 +98,15 @@ function get_sets()
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
         body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs="マルクィトルーズ+2",
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="チャネラーストーン",
         left_ear="バーカロルピアス",
         right_ear="電界の耳",
-        left_ring="ジャリリング",
-        right_ring="マルクィリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+        left_ring="女王の指輪+1",
+        right_ring="女王の指輪+1",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
     
     sets.midcast.helix_mb = {
@@ -257,7 +261,7 @@ function precast(spell)
         set_equip = sets.precast.fc
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -310,7 +314,7 @@ function midcast(spell)
         set_equip = set_combine(set_equip, {hands='ＡＢブレーサー+1',})
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -324,7 +328,7 @@ function aftercast(spell)
         set_equip = sets.aftercast.idle
     end
     
-    if set_equip ~= nill then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -338,7 +342,7 @@ function status_change(new, old)
         set_equip = sets.aftercast.idle
     end
     
-    if set_equip ~= nil then
+    if set_equip then
         equip(set_equip)
     end
 end
@@ -366,4 +370,34 @@ function self_command(command)
     elseif command == '2p' then
         send_command('input /macro book 5; wait 0.5; input /macro set 10')
     end
+end
+
+function buff_change(name, gain, buff_details)
+    if name == '机上演習:蓄積中' then
+        if gain then 
+            sublimation_box.state = name
+            sublimation_box:color(255,0,255)
+            sublimation_box:bg_color(0,255,0)
+        else
+            if not buffactive['机上演習:蓄積完了'] then
+                sublimation_box.state = '机上演習なし'
+                sublimation_box:color(0,255,255)
+                sublimation_box:bg_color(255,0,0)
+            end
+        end
+    elseif name == '机上演習:蓄積完了' then
+        if gain then 
+            sublimation_box.state = name
+            sublimation_box:color(255,255,0)
+            sublimation_box:bg_color(0,0,255)
+        else
+            sublimation_box.state = '机上演習なし'
+            sublimation_box:color(0,255,255)
+            sublimation_box:bg_color(255,0,0)
+        end
+    end
+end
+
+function file_unload(file_name)
+    sublimation_box:destroy()
 end
