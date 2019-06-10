@@ -31,10 +31,10 @@ function get_sets()
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
         body="インヤガジュバ+2",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        legs="アヤモコッシャレ+2",
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="クレリクトルク",
-        waist="チャネラーストーン",
+        waist="ニヌルタサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
         left_ring="キシャールリング",
@@ -43,8 +43,6 @@ function get_sets()
     }
 
     sets.precast.fc_cure = {
-        ammo="インカントストーン",
-        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs="ＥＢパンタロン+1",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
@@ -60,7 +58,7 @@ function get_sets()
         legs="ＥＢパンタロン+1",
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="クレリクトルク",
-        waist="チャネラーストーン",
+        waist="ニヌルタサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
         left_ring="守りの指輪",
@@ -191,6 +189,24 @@ function get_sets()
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.aftercast.melee = {
+        main="マクセンチアス",
+        sub="カジャロッド",
+        ammo="アマークラスター",
+        head="アヤモツッケット+2",
+        body="アヤモコラッツァ+2",
+        hands="アヤモマノポラ+2",
+        legs="アヤモコッシャレ+2",
+        feet="アヤモガンビエラ+2",
+        neck="ロリケートトルク+1",
+        waist="グルンフェルロープ",
+        left_ear="セサンスピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="アヤモリング",
+        back={ name="アラウナスケープ", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+10',}},
+    }
+
     -- マクロのブック, セット変更
     send_command('input /macro book 2; wait 0.5; input /macro set 10')
     
@@ -218,6 +234,8 @@ function precast(spell)
         end
     elseif spell.skill == '回復魔法' then
         set_equip = set_combine(sets.precast.fc, {legs="ＥＢパンタロン+1",})
+    elseif spell.skill == '強化魔法' then
+        set_equip = set_combine(sets.precast.fc, {waist="ジーゲルサッシュ"})
     elseif string.find(spell.type, 'Magic') then
         set_equip = sets.precast.fc
     elseif spell.name == 'デヴォーション' then
@@ -244,7 +262,7 @@ function midcast(spell)
         else
             set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+2",})
         end
-    elseif string.find(spell.name, 'ケアル') then
+    elseif string.find(spell.name, 'ケアル') or spell.name == 'フルケア' then
         if buffactive['極光の陣'] then
             set_equip = set_combine(sets.midcast.cure, {waist="光輪の帯"})
         else
@@ -287,7 +305,7 @@ function aftercast(spell)
     local set_equip = nil
     
     if player.status == 'Engaged' then
-        set_equip = sets.aftercast.idle
+        set_equip = sets.aftercast.melee
     else
         set_equip = sets.aftercast.idle
     end
@@ -301,7 +319,7 @@ function status_change(new, old)
     local set_equip = nil
     
     if new == 'Idle' then
-        set_equip = sets.aftercast.idle
+        set_equip = sets.aftercast.melee
     elseif new == 'Engaged' then
         set_equip = sets.aftercast.idle
     end

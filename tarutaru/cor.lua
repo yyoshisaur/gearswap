@@ -88,7 +88,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
+        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+28','STR+4','"Refresh"+1','Mag. Acc.+18 "Mag.Atk.Bns."+18',}},
         feet="ＣＳブーツ+1",
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -135,7 +135,7 @@ function get_sets()
         head="妖蟲の髪飾り+1",
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
+        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+28','STR+4','"Refresh"+1','Mag. Acc.+18 "Mag.Atk.Bns."+18',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -151,7 +151,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
+        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+28','STR+4','"Refresh"+1','Mag. Acc.+18 "Mag.Atk.Bns."+18',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -204,21 +204,37 @@ function get_sets()
         -- back="ソレムニティケープ",
     }
 
-    sets.aftercast.melee = {
+    sets.aftercast.melee_multi = {
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
         neck="コンバタントトルク",
-        waist="霊亀腰帯",
-        left_ear="セサンスピアス",
+        waist="ケンタークベルト+1",
+        left_ear="素破の耳",
         right_ear="テロスピアス",
         left_ring="イラブラットリング",
         right_ring="シーリチリング+1",
         back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
 
+    sets.aftercast.melee_dt = {
+        head={ name="ダンペニングタム", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
+        neck="ロリケートトルク+1",
+        waist="ケンタークベルト+1",
+        left_ear="素破の耳",
+        right_ear="テロスピアス",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
+    }
+
+    sets.aftercast.melee = sets.aftercast.melee_multi
     sets.aftercast.idle = {
         head="メガナダバイザー+2",
         body="メガナダクウィリ+2",
@@ -372,8 +388,12 @@ function status_change(new, old)
 end
 
 function get_aftercast_equip()
-    if is_melee then
-        return sets.aftercast.melee
+    if player.status == 'Engaged' then
+        if is_melee then
+            return sets.aftercast.melee
+        else
+            return sets.aftercast.idle
+        end
     else
         return sets.aftercast.idle
     end

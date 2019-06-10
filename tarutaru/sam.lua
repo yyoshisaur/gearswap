@@ -164,7 +164,8 @@ function get_sets()
         feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
         neck="月光の喉輪",
         waist="ウィンバフベルト+1",
-        left_ear="ディグニタリピアス",
+        -- left_ear="ディグニタリピアス",
+        left_ear="セサンスピアス",
         right_ear="テロスピアス",
         left_ring="守りの指輪",
         right_ring="シーリチリング+1",
@@ -301,7 +302,7 @@ function self_command(command)
         if is_stp then
             is_stp = false
             sets.aftercast.melee = sets.aftercast.multi
-            windower.add_to_chat(122,'--- マルチアタック装備 OFF ---')
+            windower.add_to_chat(122,'--- マルチアタック装備 ---')
         else
             is_stp = true
             sets.aftercast.melee = sets.aftercast.stp

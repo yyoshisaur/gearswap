@@ -9,10 +9,18 @@ function get_sets()
 
     init_blue_magic()
 
+    is_th = false
+
     sword_cycle = 1
     sets.weapon.almace = {main="アルマス", sub="セクエンス",}
     sets.weapon.tizona = {main="ティソーナ", sub="アルマス",}
     sets.weapon.sequence = {main="セクエンス", sub="アルマス",}
+
+    sets.th = {
+        head="白ララブキャップ+1",
+        body={ name="ヘルクリアベスト", augments={'Spell interruption rate down -6%','Pet: "Mag.Atk.Bns."+15','"Treasure Hunter"+2',}},
+        waist="チャークベルト",
+    }
 
     sets.precast.fc = {
         ammo="ストンチタスラム+1",
@@ -384,6 +392,11 @@ function midcast(spell)
         set_equip = set_combine(set_equip, {legs="ＨＳタイト+1",})
     end
 
+    if is_th then
+        set_equip = set_combine(set_equip, sets.th)
+        is_th = false
+    end
+
     if set_equip then
         equip(set_equip)
     end
@@ -435,6 +448,9 @@ function self_command(command)
         end
     elseif command == 'empty_weapon' then
         equip({main=empty,sub=empty})
+    elseif command == 'th' then
+        is_th = not is_th
+        windower.add_to_chat(122,'---> トレハン装備: '..tostring(is_th))
     end
 end
 

@@ -22,7 +22,7 @@ function get_sets()
     sets.weapon_dual = {main="エーネアス", sub="ブラーナイフ+1"}
     
     sets.precast.song_fc = {
-        -- main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
+        main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
         sub="玄冥盾",
         head="ＦＬキャロ+1",
         body="インヤガジュバ+2",
@@ -77,10 +77,10 @@ function get_sets()
     }
     
     sets.midcast.magic_acc = {
-        -- main="カルンウェナン",
+        main="カルンウェナン",
         sub="アムラピシールド",
         head="ＢＲランドリト+3",
-        body="ＢＲジュスト+2",
+        body="ＢＲジュスト+3",
         hands="ＢＲカフス+3",
         legs="ＦＬラングラヴ+1",
         feet="ＢＲスリッパー+3",
@@ -131,7 +131,7 @@ function get_sets()
         legs="ギーヴトラウザ",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="ボルトサージトルク",
-        waist="ウィトフルベルト",
+        waist="ニヌルタサッシュ",
         left_ear="メンデカントピアス",
         right_ear="ロケイシャスピアス",
         left_ring="ラハブリング",

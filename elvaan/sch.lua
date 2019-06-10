@@ -28,9 +28,9 @@ function get_sets()
     sets.precast.fc = {
         ammo="インカントストーン",
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
+        body="ピンガチュニック",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        legs="ピンガズボン",
         feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
         neck="ボルトサージトルク",
         waist="チャネラーストーン",
@@ -75,6 +75,24 @@ function get_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.precast.ws.mp = {
+        ammo="プシロメン",
+        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
+        body={ name="ウェーザーローブ+1", augments={'MP+120',}},
+        hands={ name="オトミグローブ", augments={'HP+30','MP+30','MP+30',}},
+        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        feet={ name="サイクロスブーツ", augments={'MP+50','INT+7','"Conserve MP"+6',}},
+        neck="デュアルカラー+1",
+        waist="神術帯+1",
+        left_ear="エテオレートピアス",
+        right_ear="アンドアーピアス",
+        left_ring="メフィタスリング+1",
+        right_ring="メフィタスリング",
+        back="フィフォレケープ+1",
+    }
+
+    sets.precast.ws['ミルキル'] = sets.precast.ws.mp
+
     sets.midcast.cure = {
         ammo="インカントストーン",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
@@ -96,7 +114,7 @@ function get_sets()
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
+        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
@@ -132,9 +150,9 @@ function get_sets()
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+6',}},
+        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
         hands="ＡＣブレーサー+2",
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Mag. Acc.+14','"Mag.Atk.Bns."+13',}},
+        legs="ＡＣパンツ+2",
         feet="ＡＣローファー+2",
         neck="インカンタートルク",
         waist="エスカンストーン",
@@ -256,6 +274,10 @@ function precast(spell)
     elseif spell.type == 'Scholar' then
         if spell.name == '震天動地の章' then
             is_immanence = true
+        end
+    elseif spell.type == 'WeaponSkill' then
+        if sets.precast.ws[spell.name] then
+            set_equip = sets.precast.ws[spell.name]
         end
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
