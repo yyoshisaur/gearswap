@@ -237,7 +237,10 @@ function get_sets()
         back={ name="タラナスケープ", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}, mp=60},
     }
 
-    sets.midcast.elementally_enfeeble = {feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},}
+    sets.midcast.elementally_enfeeble = {
+        legs={ name="ＡＲトンバン+3", augments={'Increases Ancient Magic II accuracy',},mp=85},
+        feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
+    }
 
     sets.midcast.mb_sp = {
         ammo="ペムフレドタスラム",

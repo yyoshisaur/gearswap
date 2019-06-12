@@ -142,7 +142,7 @@ function get_sets()
         right_ear="電界の耳",
         left_ring="ジャリリング",
         right_ring="マルクィリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Mag.Atk.Bns."+10',}},
+        back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
     }
 
     sets.midcast.magic_acc = {
@@ -183,7 +183,14 @@ function get_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="ＡＢボネット+1",})
+    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration,
+        {
+            main="ボレラブンガ",
+            head="ＡＢボネット+1",
+            body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+            back={ name="ブックワームケープ", augments={'INT+2','MND+1','Helix eff. dur. +10','"Regen" potency+10',}},
+        }
+    )
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     
     sets.midcast.enhance_skill = {
@@ -316,7 +323,11 @@ function midcast(spell)
             if spell.name == 'サンダーV' then -- オーメン課題 MBなし15,000ダメージ用
                 set_equip = sets.midcast.magic_mb
             else
-                set_equip = sets.precast.magic_skill_chain
+                if spell.name == 'ストーン' or spell.name == '土門の計' then
+                    set_equip = set_combine(sets.precast.magic_skill_chain, {main="アウスタースタッフ",})
+                else
+                    set_equip = sets.precast.magic_skill_chain
+                end
             end
             is_immanence = false
         else

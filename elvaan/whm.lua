@@ -319,9 +319,9 @@ function status_change(new, old)
     local set_equip = nil
     
     if new == 'Idle' then
-        set_equip = sets.aftercast.melee
-    elseif new == 'Engaged' then
         set_equip = sets.aftercast.idle
+    elseif new == 'Engaged' then
+        set_equip = sets.aftercast.melee
     end
     
     if set_equip then
