@@ -96,8 +96,8 @@ function get_sets()
     sets.midcast.aspir = {
         ammo="ペムフレドタスラム",
         head={ name="妖蟲の髪飾り+1", mp=120},
-        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=153},
-        hands={ name="王将の袖飾り", mp=88},
+        body={ name="エアウプランド+1", mp=109},
+        hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}, mp=34,},
         legs={ name="ＳＰトンバン+3", mp=158},
         feet={ name="ＳＰサボ+3", mp=43},
         neck="エーラペンダント",
@@ -117,7 +117,7 @@ function get_sets()
         legs={ name="ＳＰトンバン+3", mp=158},
         feet={ name="ＳＰサボ+3", mp=43},
         neck="水影の首飾り",
-        waist="闇輪の帯",
+        waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="女王の指輪+1",
@@ -168,12 +168,13 @@ function get_sets()
 
     sets.midcast.elemental = {
         ammo="ペムフレドタスラム",
-        head={ name="マーリンフード", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+10',}, mp=56},
+        head={ name="ＡＲペタソス+3", augments={'Increases Ancient Magic II damage',}, mp=52},
         body={ name="ＳＰコート+3", mp=98},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
         feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
-        neck={ name="サンクトネックレス", mp=35},
+        -- neck={ name="サンクトネックレス", mp=35},
+        neck="ソーサラストール+2",
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
@@ -212,7 +213,8 @@ function get_sets()
         hands={ name="王将の袖飾り", mp=88},
         legs={ name="ＳＰトンバン+3", mp=158},
         feet={ name="ＳＰサボ+3", mp=43},
-        neck="エーラペンダント",
+        -- neck="エーラペンダント",
+        neck="ソーサラストール+2",
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
@@ -228,7 +230,8 @@ function get_sets()
         hands={ name="王将の袖飾り", mp=88},
         legs={ name="ＳＰトンバン+3", mp=158},
         feet={ name="ＳＰサボ+3", mp=43},
-        neck="エーラペンダント",
+        -- neck="エーラペンダント",
+        neck="ソーサラストール+2",
         waist="ルミネートサッシュ",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
@@ -332,7 +335,8 @@ function get_sets()
         hands={ name="エアカフス+1", mp=29},
         legs={ name="エアスロップス+1", mp=100},
         feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
-        neck="ロリケートトルク+1",
+        -- neck="ロリケートトルク+1",
+        neck="ソーサラストール+2",
         waist={ name="風鳥の帯", mp=30},
         left_ear={ name="エテオレートピアス", mp=50},
         right_ear="ルガルバンダピアス",
@@ -348,7 +352,8 @@ function get_sets()
         hands={ name="王将の袖飾り", mp=88},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},
-        neck={ name="デュアルカラー+1", mp=60},
+        -- neck={ name="デュアルカラー+1", mp=60},
+        neck="ソーサラストール+2",
         waist={ name="風鳥の帯", mp=30},
         left_ear={ name="エテオレートピアス", mp=50},
         right_ear={ name="ハラサズピアス", mp=45},
@@ -474,14 +479,14 @@ function midcast(spell)
         elseif spell.name == 'インパクト' then
             set_equip = sets.midcast.impact
         elseif spell.name == 'コメット' then
-            set_equip = sets.midcast.comet
+            set_equip = set_combine(sets.midcast.comet, get_hachirin(spell.element))
         else
             if is_sp then
                 set_equip = set_combine(sets.midcast.mb_sp, get_hachirin(spell.element))
                 is_sp = false
             elseif is_no_mb then
                 set_equip = set_combine(sets.midcast.elemental, get_hachirin(spell.element))
-                is_not_mb = false
+                is_no_mb = false
             elseif is_vagary then
                 set_equip = sets.midcast.vagary_task
             else
@@ -499,7 +504,7 @@ end
 
 function aftercast(spell)
     local set_equip = nil
-    
+
     if player.status == 'Engaged' then
         set_equip = sets.aftercast.idle
     else
@@ -548,6 +553,7 @@ function self_command(command)
             is_diver_statue = not is_diver_statue
         else
             windower.add_to_chat(122,'---> デス:'..tostring(is_death)..' execute //gs c death before execute //gs c diver_statue')
+            return
         end
         windower.add_to_chat(122,'---> ダイバージェンス石造: '..tostring(is_diver_statue))
         equip(sets.aftercast.idle_death)
@@ -569,6 +575,21 @@ function self_command(command)
     elseif command == 'vagary' then
         is_vagary = not is_vagary
         windower.add_to_chat(122,'---> ベガリーお題: '..tostring(is_vagary))
+    elseif command == 'aspir' then
+        local recasts = windower.ffxi.get_spell_recasts()
+        recast_time_a3 = recasts[881]/60
+        recast_time_a2 = recasts[248]/60
+        recast_time_a = recasts[247]/60
+
+        if recast_time_a3 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルIII')..' <stnpc>')
+        elseif recast_time_a2 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルII')..' <stnpc>')
+        elseif recast_time_a == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピル')..' <stnpc>')
+        else
+            windower.add_to_chat(30, 'アスピル リキャスト---> III: %.1fs, II: %.1fs, I: %.1fs':format(recast_time_a3, recast_time_a2, recast_time_a))
+        end
     end
 end
 
