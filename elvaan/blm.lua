@@ -50,7 +50,7 @@ function get_sets()
     sets.midcast.elemental = {
         ammo="ペムフレドタスラム",
         head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
-        body="ＳＰコート+1",
+        body="ＳＰコート+2",
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+5','"Mag.Atk.Bns."+14',}},
         feet="ジャリピガッシュ+2",
@@ -142,7 +142,7 @@ function aftercast(spell)
     local set_equip = nil
     
     if player.status == 'Engaged' then
-        set_equip = sets.aftercast.melee
+        set_equip = sets.aftercast.idle
     else
         set_equip = sets.aftercast.idle
     end
@@ -158,7 +158,7 @@ function status_change(new, old)
     if new == 'Idle' then
         set_equip = sets.aftercast.idle
     elseif new == 'Engaged' then
-        set_equip = sets.aftercast.melee
+        set_equip = sets.aftercast.idle
     end
     
     if set_equip then

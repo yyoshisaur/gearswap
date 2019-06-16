@@ -1,4 +1,39 @@
 include('weather_obi')
+
+local rolls = {
+    ['コルセアズロール'] = {enhances='得経験値量アップ', lucky = 5, unlucky = 9,},
+    ['ニンジャロール'] = {enhances='回避アップ', lucky = 4, unlucky = 8,},
+    ['ハンターズロール'] = {enhances='命中・飛命アップ', lucky = 4, unlucky = 8,},
+    ['カオスロール'] = {enhances='攻撃力・飛攻アップ', lucky = 4, unlucky = 8,},
+    ['メガスズロール'] = {enhances='魔法防御力アップ', lucky = 2, unlucky = 6,},
+    ['ヒーラーズロール'] = {enhances='被ケアル回復量アップ', lucky = 3, unlucky = 7,},
+    ['ドラケンロール'] = {enhances='ペットの命中・飛命アップ', lucky = 4, unlucky = 8,},
+    ['コーラルロール'] = {enhances='詠唱中断率ダウン', lucky = 2, unlucky = 6,},
+    ['モンクスロール'] = {enhances='モクシャアップ', lucky = 3, unlucky = 7,},
+    ['ビーストロール'] = {enhances='ペットの攻・飛攻アップ', lucky = 4, unlucky = 8,},
+    ['サムライロール'] = {enhances='ストアTPアップ', lucky = 2, unlucky = 6,},
+    ['エボカーズロール'] = {enhances='リフレシュ', lucky = 5, unlucky = 9,},
+    ['ローグズロール'] = {enhances='クリティカルヒット確率アップ', lucky = 5, unlucky = 9,},
+    ['ワーロックスロール'] = {enhances='魔法命中率アップ', lucky = 4, unlucky = 8,},
+    ['ファイターズロール'] = {enhances='ダブルアタック効果アップ', lucky = 5, unlucky = 9,},
+    ['パペットロール'] = {enhances='ペットの魔法攻撃力・魔法命中率アップ', lucky = 3, unlucky = 7,},
+    ['ガランツロール'] = {enhances='防御力アップ', lucky = 3, unlucky = 7,},
+    ['ウィザーズロール'] = {enhances='魔法攻撃力アップ', lucky = 5, unlucky = 9,},
+    ['ダンサーロール'] = {enhances='リジェネ', lucky = 3, unlucky = 7,},
+    ['スカラーロール'] = {enhances='コンサーブMP効果アップ', lucky = 2, unlucky = 6,},
+    ['ナチュラリストロール'] = {enhances='被強化魔法延長', lucky = 3, unlucky = 7,},
+    ['ルーニストロール'] = {enhances='魔法回避率アップ', lucky = 4, unlucky = 8,},
+    ['ボルターズロール'] = {enhances='移動速度アップ', lucky = 3, unlucky = 9,},
+    ['キャスターズロール'] = {enhances='ファストキャスト効果アップ', lucky = 2, unlucky = 7,},
+    ['コアサーズロール'] = {enhances='スナップショット効果アップ', lucky = 3, unlucky = 9,},
+    ['ブリッツァロール'] = {enhances='攻撃間隔短縮', lucky = 4, unlucky = 9,},
+    ['タクティックロール'] = {enhances='リゲイン', lucky = 5, unlucky = 8,},
+    ['アライズロール'] = {enhances='連携ダメージ、連携命中率アップ', lucky = 3, unlucky = 10,},
+    ['マイザーロール'] = {enhances='セーブTP', lucky = 5, unlucky = 7,},
+    ['コンパニオンロール'] = {enhances='ペットにリゲイン・リジェネ', lucky = 2, unlucky = 10,},
+    ['カウンターロール'] = {enhances='カウンター', lucky = 4, unlucky = 8,},
+}
+
 function get_sets()
     set_language('japanese')
     
@@ -15,40 +50,8 @@ function get_sets()
     is_melee = false
     is_luzaf = false
 
-    sets.rolls = {
-        ['コルセアズロール'] = {enhances='得経験値量アップ', lucky = 5, unlucky = 9,},
-        ['ニンジャロール'] = {enhances='回避アップ', lucky = 4, unlucky = 8,},
-        ['ハンターズロール'] = {enhances='命中・飛命アップ', lucky = 4, unlucky = 8,},
-        ['カオスロール'] = {enhances='攻撃力・飛攻アップ', lucky = 4, unlucky = 8,},
-        ['メガスズロール'] = {enhances='魔法防御力アップ', lucky = 2, unlucky = 6,},
-        ['ヒーラーズロール'] = {enhances='被ケアル回復量アップ', lucky = 3, unlucky = 7,},
-        ['ドラケンロール'] = {enhances='ペットの命中・飛命アップ', lucky = 4, unlucky = 8,},
-        ['コーラルロール'] = {enhances='詠唱中断率ダウン', lucky = 2, unlucky = 6,},
-        ['モンクスロール'] = {enhances='モクシャアップ', lucky = 3, unlucky = 7,},
-        ['ビーストロール'] = {enhances='ペットの攻・飛攻アップ', lucky = 4, unlucky = 8,},
-        ['サムライロール'] = {enhances='ストアTPアップ', lucky = 2, unlucky = 6,},
-        ['エボカーズロール'] = {enhances='リフレシュ', lucky = 5, unlucky = 9,},
-        ['ローグズロール'] = {enhances='クリティカルヒット確率アップ', lucky = 5, unlucky = 9,},
-        ['ワーロックスロール'] = {enhances='魔法命中率アップ', lucky = 4, unlucky = 8,},
-        ['ファイターズロール'] = {enhances='ダブルアタック効果アップ', lucky = 5, unlucky = 9,},
-        ['パペットロール'] = {enhances='ペットの魔法攻撃力・魔法命中率アップ', lucky = 3, unlucky = 7,},
-        ['ガランツロール'] = {enhances='防御力アップ', lucky = 3, unlucky = 7,},
-        ['ウィザーズロール'] = {enhances='魔法攻撃力アップ', lucky = 5, unlucky = 9,},
-        ['ダンサーロール'] = {enhances='リジェネ', lucky = 3, unlucky = 7,},
-        ['スカラーロール'] = {enhances='コンサーブMP効果アップ', lucky = 2, unlucky = 6,},
-        ['ナチュラリストロール'] = {enhances='被強化魔法延長', lucky = 3, unlucky = 7,},
-        ['ルーニストロール'] = {enhances='魔法回避率アップ', lucky = 4, unlucky = 8,},
-        ['ボルターズロール'] = {enhances='移動速度アップ', lucky = 3, unlucky = 9,},
-        ['キャスターズロール'] = {enhances='ファストキャスト効果アップ', lucky = 2, unlucky = 7,},
-        ['コアサーズロール'] = {enhances='スナップショット効果アップ', lucky = 3, unlucky = 9,},
-        ['ブリッツァロール'] = {enhances='攻撃間隔短縮', lucky = 4, unlucky = 9,},
-        ['タクティックロール'] = {enhances='リゲイン', lucky = 5, unlucky = 8,},
-        ['アライズロール'] = {enhances='連携ダメージ、連携命中率アップ', lucky = 3, unlucky = 10,},
-        ['マイザーロール'] = {enhances='セーブTP', lucky = 5, unlucky = 7,},
-        ['コンパニオンロール'] = {enhances='ペットにリゲイン・リジェネ', lucky = 2, unlucky = 10,},
-        ['カウンターロール'] = {enhances='カウンター', lucky = 4, unlucky = 8,},
-    }
-
+    sets.obi_dark = {waist="闇輪の帯",}
+    
     -- エンピリアン装束 効果アップ
     sets.rolls_emp = {
         ['キャスターズロール'] = {}, -- {legs="ＣＳトルーズ+1"}
@@ -234,7 +237,7 @@ function get_sets()
         back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
 
-    sets.aftercast.melee = sets.aftercast.melee_multi
+    sets.aftercast.melee = sets.aftercast.melee_dt
     sets.aftercast.idle = {
         head="メガナダバイザー+2",
         body="メガナダクウィリ+2",
@@ -257,9 +260,9 @@ end
 function pretarget(spell)
     local set_equip = nil
     if spell.type == 'CorsairRoll' then
-        local enhances = sets.rolls[spell.name].enhances
-        local lucky = sets.rolls[spell.name].lucky
-        local unlucky = sets.rolls[spell.name].unlucky
+        local enhances = rolls[spell.name].enhances
+        local lucky = rolls[spell.name].lucky
+        local unlucky = rolls[spell.name].unlucky
         windower.add_to_chat(2, spell.name .. ' [' ..enhances ..'] ')
         windower.add_to_chat(2, 'Lucky = ' .. lucky .. ' '.. 'Unluck = '.. unlucky)
         if is_luzaf then
