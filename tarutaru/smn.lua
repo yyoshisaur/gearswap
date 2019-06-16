@@ -8,6 +8,8 @@ function get_sets()
     sets.midcast = {}
     sets.aftercast = {}
 
+    is_autobp = false
+
     sets.smn_skill = {
         ammo="サンカスサシェ+1",
         head={ name="ＣＮホーン+3", hp=56, mp=98,},
@@ -138,6 +140,9 @@ function get_sets()
         right_ring="ＶＣリング+1",
         back={ name="カンペストレケープ", augments={'MP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Damage taken-5%',}, mp=60,},
     }
+    
+    -- マクロのブック, セット変更
+    send_command('input /macro book 4; wait 0.5; input /macro set 1')
 end
 
 function precast(spell)
@@ -254,6 +259,14 @@ function pet_aftercast(spell)
     local set_equip = nil
     
     if buffactive['アストラルパッセージ'] then
+        if is_autobp then
+            local command = ''
+            if player.mpp < 25 then -- mpが25%以下ならコンバートを使う
+                command = command .. 'input /ja ' .. windower.to_shift_jis('コンバート') .. ' <me>; wait 1;'
+            end
+            command = command .. 'input /pet ' .. windower.to_shift_jis(spell.name) .. ' <t>;'
+            send_command(command)
+        end
         return
     end
 
@@ -279,6 +292,9 @@ end
 function self_command(command)
     if command == 'spirit' then
         spirit_command()
+    elseif command == 'autobp' then
+        is_autobp = not is_autobp
+        windower.add_to_chat(122,'---> 自動パッセ: '..tostring(is_autobp))
     else
         bp_commnad(command)
     end
