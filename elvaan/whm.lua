@@ -51,6 +51,7 @@ function get_sets()
     }
     
     sets.precast.na = {
+        main="ヤグルシュ",
         ammo="インカントストーン",
         head="ＥＢキャップ+1",
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
@@ -67,6 +68,7 @@ function get_sets()
     }
     
     sets.precast.doom = {
+        main="ヤグルシュ",
         head="ＥＢキャップ+1",
         body="ＥＢブリオー+1",
         hands="ＴＥミトン+2",

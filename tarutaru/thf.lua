@@ -6,7 +6,7 @@ function get_sets()
     sets.midcast = {}
     sets.aftercast = {}
     
-    is_trehun = false
+    is_th = false
     
     sets.weapon = {
         main="エーネアス",
@@ -187,13 +187,13 @@ function status_change(new, old)
 end
 
 function self_command(command)
-    if command == 'trehun' then
-        if is_trehun then
-            is_trehun = false
+    if command == 'th' then
+        if is_th then
+            is_th = false
             windower.add_to_chat(122,'+++ トレハン装備 OFF +++')
             enable('hands', 'waist')
         else
-            is_trehun = true
+            is_th = true
             windower.add_to_chat(122,'+++ トレハン装備 ON +++')
             equip(sets.th)
             disable('hands', 'waist')

@@ -1,6 +1,6 @@
 include('weather_obi')
 local texts = require('texts')
-sublimation_box = texts.new('${state}',{text={font='ＭＳ ゴシック', size=12}, pos={x=750, y=800}, padding = 5})
+sublimation_box = texts.new('${state}',{text={font='ＭＳ ゴシック', size=12}, pos={x=620, y=770}, padding = 5})
 sublimation_box:show()
 
 function get_sets()
@@ -22,6 +22,7 @@ function get_sets()
     sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ', 'ファランクス'}
     sets.storm = T{'熱波の陣', '吹雪の陣', '烈風の陣', '砂塵の陣', '疾雷の陣', '豪雨の陣', '極光の陣', '妖霧の陣', '熱波の陣II', '吹雪の陣II', '烈風の陣II', '砂塵の陣II', '疾雷の陣II', '豪雨の陣II', '極光の陣II', '妖霧の陣II'}
     sets.helix = T{'火門の計', '氷門の計', '風門の計', '土門の計', '雷門の計', '水門の計', '光門の計', '闇門の計', '火門の計II', '氷門の計II', '風門の計II', '土門の計II', '雷門の計II', '水門の計II', '光門の計II', '闇門の計II'}
+    sets.aspir = T{"アスピル", "アスピルII",}
 
     sets.cp = {back="アピトマント+1"}
     
@@ -98,7 +99,7 @@ function get_sets()
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        legs={ name="ＰＤパンツ+1", augments={'Enhances "Tabula Rasa" effect',}},
+        legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="ノデンズゴルゲット",
         waist="ピュシアサッシュ+1",
@@ -127,6 +128,8 @@ function get_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
     
+    sets.midcast.magic_mb_dark = sets.midcast.magic_mb
+
     sets.midcast.helix_mb = {
         main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="エンキストラップ",
@@ -163,7 +166,23 @@ function get_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    -- sets.midcast.aspir
+    sets.midcast.aspir = {
+        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="エンキストラップ",
+        ammo="ペムフレドタスラム",
+        head="妖蟲の髪飾り+1",
+        body="ＡＣガウン+2",
+        hands="ＡＣブレーサー+2",
+        legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},
+        feet="ＡＣローファー+2",
+        neck="エーラペンダント",
+        waist="エスカンストーン",
+        left_ear="バーカロルピアス",
+        right_ear="ディグニタリピアス",
+        left_ring="スティキニリング",
+        right_ring="エバネセンスリング",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
     
     sets.midcast.enhance_duration = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
@@ -249,6 +268,7 @@ function get_sets()
     
     -- マクロのブック, セット変更
     send_command('input /macro book 4; wait 0.5; input /macro set 1')
+
 end
 
 function precast(spell)
@@ -274,7 +294,7 @@ function precast(spell)
         end
     elseif spell.type == 'JobAbility' then
         if spell.name == '連環計' then
-            set_equip = {legs={ name="ＰＤパンツ+1", augments={'Enhances "Tabula Rasa" effect',}},}
+            set_equip = {legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},}
         elseif spell.name == '大悟徹底' then
             set_equip = {body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},}
         end
@@ -316,8 +336,16 @@ function midcast(spell)
         else
             set_equip = sets.midcast.enhance_duration
         end
-    elseif spell.skill == '弱体魔法' or spell.skill == '暗黒魔法' then
+    elseif spell.skill == '弱体魔法' then
         set_equip = sets.midcast.magic_acc
+    elseif spell.skill == '暗黒魔法' then
+        if spell.name == 'メルトン' then
+            set_equip = sets.midcast.magic_mb_dark
+        elseif sets.aspir:contains(spell.name) then
+            set_equip = sets.midcast.aspir
+        else
+            set_equip = sets.midcast.magic_acc
+        end
     elseif spell.skill == '精霊魔法' then
         if is_immanence then
             if spell.name == 'サンダーV' then -- オーメン課題 MBなし15,000ダメージ用
@@ -402,34 +430,77 @@ function self_command(command)
         send_command('input /macro book 4; wait 0.5; input /macro set 10')
     elseif command == '2p' then
         send_command('input /macro book 5; wait 0.5; input /macro set 10')
+    elseif command == 'aspir' then
+        local recasts = windower.ffxi.get_spell_recasts()
+        local recast_time_a2 = recasts[248]/60
+        local recast_time_a = recasts[247]/60
+
+        if recast_time_a2 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルII')..' <stnpc>')
+        elseif recast_time_a == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピル')..' <stnpc>')
+        else
+            windower.add_to_chat(30, 'アスピル リキャスト---> II: %.1fs, I: %.1fs':format(recast_time_a2, recast_time_a))
+        end
     end
 end
 
-function buff_change(name, gain, buff_details)
-    if name == '机上演習:蓄積中' then
-        if gain then 
-            sublimation_box.state = name
-            sublimation_box:color(255,0,255)
-            sublimation_box:bg_color(0,255,0)
-        else
-            if not buffactive['机上演習:蓄積完了'] then
-                sublimation_box.state = '机上演習なし'
-                sublimation_box:color(0,255,255)
-                sublimation_box:bg_color(255,0,0)
-            end
-        end
-    elseif name == '机上演習:蓄積完了' then
-        if gain then 
-            sublimation_box.state = name
-            sublimation_box:color(255,255,0)
-            sublimation_box:bg_color(0,0,255)
-        else
-            sublimation_box.state = '机上演習なし'
-            sublimation_box:color(0,255,255)
-            sublimation_box:bg_color(255,0,0)
-        end
+-- function buff_change(name, gain, buff_details)
+--     if name == '机上演習:蓄積中' then
+--         if gain then 
+--             sublimation_box.state = name
+--             sublimation_box:color(255,0,255)
+--             sublimation_box:bg_color(0,255,0)
+--         else
+--             if not buffactive['机上演習:蓄積完了'] then
+--                 sublimation_box.state = '机上演習なし'
+--                 sublimation_box:color(0,255,255)
+--                 sublimation_box:bg_color(255,0,0)
+--             end
+--         end
+--     elseif name == '机上演習:蓄積完了' then
+--         if gain then 
+--             sublimation_box.state = name
+--             sublimation_box:color(255,255,0)
+--             sublimation_box:bg_color(0,0,255)
+--         else
+--             sublimation_box.state = '机上演習なし'
+--             sublimation_box:color(0,255,255)
+--             sublimation_box:bg_color(255,0,0)
+--         end
+--     end
+-- end
+
+function sublimation_update()
+
+    local sublimation_actived = '机上演習:蓄積中'
+    local sublimation_complete = '机上演習:蓄積完了'
+
+    if buffactive[sublimation_actived] then
+        sublimation_box.state = sublimation_actived
+        sublimation_box:color(255,0,255)
+        sublimation_box:bg_color(0,255,0)
+    elseif buffactive[sublimation_complete] then
+        sublimation_box.state = sublimation_complete
+        sublimation_box:color(255,255,0)
+        sublimation_box:bg_color(0,0,255)
+    else
+        sublimation_box.state = '机上演習なし'
+        sublimation_box:color(0,255,255)
+        sublimation_box:bg_color(255,0,0)
     end
+
 end
+
+frame_time = 0
+update_interval = 1
+windower.register_event('prerender', function()
+    local curr = os.clock()
+    if curr > frame_time + update_interval then
+        frame_time = curr
+        sublimation_update()
+    end
+end)
 
 function file_unload(file_name)
     sublimation_box:destroy()

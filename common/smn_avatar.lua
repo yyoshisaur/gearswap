@@ -527,8 +527,8 @@ function bp_destroy()
     bp_box:destroy()
 end
 
-frame_time = 0
-update_interval = 1
+local frame_time = 0
+local update_interval = 1
 windower.register_event('prerender', function()
     local curr = os.clock()
     if curr > frame_time + update_interval then

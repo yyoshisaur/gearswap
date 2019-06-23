@@ -310,7 +310,26 @@ function get_sets()
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
+    -- mb ラシA acc 320 atk 390
+    sets.midcast.mb_lathi = {
+        ammo="ペムフレドタスラム",
+        head={ name="ＡＲペタソス+3", augments={'Increases Ancient Magic II damage',}},
+        body="エアウプランド+1",
+        hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}},
+        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        neck="ソーサラストール+2",
+        waist="山吹の帯",
+        left_ear="王将の耳飾り",
+        right_ear="バーカロルピアス",
+        left_ring="女王の指輪+1",
+        right_ring="夢神の指輪",
+        back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+    }
+
     sets.midcast.mb = sets.midcast.mb_mid
+
+    -- sets.midcast.mb = sets.midcast.mb_lathi
 
     sets.midcast.vagary_task = {
         ammo="ストンチタスラム+1",
@@ -577,9 +596,9 @@ function self_command(command)
         windower.add_to_chat(122,'---> ベガリーお題: '..tostring(is_vagary))
     elseif command == 'aspir' then
         local recasts = windower.ffxi.get_spell_recasts()
-        recast_time_a3 = recasts[881]/60
-        recast_time_a2 = recasts[248]/60
-        recast_time_a = recasts[247]/60
+        local recast_time_a3 = recasts[881]/60
+        local recast_time_a2 = recasts[248]/60
+        local recast_time_a = recasts[247]/60
 
         if recast_time_a3 == 0 then
             send_command('input /magic '..windower.to_shift_jis('アスピルIII')..' <stnpc>')
