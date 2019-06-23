@@ -460,6 +460,10 @@ function midcast(spell)
         set_equip = sets.aftercast.dt
     end
 
+    if buffactive['エンボルド'] then
+        set_equip = set_combine(set_equip, {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},})
+    end
+
     if is_th then
         set_equip = set_combine(set_equip, sets.th)
         is_th = false
