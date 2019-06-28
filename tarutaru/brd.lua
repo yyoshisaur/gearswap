@@ -93,19 +93,53 @@ function get_sets()
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.midcast.paeon = set_combine(sets.midcast.song_duration, {hands="ＢＲカフス+3"})
-    sets.midcast.ballad = set_combine(sets.midcast.song_duration, {legs="ＦＬラングラヴ+1"})
-    sets.midcast.minne = sets.midcast.song_duration
-    sets.midcast.mambo = sets.midcast.song_duration
-    sets.midcast.carol = sets.midcast.song_duration
-    sets.midcast.minuet = set_combine(sets.midcast.song_duration, {body="ＦＬオングルリヌ+1"})
-    sets.midcast.madrigal = set_combine(sets.midcast.song_duration,{head="ＦＬキャロ+1", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
-    sets.midcast.prelude = set_combine(sets.midcast.song_duration, {back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
-    sets.midcast.march = set_combine(sets.midcast.song_duration, {hands="ＦＬマンシェト+1",}) 
-    sets.midcast.etude = sets.midcast.song_duration
-    sets.midcast.mazurka = sets.midcast.song_duration
-    sets.midcast.scherzo = set_combine(sets.midcast.song_duration, {feet="ＦＬコテュルヌ+1"})
-    sets.midcast.threnody = sets.midcast.magic_acc
+    sets.midcast.song_base = {
+        main="カルンウェナン",
+        sub="玄冥盾",
+        head="アヤモツッケット+2",
+        body="アシェーラハーネス",
+        hands="アヤモマノポラ+2",
+        legs="アヤモコッシャレ+2",
+        feet="アヤモガンビエラ+2",
+        neck="月虹の呼び子+1",
+        waist="ニヌルタサッシュ",
+        left_ear="エテオレートピアス",
+        right_ear="玄冥耳飾り",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
+    sets.midcast.song_dummy = {
+        main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
+        sub="玄冥盾",
+        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
+        body="インヤガジュバ+2",
+        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        legs="アヤモコッシャレ+2",
+        feet="アヤモガンビエラ+2",
+        neck="ロリケートトルク+1",
+        waist="ニヌルタサッシュ",
+        left_ear="エテオレートピアス",
+        right_ear="ロケイシャスピアス",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
+    sets.midcast.paeon      = set_combine(sets.midcast.song_base, {head="ＢＲランドリト+3", legs="インヤガシャルワ+2",})
+    sets.midcast.ballad     = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", legs="ＦＬラングラヴ+1", feet="ＢＲスリッパー+3",})
+    sets.midcast.minne      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
+    sets.midcast.mambo      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
+    sets.midcast.carol      = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", hands="ムセスゲージ", feet="ＢＲスリッパー+3",})
+    sets.midcast.minuet     = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", feet="ＢＲスリッパー+3",})
+    sets.midcast.madrigal   = set_combine(sets.midcast.song_base,{head="ＦＬキャロ+1", legs="インヤガシャルワ+2", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
+    sets.midcast.prelude    = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", feet="ＢＲスリッパー+3", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
+    sets.midcast.march      = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", hands="ＦＬマンシェト+1", legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",}) 
+    sets.midcast.etude      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
+    sets.midcast.scherzo    = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", legs="インヤガシャルワ+2", feet="ＦＬコテュルヌ+1"})
+    sets.midcast.song_other = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
+    sets.midcast.threnody   = sets.midcast.magic_acc
 
     sets.midcast.enhance_duration = {
         sub="アムラピシールド",
@@ -153,7 +187,8 @@ function get_sets()
         right_ear="玄冥耳飾り",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back="月光の羽衣",
+        -- back="月光の羽衣",
+        back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.aftercast.melee = {
@@ -310,7 +345,7 @@ end
 
 function get_song_gear(spell)
     if song[spell.name] == 'Dummy' then
-        return sets.precast.song_fc
+        return sets.midcast.song_dummy
     elseif song[spell.name] == 'Paeon' then
         return sets.midcast.paeon
     elseif song[spell.name] == 'Ballad' then
@@ -322,7 +357,7 @@ function get_song_gear(spell)
     elseif song[spell.name] == 'Carol' then
         return sets.midcast.carol
     elseif song[spell.name] == 'Resist' then
-        return sets.midcast.song_duration
+        return sets.midcast.song_other
     elseif song[spell.name] == 'Minuet' then
         return sets.midcast.minuet
     elseif song[spell.name] == 'Madrigal' then
@@ -334,13 +369,13 @@ function get_song_gear(spell)
     elseif song[spell.name] == 'Etude' then
         return sets.midcast.etude
     elseif song[spell.name] == 'Mazurka' then
-        return sets.midcast.mazurka
+        return sets.midcast.song_other
     elseif song[spell.name] == 'Hymnus' then
-        return sets.midcast.song_duration
+        return sets.midcast.song_other
     elseif song[spell.name] == 'Sirvente' then
-        return sets.midcast.song_duration
+        return sets.midcast.song_other
     elseif song[spell.name] == 'Dirge' then
-        return sets.midcast.song_duration
+        return sets.midcast.song_other
     elseif song[spell.name] == 'Scherzo' then
         return sets.midcast.scherzo
     elseif song[spell.name] == 'Requiem' then
