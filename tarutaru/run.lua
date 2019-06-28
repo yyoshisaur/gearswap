@@ -302,8 +302,8 @@ function get_sets()
     sets.aftercast.speed = {
         ammo="ストンチタスラム+1",
         head={ name="トゥルムキャップ+1", hp=94,},
-        body={ name="ＲＮコート+3", hp=218,},
-        hands={ name="ＲＮミトン+3", hp=85,},
+        body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
+        hands={ name="トゥルムミトン+1", hp=74,},
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}, hp=130},
         feet={ name="ＥＲグリーヴ+1", hp=18,},
         neck={ name="フサルクトルク+2", hp=60,},
@@ -312,7 +312,7 @@ function get_sets()
         right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, hp=80},
+        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
     }
 
         -- マクロのブック, セット変更

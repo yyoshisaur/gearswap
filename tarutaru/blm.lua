@@ -120,7 +120,7 @@ function get_sets()
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="アルコンリング",
         back={ name="タラナスケープ", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Haste+10','Damage taken-5%',}, mp=60},
     }
@@ -178,7 +178,7 @@ function get_sets()
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
@@ -256,7 +256,7 @@ function get_sets()
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
@@ -273,7 +273,7 @@ function get_sets()
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="夢神の指輪",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
@@ -289,7 +289,7 @@ function get_sets()
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="夢神の指輪",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
@@ -305,7 +305,7 @@ function get_sets()
         waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="夢神の指輪",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
@@ -322,7 +322,7 @@ function get_sets()
         waist="山吹の帯",
         left_ear="王将の耳飾り",
         right_ear="バーカロルピアス",
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="夢神の指輪",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }

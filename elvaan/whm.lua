@@ -83,6 +83,22 @@ function get_sets()
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.precast.ws.multi = {
+        ammo="アマークラスター",
+        head="アヤモツッケット+2",
+        body="アヤモコラッツァ+2",
+        hands="アヤモマノポラ+2",
+        legs="アヤモコッシャレ+2",
+        feet="アヤモガンビエラ+2",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="セサンスピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="アヤモリング",
+        back={ name="アラウナスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}},
+    }
+
     sets.midcast.enhance_duration = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
         sub="アムラピシールド",
@@ -193,7 +209,6 @@ function get_sets()
     
     sets.aftercast.melee = {
         main="マクセンチアス",
-        sub="カジャロッド",
         ammo="アマークラスター",
         head="アヤモツッケット+2",
         body="アヤモコラッツァ+2",
@@ -206,7 +221,7 @@ function get_sets()
         right_ear="ブルタルピアス",
         left_ring="守りの指輪",
         right_ring="アヤモリング",
-        back={ name="アラウナスケープ", augments={'DEX+20','Accuracy+20 Attack+20','"Dual Wield"+10',}},
+        back={ name="アラウナスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}},
     }
 
     -- マクロのブック, セット変更
@@ -244,6 +259,12 @@ function precast(spell)
         set_equip = {head="ＰＩキャップ+1"}
     elseif spell.name == '女神の祝福' then
         set_equip = {body="ＰＩブリオー+3"}
+    elseif spell.type == 'WeaponSkill' then
+        if sets.precast.ws[spell.name] then
+            set_equip = sets.precast.ws[spell.name]
+        else
+            set_equip = sets.precast.ws.multi
+        end
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
     elseif spell.type == 'Ninjutsu' then
