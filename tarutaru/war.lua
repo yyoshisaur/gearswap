@@ -155,7 +155,8 @@ function get_sets()
         ammo="イェットシーラ+1",
         head="フラマツッケット+2",
         -- body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},
-        body="デーゴンブレスト",
+        -- body="デーゴンブレスト",
+        body="フロプトブレスト",
         hands="フラママノポラ+2",
         legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}}, --ACC 1220
         -- legs="ＰＭクウィス+3", -- ACC 1250
@@ -294,5 +295,23 @@ function self_command(command)
         else
             windower.send_command('gs equip sets.aftercast.melee.chango')
         end
+    end
+end
+
+function buff_change(name, gain, buff_details)
+    if name == '睡眠' then
+        if player.status == 'Engaged' then
+            if gain and player.hpp > 25 then
+                equip({neck="ヴィムトルク+1",})
+            else
+                if player.equipment.main == sets.weapon.ukon.main then
+                    equip(sets.aftercast.melee.ukon)
+                elseif player.equipment.main == sets.weapon.chango.main then
+                    equip(sets.aftercast.melee.chango)
+                else
+                    equip(sets.aftercast.melee.chango)
+                end
+            end
+         end
     end
 end
