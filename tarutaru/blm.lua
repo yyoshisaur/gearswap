@@ -112,17 +112,18 @@ function get_sets()
     sets.midcast.comet = {
         ammo="ペムフレドタスラム",
         head={ name="妖蟲の髪飾り+1", mp=120},
-        body={ name="エアウプランド+1", mp=109},
-        hands={ name="エアカフス+1", mp=29},
-        legs={ name="ＳＰトンバン+3", mp=158},
-        feet={ name="ＳＰサボ+3", mp=43},
-        neck="水影の首飾り",
-        waist={ name="山吹の帯", mp=35},
+        body={ name="ＳＰコート+3", mp=98},
+        hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}, mp=34,},
+        -- hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
+        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},
+        neck="ソーサラストール+2",
+        aist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
         right_ring="アルコンリング",
-        back={ name="タラナスケープ", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','Haste+10','Damage taken-5%',}, mp=60},
+        back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
     sets.midcast.cure = {
