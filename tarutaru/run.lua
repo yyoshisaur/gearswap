@@ -23,7 +23,7 @@ function get_sets()
     is_sird = false
     is_th = false
 
-    delay_time = 0.3
+    delay_time = 0.2
 
     magic_ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
 
@@ -430,6 +430,10 @@ function midcast(spell)
         elseif spell.name == 'フォイル' then
             set_equip = sets.enmity
         elseif spell.name == 'ストンスキン' then
+            if buffactive['ストンスキン'] then
+                local stoneskil_id = 37
+                windower.ffxi.cancel_buff(stoneskil_id)
+            end
             set_equip = enhances_effect_and_sird_equip(spell)
         elseif spell.name == 'アクアベール' then
             set_equip = enhances_effect_and_sird_equip(spell)
@@ -457,6 +461,8 @@ function midcast(spell)
             set_equip = sets.enmity
         end
     elseif spell.skill == '弱体魔法' then
+        set_equip = sets.aftercast.dt
+    else
         set_equip = sets.aftercast.dt
     end
 
@@ -551,6 +557,23 @@ function self_command(command)
         equip(sets.aftercast.speed)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> 移動速度UP装備')
+    elseif command == 'buff' then
+        local buff = {
+            [1] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
+            [2] = {name = 'ストンスキン', wait = 5.5, pf = '/ma',},
+            [3] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
+            [4] = {name = 'アクアベール', wait = 5.5, pf = '/ma'},
+            [5] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
+            [6] = {name = 'クルセード', wait = 4.5, pf = '/ma',},
+            [7] = {name = 'アイススパイク', wait = 4.5, pf = '/ma',},
+            [8] = {name = 'ファランクス', wait = 4.5, pf = '/ma',},
+        }
+
+        local buff_cmd = ''
+        for i,v in ipairs(buff) do
+            buff_cmd = buff_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' <me>; wait '..v.wait..';'
+        end
+        send_command(buff_cmd)
     end
 end
 
