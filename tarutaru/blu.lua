@@ -3,6 +3,7 @@ function get_sets()
     
     sets.precast = {}
     sets.precast.ws = {}
+    sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
     sets.weapon = {}
@@ -20,6 +21,22 @@ function get_sets()
         head="白ララブキャップ+1",
         body={ name="ヘルクリアベスト", augments={'Spell interruption rate down -6%','Pet: "Mag.Atk.Bns."+15','"Treasure Hunter"+2',}},
         waist="チャークベルト",
+    }
+
+    sets.enmity = {
+        ammo="ストンチタスラム+1",
+        head="ラビッドバイザー",
+        body="エメットハーネス+1",
+        hands="ＡＳバズバンド+3",
+        legs="アヤモコッシャレ+2",
+        feet="アホシレギンス",
+        neck="ロリケートトルク+1",
+        waist="カシリベルト",
+        left_ear="フリオミシピアス",
+        right_ear="クリプティクピアス",
+        left_ring="アイワツリング",
+        right_ring="守りの指輪",
+        back="月光の羽衣",
     }
 
     sets.precast.fc = {
@@ -150,6 +167,13 @@ function get_sets()
     sets.precast.ws['シャンデュシニュ'] = sets.precast.ws.critical
     sets.precast.ws['レクイエスカット'] = sets.precast.ws.critical
     
+    -- sub war
+    sets.precast.ability['挑発'] = sets.enmity
+    sets.precast.ability['ウォークライ'] = sets.enmity
+
+    -- sub pld
+    sets.precast.ability['センチネル'] = sets.enmity
+
     sets.midcast.cure = {
         ammo="ストンチタスラム+1",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
@@ -251,6 +275,21 @@ function get_sets()
         back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
+    sets.midcast.enhance_duration = {
+        head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
+        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+    }
+
+    sets.midcast.phalanx = {
+        body={ name="ヘルクリアベスト", augments={'Magic dmg. taken -2%','Rng.Atk.+13','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',},},
+        hands={ name="ヘルクリアグローブ", augments={'INT+9','AGI+4','Phalanx +4','Accuracy+1 Attack+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',},},
+        legs={ name="ヘルクリアトラウザ", augments={'Accuracy+1 Attack+1','"Mag.Atk.Bns."+11','Phalanx +4','Mag. Acc.+11 "Mag.Atk.Bns."+11',},},
+        feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',},},
+    }
+
     sets.aftercast.evasion = {
         ammo="ストンチタスラム+1",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
@@ -267,7 +306,7 @@ function get_sets()
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.aftercast.melee_stp = {
+    sets.aftercast.melee_multi = {
         ammo="銀銭",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -305,17 +344,18 @@ function get_sets()
         body="アヤモコラッツァ+2",
         hands="ＡＳバズバンド+3",
         legs="アヤモコッシャレ+2",
-        feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
+        feet="アホシレギンス",
         neck="ロリケートトルク+1",
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="テロスピアス",
         left_ring="ＶＣリング+1",
         right_ring="守りの指輪",
-        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        -- back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','System: 1 ID: 640 Val: 4',}},
     }
 
-    sets.aftercast.melee = sets.aftercast.melee_stp
+    sets.aftercast.melee = sets.aftercast.melee_multi
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
@@ -346,6 +386,10 @@ function precast(spell)
         else
             set_equip = sets.precast.ws.critical
         end
+    elseif spell.type == 'JobAbility' then
+        if sets.precast.ability[spell.name] then
+            set_equip = sets.precast.ability[spell.name]
+        end
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
     elseif spell.type == 'Ninjutsu' then
@@ -366,13 +410,13 @@ function midcast(spell)
         if blue_magic[spell.name].type == "pysical_atk" then
             set_equip = sets.aftercast.melee
         elseif blue_magic[spell.name].type == "pysical_acc" then
-            set_equip = sets.midcast.pysical_and_magic
+            set_equip = sets.midcast.magic_acc_and_physical_acc
         elseif blue_magic[spell.name].type == "magic_atk" then
             set_equip = sets.midcast.magic
         elseif blue_magic[spell.name].type == "magic_acc" then
             set_equip = sets.midcast.magic_acc
         elseif blue_magic[spell.name].type == "pysical_and_magic" then
-            set_equip = sets.midcast.pysical_and_magic
+            set_equip = sets.midcast.magic_acc_and_physical_acc
         elseif blue_magic[spell.name].type == "skill" then
             set_equip = sets.midcast.blue_magic_skill
         elseif blue_magic[spell.name].type == "cure" then
@@ -381,6 +425,12 @@ function midcast(spell)
             set_equip = sets.midcast.refresh
         elseif blue_magic[spell.name].type == "magic_atk_drk" then
             set_equip = sets.midcast.magic_drk
+        elseif blue_magic[spell.name].type == "enmity" then
+            set_equip = sets.enmity
+        end
+    elseif spell.skill == '神聖魔法' then
+        if spell.name == 'フラッシュ' then
+            set_equip = sets.enmity
         end
     end
 
@@ -451,6 +501,15 @@ function self_command(command)
     elseif command == 'th' then
         is_th = not is_th
         windower.add_to_chat(122,'---> トレハン装備: '..tostring(is_th))
+    elseif command == 'dt' then
+        sets.aftercast.melee = sets.aftercast.melee_dt
+        windower.add_to_chat(122,'---> MELEE カット装備')
+    elseif command == 'multi' then
+        sets.aftercast.melee= sets.aftercast.melee_multi
+        windower.add_to_chat(122,'---> MELEE マルチ装備')
+    elseif command == 'phalanx' then
+        equip(sets.midcast.phalanx)
+        windower.add_to_chat(122,'---> 被ファランクス用装備')
     end
 end
 
@@ -464,7 +523,8 @@ function init_blue_magic()
         [6] = "skill",
         [7] = "cure",
         [8] = "refresh",
-        [9] = "magic_atk_drk"
+        [9] = "magic_atk_drk",
+        [10] = "enmity",
     }
 
     blue_magic = {}
@@ -593,10 +653,10 @@ function init_blue_magic()
     blue_magic["オーロラルドレープ"] = {type=blue_magic_type[4]}
     blue_magic["オスモーシス"] = {type=blue_magic_type[4]}
     blue_magic["四連突"] = {type=blue_magic_type[1]}
-    blue_magic["ファンタッド"] = {type=nil}
+    blue_magic["ファンタッド"] = {type=blue_magic_type[10]}
     blue_magic["サーマルパルス"] = {type=blue_magic_type[5]}
     blue_magic["エンプティスラッシュ"] = {type=blue_magic_type[1]}
-    blue_magic["夢想花"] = {type=blue_magic_type[5]}
+    blue_magic["夢想花"] = {type=blue_magic_type[4]}
     blue_magic["オカルテーション"] = {type=blue_magic_type[6]}
     blue_magic["チャージドホイスカー"] = {type=blue_magic_type[3]}
     blue_magic["虚無の風"] = {type=nil}

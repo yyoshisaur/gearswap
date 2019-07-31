@@ -71,7 +71,7 @@ function get_sets()
         main="ヤグルシュ",
         head="ＥＢキャップ+1",
         body="ＥＢブリオー+1",
-        hands="ＴＥミトン+2",
+        hands="ＴＥミトン+3",
         legs="ＴＥパンタロン+2",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="デビリスメダル",
@@ -106,7 +106,7 @@ function get_sets()
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        feet="ＴＥダックビル+3",
         waist="ニヌルタサッシュ",
     }
     
@@ -116,7 +116,7 @@ function get_sets()
         ammo="インカントストーン",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
         body="ＥＢブリオー+1",
-        hands="ＴＥミトン+2",
+        hands="ＴＥミトン+3",
         legs="ＥＢパンタロン+1",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="クレリクトルク",
@@ -128,8 +128,8 @@ function get_sets()
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＩダックビル+1", augments={'Enhances "Protectra V" effect',}},right_ear="ブラキュラピアス",})
-    sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {legs={ name="ＰＩパンタロン+3", augments={'Enhances "Shellra V" effect',}},right_ear="ブラキュラピアス",})
+    sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {right_ear="ブラキュラピアス",})
+    sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {right_ear="ブラキュラピアス",})
     sets.midcast.auspice = set_combine(sets.midcast.enhance_duration, {feet="ＥＢダックビル+1",})
     sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {main="ボレラブンガ", head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
@@ -142,8 +142,8 @@ function get_sets()
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body="ＥＢブリオー+1",
         hands="ダイナスティミトン",
-        legs={ name="ＰＩパンタロン+3", augments={'Enhances "Shellra V" effect',}},
-        feet="ＴＥダックビル+2",
+        legs={ name="ＰＩパンタロン+3", augments={'Enhances "Afflatus Misery" effect',}},
+        feet="ＴＥダックビル+3",
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="エテオレートピアス",
@@ -161,7 +161,7 @@ function get_sets()
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands="ダイナスティミトン",
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        feet="ＴＥダックビル+2",
+        feet="ＴＥダックビル+3",
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
@@ -177,9 +177,9 @@ function get_sets()
         ammo="ペムフレドタスラム",
         head="ＴＥキャップ+2",
         body="ＴＥブリオー+2",
-        hands="ＴＥミトン+2",
+        hands="ＴＥミトン+3",
         legs="ＴＥパンタロン+2",
-        feet="ＴＥダックビル+2",
+        feet="ＴＥダックビル+3",
         neck="エーラペンダント",
         waist="エスカンストーン",
         left_ear="グアチピアス",
@@ -256,7 +256,9 @@ function precast(spell)
     elseif string.find(spell.type, 'Magic') then
         set_equip = sets.precast.fc
     elseif spell.name == 'デヴォーション' then
-        set_equip = {head="ＰＩキャップ+1"}
+        set_equip = {head="ＰＩキャップ+3"}
+    elseif spell.name == 'マーター' then
+        set_equip = {hands="ＰＩミトン+1"}
     elseif spell.name == '女神の祝福' then
         set_equip = {body="ＰＩブリオー+3"}
     elseif spell.type == 'WeaponSkill' then

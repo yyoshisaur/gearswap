@@ -120,7 +120,7 @@ function get_sets()
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
-        waist="チャネラーストーン",
+        waist="山吹の帯",
         left_ear="バーカロルピアス",
         right_ear="電界の耳",
         left_ring="女王の指輪+1",
@@ -155,7 +155,7 @@ function get_sets()
         legs="マルクィトルーズ+2",
         feet="ジャリピガッシュ+2",
         neck="アギュトストール+1",
-        waist="チャネラーストーン",
+        waist="山吹の帯",
         left_ear="怯懦の耳",
         right_ear="電界の耳",
         left_ring="ジャリリング",
@@ -167,7 +167,7 @@ function get_sets()
         main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
-        head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
+        head="ＡＣボード+3",
         body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
         hands="ＡＣブレーサー+2",
         legs="ＡＣパンツ+2",
@@ -191,7 +191,7 @@ function get_sets()
         legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},
         feet="ＡＣローファー+2",
         neck="エーラペンダント",
-        waist="エスカンストーン",
+        waist="風鳥の帯",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
         left_ring="スティキニリング",
@@ -267,7 +267,7 @@ function get_sets()
         main="テラスタッフ",
         sub="メンシストラップ+1",
         ammo="ホミリアリ",
-        head="ＡＣボード+2",
+        head="ＡＣボード+3",
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
@@ -344,7 +344,7 @@ function midcast(spell)
             set_equip = sets.midcast.enhance_skill
         elseif sets.storm:contains(spell.name) then
             if is_stromsureg then
-                set_equip = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＤローファー+1", augments={'Enhances "Stormsurge" effect',}},})
+                set_equip = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＤローファー+3", augments={'Enhances "Stormsurge" effect',}},})
             else
                 set_equip = sets.midcast.enhance_duration
             end

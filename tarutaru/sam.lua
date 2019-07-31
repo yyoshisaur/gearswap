@@ -121,12 +121,12 @@ function get_sets()
     }
     
     sets.precast.ability['黙想'] =  {
-        head="脇戸桃形兜改",
+        head="極脇戸桃形兜",
         hands="左近士筒篭手改",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
 
-    sets.precast.ability['護摩の守護円'] = {head="脇戸桃形兜改",}
+    sets.precast.ability['護摩の守護円'] = {head="極脇戸桃形兜",}
      
     -- サポ剣
     sets.precast.ability['ヴァレション'] = sets.enmity
@@ -176,7 +176,7 @@ function get_sets()
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="乾闥婆陣鉢改",
+        head="極脇戸桃形兜",
         body="極脇戸胴丸",
         hands="極脇戸筒篭手",
         legs="乾闥婆筒袴改",

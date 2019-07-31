@@ -558,6 +558,7 @@ function self_command(command)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> 移動速度UP装備')
     elseif command == 'buff' then
+        is_melee = false
         local buff = {
             [1] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
             [2] = {name = 'ストンスキン', wait = 5.5, pf = '/ma',},
@@ -568,6 +569,30 @@ function self_command(command)
             [7] = {name = 'アイススパイク', wait = 4.5, pf = '/ma',},
             [8] = {name = 'ファランクス', wait = 4.5, pf = '/ma',},
         }
+        local rune = nil
+        if buffactive['イグニス'] then
+            rune = 'イグニス'
+        elseif buffactive['ゲールス'] then
+            rune = 'ゲールス'
+        elseif buffactive['フラブラ'] then
+            rune = 'フラブラ'
+        elseif buffactive['テッルス'] then
+            rune = 'テッルス'
+        elseif buffactive['スルポール'] then
+            rune = 'スルポール'
+        elseif buffactive['ウンダ'] then
+            rune = 'ウンダ'
+        elseif buffactive['ルックス'] then
+            rune = 'ルックス'
+        else
+            rune = 'テネブレイ'
+        end
+        
+        if rune then
+            buff[1].name = rune
+            buff[3].name = rune
+            buff[5].name = rune
+        end
 
         local buff_cmd = ''
         for i,v in ipairs(buff) do
