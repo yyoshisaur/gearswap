@@ -122,7 +122,7 @@ function get_sets()
     
     sets.precast.ability['黙想'] =  {
         head="極脇戸桃形兜",
-        hands="左近士筒篭手改",
+        hands="極左近士筒篭手",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
     }
 
