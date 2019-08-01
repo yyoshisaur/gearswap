@@ -118,7 +118,7 @@ function get_sets()
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},
         neck="ソーサラストール+2",
-        aist={ name="山吹の帯", mp=35},
+        waist={ name="山吹の帯", mp=35},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
