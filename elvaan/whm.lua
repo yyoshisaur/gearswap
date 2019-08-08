@@ -93,7 +93,7 @@ function get_sets()
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
         left_ear="セサンスピアス",
-        right_ear="ブルタルピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="守りの指輪",
         right_ring="アヤモリング",
         back={ name="アラウナスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}},

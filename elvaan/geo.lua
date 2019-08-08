@@ -46,13 +46,14 @@ function get_sets()
     }
     
     sets.midcast.geo_skill = {
-        main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+        main="イドリス",
         head="ＡＺフード+1",
         body={ name="ＢＡチュニック+1", augments={'Enhances "Bolster" effect',}},
         hands="ＧＯミテーヌ+2",
         legs={ name="ＢＡパンツ+1", augments={'Enhances "Mending Halation" effect',}},
         feet="ＡＺゲートル+1",
         neck="バグアチャーム",
+        -- neck="インカンタートルク",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
         back={ name="龍脈の外套", augments={'Geomancy Skill +8','Indi. eff. dur. +20','Pet: Damage taken -2%',}},
@@ -125,39 +126,40 @@ function get_sets()
     }
     
     sets.aftercast.idle = {
-        main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+        main="イドリス",
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
         head={ name="テルキネキャップ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        hands="ＧＯミテーヌ+2",
+        hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -3%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",
         left_ear="エテオレートピアス",
-        right_ear="驕慢の耳",
+        right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
         back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
     
     sets.aftercast.idle_luopan = {
-        main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
+        main="イドリス",
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
         head={ name="テルキネキャップ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        hands="ＧＯミテーヌ+2",
+        hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -3%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         neck="ロリケートトルク+1",
         waist="イーサベルト",
         left_ear="エテオレートピアス",
-        right_ear="ハンドラーピアス+1",
+        right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
         -- right_ring="ゼラチナスリング+1",
         right_ring="ピュリティーリング",
+        -- right_ring="シュネデックリング",
         back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
 
@@ -206,6 +208,9 @@ function midcast(spell)
     
     if spell.skill == '風水魔法' then
         set_equip = sets.midcast.geo_skill
+        if buffactive['エントラスト'] then
+            set_equip = set_combine(set_equip, {main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},})
+        end
     elseif string.find(spell.name, 'ケアル') then
         set_equip = sets.midcast.cure
     elseif spell.skill == '強化魔法' then
