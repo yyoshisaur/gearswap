@@ -9,6 +9,7 @@ function get_sets()
     sets.aftercast = {}
 
     is_autobp = false
+    is_favor = false
 
     sets.smn_skill = {
         ammo="サンカスサシェ+1",
@@ -141,6 +142,8 @@ function get_sets()
         back={ name="カンペストレケープ", augments={'MP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Damage taken-5%',}, mp=60,},
     }
     
+    sets.aftercast.idle = sets.aftercast.idle_dt
+
     -- マクロのブック, セット変更
     send_command('input /macro book 4; wait 0.5; input /macro set 1')
 end
@@ -204,10 +207,11 @@ function midcast(spell)
 end
 
 function get_idle_equip(spell)
+
     if player.status == 'Engaged' then
-        return sets.aftercast.idle_dt
+        return sets.aftercast.idle
     else
-        return sets.aftercast.idle_dt
+        return sets.aftercast.idle
     end
 end
 
@@ -290,7 +294,19 @@ function status_change(new, old)
 end
 
 function self_command(command)
-    if command == 'spirit' then
+    
+    if command == 'favor' then
+        is_favor = not is_favor
+        if is_favor then
+            sets.aftercast.idle = sets.aftercast.idle_favor
+        else
+            sets.aftercast.idle = sets.aftercast.idle_dt
+        end
+
+        equip(get_idle_equip(nil))
+        set_priorities('mp','hp')
+        windower.add_to_chat(122,'---> 神獣の加護+3待機装備: '..tostring(is_favor))
+    elseif command == 'spirit' then
         spirit_command()
     elseif command == 'autobp' then
         is_autobp = not is_autobp
