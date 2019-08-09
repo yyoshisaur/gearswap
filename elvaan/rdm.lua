@@ -17,6 +17,8 @@ function get_sets()
                                 'エンサンダー', 'エンストーン', 'エンエアロ', 'エンブリザド', 'エンファイア', 'エンウォータ',
                                 'エンサンダーII', 'エンストーンII', 'エンエアロII', 'エンブリザドII', 'エンファイアII', 'エンウォータII',}
     sets.gain = T{'ゲインバイト', 'ゲインマイン', 'ゲインカリス', 'ゲインアジル', 'ゲインスト', 'ゲインイン', 'ゲインデック',}
+    sets.magic_mnd = T{}
+    sets.magic_int = T{}
 
     sets.precast.fc = {
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
@@ -183,7 +185,7 @@ function get_sets()
     }
 
     sets.aftercast.melee = {
-        ammo="銀銭",
+        ammo="ヘイストピニオン+1",
         head="アヤモツッケット+2",
         body="アヤモコラッツァ+2",
         hands="アヤモマノポラ+2",
@@ -192,7 +194,7 @@ function get_sets()
         neck="アヌートルク",
         waist="ケンタークベルト+1",
         left_ear="シェリダピアス",
-        right_ear="驕慢の耳",
+        right_ear="素破の耳",
         left_ring="守りの指輪",
         right_ring="アヤモリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
