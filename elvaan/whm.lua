@@ -258,7 +258,7 @@ function precast(spell)
     elseif spell.name == 'デヴォーション' then
         set_equip = {head="ＰＩキャップ+3"}
     elseif spell.name == 'マーター' then
-        set_equip = {hands="ＰＩミトン+1"}
+        set_equip = {hands="ＰＩミトン+3"}
     elseif spell.name == '女神の祝福' then
         set_equip = {body="ＰＩブリオー+3"}
     elseif spell.type == 'WeaponSkill' then
@@ -309,6 +309,8 @@ function midcast(spell)
         set_equip = sets.midcast.addi
     elseif sets.ba:contains(spell.name) then
         set_equip = sets.midcast.ba
+    elseif string.find(spell.name, 'デジョン') or string.find(spell.name, 'テレポ') or string.find(spell.name, 'リコール') or spell.name == 'リトレース' or spell.name == 'エスケプ' then
+        set_equip = {waist="ニヌルタサッシュ",}
     elseif spell.skill == '強化魔法' and spell.name ~= 'イレース' then
         set_equip = sets.midcast.enhance_duration
     elseif spell.skill == '弱体魔法' then
