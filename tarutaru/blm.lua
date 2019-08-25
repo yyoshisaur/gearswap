@@ -401,7 +401,7 @@ end
 
 function precast(spell)
     local set_equip = nil
-
+    
     if spell.type == 'WhiteMagic' then
         if spell.skill == '強化魔法' then
             if is_death then
@@ -421,7 +421,13 @@ function precast(spell)
             if spell.name == 'インパクト' then
                 set_equip = sets.precast.fc_impact
             else
-                set_equip = sets.precast.fc_elemental
+                if player.sub_job == '赤' then
+                    set_equip = sets.precast.fc_elemental
+                else
+                    set_equip = set_combine(sets.precast.fc_elemental,
+                    {head={ name="ＡＭコイフ+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=141},
+                    feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},})
+                end
             end
         else
             if is_death then
