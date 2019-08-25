@@ -437,7 +437,7 @@ function midcast(spell)
             set_equip = enhances_effect_and_sird_equip(spell)
         elseif spell.name == 'アクアベール' then
             set_equip = enhances_effect_and_sird_equip(spell)
-        elseif spell.name == 'リジェネ' then
+        elseif string.find(spell.name, 'リジェネ') then
             set_equip = set_combine(sets.aftercast.dt, sets.midcast.rejen)
         elseif spell.name == 'リフレシュ' then
             set_equip = set_combine(sets.aftercast.dt, sets.midcast.refresh)
@@ -524,7 +524,12 @@ function self_command(command)
         is_sird = not is_sird
         windower.add_to_chat(122,'---> 詠唱中断率ダウン装備: '..tostring(is_sird))
     elseif command == 'phalanx' then
-        equip(sets.midcast.phalanx)
+        local set_equip = nil
+        set_equip = sets.midcast.phalanx
+        if buffactive['エンボルド'] then
+            set_equip = set_combine(set_equip, {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},})
+        end
+        equip(set_equip)
         set_priorities_by_hp()
     elseif command == 'bluemagic' then
         equip(sets.enmity)
@@ -557,6 +562,10 @@ function self_command(command)
         equip(sets.aftercast.speed)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> 移動速度UP装備')
+    elseif command == 'dt' then
+        equip(sets.aftercast.dt)
+        set_priorities_by_hp()
+        windower.add_to_chat(122,'---> DT装備')
     elseif command == 'buff' then
         is_melee = false
         local buff = {
