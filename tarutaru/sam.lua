@@ -9,7 +9,6 @@ function get_sets()
     sets.weapon = {}
     
     is_obi = false
-    is_stp = false
 
     sets.weapon.douzi = {main="童子切安綱", sub="ウトゥグリップ",}
     sets.weapon.shining = {main="シャイニングワン", sub="ウトゥグリップ",}
@@ -33,7 +32,7 @@ function get_sets()
     sets.precast.ws.wsd = {
         ammo="ノブキエリ",
         head="フラマツッケット+2",
-        body={ name="バロラスメイル", augments={'Accuracy+28','Weapon skill damage +5%','STR+10',}},
+        body={ name="極左近士胴丸", augments={'Enhances "Overwhelm" effect',}},
         hands={ name="バロラスミトン", augments={'Accuracy+9 Attack+9','Weapon skill damage +4%','STR+9','Accuracy+10','Attack+6',}},
         legs="極脇戸板佩楯",
         feet="フラマガンビエラ+2",
@@ -49,7 +48,7 @@ function get_sets()
     sets.precast.ws.multi = {
         ammo="ノブキエリ",
         head="フラマツッケット+2",
-        body={ name="バロラスメイル", augments={'Accuracy+28','Weapon skill damage +5%','STR+10',}},
+        body={ name="極左近士胴丸", augments={'Enhances "Overwhelm" effect',}},
         hands={ name="バロラスミトン", augments={'Accuracy+9 Attack+9','Weapon skill damage +4%','STR+9','Accuracy+10','Attack+6',}},
         legs="極脇戸板佩楯",
         feet="フラマガンビエラ+2",
@@ -172,6 +171,22 @@ function get_sets()
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
+    sets.aftercast.subtle_blow = {
+        ammo="銀銭",
+        head="乾闥婆陣鉢改",
+        body="乾闥婆作務衣改",
+        hands="極脇戸筒篭手",
+        legs="乾闥婆筒袴改",
+        feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
+        neck="月光の喉輪",
+        waist="ウィンバフベルト+1",
+        left_ear="セサンスピアス",
+        right_ear="テロスピアス",
+        left_ring="ニックマドゥリング",
+        right_ring="シーリチリング+1",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.melee = sets.aftercast.multi
 
     sets.aftercast.idle = {
@@ -298,15 +313,14 @@ function self_command(command)
             
             windower.add_to_chat(122,'+++ 属性帯装備 ON +++')
         end
+    elseif command == 'multi' then
+        sets.aftercast.melee = sets.aftercast.multi
+        windower.add_to_chat(122,'---> マルチアタック装備')
     elseif command == 'stp' then
-        if is_stp then
-            is_stp = false
-            sets.aftercast.melee = sets.aftercast.multi
-            windower.add_to_chat(122,'--- マルチアタック装備 ---')
-        else
-            is_stp = true
-            sets.aftercast.melee = sets.aftercast.stp
-            windower.add_to_chat(122,'+++ ストアTP装備 +++')
-        end
+        sets.aftercast.melee = sets.aftercast.stp
+        windower.add_to_chat(122,'---> ストアTP装備')
+    elseif command == 'sb' then
+        sets.aftercast.melee = sets.aftercast.subtle_blow
+        windower.add_to_chat(122,'---> モクシャ装備')
     end
 end

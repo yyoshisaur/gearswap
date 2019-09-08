@@ -49,9 +49,16 @@ function get_sets()
     -- self_command用フラグ
     is_melee = false
     is_luzaf = false
+    is_th = false
 
     sets.obi_dark = {waist="闇輪の帯",}
     
+    sets.th = {
+        head="白ララブキャップ+1",
+        body={ name="ヘルクリアベスト", augments={'Spell interruption rate down -6%','Pet: "Mag.Atk.Bns."+15','"Treasure Hunter"+2',}},
+        waist="チャークベルト",
+    }
+
     -- エンピリアン装束 効果アップ
     sets.rolls_emp = {
         ['キャスターズロール'] = {}, -- {legs="ＣＳトルーズ+1"}
@@ -91,7 +98,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+28','STR+4','"Refresh"+1','Mag. Acc.+18 "Mag.Atk.Bns."+18',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Mag.Atk.Bns."+25','Accuracy+17 Attack+17',}},
         feet="ＣＳブーツ+1",
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -138,7 +145,7 @@ function get_sets()
         head="妖蟲の髪飾り+1",
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+28','STR+4','"Refresh"+1','Mag. Acc.+18 "Mag.Atk.Bns."+18',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Mag.Atk.Bns."+25','Accuracy+17 Attack+17',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -154,7 +161,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
-        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+28','STR+4','"Refresh"+1','Mag. Acc.+18 "Mag.Atk.Bns."+18',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Mag.Atk.Bns."+25','Accuracy+17 Attack+17',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -349,6 +356,11 @@ function midcast(spell)
         set_equip = sets.midcast.cure
     end
 
+    if is_th then
+        set_equip = set_combine(set_equip, sets.th)
+        is_th = false
+    end
+
     if set_equip then
         equip(set_equip)
     end
@@ -422,5 +434,8 @@ function self_command(command)
         end
     elseif command == 'double-up-aftercast' then
         equip(get_aftercast_equip())
+    elseif command == 'th' then
+        is_th = not is_th
+        windower.add_to_chat(122, '---> トレハン装備')
     end
 end

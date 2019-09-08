@@ -24,8 +24,12 @@ function get_sets()
     sets.helix = T{'火門の計', '氷門の計', '風門の計', '土門の計', '雷門の計', '水門の計', '光門の計', '闇門の計', '火門の計II', '氷門の計II', '風門の計II', '土門の計II', '雷門の計II', '水門の計II', '光門の計II', '闇門の計II'}
     sets.aspir = T{"アスピル", "アスピルII",}
 
-    sets.cp = {back="アピトマント+1"}
-    
+    sets.th = {
+        head="白ララブキャップ+1",
+        legs={ name="マーリンシャルワ", augments={'CHR+9','MND+2','"Treasure Hunter"+2',}},
+        waist="チャークベルト",
+    }
+
     sets.precast.fc = {
         ammo="インカントストーン",
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
@@ -123,7 +127,7 @@ function get_sets()
         waist="山吹の帯",
         left_ear="バーカロルピアス",
         right_ear="電界の耳",
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
@@ -131,21 +135,6 @@ function get_sets()
     sets.midcast.magic_mb_dark = sets.midcast.magic_mb
 
     sets.midcast.helix_mb = {
-        -- main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        -- sub="エンキストラップ",
-        -- ammo="ペムフレドタスラム",
-        -- head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        -- body="マルクィサイオ+2",
-        -- hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        -- legs="マルクィトルーズ+2",
-        -- feet="ジャリピガッシュ+2",
-        -- neck="水影の首飾り",
-        -- waist="チャネラーストーン",
-        -- left_ear="怯懦の耳",
-        -- right_ear="電界の耳",
-        -- left_ring="ジャリリング",
-        -- right_ring="マルクィリング",
-        -- back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
         main="マクセンチアス",
         sub="カルミナス",
         ammo="ペムフレドタスラム",
@@ -161,6 +150,24 @@ function get_sets()
         left_ring="ジャリリング",
         right_ring="マルクィリング",
         back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
+    }
+
+    sets.midcast.helix_mb_int_400 = {
+        main="マクセンチアス",
+        sub="アムラピシールド",
+        ammo="ペムフレドタスラム",
+        head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
+        body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
+        feet="ジャリピガッシュ+2",
+        neck="アギュトストール+1",
+        waist="山吹の帯",
+        left_ear="バーカロルピアス",
+        right_ear="電界の耳",
+        left_ring="フレキリング",
+        right_ring="女王の指輪+1",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
     sets.midcast.magic_acc = {
@@ -424,18 +431,7 @@ function status_change(new, old)
 end
 
 function self_command(command)
-    if command == 'cp' then
-        if is_cp then
-            is_cp = false
-            enable('back')
-            windower.add_to_chat(122,'--- キャパポ装備 OFF ---')
-        else
-            is_cp = true
-            equip(sets.cp)
-            disable('back')
-            windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
-        end
-    elseif command =='stormsurge' then
+    if command =='stormsurge' then
         is_stromsureg = not is_stromsureg
         windower.add_to_chat(122,'陣頭指揮: '..tostring(is_stromsureg))
     elseif command == 'vagary' then

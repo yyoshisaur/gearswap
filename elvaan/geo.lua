@@ -12,7 +12,14 @@ function get_sets()
     magic_geo = T{'ジオリジェネ', 'ジオポイズン', 'ジオリフレシュ', 'ジオヘイスト', 'ジオスト', 'ジオデック', 'ジオバイト', 'ジオアジル', 'ジオイン', 'ジオマイン', 'ジオカリス',
             'ジオフューリー', 'ジオバリア', 'ジオアキュメン', 'ジオフェンド', 'ジオプレサイス', 'ジオヴォイダンス', 'ジオフォーカス', 'ジオアトゥーン', 'ジオウィルト',
             'ジオフレイル', 'ジオフェイド', 'ジオマレーズ', 'ジオスリップ', 'ジオトーパー', 'ジオヴェックス', 'ジオランゴール', 'ジオスロウ', 'ジオパライズ', 'ジオグラビデ'}
+
     sets.cp = {back="アピトマント+1"}
+    
+    sets.th = {
+        head="白ララブキャップ+1",
+        legs={ name="マーリンシャルワ", augments={'CHR+9','MND+2','"Treasure Hunter"+2',}},
+        waist="チャークベルト",
+    }
     
     sets.precast.fc = {
         main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
@@ -60,11 +67,13 @@ function get_sets()
     }
     
     sets.midcast.cure = {
-        main="タマシチ",
+        sub="ソーズシールド",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
+        body="アノインカラシリス",
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         right_ear="メンデカントピアス",
+        right_ring="レベッチェリング",
     }
     
     sets.midcast.enhance_duration = {
@@ -120,7 +129,7 @@ function get_sets()
         waist="チャネラーストーン",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
     }

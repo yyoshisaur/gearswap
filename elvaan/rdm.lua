@@ -48,6 +48,12 @@ function get_sets()
     sets.weapon.enfeeble = {main="ネイグリング", sub="アムラピシールド",}
     sets.weapon.enfeeble_nin = {main="ネイグリング", sub="マクセンチアス",}
 
+    sets.th = {
+        head="白ララブキャップ+1",
+        legs={ name="マーリンシャルワ", augments={'CHR+9','MND+2','"Treasure Hunter"+2',}},
+        waist="チャークベルト",
+    }
+
     sets.precast.fc = {
         head="ＡＴシャポー+2",
         body={ name="ＶＩタバード+1", augments={'Enhances "Chainspell" effect',}},
@@ -66,7 +72,7 @@ function get_sets()
         waist="オルペウスサッシュ",
         left_ear="怯懦の耳",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -78,11 +84,11 @@ function get_sets()
         hands="ジャリカフス+2",
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="フォシャゴルゲット",
+        neck="水影の首飾り",
         waist="オルペウスサッシュ",
-        left_ear="怯懦の耳",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="女王の指輪+1",
+        left_ear="フリオミシピアス",
+        right_ear="怯懦の耳",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -110,6 +116,10 @@ function get_sets()
     sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.magic
     sets.precast.ws['エヴィサレーション'] = sets.precast.ws.multi
     
+    sets.precast.ws['バーニングブレード'] = sets.precast.ws.magic
+    sets.precast.ws['レッドロータス'] = sets.precast.ws.magic
+    sets.precast.ws['シャインブレード'] = sets.precast.ws.magic
+    sets.precast.ws['セラフブレード'] = sets.precast.ws.magic
     sets.precast.ws['サンギンブレード'] = sets.precast.ws.magic_dark
     sets.precast.ws['サベッジブレード'] = sets.precast.ws.multi
     sets.precast.ws['シャンデュシニュ'] = sets.precast.ws.multi
@@ -205,6 +215,8 @@ function get_sets()
 
     sets.midcast.phalanx = sets.midcast.phalanx_self
 
+    sets.midcast.phalanx_others = set_combine(sets.midcast.enhance_duration_others, {left_ear="アンドアーピアス", right_ring="スティキニリング",})
+
     sets.midcast.cure = {
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
         body={ name="ＶＩタバード+1", augments={'Enhances "Chainspell" effect',}},
@@ -274,7 +286,7 @@ function get_sets()
     }
 
     sets.midcast.magic_enfeeble_mnd_acc = {
-        ammo="ペムフレドタスラム",
+        range="カジャボウ",
         head="ＡＴシャポー+2",
         body="ＡＴタバード+2",
         hands="ＬＴガントロ+1",
@@ -348,7 +360,7 @@ function get_sets()
         waist="山吹の帯",
         left_ear="怯懦の耳",
         right_ear="電界の耳",
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -365,7 +377,7 @@ function get_sets()
         left_ear="シェリダピアス",
         right_ear="素破の耳",
         left_ring="守りの指輪",
-        right_ring="アヤモリング",
+        right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
@@ -516,6 +528,8 @@ function precast(spell)
     elseif spell.type == 'WeaponSkill' then
         if sets.precast.ws[spell.name] then
             set_equip = sets.precast.ws[spell.name]
+        else
+            set_equip = sets.precast.ws.multi
         end
     elseif spell.type == 'Ninjutsu' then
         set_equip = sets.precast.fc
@@ -553,7 +567,7 @@ function midcast(spell)
             if spell.target.type == 'SELF' then
                 set_equip = sets.midcast.phalanx
             else
-                set_equip = sets.midcast.enhance_duration_others
+                set_equip = sets.midcast.phalanx_others
             end
         elseif sets.magic_enhance_skill:contains(spell.name) then
             set_equip = sets.midcast.enhance_skill
@@ -671,6 +685,7 @@ end
 function sub_job_change(new, old)
     
     if new ~= old then
+        melee_weapon_cycle = 0
         set_weapon_by_sub_job(new)
         send_command('wait 1; input //gs c wc')
     end
