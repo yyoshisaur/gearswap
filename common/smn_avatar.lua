@@ -308,8 +308,8 @@ weaken_element['闇'] = '光'
 //gs c bp astralflow [number] [target]
     target: t, st
 ]]
-function bp_commnad(commnad)
-    local args = commnad:split(' ')
+function bp_commnad(command)
+    local args = command:split(' ')
 
     if args[1]:lower() == 'bp' then
         if not pet.isvalid then
