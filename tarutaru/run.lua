@@ -281,6 +281,23 @@ function get_sets()
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
     }
 
+    sets.aftercast.dt_knock_back = {
+        sub="メンシストラップ+1",
+        ammo="ストンチタスラム+1",
+        head={ name="トゥルムキャップ+1", hp=94,},
+        body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
+        hands={ name="トゥルムミトン+1", hp=74,},
+        legs={ name="ダッシングサブリガ", hp=47,},
+        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        neck={ name="フサルクトルク+2", hp=60,},
+        waist="フルームベルト+1",
+        left_ear={ name="クリプティクピアス", hp=40,},
+        right_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back={ name="リパルスマント", hp=30,},
+    }
+
     sets.aftercast.dt = sets.aftercast.dt_FU
 
     sets.aftercast.melee = {
@@ -463,7 +480,7 @@ function midcast(spell)
     elseif spell.skill == '弱体魔法' then
         set_equip = sets.aftercast.dt
     else
-        set_equip = sets.aftercast.dt
+        -- set_equip = sets.aftercast.dt
     end
 
     if buffactive['エンボルド'] then
@@ -552,6 +569,11 @@ function self_command(command)
         equip(sets.aftercast.dt)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> DT装備(アシェーラハーネス)')
+    elseif command == 'knockback' then
+        sets.aftercast.dt = sets.aftercast.dt_knock_back
+        equip(sets.aftercast.dt_knock_back)
+        set_priorities_by_hp()
+        windower.add_to_chat(122,'---> DT装備(ノックバック軽減)')
     elseif command == 'melee' then
         is_melee = not is_melee
         windower.add_to_chat(122,'---> アタッカー装備: '..tostring(is_melee))

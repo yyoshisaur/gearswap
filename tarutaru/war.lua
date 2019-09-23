@@ -110,7 +110,7 @@ function get_sets()
     sets.precast.ability['バーサク'] = {
         body="ＰＭロリカ+3",
         feet={ name="ＡＧカリガ+3", augments={'Enhances "Tomahawk" effect',}},
-        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
     sets.precast.ability['ディフェンダー'] = {hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},}
     sets.precast.ability['アグレッサー'] = {head="ＰＭマスク+3", body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},}
@@ -121,7 +121,7 @@ function get_sets()
     sets.precast.ability['挑発'] = {
         ammo="サピエンスオーブ",
         head="ハリタスヘルム",
-        body="タルタロスプレート",
+        body="プロプトブレスト",
         hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},
         legs="ＰＭクウィス+3",
         feet="ヴォルトソルレ",
@@ -167,7 +167,7 @@ function get_sets()
         right_ear="ブルタルピアス",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
-        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.melee.chango = {
@@ -183,24 +183,41 @@ function get_sets()
         right_ear="セサンスピアス",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
-        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.aftercast.melee.khonsu = {
+        ammo="イェットシーラ+1",
+        head="フロプトヘルム",
+        body="フロプトブレスト",
+        hands="フラママノポラ+2",
+        legs={ name="ＡＧクウィス+3", augments={'Enhances "Warrior\'s Charge" effect',}},
+        feet="ＰＭカリガ+3",
+        neck="戦士の数珠+2",
+        waist="イオスケハベルト+1",
+        left_ear="テロスピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="月光の指輪",
+        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="ＰＭマスク+3",
-        body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},
-        hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},
+        head="ＢＩマスク+1",
+        body="フロプトブレスト",
+        hands="スレビアガントレ+2",
         legs="ＰＭクウィス+3",
-        feet="ヴォルトソルレ",
-        neck="ロリケートトルク+1",
+        feet="ＰＭカリガ+3",
+        neck="戦士の数珠+2",
         waist="イオスケハベルト+1",
         left_ear="テロスピアス",
         right_ear="セサンスピアス",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
-        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
+    
     -- マクロのブック, セット変更
     send_command('input /macro book 18; wait 0.5; input /macro set 1')
 end

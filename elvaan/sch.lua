@@ -63,7 +63,7 @@ function get_sets()
     }
     
     sets.precast.magic_skill_chain = {
-        main="テラスタッフ",
+        main="マリグナスポール",
         sub="メンシストラップ+1",
         ammo="インカントストーン",
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
@@ -90,7 +90,7 @@ function get_sets()
         neck="デュアルカラー+1",
         waist="神術帯+1",
         left_ear="エテオレートピアス",
-        right_ear="アンドアーピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="メフィタスリング+1",
         right_ring="メフィタスリング",
         back="フィフォレケープ+1",
@@ -119,20 +119,20 @@ function get_sets()
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
+        body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="山吹の帯",
         left_ear="バーカロルピアス",
-        right_ear="電界の耳",
+        right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
     
-    sets.midcast.magic_mb_dark = sets.midcast.magic_mb
+    sets.midcast.magic_mb_dark = set_combine(sets.midcast.magic_mb, {head="妖蟲の髪飾り+1",})
 
     sets.midcast.helix_mb = {
         main="マクセンチアス",
@@ -232,6 +232,7 @@ function get_sets()
             back={ name="ブックワームケープ", augments={'INT+2','MND+1','Helix eff. dur. +10','"Regen" potency+10',}},
         }
     )
+    sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {head="ＡＭコイフ+1",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     
     sets.midcast.enhance_skill = {
@@ -271,7 +272,7 @@ function get_sets()
     }
 
     sets.aftercast.idle = {
-        main="テラスタッフ",
+        main="マリグナスポール",
         sub="メンシストラップ+1",
         ammo="ホミリアリ",
         head="ＡＣボード+3",
@@ -288,6 +289,15 @@ function get_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.aftercast.idle_refresh = {
+        ammo="ホミリアリ",
+        head="ビファウルクラウン",
+        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        hands={ name="マーリンダスタナ", augments={'Pet: Haste+2','AGI+1','"Refresh"+2','Accuracy+16 Attack+16',}},
+        legs="アシドゥイズボン+1",
+        feet={ name="マーリンクラッコー", augments={'INT+3','Pet: Crit.hit rate +1','"Refresh"+2','Accuracy+20 Attack+20',}},
+    }
+
     -- マクロのブック, セット変更
     send_command('input /macro book 4; wait 0.5; input /macro set 1')
 
@@ -347,6 +357,8 @@ function midcast(spell)
             set_equip = sets.midcast.skin
         elseif string.find(spell.name, 'リジェネ') then
             set_equip = sets.midcast.rejen
+        elseif spell.name == 'リフレシュ' then
+            set_equip = sets.midcast.refresh
         elseif sets.magic_enhance_skill:contains(spell.name) then
             set_equip = sets.midcast.enhance_skill
         elseif sets.storm:contains(spell.name) then
@@ -373,11 +385,11 @@ function midcast(spell)
             if spell.name == 'サンダーV' then -- オーメン課題 MBなし15,000ダメージ用
                 set_equip = sets.midcast.magic_mb
             else
-                if spell.name == 'ストーン' or spell.name == '土門の計' then
-                    set_equip = set_combine(sets.precast.magic_skill_chain, {main="アウスタースタッフ",})
-                else
+                -- if spell.name == 'ストーン' or spell.name == '土門の計' then
+                --     set_equip = set_combine(sets.precast.magic_skill_chain, {main="アウスタースタッフ",})
+                -- else
                     set_equip = sets.precast.magic_skill_chain
-                end
+                -- end
             end
             is_immanence = false
         else
@@ -453,6 +465,9 @@ function self_command(command)
         else
             windower.add_to_chat(30, 'アスピル リキャスト---> II: %.1fs, I: %.1fs':format(recast_time_a2, recast_time_a))
         end
+    elseif command == 'refresh' then
+        equip(sets.aftercast.idle_refresh)
+        windower.add_to_chat(122, '---> リフレシュ待機装備')
     end
 end
 

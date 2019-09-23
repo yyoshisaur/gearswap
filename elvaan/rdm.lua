@@ -32,7 +32,7 @@ function get_sets()
     sets.magic_enfeeble_mnd = T{'パライズ', 'パライズII', 'スロウ', 'スロウII', 'アドル', 'アドルII',}
     sets.magic_enfeeble_mnd_and_skill = T{'ディストラ', 'ディストラII', 'ディストラIII', 'フラズルIII', 'ポイズン', 'ポイズンII',}
     sets.magic_enfeeble_mnd_acc = T{'ディア', 'ディアII', 'ディアIII', 'サイレス', 'フラズル', 'フラズルII',}
-    sets.magic_enfeeble_int = T{'ブライン', 'グラビデ', 'グラビデII',}
+    sets.magic_enfeeble_int = T{'ブライン', 'ブラインII', 'グラビデ', 'グラビデII',}
     sets.magic_enfeeble_int_acc = T{'スリプル', 'スリプルII', 'スリプガ', 'バインド', 'ブレイク'}
 
     sets.weapon.tauret = {main="トーレット", sub="玄冥盾",}
@@ -45,8 +45,11 @@ function get_sets()
     sets.weapon.d1_nin = {main="クトゥルブナイフ", sub="アーンダガー",}
     sets.weapon.crocea_nin = {main="クロセアモース", sub="ターニオンダガー+1",}
 
-    sets.weapon.enfeeble = {main="ネイグリング", sub="アムラピシールド",}
-    sets.weapon.enfeeble_nin = {main="ネイグリング", sub="マクセンチアス",}
+    sets.weapon.enfeeble_mnd = {main="デイブレイクワンド", sub="アムラピシールド",}
+    sets.weapon.enfeeble_mnd_nin = {main="マクセンチアス", sub="デイブレイクワンド",}
+
+    sets.weapon.enfeeble_int = {main="ネイグリング", sub="アムラピシールド",}
+    sets.weapon.enfeeble_int_nin = {main="ネイグリング", sub="マクセンチアス",}
 
     sets.th = {
         head="白ララブキャップ+1",
@@ -239,13 +242,13 @@ function get_sets()
         main={ name="グリオアヴァール", augments={'Enfb.mag. skill +15','INT+14','Mag. Acc.+24','"Mag.Atk.Bns."+16',}},
         sub="メフィテスグリップ",
         ammo="クォーツタスラム+1",
-        head={ name="ＶＩシャポー+1", augments={'Enhances "Dia III" effect','Enhances "Slow II" effect',}},
+        head="ＶＩシャポー+3",
         body="ＡＴタバード+2",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
-        feet={ name="ＶＩブーツ+1", augments={'Enhances "Paralyze II" effect',}},
+        feet="ＶＩブーツ+3",
         neck="インカンタートルク",
-        waist="ルーミネリサッシュ",
+        waist="ルミネートサッシュ",
         left_ear="ディグニタリピアス",
         right_ear="インフィブルピアス",
         left_ring="スティキニリング+1",
@@ -255,15 +258,15 @@ function get_sets()
 
     sets.midcast.magic_enfeeble_mnd = {
         ammo="クォーツタスラム+1",
-        head="ＡＴシャポー+2",
+        head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
-        right_ear="グアチピアス",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -271,15 +274,15 @@ function get_sets()
 
     sets.midcast.magic_enfeeble_mnd_and_skill = {
         ammo="クォーツタスラム+1",
-        head="ＡＴシャポー+2",
+        head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
-        right_ear="グアチピアス",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="スティキニリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -287,15 +290,15 @@ function get_sets()
 
     sets.midcast.magic_enfeeble_mnd_acc = {
         range="カジャボウ",
-        head="ＡＴシャポー+2",
+        head="ＶＩシャポー+3",
         body="ＡＴタバード+2",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
-        right_ear="グアチピアス",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -303,15 +306,15 @@ function get_sets()
     
     sets.midcast.magic_enfeeble_int = {
         ammo="ペムフレドタスラム",
-        head="ＡＴシャポー+2",
+        head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
-        right_ear="グアチピアス",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
@@ -319,15 +322,15 @@ function get_sets()
 
     sets.midcast.magic_enfeeble_int_acc = {
         ammo="ペムフレドタスラム",
-        head="ＡＴシャポー+2",
+        head="ＶＩシャポー+3",
         body="ＡＴタバード+2",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
-        right_ear="グアチピアス",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
@@ -335,31 +338,33 @@ function get_sets()
 
     sets.midcast.magic_acc = {
         range="カジャボウ",
-        head="ＡＴシャポー+2",
+        head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
-        feet="ジャリピガッシュ+2",
+        feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="ディグニタリピアス",
-        right_ear="グアチピアス",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.midcast.magic_mb = {
+        main={ name="グリオアヴァール", augments={'Spell interruption rate down -3%','INT+14','Mag. Acc.+29','"Mag.Atk.Bns."+29','Magic Damage +5',}},
+        sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="エアハット+1",
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
+        body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="山吹の帯",
-        left_ear="怯懦の耳",
-        right_ear="電界の耳",
+        left_ear="フリオミシピアス",
+        right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
@@ -455,12 +460,12 @@ end
 
 local function set_weapon_by_sub_job(sub_job, weapon)
     if sub_job == '忍' then
-        sets.midcast.magic_enfeeble_mnd = set_combine(sets.midcast.magic_enfeeble_mnd, sets.weapon.enfeeble_nin)
-        sets.midcast.magic_enfeeble_mnd_and_skill = set_combine(sets.midcast.magic_enfeeble_mnd_and_skill, sets.weapon.enfeeble_nin)
-        sets.midcast.magic_enfeeble_mnd_acc = set_combine(sets.midcast.magic_enfeeble_mnd_acc, sets.weapon.enfeeble_nin)
-        sets.midcast.magic_enfeeble_int = set_combine(sets.midcast.magic_enfeeble_int, sets.weapon.enfeeble_nin)
-        sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_nin)
-        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_nin)
+        sets.midcast.magic_enfeeble_mnd = set_combine(sets.midcast.magic_enfeeble_mnd, sets.weapon.enfeeble_mnd_nin)
+        sets.midcast.magic_enfeeble_mnd_and_skill = set_combine(sets.midcast.magic_enfeeble_mnd_and_skill, sets.weapon.enfeeble_mnd_nin)
+        sets.midcast.magic_enfeeble_mnd_acc = set_combine(sets.midcast.magic_enfeeble_mnd_acc, sets.weapon.enfeeble_mnd_nin)
+        sets.midcast.magic_enfeeble_int = set_combine(sets.midcast.magic_enfeeble_int, sets.weapon.enfeeble_int_nin)
+        sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_int_nin)
+        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_mnd_nin)
 
         sets.midcast.phalanx = sets.midcast.phalanx_self_nin
 
@@ -478,12 +483,14 @@ local function set_weapon_by_sub_job(sub_job, weapon)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_nin)
         end
     else
-        sets.midcast.magic_enfeeble_mnd = set_combine(sets.midcast.magic_enfeeble_mnd, sets.weapon.enfeeble)
-        sets.midcast.magic_enfeeble_mnd_and_skill = set_combine(sets.midcast.magic_enfeeble_mnd_and_skill, sets.weapon.enfeeble)
-        sets.midcast.magic_enfeeble_mnd_acc = set_combine(sets.midcast.magic_enfeeble_mnd_acc, sets.weapon.enfeeble)
-        sets.midcast.magic_enfeeble_int = set_combine(sets.midcast.magic_enfeeble_int, sets.weapon.enfeeble)
-        sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble)
-        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble)
+        sets.midcast.magic_enfeeble_mnd = set_combine(sets.midcast.magic_enfeeble_mnd, sets.weapon.enfeeble_mnd)
+        sets.midcast.magic_enfeeble_mnd_and_skill = set_combine(sets.midcast.magic_enfeeble_mnd_and_skill, sets.weapon.enfeeble_mnd)
+        sets.midcast.magic_enfeeble_mnd_acc = set_combine(sets.midcast.magic_enfeeble_mnd_acc, sets.weapon.enfeeble_mnd)
+        sets.midcast.magic_enfeeble_int = set_combine(sets.midcast.magic_enfeeble_int, sets.weapon.enfeeble_int)
+        sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_int)
+        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_int)
+
+        sets.midcast.phalanx = sets.midcast.phalanx_self
 
         if weapon == 'tauret' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.tauret)
@@ -608,7 +615,7 @@ function midcast(spell)
     elseif spell.skill == '暗黒魔法' then
         set_equip = sets.midcast.magic_acc
     elseif spell.skill == '精霊魔法' then
-        set_equip = sets.midcast.magic_mb
+        set_equip = set_combine(sets.midcast.magic_mb, get_hachirin(spell.element))
     end
 
     if set_equip then

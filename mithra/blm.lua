@@ -11,10 +11,12 @@ function get_sets()
 
     sets.precast.fc = {
         head={ name="マーリンフード", augments={'Mag. Acc.+25','"Fast Cast"+7','CHR+7',}},
+        body={ name="テルキネシャジュブ", augments={'"Fast Cast"+5',}},
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="マーリンクラッコー", augments={'"Fast Cast"+7','CHR+2',}},
         right_ear="エテオレートピアス",
         right_ring="プロリクスリング",
+        back={ name="タラナスケープ", augments={'"Fast Cast"+10',}},
     }
 
     sets.precast.fc_elemental = {
@@ -25,11 +27,37 @@ function get_sets()
         left_ear="バーカロルピアス",
     }
 
+    sets.precast.ws.mp = {
+        ammo="ペムフレドタスラム",
+        head="妖蟲の髪飾り+1",
+        body="ＳＰコート+2",
+        hands={ name="テルキネグローブ", augments={'"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
+        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +8',}},
+        neck="エディネクラス",
+        waist="風鳥の帯",
+        left_ear="アンドアーピアス",
+        right_ear="エテオレートピアス",
+        left_ring="プロリクスリング",
+        right_ring="サンゴマリング",
+        back="ベーンケープ",
+    }
+
+    sets.precast.ws['ミルキル'] = sets.precast.ws.mp
+
+    sets.midcast.enhance_duration = {
+        head={ name="テルキネキャップ", augments={'Enh. Mag. eff. dur. +9',}},
+        body={ name="テルキネシャジュブ", augments={'Enh. Mag. eff. dur. +9',}},
+        hands={ name="テルキネグローブ", augments={'Enh. Mag. eff. dur. +10',}},
+        legs={ name="テルキネブラコーニ", augments={'Enh. Mag. eff. dur. +9',}},
+        feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +8',}},
+    }
+
     sets.midcast.magic_mb = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="カジャグリップ",
         ammo="ペムフレドタスラム",
-        head="ジャリコロナル+1",
+        head="マルクィシャポー+2",
         body="ＳＰコート+2",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
         legs="マルクィトルーズ+2",
@@ -47,10 +75,10 @@ function get_sets()
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="カジャグリップ",
         ammo="ペムフレドタスラム",
-        head="マルクィシャポー+1",
+        head="マルクィシャポー+2",
         body="ＳＰコート+2",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
-        legs="マルクィトルーズ+2",
+        legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
         neck="ソーサラストール+1",
         waist="山吹の帯",
@@ -61,21 +89,39 @@ function get_sets()
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
+    sets.midcast.aspir = {
+        main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="カジャグリップ",
+        ammo="ペムフレドタスラム",
+        head="妖蟲の髪飾り+1",
+        body="ＳＰコート+2",
+        hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
+        legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
+        feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
+        neck="ソーサラストール+1",
+        waist="風鳥の帯",
+        left_ear="バーカロルピアス",
+        right_ear="ディグニタリピアス",
+        left_ring="サンゴマリング",
+        right_ring="スティキニリング",
+        back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.idle = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="カジャグリップ",
         ammo="ペムフレドタスラム",
-        head="マルクィシャポー+1",
+        head="マルクィシャポー+2",
         body="マルクィサイオ+2",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
-        legs="マルクィトルーズ+2",
+        legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
-        neck="エディネクラス",
-        waist="風鳥の帯",
+        neck="ロリケートトルク+1",
+        waist="スリポーサッシュ",
         left_ear="バーカロルピアス",
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
-        right_ring="夢神の指輪",
+        right_ring="シュネデックリング",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
@@ -94,6 +140,12 @@ function precast(spell)
         end
     elseif spell.type == 'WhiteMagic' then
          set_equip = sets.precast.fc
+    elseif spell.type == 'WeaponSkill' then
+        if sets.precast.ws[spell.name] then
+            set_equip = sets.precast.ws[spell.name]
+        end
+    elseif spell.type == 'Trust' then
+        set_equip = sets.precast.fc
     end
 
     if set_equip then
@@ -110,8 +162,16 @@ function midcast(spell)
         else
             set_equip = sets.midcast.magic_mb
         end
+    elseif spell.skill == '暗黒魔法' then
+        if aspir:contains(spell.name) then
+            set_equip = sets.midcast.aspir
+        else
+            set_equip = sets.midcast.magic_acc
+        end
     elseif spell.skill == '弱体魔法' then
         set_equip = sets.midcast.magic_acc
+    elseif spell.skill == '強化魔法' then
+        set_equip = sets.midcast.enhance_duration
     end
 
     if set_equip then
@@ -144,5 +204,21 @@ function status_change(new, old)
     
     if set_equip then
         equip(set_equip)
+    end
+end
+
+function self_command(command)
+    if command == 'aspir' then
+        local recasts = windower.ffxi.get_spell_recasts()
+        local recast_time_a2 = recasts[248]/60
+        local recast_time_a = recasts[247]/60
+
+        if recast_time_a2 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルII')..' <stnpc>')
+        elseif recast_time_a == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピル')..' <stnpc>')
+        else
+            windower.add_to_chat(30, 'アスピル リキャスト---> II: %.1fs, I: %.1fs':format(recast_time_a2, recast_time_a))
+        end
     end
 end

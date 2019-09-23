@@ -297,8 +297,8 @@ function get_sets()
     
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head={ name="オディシアヘルム", augments={'Accuracy+25 Attack+25','Weapon skill damage +5%','Accuracy+5','Attack+4',}},
-        body="タルタロスプレート",
+        head="フロプトヘルム",
+        body="フロプトブレスト",
         hands="スレビアガントレ+2",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},

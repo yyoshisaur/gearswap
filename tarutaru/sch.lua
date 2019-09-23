@@ -61,7 +61,7 @@ function get_sets()
     }
     
     sets.precast.magic_skill_chain = {
-        main="テラスタッフ",
+        main="マリグナスポール",
         sub="コーンスー",
         ammo="サピエンスオーブ",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
@@ -295,7 +295,7 @@ function get_sets()
 
         
     sets.midcast.sc_mid = {
-        main="テラスタッフ",
+        main="マリグナスポール",
         sub="コーンスー",
         ammo="ストンチタスラム+1",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
@@ -310,7 +310,7 @@ function get_sets()
     }
 
     sets.aftercast.idle = {
-        main="テラスタッフ",
+        main="マリグナスポール",
         sub="コーンスー",
         ammo="ホミリアリ",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -328,7 +328,7 @@ function get_sets()
     }
 
     sets.aftercast.idle_sublimation = {
-        main="テラスタッフ",
+        main="マリグナスポール",
         sub="コーンスー",
         ammo="ホミリアリ",
         head="ＡＣボード+2",
@@ -454,13 +454,13 @@ function midcast(spell)
             if spell.name == 'サンダーV' then -- オーメン課題 MBなし15,000ダメージ用
                 set_equip = sets.midcast.magic_mb
             else
-                if spell.name == 'ストーン' or spell.name == '土門の計' then
-                    set_equip = set_combine(sets.precast.magic_skill_chain, {main="プルートスタッフ",})
-                    -- set_equip = sets.precast.magic_skill_chain
-                else
+                -- if spell.name == 'ストーン' or spell.name == '土門の計' then
+                --     set_equip = set_combine(sets.precast.magic_skill_chain, {main="プルートスタッフ",})
+                --     -- set_equip = sets.precast.magic_skill_chain
+                -- else
                     set_equip = sets.precast.magic_skill_chain
                     -- set_equip = sets.midcast.sc_mid
-                end
+                -- end
             end
             is_immanence = false
         else
