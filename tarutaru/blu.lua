@@ -13,9 +13,10 @@ function get_sets()
     is_th = false
 
     sword_cycle = 1
-    sets.weapon.almace = {main="アルマス", sub="セクエンス",}
+    sets.weapon.almace = {main="アルマス", sub="斬鉄剣",}
     sets.weapon.tizona = {main="ティソーナ", sub="アルマス",}
     sets.weapon.sequence = {main="セクエンス", sub="アルマス",}
+    sets.weapon.magic = {main="ネイグリング", sub="マクセンチアス"}
 
     sets.th = {
         head="白ララブキャップ+1",
@@ -197,11 +198,11 @@ function get_sets()
 
     sets.midcast.magic_acc_and_physical_acc = {
         ammo="ペムフレドタスラム",
-        head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
-        body="アヤモコラッツァ+2",
-        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="アヤモコッシャレ+2",
-        feet="アヤモガンビエラ+2",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="ボルトサージトルク",
         waist="エスカンストーン",
         left_ear="エンチャンピアス+1",
@@ -292,11 +293,11 @@ function get_sets()
 
     sets.aftercast.evasion = {
         ammo="ストンチタスラム+1",
-        head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
-        body="ピンガチュニック",
-        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear="エアバニピアス",
@@ -340,18 +341,17 @@ function get_sets()
 
     sets.aftercast.melee_dt = {
         ammo="ストンチタスラム+1",
-        head="アヤモツッケット+2",
-        body="アヤモコラッツァ+2",
-        hands="ＡＳバズバンド+3",
-        legs="アヤモコッシャレ+2",
-        feet="アホシレギンス",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="テロスピアス",
-        left_ring="ＶＣリング+1",
+        left_ring="イラブラットリング",
         right_ring="守りの指輪",
-        -- back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','System: 1 ID: 640 Val: 4',}},
     }
 
@@ -359,14 +359,14 @@ function get_sets()
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="アヤモツッケット+2",
+        head="マリグナスシャポー",
         body="シャマシュローブ",
-        hands="ＡＳバズバンド+3",
+        hands="マリグナスグローブ",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
-        neck="ロリケートトルク+1",
+        feet="マリグナスブーツ",
+        neck="デュアルカラー+1",
         waist="フルームベルト+1",
-        left_ear="玄冥耳飾り",
+        left_ear="王将の耳飾り",
         right_ear="エテオレートピアス",
         left_ring="ＶＣリング+1",
         right_ring="守りの指輪",

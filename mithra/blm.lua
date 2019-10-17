@@ -46,23 +46,23 @@ function get_sets()
     sets.precast.ws['ミルキル'] = sets.precast.ws.mp
 
     sets.midcast.enhance_duration = {
-        head={ name="テルキネキャップ", augments={'Enh. Mag. eff. dur. +9',}},
-        body={ name="テルキネシャジュブ", augments={'Enh. Mag. eff. dur. +9',}},
+        head={ name="テルキネキャップ", augments={'Enh. Mag. eff. dur. +10',}},
+        body={ name="テルキネシャジュブ", augments={'Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Enh. Mag. eff. dur. +9',}},
-        feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +8',}},
+        feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +9',}},
     }
 
     sets.midcast.magic_mb = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="カジャグリップ",
         ammo="ペムフレドタスラム",
-        head="マルクィシャポー+2",
+        head="エアハット+1",
         body="ＳＰコート+2",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
-        legs="マルクィトルーズ+2",
+        legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
-        neck="水影の首飾り",
+        neck="ソーサラストール+1",
         waist="山吹の帯",
         left_ear="バーカロルピアス",
         right_ear="フリオミシピアス",
@@ -111,7 +111,7 @@ function get_sets()
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
         sub="カジャグリップ",
         ammo="ペムフレドタスラム",
-        head="マルクィシャポー+2",
+        head="エアハット+1",
         body="マルクィサイオ+2",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
         legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},

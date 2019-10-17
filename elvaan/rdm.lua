@@ -14,7 +14,10 @@ function get_sets()
 
     -- レジストハック装備
     is_immunobreak = false
+
     is_cure_self = false
+
+    is_dw = false
 
     -- メインサブ武器変更
     melee_weapon_cycle_num = 4
@@ -26,9 +29,8 @@ function get_sets()
                                 'エンサンダーII', 'エンストーンII', 'エンエアロII', 'エンブリザドII', 'エンファイアII', 'エンウォータII',}
 
     sets.magic_enhance_skill_500 = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ',
-                                    'バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ',
-                                    'ゲインバイト', 'ゲインマイン', 'ゲインカリス', 'ゲインアジル', 'ゲインスト', 'ゲインイン', 'ゲインデック',}
-
+                                    'バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ',}
+    sets.magic_gain = T{ 'ゲインバイト', 'ゲインマイン', 'ゲインカリス', 'ゲインアジル', 'ゲインスト', 'ゲインイン', 'ゲインデック',}
     sets.magic_enfeeble_mnd = T{'パライズ', 'パライズII', 'スロウ', 'スロウII', 'アドル', 'アドルII',}
     sets.magic_enfeeble_mnd_and_skill = T{'ディストラ', 'ディストラII', 'ディストラIII', 'フラズルIII', 'ポイズン', 'ポイズンII',}
     sets.magic_enfeeble_mnd_acc = T{'ディア', 'ディアII', 'ディアIII', 'サイレス', 'フラズル', 'フラズルII',}
@@ -58,8 +60,8 @@ function get_sets()
     }
 
     sets.precast.fc = {
-        head="ＡＴシャポー+2",
-        body={ name="ＶＩタバード+1", augments={'Enhances "Chainspell" effect',}},
+        head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
+        body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         legs="アヤモコッシャレ+2",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -109,7 +111,7 @@ function get_sets()
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="守りの指輪",
         right_ring="アヤモリング",
-        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.precast.ws['ガストスラッシュ'] = sets.precast.ws.magic
@@ -127,12 +129,12 @@ function get_sets()
     sets.precast.ws['サベッジブレード'] = sets.precast.ws.multi
     sets.precast.ws['シャンデュシニュ'] = sets.precast.ws.multi
 
-    sets.precast.ability['連続魔'] = {body={ name="ＶＩタバード+1", augments={'Enhances "Chainspell" effect',}},}
+    sets.precast.ability['連続魔'] = {body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},}
 
     sets.midcast.enhance_duration_self = {
         sub="アムラピシールド",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands="ＡＴグローブ+3",
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet="ＬＴウゾー+1",
@@ -157,9 +159,9 @@ function get_sets()
         main="プクラトムージュ+1",
         sub="プクラトムージュ",
         head="ビファウルクラウン",
-        body={ name="ＶＩタバード+1", augments={'Enhances "Chainspell" effect',}},
-        hands={ name="ＶＩグローブ+1", augments={'Enhances "Phalanx II" effect',}},
-        legs="ＡＴタイツ+2",
+        body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
+        hands="ＶＩグローブ+3",
+        legs="ＡＴタイツ+3",
         feet="ＬＴウゾー+1",
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
@@ -173,13 +175,16 @@ function get_sets()
     sets.midcast.enhance_skill_500 = {
         sub="アムラピシールド",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
+        body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands="ＡＴグローブ+3",
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet="ＬＴウゾー+1",
         neck="デュエルトルク+2",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
+
+    sets.midcast.ba = set_combine(sets.midcast.enhance_skill_500, {legs="シェダルサラウィル",})
+    sets.midcast.enhance_gain = set_combine(sets.midcast.enhance_skill_500, {hands="ＶＩグローブ+3",})
 
     -- 強化スキル 500, 被ファランクス 17 (35+17=52)
     sets.midcast.phalanx_self = {
@@ -222,9 +227,9 @@ function get_sets()
 
     sets.midcast.cure = {
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
-        body={ name="ＶＩタバード+1", augments={'Enhances "Chainspell" effect',}},
+        body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        legs="ＡＴタイツ+2",
+        legs="ＡＴタイツ+3",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         waist="ピュシアサッシュ+1",
         left_ear="メンデカントピアス",
@@ -232,10 +237,10 @@ function get_sets()
         right_ring="レベッチェリング",
     }
 
-    sets.midcast.skin = set_combine(sets.midcast.enhance_duration_self, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
-    sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration_self, {head="ＡＭコイフ+1",})
-    sets.midcast.refresh_self = set_combine(sets.midcast.enhance_duration_self, {head="ＡＭコイフ+1", body="ＡＴタバード+2",legs="ＬＴフュゾー+1",})
-    sets.midcast.refresh_others = set_combine(sets.midcast.enhance_duration_others, {head="ＡＭコイフ+1", body="ＡＴタバード+2",legs="ＬＴフュゾー+1",})
+    sets.midcast.skin = set_combine(sets.midcast.enhance_duration_self, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
+    sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration_self, {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
+    sets.midcast.refresh_self = set_combine(sets.midcast.enhance_duration_self, {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
+    sets.midcast.refresh_others = set_combine(sets.midcast.enhance_duration_others, {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
     sets.midcast.protect_shell_self = set_combine(sets.midcast.enhance_duration_self, {right_ear="ブラキュラピアス",})
 
     sets.midcast.enfeeble_skill = {
@@ -243,7 +248,7 @@ function get_sets()
         sub="メフィテスグリップ",
         ammo="クォーツタスラム+1",
         head="ＶＩシャポー+3",
-        body="ＡＴタバード+2",
+        body="ＡＴタバード+3",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
@@ -291,7 +296,7 @@ function get_sets()
     sets.midcast.magic_enfeeble_mnd_acc = {
         range="カジャボウ",
         head="ＶＩシャポー+3",
-        body="ＡＴタバード+2",
+        body="ＡＴタバード+3",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
@@ -323,7 +328,7 @@ function get_sets()
     sets.midcast.magic_enfeeble_int_acc = {
         ammo="ペムフレドタスラム",
         head="ＶＩシャポー+3",
-        body="ＡＴタバード+2",
+        body="ＡＴタバード+3",
         hands="ＬＴガントロ+1",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
@@ -372,18 +377,18 @@ function get_sets()
 
     sets.aftercast.melee_atk = {
         ammo="銀銭",
-        head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
-        body="アヤモコラッツァ+2",
+        head="アヤモツッケット+2",
+        body="マリグナスタバード",
         hands="アヤモマノポラ+2",
-        legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
-        feet={ name="カマイングリーヴ+1", augments={'Accuracy+12','DEX+12','MND+20',}},
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="アヌートルク",
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
-        right_ear="素破の耳",
+        right_ear="ブルタルピアス",
         left_ring="守りの指輪",
         right_ring="ヘタイロイリング",
-        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.melee_en = {
@@ -399,25 +404,41 @@ function get_sets()
         right_ear="素破の耳",
         left_ring="スティキニリング+1",
         right_ring="アヤモリング",
-        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.aftercast.melee_en_dmg = {
+        ammo="ピアプア",
+        head="ウムシクハット",
+        body="マリグナスタバード",
+        hands="アヤモマノポラ+2",
+        legs="ＶＩタイツ+3",
+        feet={ name="テーオンブーツ", augments={'Accuracy+25','"Dual Wield"+5','DEX+10',}},
+        neck="デュエルトルク+2",
+        waist="オルペウスサッシュ",
+        left_ear="シェリダピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="ヘタイロイリング",
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.melee = sets.aftercast.melee_atk
 
     sets.aftercast.idle = {
         ammo="ホミリアリ",
-        head="アヤモツッケット+2",
-        body="アヤモコラッツァ+2",
-        hands="アヤモマノポラ+2",
-        legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
-        feet="アヤモガンビエラ+2",
+        head="ＶＩシャポー+3",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="驕慢の耳",
         left_ring="守りの指輪",
-        right_ring="ゼラチナスリング+1",
-        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        right_ring="シュネデックリング",
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     -- 自己ケアル
@@ -441,7 +462,7 @@ function get_sets()
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
         body="アノインカラシリス",
         hands={ name="ブレムテグローブ", augments={'HP+30','MP+30','HP+30',}},
-        legs="ＡＴタイツ+2",
+        legs="ＡＴタイツ+3",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="デュアルカラー+1",
         waist="ゴールドモグベルト",
@@ -450,6 +471,13 @@ function get_sets()
         left_ring="クナジリング",
         right_ring="メネロスリング",
         back="ソコルソキーマント",
+    }
+
+    sets.aftercast.dw_30 = {
+        legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
+        feet={ name="テーオンブーツ", augments={'Accuracy+25','"Dual Wield"+5','DEX+10',}},
+        right_ear="素破の耳",
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
     send_command('wait 1; input //gs c wc')
@@ -579,7 +607,9 @@ function midcast(spell)
         elseif sets.magic_enhance_skill:contains(spell.name) then
             set_equip = sets.midcast.enhance_skill
         elseif sets.magic_enhance_skill_500:contains(spell.name) then
-            set_equip = sets.midcast.enhance_skill_500
+            set_equip = sets.midcast.ba
+        elseif sets.magic_gain:contains(spell.name) then
+            set_equip = sets.midcast.enhance_gain
         elseif string.find(spell.name, 'デジョン') or string.find(spell.name, 'テレポ') or spell.name == 'リトレース' or spell.name == 'エスケプ' then
             set_equip = {waist="ニヌルタサッシュ",}
         elseif string.find(spell.name, 'リフレシュ') then
@@ -628,7 +658,11 @@ function aftercast(spell)
     local set_equip = nil
     
     if player.status == 'Engaged' then
-        set_equip = sets.aftercast.melee
+        if is_dw then
+            set_equip = set_combine(sets.aftercast.melee, sets.aftercast.dw_30)
+        else
+            set_equip = sets.aftercast.melee
+        end
     else
         set_equip = sets.aftercast.idle
     end
@@ -644,7 +678,11 @@ function status_change(new, old)
     if new == 'Idle' then
         set_equip = sets.aftercast.idle
     elseif new == 'Engaged' then
-        set_equip = sets.aftercast.melee
+        if is_dw then
+            set_equip = set_combine(sets.aftercast.melee, sets.aftercast.dw_30)
+        else
+            set_equip = sets.aftercast.melee
+        end
     end
     
     if set_equip then
@@ -686,6 +724,20 @@ function self_command(command)
     elseif command == 'cure_self' then
         is_cure_self = not is_cure_self
         windower.add_to_chat(122,'---> 自己ケアル: '..tostring(is_cure_self))
+    elseif command == 'dw' then
+        is_dw = not is_dw
+        windower.add_to_chat(122,'---> 二刀流+30: '..tostring(is_dw))
+    elseif command == 'melee' then
+        if is_dw then
+            equip(sets.aftercast.melee, sets.aftercast.dw_30)
+            windower.add_to_chat(122,'---> MELEE(二刀流+30)')
+        else
+            equip(sets.aftercast.melee)
+            windower.add_to_chat(122,'---> MELEE')
+        end
+    elseif command == 'endmg' then
+        sets.aftercast.melee = sets.aftercast.melee_en_dmg
+        windower.add_to_chat(122,'---> MELEE(魔法剣ダメージ+)')
     end
 end
 

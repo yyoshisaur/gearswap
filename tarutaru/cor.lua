@@ -94,7 +94,7 @@ function get_sets()
     }
 
     sets.precast.quick_draw = {
-        ammo="アニミキーブレット",
+        ammo="ライヴブレット",
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
@@ -111,17 +111,17 @@ function get_sets()
 
     sets.precast.ws.ra_phisical = {
         ammo="クロノブレット",
-        head="メガナダバイザー+2",
+        head="マリグナスシャポー",
         body="ＬＫフラック+3",
         hands="メガナダグローブ+2",
-        legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
-        feet="マリグナスブーツ",
+        legs="マリグナスタイツ",
+        feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="テロスピアス",
         left_ring="王将の指輪",
-        right_ring="カコエシクリング+1",
+        right_ring="イラブラットリング",
         back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','Weapon skill damage +10%',}},
     }
 
@@ -141,7 +141,7 @@ function get_sets()
     }
 
     sets.precast.ws.leaden = {
-        ammo="デベステトブレット",
+        ammo="ライヴブレット",
         head="妖蟲の髪飾り+1",
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
@@ -157,7 +157,7 @@ function get_sets()
     }
     
     sets.precast.ws.magic = {
-        ammo="デベステトブレット",
+        ammo="ライヴブレット",
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
@@ -175,16 +175,24 @@ function get_sets()
     sets.precast.ws["ラストスタンド"] = sets.precast.ws.ra_phisical
     sets.precast.ws["レデンサリュート"] = sets.precast.ws.leaden
     sets.precast.ws["ワイルドファイア"] = sets.precast.ws.magic
+
     sets.precast.ws["サベッジブレード"] = sets.precast.ws.melee_phisical
 
-    sets.precast.ability["ランダムディール"] ={body={ name="ＬＡフラック+1", augments={'Enhances "Loaded Deck" effect',}},}
+    sets.precast.ws['ガストスラッシュ'] = sets.precast.ws.magic
+    sets.precast.ws['サイクロン'] = sets.precast.ws.magic
+    sets.precast.ws['エナジースティール'] = sets.precast.ws.magic
+    sets.precast.ws['エナジードレイン'] = sets.precast.ws.magic
+    sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.magic
+    sets.precast.ws['エヴィサレーション'] = sets.precast.ws.melee_phisical
+
+    sets.precast.ability["ランダムディール"] ={body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},}
     sets.precast.ability["フォールド"] = {hands={ name="ＬＡガントリー+1", augments={'Enhances "Fold" effect',}},}
     sets.precast.ability["スネークアイ"] = {legs={ name="ＬＡトルーズ+1", augments={'Enhances "Snake Eye" effect',}},}
     sets.precast.ability["ワイドカード"] = {feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},}
 
     sets.midcast.ra = {
         ammo="クロノブレット",
-        head="メガナダバイザー+2",
+        head="マリグナスシャポー",
         body="マリグナスタバード",
         hands={ name="アデマリスト+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
         legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
@@ -193,8 +201,8 @@ function get_sets()
         waist="イェマヤベルト",
         left_ear="エナベートピアス",
         right_ear="テロスピアス",
-        left_ring="カコエシクリング",
-        right_ring="カコエシクリング+1",
+        left_ring="王将の指輪",
+        right_ring="イラブラットリング",
         back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10',}},
     }
 
@@ -230,25 +238,13 @@ function get_sets()
     }
 
     sets.aftercast.melee_dt = {
-        -- head={ name="ダンペニングタム", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-        -- body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        -- hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        -- legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        -- feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
-        -- neck="ロリケートトルク+1",
-        -- waist="ケンタークベルト+1",
-        -- left_ear="素破の耳",
-        -- right_ear="テロスピアス",
-        -- left_ring="守りの指輪",
-        -- right_ring="シーリチリング+1",
-        -- back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
-        head={ name="ダンペニングタム", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
-        body="マリグナスタバード",
-        hands="マリグナスグローブ",
+        head="マリグナスシャポー",
+        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck="アイニアカラー",
-        waist="霊亀腰帯",
+        waist="ウィンバフベルト+1",
         left_ear="素破の耳",
         right_ear="テロスピアス",
         left_ring="守りの指輪",
@@ -258,7 +254,7 @@ function get_sets()
 
     sets.aftercast.melee = sets.aftercast.melee_dt
     sets.aftercast.idle = {
-        head="メガナダバイザー+2",
+        head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
