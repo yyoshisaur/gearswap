@@ -12,7 +12,7 @@ function get_sets()
     sets.precast.ability.maneuvers_high_strain = {
         main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         body="ＫＧファルセト+1",
-         hands="ＦＯダスタナ+1",
+        hands="ＦＯダスタナ+3",
         neck="バフーンカラー",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
@@ -20,7 +20,7 @@ function get_sets()
     sets.precast.ability.maneuvers_mid_strain = {
         -- main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         body="ＫＧファルセト+1",
-         hands="ＦＯダスタナ+1",
+        hands="ＦＯダスタナ+3",
         neck="バフーンカラー",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
@@ -28,30 +28,31 @@ function get_sets()
     sets.precast.ability.maneuvers_low_strain = {
         -- main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         -- body="ＫＧファルセト+1",
-        --  hands="ＦＯダスタナ+1",
+        --  hands="ＦＯダスタナ+2",
         neck="バフーンカラー",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
 
     sets.precast.ability.maneuvers_status = {
         main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
-         hands="ＦＯダスタナ+1",
+        hands="ＦＯダスタナ+3",
+        right_ear="ブラーナピアス",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
 
     sets.precast.ability.maneuvers = sets.precast.ability.maneuvers_mid_strain
 
     sets.precast.ability['リペアー'] = {
-        feet="ＦＯバブーシュ+1",
+        feet="ＦＯバブーシュ+3",
         left_ear="ギニョルピアス",
         right_ear="プラティクピアス",
     }
     
-    sets.precast.ability['オーバードライヴ'] = {}
+    sets.precast.ability['オーバードライヴ'] = {body={ name="ＰＩトベ+3", augments={'Enhances "Overdrive" effect',}},}
 
     sets.midcast.ws_tp = {
         feet={ name="那伽脚絆", augments={'Pet: HP+100','Pet: Accuracy+25','Pet: Attack+25',}},
-        back={ name="デスパースマント", augments={'STR+1','DEX+3','Pet: TP Bonus+460','"Martial Arts"+10',}},
+        back={ name="デスパースマント", augments={'STR+1','DEX+3','Pet: TP Bonus+500',}},
     }
 
     sets.aftercast.idle_melee = {
@@ -93,8 +94,8 @@ function get_sets()
     sets.aftercast.idle = sets.aftercast.idle_melee
     sets.aftercast.idle_speed = set_combine(sets.aftercast.idle, {right_ring="シュネデックリング",})
 
-        -- マクロのブック, セット変更
-        send_command('input /macro book 3; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更
+    send_command('input /macro book 3; wait 0.5; input /macro set 1')
 
 end
 
@@ -276,7 +277,7 @@ function self_command(command)
             sets.precast.ability.maneuvers = sets.precast.ability.maneuvers_low_strain
             windower.add_to_chat(122,'---> マニューバ　オーバーロード確率 -15%')
         elseif args[2] == 'status' then
-            sets.precast.ability.maneuvers = sets.precast.ability.maneuvers_status
+            sets.precast.ability.maneuvers = set_combine(sets.precast.ability.maneuvers, sets.precast.ability.maneuvers_status)
             windower.add_to_chat(122,'---> マニューバ　ステータス + 10')
         else
             sets.precast.ability.maneuvers = sets.precast.ability.maneuvers_mid_strain
@@ -293,13 +294,23 @@ function self_command(command)
     end
 end
 
-frame_time = 0
-update_interval = 2
-windower.register_event('prerender', function()
+update_time = 0
+update_interval = 1
+-- windower.register_event('prerender', function()
+--     local curr = os.clock()
+--     if curr > frame_time + update_interval then
+--         frame_time = curr
+--         exec_maneuver()
+--     end
+-- end)
+
+windower.register_event('time change', function(new, old)
     local curr = os.clock()
-    if curr > frame_time + update_interval then
-        frame_time = curr
-        exec_maneuver()
+    if curr > update_time + update_interval then
+        update_time = curr
+        if not buffactive['アムネジア'] then
+            exec_maneuver()
+        end
     end
 end)
 

@@ -19,7 +19,7 @@ function get_sets()
     is_stromsureg = false
     is_vagary_task = false
 
-    sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ', 'ファランクス'}
+    sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'ファランクス'}
     sets.storm = T{'熱波の陣', '吹雪の陣', '烈風の陣', '砂塵の陣', '疾雷の陣', '豪雨の陣', '極光の陣', '妖霧の陣', '熱波の陣II', '吹雪の陣II', '烈風の陣II', '砂塵の陣II', '疾雷の陣II', '豪雨の陣II', '極光の陣II', '妖霧の陣II'}
     sets.helix = T{'火門の計', '氷門の計', '風門の計', '土門の計', '雷門の計', '水門の計', '光門の計', '闇門の計', '火門の計II', '氷門の計II', '風門の計II', '土門の計II', '雷門の計II', '水門の計II', '光門の計II', '闇門の計II'}
     sets.aspir = T{"アスピル", "アスピルII",}
@@ -134,7 +134,7 @@ function get_sets()
     
     sets.midcast.magic_mb_dark = set_combine(sets.midcast.magic_mb, {head="妖蟲の髪飾り+1",})
 
-    sets.midcast.helix_mb = {
+    sets.midcast.helix_mb_magic_dmg = {
         main="マクセンチアス",
         sub="カルミナス",
         ammo="ペムフレドタスラム",
@@ -153,39 +153,41 @@ function get_sets()
     }
 
     sets.midcast.helix_mb_int_400 = {
-        main="マクセンチアス",
-        sub="アムラピシールド",
+        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
         body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
+        legs="マルクィトルーズ+2",
         feet="ジャリピガッシュ+2",
         neck="アギュトストール+1",
         waist="山吹の帯",
-        left_ear="バーカロルピアス",
-        right_ear="電界の耳",
+        left_ear="電界の耳",
+        right_ear="マリグナスピアス",
         left_ring="フレキリング",
-        right_ring="女王の指輪+1",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+        right_ring="マルクィリング",
+        back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
     }
 
+    sets.midcast.helix_mb = sets.midcast.helix_mb_int_400
+
     sets.midcast.magic_acc = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="エンキストラップ",
+        main="マクセンチアス",
+        sub="アムラピシールド",
         ammo="ペムフレドタスラム",
         head="ＡＣボード+3",
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','INT+9','Mag. Acc.+10','"Mag.Atk.Bns."+15',}},
-        hands="ＡＣブレーサー+2",
-        legs="ＡＣパンツ+2",
+        body="ＡＣガウン+2",
+        hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
+        legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＡＣローファー+2",
-        neck="インカンタートルク",
-        waist="エスカンストーン",
+        neck="アギュトストール+1",
+        waist="ルーミネリサッシュ",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
-        left_ring="スティキニリング",
+        left_ring="スティキニリング+1",
         right_ring="スティキニリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.aspir = {
@@ -232,8 +234,8 @@ function get_sets()
             back={ name="ブックワームケープ", augments={'INT+2','MND+1','Helix eff. dur. +10','"Regen" potency+10',}},
         }
     )
-    sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {head="ＡＭコイフ+1",})
-    sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
+    sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
+    sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     
     sets.midcast.enhance_skill = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
@@ -359,8 +361,10 @@ function midcast(spell)
             set_equip = sets.midcast.rejen
         elseif spell.name == 'リフレシュ' then
             set_equip = sets.midcast.refresh
-        elseif sets.magic_enhance_skill:contains(spell.name) then
+        elseif spell.name == 'オーラ' then
             set_equip = sets.midcast.enhance_skill
+        elseif sets.magic_enhance_skill:contains(spell.name) then
+            set_equip = set_combine(sets.midcast.enhance_skill, {legs="シェダルサラウィル"})
         elseif sets.storm:contains(spell.name) then
             if is_stromsureg then
                 set_equip = set_combine(sets.midcast.enhance_duration, {feet={ name="ＰＤローファー+3", augments={'Enhances "Stormsurge" effect',}},})
@@ -445,14 +449,16 @@ end
 function self_command(command)
     if command =='stormsurge' then
         is_stromsureg = not is_stromsureg
-        windower.add_to_chat(122,'陣頭指揮: '..tostring(is_stromsureg))
+        windower.add_to_chat(122,'---> 陣頭指揮: '..tostring(is_stromsureg))
     elseif command == 'vagary' then
         is_vagary_task = not is_vagary_task
-        windower.add_to_chat(122,'ベガリーお題: '..tostring(is_vagary_task))
+        windower.add_to_chat(122,'---> ベガリーお題: '..tostring(is_vagary_task))
     elseif command == '1p' then
-        send_command('input /macro book 4; wait 0.5; input /macro set 10')
+        send_command('input /macro book 4')
+        windower.add_to_chat(122,'---> 震天動地 1ポチマクロ')
     elseif command == '2p' then
-        send_command('input /macro book 5; wait 0.5; input /macro set 10')
+        send_command('input /macro book 5')
+        windower.add_to_chat(122,'---> 震天動地 2ポチマクロ')
     elseif command == 'aspir' then
         local recasts = windower.ffxi.get_spell_recasts()
         local recast_time_a2 = recasts[248]/60
@@ -518,15 +524,24 @@ function sublimation_update()
 
 end
 
-frame_time = 0
+update_time = 0
 update_interval = 1
-windower.register_event('prerender', function()
+-- windower.register_event('prerender', function()
+--     local curr = os.clock()
+--     if curr > update_time + update_interval then
+--         update_time = curr
+--         sublimation_update()
+--     end
+-- end)
+
+windower.register_event('time change', function(new, old)
     local curr = os.clock()
-    if curr > frame_time + update_interval then
-        frame_time = curr
+    if curr > update_time + update_interval then
+        update_time = curr
         sublimation_update()
     end
 end)
+
 
 function file_unload(file_name)
     sublimation_box:destroy()

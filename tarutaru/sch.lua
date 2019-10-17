@@ -587,12 +587,20 @@ function sublimation_update()
 
 end
 
-local frame_time = 0
-local update_interval = 1
-windower.register_event('prerender', function()
+update_time = 0
+update_interval = 1
+-- windower.register_event('prerender', function()
+--     local curr = os.clock()
+--     if curr > update_time + update_interval then
+--         update_time = curr
+--         sublimation_update()
+--     end
+-- end)
+
+windower.register_event('time change', function(new, old)
     local curr = os.clock()
-    if curr > frame_time + update_interval then
-        frame_time = curr
+    if curr > update_time + update_interval then
+        update_time = curr
         sublimation_update()
     end
 end)
