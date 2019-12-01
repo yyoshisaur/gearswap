@@ -89,7 +89,7 @@ function get_sets()
         back={ name="ブリガンチアマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.precast.ability['ハイジャンプ'] =  set_combine(sets.precast.ability['ジャンプ'], {legs="ＶＳブレー+3",})
+    sets.precast.ability['ハイジャンプ'] =  set_combine(sets.precast.ability['ジャンプ'], { legs={ name="ＰＴブレー+3", augments={'Enhances "Strafe" effect',}},})
     sets.precast.ability['スピリットジャンプ'] = set_combine(sets.precast.ability['ジャンプ'], {feet="ＰＥシンバルド+1",})
     sets.precast.ability['ソウルジャンプ'] = sets.precast.ability['ジャンプ']
     sets.precast.ability['スーパージャンプ'] = sets.precast.ability['ジャンプ']
@@ -98,17 +98,19 @@ function get_sets()
 
     sets.precast.ability['エンシェントサークル'] = {legs="ＶＳブレー+3",}
 
+    sets.precast.ability['スピリットリンク'] = {hands="ＰＥバンブレス+1", right_ear="プラティクピアス",}
+
     sets.aftercast.melee = {
         ammo="銀銭",
-        head="フラマツッケット+2",
-        body="デーゴンブレスト",
-        hands="スレビアガントレ+2",
-        legs="スレビアクウィス+2",
+        head="フロプトヘルム",
+        body="フロプトブレスト",
+        hands="フラママノポラ+2",
+        legs={ name="ＰＴブレー+3", augments={'Enhances "Strafe" effect',}},
         feet="フラマガンビエラ+2",
         neck="シュルマヌカラー",
         waist="イオスケハベルト+1",
         left_ear="シェリダピアス",
-        right_ear="テロスピアス",
+        right_ear="ブルタルピアス",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
         back={ name="ブリガンチアマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},

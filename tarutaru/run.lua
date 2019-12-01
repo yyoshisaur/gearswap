@@ -231,7 +231,7 @@ function get_sets()
     sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {waist="ギシドゥバサッシュ",})
 
     sets.aftercast.dt_FU = {
-        sub="メンシストラップ+1",
+        -- sub="メンシストラップ+1",
         ammo="ストンチタスラム+1",
         head={ name="トゥルムキャップ+1", hp=94,},
         body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
@@ -248,7 +248,7 @@ function get_sets()
     }
 
     sets.aftercast.dt_RN ={
-        sub="メンシストラップ+1",
+        -- sub="メンシストラップ+1",
         ammo="ストンチタスラム+1",
         head={ name="トゥルムキャップ+1", hp=94,},
         body={ name="ＲＮコート+3", hp=218,},
@@ -265,7 +265,7 @@ function get_sets()
     }
 
     sets.aftercast.dt_ashera = {
-        sub="メンシストラップ+1",
+        -- sub="メンシストラップ+1",
         ammo="ストンチタスラム+1",
         head={ name="トゥルムキャップ+1", hp=94,},
         body={ name="アシェーラハーネス", hp=182,},
@@ -282,7 +282,7 @@ function get_sets()
     }
 
     sets.aftercast.dt_knock_back = {
-        sub="メンシストラップ+1",
+        -- sub="メンシストラップ+1",
         ammo="ストンチタスラム+1",
         head={ name="トゥルムキャップ+1", hp=94,},
         body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
@@ -301,6 +301,7 @@ function get_sets()
     sets.aftercast.dt = sets.aftercast.dt_FU
 
     sets.aftercast.melee = {
+        -- sub="コーンスー",
         ammo="ヤメラング",
         head={ name="アヤモツッケット+2", hp=45,},
         body={ name="アシェーラハーネス", hp=182,},

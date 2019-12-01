@@ -14,17 +14,20 @@ function get_sets()
         body={ name="テルキネシャジュブ", augments={'"Fast Cast"+5',}},
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="マーリンクラッコー", augments={'"Fast Cast"+7','CHR+2',}},
-        right_ear="エテオレートピアス",
+        neck="ボルトサージトルク",
+        left_ear="エテオレートピアス",
+        right_ear="マリグナスピアス",
         right_ring="プロリクスリング",
+        left_ring="キシャールリング",
         back={ name="タラナスケープ", augments={'"Fast Cast"+10',}},
     }
 
     sets.precast.fc_elemental = {
         head={ name="マーリンフード", augments={'Mag. Acc.+25','"Fast Cast"+7','CHR+7',}},
         body="マルクィサイオ+2",
-        hands="マルクィカフス+1",
         legs="マルクィトルーズ+2",
         left_ear="バーカロルピアス",
+        right_ear="マリグナスピアス",
     }
 
     sets.precast.ws.mp = {
@@ -36,8 +39,8 @@ function get_sets()
         feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +8',}},
         neck="エディネクラス",
         waist="風鳥の帯",
-        left_ear="アンドアーピアス",
-        right_ear="エテオレートピアス",
+        left_ear="エテオレートピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="プロリクスリング",
         right_ring="サンゴマリング",
         back="ベーンケープ",
@@ -55,7 +58,7 @@ function get_sets()
 
     sets.midcast.magic_mb = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="カジャグリップ",
+        sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="エアハット+1",
         body="ＳＰコート+2",
@@ -65,7 +68,7 @@ function get_sets()
         neck="ソーサラストール+1",
         waist="山吹の帯",
         left_ear="バーカロルピアス",
-        right_ear="フリオミシピアス",
+        right_ear="マリグナスピアス",
         left_ring="女王の指輪+1",
         right_ring="夢神の指輪",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
@@ -73,7 +76,7 @@ function get_sets()
 
     sets.midcast.magic_acc = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="カジャグリップ",
+        sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="マルクィシャポー+2",
         body="ＳＰコート+2",
@@ -84,14 +87,14 @@ function get_sets()
         waist="山吹の帯",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
-        left_ring="マルクィリング",
+        left_ring="キシャールリング",
         right_ring="スティキニリング",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
     sets.midcast.aspir = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="カジャグリップ",
+        sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
         body="ＳＰコート+2",
@@ -109,7 +112,7 @@ function get_sets()
 
     sets.aftercast.idle = {
         main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="カジャグリップ",
+        sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="エアハット+1",
         body="マルクィサイオ+2",
@@ -118,8 +121,8 @@ function get_sets()
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
         neck="ロリケートトルク+1",
         waist="スリポーサッシュ",
-        left_ear="バーカロルピアス",
-        right_ear="エテオレートピアス",
+        left_ear="エテオレートピアス",
+        right_ear="マリグナスピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
@@ -210,15 +213,18 @@ end
 function self_command(command)
     if command == 'aspir' then
         local recasts = windower.ffxi.get_spell_recasts()
+        local recast_time_a3 = recasts[881]/60
         local recast_time_a2 = recasts[248]/60
         local recast_time_a = recasts[247]/60
 
-        if recast_time_a2 == 0 then
+        if recast_time_a3 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルIII')..' <stnpc>')
+        elseif recast_time_a2 == 0 then
             send_command('input /magic '..windower.to_shift_jis('アスピルII')..' <stnpc>')
         elseif recast_time_a == 0 then
             send_command('input /magic '..windower.to_shift_jis('アスピル')..' <stnpc>')
         else
-            windower.add_to_chat(30, 'アスピル リキャスト---> II: %.1fs, I: %.1fs':format(recast_time_a2, recast_time_a))
+            windower.add_to_chat(30, 'アスピル リキャスト---> III: %.1fs, II: %.1fs, I: %.1fs':format(recast_time_a3, recast_time_a2, recast_time_a))
         end
     end
 end

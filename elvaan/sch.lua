@@ -19,7 +19,7 @@ function get_sets()
     is_stromsureg = false
     is_vagary_task = false
 
-    sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'ファランクス'}
+    sets.magic_enhance_skill = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ',}
     sets.storm = T{'熱波の陣', '吹雪の陣', '烈風の陣', '砂塵の陣', '疾雷の陣', '豪雨の陣', '極光の陣', '妖霧の陣', '熱波の陣II', '吹雪の陣II', '烈風の陣II', '砂塵の陣II', '疾雷の陣II', '豪雨の陣II', '極光の陣II', '妖霧の陣II'}
     sets.helix = T{'火門の計', '氷門の計', '風門の計', '土門の計', '雷門の計', '水門の計', '光門の計', '闇門の計', '火門の計II', '氷門の計II', '風門の計II', '土門の計II', '雷門の計II', '水門の計II', '光門の計II', '闇門の計II'}
     sets.aspir = T{"アスピル", "アスピルII",}
@@ -236,7 +236,8 @@ function get_sets()
     )
     sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
-    
+    sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド", head="ＡＭコイフ+1", legs="シェダルサラウィル"})
+
     sets.midcast.enhance_skill = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
         sub="アムラピシールド",
@@ -283,7 +284,7 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         neck="ロリケートトルク+1",
-        waist="スリポーサッシュ",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="サバントピアス",
         left_ring="守りの指輪",
@@ -357,11 +358,13 @@ function midcast(spell)
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
             set_equip = sets.midcast.skin
+        elseif spell.name == 'アクアベール' then
+            set_equip = sets.midcast.aquaveil
         elseif string.find(spell.name, 'リジェネ') then
             set_equip = sets.midcast.rejen
         elseif spell.name == 'リフレシュ' then
             set_equip = sets.midcast.refresh
-        elseif spell.name == 'オーラ' then
+        elseif spell.name == 'オーラ' or spell.name == 'ファランクス' then
             set_equip = sets.midcast.enhance_skill
         elseif sets.magic_enhance_skill:contains(spell.name) then
             set_equip = set_combine(sets.midcast.enhance_skill, {legs="シェダルサラウィル"})

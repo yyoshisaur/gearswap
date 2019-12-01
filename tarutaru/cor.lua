@@ -260,12 +260,12 @@ function get_sets()
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
         feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
-        waist="フルームベルト+1",
-        left_ear="エテオレートピアス",
-        right_ear="玄冥耳飾り",
+        waist="霊亀腰帯",
+        left_ear="エアバニピアス",
+        right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back="月光の羽衣",
+        back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     -- マクロのブック, セット変更

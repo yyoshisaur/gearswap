@@ -112,7 +112,7 @@ function get_sets()
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
         feet="ジャリピガッシュ+2",
         neck="サンクトネックレス",
-        waist="フォシャベルト",
+        waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="アルコンリング",
@@ -144,7 +144,7 @@ function get_sets()
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
         feet="ジャリピガッシュ+2",
         neck="サンクトネックレス",
-        waist="フォシャベルト",
+        waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="アルコンリング",
@@ -236,7 +236,7 @@ function get_sets()
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="サンクトネックレス",
-        waist="山吹の帯",
+        waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
@@ -252,7 +252,7 @@ function get_sets()
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="サンクトネックレス",
-        waist="山吹の帯",
+        waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear="フリオミシピアス",
         left_ring="アルコンリング",
@@ -365,12 +365,12 @@ function get_sets()
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
         feet="マリグナスブーツ",
         neck="デュアルカラー+1",
-        waist="フルームベルト+1",
-        left_ear="王将の耳飾り",
+        waist="霊亀腰帯",
+        left_ear="エアバニピアス",
         right_ear="エテオレートピアス",
         left_ring="ＶＣリング+1",
         right_ring="守りの指輪",
-        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     -- マクロのブック, セット変更
@@ -510,6 +510,10 @@ function self_command(command)
     elseif command == 'phalanx' then
         equip(sets.midcast.phalanx)
         windower.add_to_chat(122,'---> 被ファランクス用装備')
+    elseif command == 'tenzen' then
+        send_command('aset set tenzen; input /macro book 11; wait 0.5; input /macro set 3; jc sub blm; gs c multi')
+    elseif command == 'delve' then
+        send_command('aset set tank; input /macro book 11; wait 0.5; input /macro set 6; jc sub pld; gs c dt')
     end
 end
 

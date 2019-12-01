@@ -235,7 +235,7 @@ function precast(spell)
             if ws_weapon_type == gearswap.res.skills:with('ja', '片手剣').id then -- 片手剣WS
                 set_equip = sets.precast.ws.str_sword
             else
-               set_equip = sets.precast.ws.str_wsd
+                set_equip = sets.precast.ws.str_wsd
             end
         end
     elseif spell.type == 'JobAbility' then
@@ -329,6 +329,6 @@ function buff_change(name, gain, buff_details)
                     equip(sets.aftercast.melee.chango)
                 end
             end
-         end
+        end
     end
 end

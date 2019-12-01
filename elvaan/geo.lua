@@ -62,7 +62,7 @@ function get_sets()
         neck="バグアチャーム",
         -- neck="インカンタートルク",
         left_ring="スティキニリング",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="龍脈の外套", augments={'Geomancy Skill +8','Indi. eff. dur. +20','Pet: Damage taken -2%',}},
     }
     
@@ -90,13 +90,14 @@ function get_sets()
     sets.midcast.enhance_skill = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
         sub="アムラピシールド",
+        head="ビファウルクラウン",
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="オーグメントピアス",
         right_ear="アンドアーピアス",
         left_ring="スティキニリング",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back="フィフォレケープ+1",
     }
 
@@ -108,12 +109,12 @@ function get_sets()
         hands="ＧＯミテーヌ+2",
         legs="ＧＯパンツ+2",
         feet="ＧＯサンダル+2",
-        neck="インカンタートルク",
-        waist="エスカンストーン",
-        left_ear="バーカロルピアス",
+        neck="エーラペンダント",
+        waist="ルーミネリサッシュ",
+        left_ear="マリグナスピアス",
         right_ear="ディグニタリピアス",
-        left_ring="スティキニリング",
-        right_ring="スティキニリング",
+        left_ring="キシャールリング",
+        right_ring="スティキニリング+1",
         back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
     }
     
@@ -127,8 +128,8 @@ function get_sets()
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="チャネラーストーン",
-        left_ear="バーカロルピアス",
-        right_ear="ディグニタリピアス",
+        left_ear="マリグナスピアス",
+        right_ear="バーカロルピアス",
         left_ring="フレキリング",
         right_ring="女王の指輪+1",
         back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
@@ -144,7 +145,7 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         neck="ロリケートトルク+1",
-        waist="スリポーサッシュ",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
@@ -224,9 +225,9 @@ function midcast(spell)
         set_equip = sets.midcast.cure
     elseif spell.skill == '強化魔法' then
         if spell.name == 'ストンスキン' then
-            set_equip = set_combine(sets.midcast.enhance_duration, {neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
+            set_equip = set_combine(sets.midcast.enhance_duration, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
         elseif magic_ba:contains(spell.name) then
-            set_equip = set_combine(sets.midcast.enhance_duration, sets.midcast.enhance_skill)
+            set_equip = set_combine(sets.midcast.enhance_duration, sets.midcast.enhance_skill, {legs="シェダルサラウィル",})
         else
             set_equip = sets.midcast.enhance_duration
         end
@@ -294,6 +295,21 @@ function self_command(command)
             equip(sets.cp)
             disable('back')
             windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
+        end
+    elseif command == 'aspir' then
+        local recasts = windower.ffxi.get_spell_recasts()
+        local recast_time_a3 = recasts[881]/60
+        local recast_time_a2 = recasts[248]/60
+        local recast_time_a = recasts[247]/60
+
+        if recast_time_a3 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルIII')..' <stnpc>')
+        elseif recast_time_a2 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルII')..' <stnpc>')
+        elseif recast_time_a == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピル')..' <stnpc>')
+        else
+            windower.add_to_chat(30, 'アスピル リキャスト---> III: %.1fs, II: %.1fs, I: %.1fs':format(recast_time_a3, recast_time_a2, recast_time_a))
         end
     end
 end

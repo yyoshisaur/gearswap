@@ -113,10 +113,10 @@ function get_sets()
     
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="メガナダバイザー+2",
-        body="アシェーラハーネス",
-        hands="メガナダグローブ+2",
-        legs="ムンムケックス+2",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
         feet="ジュートブーツ+1",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
