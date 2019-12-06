@@ -203,14 +203,14 @@ function get_sets()
         waist="風鳥の帯",
         left_ear="バーカロルピアス",
         right_ear="ディグニタリピアス",
-        left_ring="スティキニリング",
+        left_ring="スティキニリング+1",
         right_ring="エバネセンスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.enhance_duration = {
-        main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
-        sub="アムラピシールド",
+        main="ムサ",
+        sub="メンシストラップ+1",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
@@ -228,7 +228,6 @@ function get_sets()
     
     sets.midcast.rejen = set_combine(sets.midcast.enhance_duration,
         {
-            main="ボレラブンガ",
             head="ＡＢボネット+1",
             body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
             back={ name="ブックワームケープ", augments={'INT+2','MND+1','Helix eff. dur. +10','"Regen" potency+10',}},
@@ -239,8 +238,8 @@ function get_sets()
     sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド", head="ＡＭコイフ+1", legs="シェダルサラウィル"})
 
     sets.midcast.enhance_skill = {
-        main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
-        sub="アムラピシールド",
+        main="ムサ",
+        sub="メンシストラップ+1",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
@@ -251,7 +250,7 @@ function get_sets()
         waist="オリンポスサッシュ",
         left_ear="エテオレートピアス",
         right_ear="オーグメントピアス",
-        left_ring="スティキニリング",
+        left_ring="スティキニリング+1",
         right_ring="スティキニリング",
         back="フィフォレケープ+1",
     }

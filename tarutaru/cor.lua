@@ -362,6 +362,10 @@ function midcast(spell)
         set_equip = sets.midcast.ra
     elseif string.find(spell.name, 'ケアル') then
         set_equip = sets.midcast.cure
+    elseif spell.type == 'JobAbility' then
+        if spell.name == 'ダブルアップ' then
+            send_command('wait 0.3; gs c double-up-aftercast')
+        end
     end
 
     if is_th then

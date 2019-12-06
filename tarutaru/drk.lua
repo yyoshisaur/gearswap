@@ -342,7 +342,7 @@ function get_sets()
     
     sets.raetic_bangles = {
         body='フラマコラジン+2',
-        hands="レテクバングル",
+        hands="レテクバングル+1",
     }
     
     -- マクロのブック, セット変更

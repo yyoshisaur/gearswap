@@ -327,7 +327,7 @@ function get_sets()
         ammo="ストンチタスラム+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        hands="レテクバングル",
+        hands="レテクバングル+1",
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
         neck="ロリケートトルク+1",
