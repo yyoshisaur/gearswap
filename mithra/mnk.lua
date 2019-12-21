@@ -7,10 +7,14 @@ function get_sets()
     sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
+    sets.weapon = {}
+
+    sets.weapon["カランビット"] = {main="カランビット",}
+    sets.weapon["サギッタ"] = {main="サギッタ",}
 
     sets.precast.ws.critical = {
         ammo="ノブキエリ",
-        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        head={ name="羅王頭成兜改", augments={'STR+12','DEX+12','Attack+20',}},
         body="ＡＮシクラス+3",
         hands={ name="龍王手甲改", augments={'STR+12','DEX+12','Accuracy+20',}},
         legs="乾闥婆筒袴改",
@@ -19,7 +23,7 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring="ヘタイロイリング",
+        left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%',}},
     }
@@ -73,7 +77,7 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring="ヘタイロイリング",
+        left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
@@ -89,7 +93,7 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear="マーケピアス+1",
-        left_ring="ヘタイロイリング",
+        left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
@@ -99,7 +103,7 @@ function get_sets()
     sets.precast.ws["短勁"] = sets.precast.ws.multi
     sets.precast.ws["バックハンドブロー"] = sets.precast.ws.critical
     sets.precast.ws["乱撃"] = sets.precast.ws.multi
-    sets.precast.ws["スピンアタック"] = sets.precast.ws.multi
+    sets.precast.ws["スピンアタック"] = sets.precast.ws.wsd_vit
     sets.precast.ws["空鳴拳"] = sets.precast.ws.wsd
     sets.precast.ws["双竜脚"] = sets.precast.ws.wsd
     sets.precast.ws["夢想阿修羅拳"] = sets.precast.ws.multi
@@ -113,9 +117,39 @@ function get_sets()
     sets.precast.ws_imp["アスケーテンツォルン"] = sets.precast.ws.critical_imp
     sets.precast.ws_imp["ビクトリースマイト"] = sets.precast.ws.critical_imp
 
-    sets.precast.ability['気孔弾'] = {head={ name="ＨＥクラウン+1", augments={'Enhances "Penance" effect',}},}
-    sets.precast.ability['チャクラ'] = {body="ＡＮシクラス+3",}
-    
+    sets.precast.ability['百烈拳'] = {name={"ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},}
+    sets.precast.ability['気孔弾'] = {head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},}
+    sets.precast.ability['チャクラ'] = {
+        ammo="ブリガンチアペブル",
+        head="玄冥兜",
+        body="ＡＮシクラス+3",
+        hands={ name="ＨＥグローブ+3", augments={'Enhances "Invigorate" effect',}},
+        legs="真膝丸膝甲",
+        feet="ＡＮゲートル+3",
+        -- neck="ロリケートトルク+1",
+        waist="月虹帯+1",
+        -- left_ear="シェリダピアス",
+        -- right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="ニックマドゥリング",
+        back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+    sets.precast.ability['ためる'] = {
+        ammo="ストンチタスラム+1",
+        head="ジャナッドヘルム",
+        body=empty,
+        hands=empty,
+        legs=empty,
+        feet="マハントサンダル",
+        neck="ジャステシアトルク",
+        waist="アスクサッシュ",
+        left_ear="シェリダピアス",
+        right_ear="玄冥耳飾り",
+        left_ring="守りの指輪",
+        right_ring="スリョールリング",
+        back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.melee_multi = {
         ammo="銀銭",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -127,6 +161,22 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="ニックマドゥリング",
+        back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.aftercast.melee_multi_ma = {
+        ammo="銀銭",
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="乾闥婆作務衣改",
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},
+        feet="ＡＮゲートル+3",
+        neck="モンクの喉輪+2",
+        waist="月虹帯+1",
+        left_ear="シェリダピアス",
+        right_ear="マーケピアス+1",
         left_ring="守りの指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
@@ -148,7 +198,23 @@ function get_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.aftercast.melee = sets.aftercast.melee_multi
+    sets.aftercast.melee_ma_imp = {
+        ammo="銀銭",
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="ＢＫシクラス+1",
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},
+        feet="ＡＮゲートル+3",
+        neck="モンクの喉輪+2",
+        waist="月虹帯+1",
+        left_ear="シェリダピアス",
+        right_ear="マーケピアス+1",
+        left_ring="守りの指輪",
+        right_ring="ニックマドゥリング",
+        back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.aftercast.melee = get_melee_equip()
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
@@ -160,7 +226,7 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="月虹帯+1",
         left_ear="シェリダピアス",
-        right_ear="ブルタルピアス",
+        right_ear="玄冥耳飾り",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
@@ -235,7 +301,7 @@ function buff_change(name, gain, buff_details)
         if gain then
             sets.aftercast.melee = sets.aftercast.melee_imp
         else
-            sets.aftercast.melee = sets.aftercast.melee_multi
+            sets.aftercast.melee = get_melee_equip()
         end
 
         if player.status == 'Engaged' then
@@ -243,5 +309,21 @@ function buff_change(name, gain, buff_details)
         else
             equip(sets.aftercast.idle)
         end
+    elseif name == 'ためる' then
+        if gain then
+            equip({waist="アスクサッシュ",})
+        else
+            equip({waist="月虹帯+1",})
+        end
     end
+end
+
+function get_melee_equip()
+    local melee_equip = nil
+    if player.equipment.main == sets.weapon["カランビット"].main then
+        melee_equip = sets.aftercast.melee_multi
+    elseif player.equipment.main == sets.weapon["サギッタ"].main then
+        melee_equip = sets.aftercast.melee_multi_ma
+    end
+    return melee_equip
 end
