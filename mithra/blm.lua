@@ -1,3 +1,4 @@
+include('weather_obi')
 function get_sets()
     set_language('japanese')
     
@@ -8,6 +9,16 @@ function get_sets()
 
     elementally_enfeeble_magic = T{"ショック", "ラスプ", "チョーク", "フロスト", "バーン", "ドラウン",}
     aspir = T{"アスピル", "アスピルII", "アスピルIII"}
+
+    init_elemental_obi()
+    set_elemental_obi("火輪の帯")
+    set_elemental_obi("氷輪の帯")
+    set_elemental_obi("風輪の帯")
+    set_elemental_obi("土輪の帯")
+    set_elemental_obi("雷輪の帯")
+    set_elemental_obi("水輪の帯")
+    set_elemental_obi("光輪の帯")
+    set_elemental_obi("闇輪の帯")
 
     sets.precast.fc = {
         head={ name="マーリンフード", augments={'Mag. Acc.+25','"Fast Cast"+7','CHR+7',}},
@@ -33,7 +44,7 @@ function get_sets()
     sets.precast.ws.mp = {
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
-        body="ＳＰコート+2",
+        body="ＳＰコート+3",
         hands={ name="テルキネグローブ", augments={'"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +8',}},
@@ -57,11 +68,11 @@ function get_sets()
     }
 
     sets.midcast.magic_mb = {
-        main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="エアハット+1",
-        body="ＳＰコート+2",
+        body="ＳＰコート+3",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
         legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
@@ -69,17 +80,17 @@ function get_sets()
         waist="山吹の帯",
         left_ear="バーカロルピアス",
         right_ear="マリグナスピアス",
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="夢神の指輪",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
     sets.midcast.magic_acc = {
-        main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="マルクィシャポー+2",
-        body="ＳＰコート+2",
+        body="ＳＰコート+3",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
         legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
@@ -93,11 +104,11 @@ function get_sets()
     }
 
     sets.midcast.aspir = {
-        main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
-        body="ＳＰコート+2",
+        body="ＳＰコート+3",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
         legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
@@ -111,25 +122,28 @@ function get_sets()
     }
 
     sets.aftercast.idle = {
-        main={ name="ラシ", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
-        ammo="ペムフレドタスラム",
+        ammo="ストンチタスラム+1",
         head="エアハット+1",
         body="マルクィサイオ+2",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
         legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
         feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
         neck="ロリケートトルク+1",
-        waist="スリポーサッシュ",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
-        right_ear="マリグナスピアス",
+        right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
-        -- マクロのブック, セット変更
-        send_command('input /macro book 2; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更
+    send_command('input /macro book 2; wait 0.5; input /macro set 1')
+
+    -- grimoire
+    send_command('lua load grimoire')
 end
 
 function precast(spell)
@@ -142,7 +156,7 @@ function precast(spell)
             set_equip = sets.precast.fc
         end
     elseif spell.type == 'WhiteMagic' then
-         set_equip = sets.precast.fc
+        set_equip = sets.precast.fc
     elseif spell.type == 'WeaponSkill' then
         if sets.precast.ws[spell.name] then
             set_equip = sets.precast.ws[spell.name]
@@ -163,7 +177,7 @@ function midcast(spell)
         if elementally_enfeeble_magic:contains(spell.name) then
             set_equip = sets.midcast.magic_acc
         else
-            set_equip = sets.midcast.magic_mb
+            set_equip = set_combine(sets.midcast.magic_mb, get_hachirin(spell.element))
         end
     elseif spell.skill == '暗黒魔法' then
         if aspir:contains(spell.name) then
@@ -227,4 +241,8 @@ function self_command(command)
             windower.add_to_chat(30, 'アスピル リキャスト---> III: %.1fs, II: %.1fs, I: %.1fs':format(recast_time_a3, recast_time_a2, recast_time_a))
         end
     end
+end
+
+function file_unload(file_name)
+    send_command('lua unload grimoire')
 end

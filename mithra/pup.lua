@@ -68,7 +68,7 @@ function get_sets()
         head="ヘヨカキャップ+1",
         body="ＦＯトベ+3",
         hands={ name="ＰＩダスタナ+3", augments={'Enhances "Fine-Tuning" effect',}},
-        legs="ヘヨカサブリガ+1",
+        legs="真膝丸膝甲",
         feet="ヘヨカレギンス+1",
         neck="フォシャゴルゲット",
         waist="月虹帯+1",
@@ -76,7 +76,7 @@ function get_sets()
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
         right_ring="ニックマドゥリング",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.precast.ws.critical = {
@@ -89,9 +89,9 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="マーケピアス+1",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="ヘタイロイリング",
+        left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.precast.ws.multi = {
@@ -104,9 +104,9 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="マーケピアス+1",
         right_ear="ブルタルピアス",
-        left_ring="隠者の指輪+1",
+        left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.precast.ws["コンボ"] = sets.precast.ws.multi
@@ -114,7 +114,7 @@ function get_sets()
     sets.precast.ws["短勁"] = sets.precast.ws.multi
     sets.precast.ws["バックハンドブロー"] = sets.precast.ws.critical
     sets.precast.ws["乱撃"] = sets.precast.ws.multi
-    sets.precast.ws["スピンアタック"] = sets.precast.ws.multi
+    sets.precast.ws["スピンアタック"] = sets.precast.ws.wsd
     sets.precast.ws["空鳴拳"] = sets.precast.ws.wsd
     sets.precast.ws["双竜脚"] = sets.precast.ws.wsd
     sets.precast.ws["夢想阿修羅拳"] = sets.precast.ws.multi
@@ -180,7 +180,7 @@ function get_sets()
         right_ear="ブルタルピアス",
         left_ring="守りの指輪",
         right_ring="ニックマドゥリング",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.aftercast.idle_magic = {
@@ -203,7 +203,7 @@ function get_sets()
     sets.aftercast.idle_tank_melee = {
         main="カランビット",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
         body="ＦＯトベ+3",
         hands="ヘヨカミトン+1",
         legs="ヘヨカサブリガ+1",
@@ -220,7 +220,7 @@ function get_sets()
     sets.aftercast.idle_tank_dt_and_hp = {
         main="ニャフロンアダーガ",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
         body="ＦＯトベ+3",
         hands="ヘヨカミトン+1",
         legs="ヘヨカサブリガ+1",
@@ -237,7 +237,7 @@ function get_sets()
     sets.aftercast.idle_tank_dt = {
         main="ニャフロンアダーガ",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
         body={ name="羅王闘着改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         hands={ name="羅王篠篭手改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         legs={ name="羅王板佩楯改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
@@ -254,7 +254,7 @@ function get_sets()
     sets.aftercast.idle_tank_hp = {
         main="ニャフロンアダーガ",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
         body="ＦＯトベ+3",
         hands={ name="羅王篠篭手改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         legs={ name="羅王板佩楯改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},

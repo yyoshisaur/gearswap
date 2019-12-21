@@ -25,7 +25,7 @@ function get_sets()
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
-        right_ring="隠者の指輪+1",
+        right_ring="イラブラットリング",
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -41,7 +41,7 @@ function get_sets()
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
-        right_ring="隠者の指輪+1",
+        right_ring="イラブラットリング",
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -56,8 +56,8 @@ function get_sets()
         waist="フォシャベルト",
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="アペートリング",
-        right_ring="ヘタイロイリング",
+        left_ring="イラブラットリング",
+        right_ring="ゲリリング",
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
@@ -65,7 +65,7 @@ function get_sets()
         ammo="イェットシーラ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="ＰＤベスト+3", augments={'Enhances "Ambush" effect',}},
-        hands="ムンムリスト+1",
+        hands="ムンムリスト+2",
         legs="ＰＬキュロット+3",
         feet="ムンムゲマッシュ+2",
         neck="フォシャゴルゲット",
@@ -73,7 +73,7 @@ function get_sets()
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ムンムリング",
-        right_ring="隠者の指輪+1",
+        right_ring="イラブラットリング",
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -83,7 +83,7 @@ function get_sets()
     sets.precast.ws['マンダリクスタッブ'] = sets.precast.ws.wsd
     
     sets.aftercast.melee_atk = {
-        ammo="銀銭",
+        ammo="ヤメラング",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},

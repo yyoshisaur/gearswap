@@ -110,7 +110,7 @@ function get_sets()
         left_ear="シェリダピアス",
         right_ear="マーケピアス+1",
         left_ring="隠者の指輪+1",
-        right_ring="ヘタイロイリング",
+        right_ring="イラブラットリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
@@ -409,9 +409,9 @@ function get_sets()
     }
 
     sets.aftercast.melee_en_dmg = {
-        ammo="ピアプア",
+        range="ウルル",
         head="ウムシクハット",
-        body="マリグナスタバード",
+        body="アヤモコラッツァ+2",
         hands="アヤモマノポラ+2",
         legs="ＶＩタイツ+3",
         feet={ name="テーオンブーツ", augments={'Accuracy+25','"Dual Wield"+5','DEX+10',}},
@@ -619,12 +619,12 @@ function midcast(spell)
         elseif string.find(spell.name, 'リフレシュ') then
             if spell.target.type == 'SELF' then
                 set_equip = sets.midcast.refresh_self
-           else
-               set_equip = sets.midcast.refresh_others
-           end
+            else
+                set_equip = sets.midcast.refresh_others
+            end
         else
             if spell.target.type == 'SELF' then
-                 set_equip = sets.midcast.enhance_duration_self
+                set_equip = sets.midcast.enhance_duration_self
             else
                 set_equip = sets.midcast.enhance_duration_others
             end
