@@ -62,11 +62,11 @@ function get_sets()
     sets.precast.ws['ペンタスラスト'] = sets.precast.ws.multi
     sets.precast.ws['ボーパルスラスト'] = sets.precast.ws.wsd
     sets.precast.ws['スキュアー'] = sets.precast.ws.multi
-    sets.precast.ws['大車輪'] = set_combine(sets.precast.ws.wsd, {right_ear="イシュヴァラピアス",})
+    sets.precast.ws['大車輪'] = set_combine(sets.precast.ws.wsd, {right_ear="スラッドピアス",})
     sets.precast.ws['インパルスドライヴ'] = sets.precast.ws.wsd
     sets.precast.ws['ソニックスラスト'] = sets.precast.ws.wsd
     sets.precast.ws['雲蒸竜変'] = sets.precast.ws.multi
-    sets.precast.ws['カムラン'] = set_combine(sets.precast.ws.wsd, {right_ear="イシュヴァラピアス",})
+    sets.precast.ws['カムラン'] = set_combine(sets.precast.ws.wsd, {right_ear="スラッドピアス",})
     sets.precast.ws['スターダイバー'] = sets.precast.ws.multi
 
     sets.precast.ws['フルスイング'] = sets.precast.ws.wsd

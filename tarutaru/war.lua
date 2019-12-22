@@ -71,7 +71,7 @@ function get_sets()
         feet="スレビアレギンス+2",
         neck="戦士の数珠+2",
         waist="エングレイブベルト",
-        left_ear="イシュヴァラピアス",
+        left_ear="スラッドピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ルフェセントリング",
         right_ring="王将の指輪",
