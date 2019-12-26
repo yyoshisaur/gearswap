@@ -10,6 +10,8 @@ local function get_fc_rate(equip_set)
     return equip_fc
 end
 
+local rune_histroy = 'テネブレイ'
+
 function get_sets()
     set_language('japanese')
     
@@ -25,7 +27,8 @@ function get_sets()
 
     delay_time = 0.2
 
-    magic_ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
+    magic_ba = S{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
+    ability_rune = S{'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ', 'ルックス', 'テネブレイ'}
 
     sets.enmity = {
         ammo="サピエンスオーブ",
@@ -502,6 +505,10 @@ end
 function aftercast(spell)
     local set_equip = nil
     
+    if ability_rune:contains(spell.name) then
+        rune_histroy = spell.name
+    end
+
     if player.status == 'Engaged' then
         if is_melee then
             set_equip = sets.aftercast.melee
@@ -601,29 +608,37 @@ function self_command(command)
             [7] = {name = 'アイススパイク', wait = 4.5, pf = '/ma',},
             [8] = {name = 'ファランクス', wait = 4.5, pf = '/ma',},
         }
-        local rune = nil
-        if buffactive['イグニス'] then
-            rune = 'イグニス'
-        elseif buffactive['ゲールス'] then
-            rune = 'ゲールス'
-        elseif buffactive['フラブラ'] then
-            rune = 'フラブラ'
-        elseif buffactive['テッルス'] then
-            rune = 'テッルス'
-        elseif buffactive['スルポール'] then
-            rune = 'スルポール'
-        elseif buffactive['ウンダ'] then
-            rune = 'ウンダ'
-        elseif buffactive['ルックス'] then
-            rune = 'ルックス'
-        else
-            rune = 'テネブレイ'
-        end
         
+        local rune_1, rune_2, rune_3 = nil
+        local buffs = player.buff_details
+
+        for i = #buffs, 1, -1 do
+            if ability_rune:contains(buffs[i].name) then
+                if not rune_1 then
+                    rune_1 = buffs[i].name
+                elseif not rune_2 then
+                    rune_2 = buffs[i].name
+                else
+                    rune_3 = buffs[i].name
+                end
+            end
+        end
+
+        if not rune_1 then
+            rune_1 = 'テネブレイ'
+            rune_2 = 'テネブレイ'
+            rune_3 = 'テネブレイ'
+        elseif not rune_2 then
+            rune_2 = rune_1
+            rune_3 = rune_1
+        else
+            rune_3 = rune_1
+        end
+
         if rune then
-            buff[1].name = rune
-            buff[3].name = rune
-            buff[5].name = rune
+            buff[1].name = rune_1
+            buff[3].name = rune_2
+            buff[5].name = rune_3
         end
 
         local buff_cmd = ''
@@ -631,6 +646,15 @@ function self_command(command)
             buff_cmd = buff_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' <me>; wait '..v.wait..';'
         end
         send_command(buff_cmd)
+    elseif command == 'rune' then
+        local buffs = player.buff_details
+        for i = #buffs, 1, -1 do
+            if ability_rune:contains(buffs[i].name) then
+                send_command('input /ja '..windower.to_shift_jis(buffs[i].name)..' <me>;')
+                return
+            end
+        end
+        send_command('input /ja '..windower.to_shift_jis(rune_histroy)..' <me>;')
     end
 end
 
