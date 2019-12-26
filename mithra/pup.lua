@@ -220,9 +220,9 @@ function get_sets()
     sets.aftercast.idle_tank_dt_and_hp = {
         main="ニャフロンアダーガ",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        head="ヘヨカキャップ+1",
         body="ＦＯトベ+3",
-        hands="ヘヨカミトン+1",
+        hands={ name="羅王篠篭手改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         legs="ヘヨカサブリガ+1",
         feet={ name="羅王篠脛当改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         neck="ロリケートトルク+1",

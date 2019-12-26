@@ -15,7 +15,7 @@ function get_sets()
 
     sets.precast.ws.wsd = {
         ammo="パルーグストーン",
-        head="ＰＬボンネット+2",
+        head="ＰＬボンネット+3",
         body={ name="ＰＤベスト+3", augments={'Enhances "Ambush" effect',}},
         hands="メガナダグローブ+2",
         legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
@@ -31,7 +31,7 @@ function get_sets()
 
     sets.precast.ws.sneak = {
         ammo="イェットシーラ+1",
-        head="ＰＬボンネット+2",
+        head="ＰＬボンネット+3",
         body={ name="ＰＤベスト+3", augments={'Enhances "Ambush" effect',}},
         hands="メガナダグローブ+2",
         legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
