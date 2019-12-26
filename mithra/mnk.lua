@@ -312,7 +312,9 @@ function buff_change(name, gain, buff_details)
     elseif name == 'ためる' then
         if gain then
             equip({waist="アスクサッシュ",})
+            disable('waist')
         else
+            enable('waist')
             equip({waist="月虹帯+1",})
         end
     end
