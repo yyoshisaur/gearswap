@@ -60,7 +60,7 @@ function get_sets()
     }
 
     sets.precast.fc = {
-        head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
+        head="ＡＴシャポー+3",
         body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         legs="アヤモコッシャレ+2",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -140,7 +140,7 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet="ＬＴウゾー+1",
         neck="デュエルトルク+2",
-        waist="ニヌルタサッシュ",
+        waist="エンブラサッシュ",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -152,7 +152,7 @@ function get_sets()
         legs="ＬＴフュゾー+1",
         feet="ＬＴウゾー+1",
         neck="デュエルトルク+2",
-        waist="ニヌルタサッシュ",
+        waist="エンブラサッシュ",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -167,7 +167,7 @@ function get_sets()
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
-        right_ear="オーグメントピアス",
+        right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
         right_ring="スティキニリング",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
@@ -181,6 +181,7 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet="ＬＴウゾー+1",
         neck="デュエルトルク+2",
+        waist="エンブラサッシュ",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -197,9 +198,9 @@ function get_sets()
         legs={ name="テーオンタイツ", augments={'Phalanx +3',}},
         feet={ name="テーオンブーツ", augments={'Phalanx +3',}},
         neck="インカンタートルク",
-        waist="オリンポスサッシュ",
+        waist="エンブラサッシュ",
         left_ear="アンドアーピアス",
-        right_ear="オーグメントピアス",
+        right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
         right_ring="スティキニリング",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
@@ -214,9 +215,9 @@ function get_sets()
         legs={ name="テーオンタイツ", augments={'Phalanx +3',}},
         feet={ name="テーオンブーツ", augments={'Phalanx +3',}},
         neck="デュエルトルク+2",
-        waist="オリンポスサッシュ",
+        waist="エンブラサッシュ",
         left_ear="アンドアーピアス",
-        right_ear="オーグメントピアス",
+        right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
         right_ring="スティキニリング",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
@@ -378,7 +379,7 @@ function get_sets()
 
     sets.aftercast.melee_atk = {
         ammo="銀銭",
-        head="アヤモツッケット+2",
+        head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="アヤモマノポラ+2",
         legs="マリグナスタイツ",

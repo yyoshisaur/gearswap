@@ -21,7 +21,7 @@ function get_sets()
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="マーリンクラッコー", augments={'CHR+4','Pet: INT+7','"Fast Cast"+7','Mag. Acc.+11 "Mag.Atk.Bns."+11',}},
         neck="ボルトサージトルク",
-        waist="チャネラーストーン",
+        waist="エンブラサッシュ",
         left_ear="エンチャンピアス+1",
         right_ear="ロケイシャスピアス",
         left_ring="ラハブリング",
@@ -36,7 +36,7 @@ function get_sets()
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="ボルトサージトルク",
-        waist="チャネラーストーン",
+        waist="エンブラサッシュ",
         left_ear="エンチャンピアス+1",
         right_ear="ロケイシャスピアス",
         left_ring="ラハブリング",
@@ -84,7 +84,8 @@ function get_sets()
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        waist="ニヌルタサッシュ",
+        waist="エンブラサッシュ",
+        
     }
     
     sets.midcast.enhance_skill = {

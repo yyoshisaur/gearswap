@@ -147,7 +147,7 @@ function get_sets()
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="エテオレートピアス",
-        right_ear="オーグメントピアス",
+        right_ear="ミミルピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -165,7 +165,7 @@ function get_sets()
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
-        right_ear="オーグメントピアス",
+        right_ear="ミミルピアス",
         left_ring="スティキニリング",
         right_ring="スティキニリング",
         back={ name="メンディングケープ", augments={'Healing magic skill +9','Enha.mag. skill +9',}},
@@ -282,13 +282,13 @@ function midcast(spell)
     local set_equip = nil
     
     if string.find(spell.name, 'ケアルガ') then
-        if buffactive['極光の陣'] then
+        if buffactive['極光の陣'] or buffactive['極光の陣II'] then
             set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+2", waist="光輪の帯"})
         else
             set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+2",})
         end
     elseif string.find(spell.name, 'ケアル') or spell.name == 'フルケア' then
-        if buffactive['極光の陣'] then
+        if buffactive['極光の陣'] or buffactive['極光の陣II'] then
             set_equip = set_combine(sets.midcast.cure, {waist="光輪の帯"})
         else
             set_equip = sets.midcast.cure

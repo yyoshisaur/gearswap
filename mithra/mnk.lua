@@ -22,7 +22,7 @@ function get_sets()
         neck="フォシャゴルゲット",
         waist="月虹帯+1",
         left_ear="シェリダピアス",
-        right_ear="ブルタルピアス",
+        right_ear="オドルピアス",
         left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%',}},
@@ -31,7 +31,7 @@ function get_sets()
     sets.precast.ws.critical_imp = set_combine(sets.precast.ws.critical, {
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="ＢＫシクラス+1",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        -- right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
     })
 
     sets.precast.ws.wsd = {
@@ -126,11 +126,11 @@ function get_sets()
         hands={ name="ＨＥグローブ+3", augments={'Enhances "Invigorate" effect',}},
         legs="真膝丸膝甲",
         feet="ＡＮゲートル+3",
-        -- neck="ロリケートトルク+1",
+        neck="ロリケートトルク+1",
         waist="月虹帯+1",
-        -- left_ear="シェリダピアス",
-        -- right_ear="ブルタルピアス",
-        left_ring="守りの指輪",
+        left_ear="オノワイヤリング+1",
+        right_ear="玄冥耳飾り",
+        left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -218,7 +218,7 @@ function get_sets()
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        head="マリグナスシャポー",
         body="マリグナスタバード",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs="ムンムケックス+2",
@@ -233,7 +233,7 @@ function get_sets()
     }
 
         -- マクロのブック, セット変更
-        send_command('input /macro book 5; wait 0.5; input /macro set 1')
+        send_command('input /macro book 5; wait 0.5; input /macro set 1; wait 1;gs c set_melee_equip;')
 end
 
 function precast(spell)
@@ -320,12 +320,21 @@ function buff_change(name, gain, buff_details)
     end
 end
 
+
+function self_command(command)
+    if command == 'set_melee_equip' then
+        sets.aftercast.melee = get_melee_equip()
+    end
+end
+
 function get_melee_equip()
     local melee_equip = nil
     if player.equipment.main == sets.weapon["カランビット"].main then
         melee_equip = sets.aftercast.melee_multi
     elseif player.equipment.main == sets.weapon["サギッタ"].main then
         melee_equip = sets.aftercast.melee_multi_ma
+    else
+        melee_equip = sets.aftercast.melee_multi
     end
     return melee_equip
 end
