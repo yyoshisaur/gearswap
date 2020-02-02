@@ -144,8 +144,8 @@ function get_sets()
     
     sets.aftercast.idle = sets.aftercast.idle_dt
 
-    -- マクロのブック, セット変更
-    send_command('input /macro book 4; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 4; wait 0.5; input /macro set 1; wait 0.5; input /si smn;')
 end
 
 function precast(spell)

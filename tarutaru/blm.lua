@@ -382,8 +382,8 @@ function get_sets()
         back={ name="タラナスケープ", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}, mp=60},
     }
 
-        -- マクロのブック, セット変更
-        send_command('input /macro book 3; wait 0.5; input /macro set 10')
+        -- マクロのブック, セット変更, 装備入れ替え
+        send_command('input /macro book 3; wait 0.5; input /macro set 10; wait 0.5; input /si blm;')
 end
 
 function pretarget(spell)

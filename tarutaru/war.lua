@@ -1,3 +1,5 @@
+include('war_itemizer')
+
 function get_sets()
     set_language('japanese')
     
@@ -121,7 +123,7 @@ function get_sets()
     sets.precast.ability['挑発'] = {
         ammo="サピエンスオーブ",
         head="ハリタスヘルム",
-        body="プロプトブレスト",
+        body="フロプトブレスト",
         hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},
         legs="ＰＭクウィス+3",
         feet="ヴォルトソルレ",
@@ -218,8 +220,8 @@ function get_sets()
         back={ name="シコルマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
     
-    -- マクロのブック, セット変更
-    send_command('input /macro book 18; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 18; wait 0.5; input /macro set 1;wait 0.5;input /si war')
 end
 
 function precast(spell)
@@ -312,6 +314,10 @@ function self_command(command)
         else
             windower.send_command('gs equip sets.aftercast.melee.chango')
         end
+    elseif command == 'getabys' then
+        itemizer_get_abyssea()
+    elseif command == 'putabys' then
+        itemizer_put_abyssea()
     end
 end
 
@@ -331,4 +337,8 @@ function buff_change(name, gain, buff_details)
             end
         end
     end
+end
+
+function file_unload(file_name)
+    -- itemizer_put()
 end

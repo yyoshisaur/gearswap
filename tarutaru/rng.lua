@@ -73,7 +73,7 @@ function get_sets()
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+12 "Mag.Atk.Bns."+12','Weapon skill damage +3%','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Mag. Acc.+22 "Mag.Atk.Bns."+22','"Mag.Atk.Bns."+25','Accuracy+17 Attack+17',}},
         feet={ name="ヘルクリアブーツ", augments={'Mag. Acc.+19 "Mag.Atk.Bns."+19','Crit.hit rate+1','Mag. Acc.+15','"Mag.Atk.Bns."+13',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
@@ -147,11 +147,11 @@ function get_sets()
     
     sets.aftercast.idle = {
         ammo="クロノブレット",
-        head="メガナダバイザー+2",
-        body="メガナダクウィリ+2",
-        hands="メガナダグローブ+2",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
+        feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear="エテオレートピアス",
@@ -163,23 +163,23 @@ function get_sets()
     
     sets.aftercast.melee = {
         ammo="クロノブレット",
-        head={ name="ダンペニングタム", augments={'DEX+10','Accuracy+15','Mag. Acc.+15','Quadruple Attack +3',}},
+        head="マリグナスシャポー",
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="コンバタントトルク",
         waist="ウィンバフベルト+1",
         left_ear="テロスピアス",
         right_ear="素破の耳",
         left_ring="守りの指輪",
         right_ring="シーリチリング+1",
-        back="ルーパインケープ",
+        back="月光の羽衣",
     }
     sets.melee = sets.aftercast.melee
     
-    -- マクロのブック, セット変更
-    send_command('input /macro book 5; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 5; wait 0.5; input /macro set 1; wait 0.5; input /si rng;')
 end
 
 function precast(spell)

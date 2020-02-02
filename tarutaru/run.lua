@@ -25,7 +25,7 @@ function get_sets()
     is_sird = false
     is_th = false
 
-    delay_time = 0.2
+    delay_time = 0.15
 
     magic_ba = S{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
     ability_rune = S{'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ', 'ルックス', 'テネブレイ'}
@@ -336,8 +336,8 @@ function get_sets()
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
     }
 
-        -- マクロのブック, セット変更
-        send_command('input /macro book 17; wait 0.5; input /macro set 1')
+        -- マクロのブック, セット変更, 装備入れ替え
+        send_command('input /macro book 17; wait 0.5; input /macro set 1; wait 0.5; input /si run;')
 end
 
 local function get_fc_equip()
@@ -413,15 +413,15 @@ function enhances_effect_and_sird_equip(spell)
             set_equip = sets.midcast.sird
             if spell.name == 'ファランクス' then
                 -- set_equip = sets.midcast.phalanx
-                send_command('wait '..wait..'; input //gs c phalanx;')
+                send_command('@wait '..wait..'; @input //gs c phalanx;')
             elseif spell.name == 'ストンスキン' then
                 -- set_equip = set_combine(sets.aftercast.dt, sets.midcast.stoneskin)
-                send_command('wait '..wait..'; input //gs c stoneskin;')
+                send_command('@wait '..wait..'; @input //gs c stoneskin;')
             end
         elseif spell.skill == '青魔法' then
             -- set_equip = sets.enmity
             set_equip = sets.midcast.sird
-            send_command('wait '..wait..'; input //gs c bluemagic;')
+            send_command('@wait '..wait..'; @input //gs c bluemagic;')
         end
     else
         if spell.skill == '強化魔法' then
@@ -610,32 +610,33 @@ function self_command(command)
         }
         
         local rune_1, rune_2, rune_3 = nil
-        local buffs = player.buff_details
+        local self_buffs = player.buff_details
 
-        for i = #buffs, 1, -1 do
-            if ability_rune:contains(buffs[i].name) then
+        for i = #self_buffs, 1, -1 do
+            if ability_rune:contains(self_buffs[i].name) then
                 if not rune_1 then
-                    rune_1 = buffs[i].name
+                    rune_1 = self_buffs[i].name
                 elseif not rune_2 then
-                    rune_2 = buffs[i].name
+                    rune_2 = self_buffs[i].name
                 else
-                    rune_3 = buffs[i].name
+                    rune_3 = self_buffs[i].name
                 end
             end
         end
 
         if not rune_1 then
-            rune_1 = 'テネブレイ'
-            rune_2 = 'テネブレイ'
-            rune_3 = 'テネブレイ'
+            buff[1].name = 'テネブレイ'
+            buff[3].name = 'テネブレイ'
+            buff[5].name = 'テネブレイ'
         elseif not rune_2 then
-            rune_2 = rune_1
-            rune_3 = rune_1
+            buff[1].name = rune_1
+            buff[3].name = rune_1
+            buff[5].name = rune_1
+        elseif not rune_3 then
+            buff[1].name = rune_1
+            buff[3].name = rune_2
+            buff[5].name = rune_2
         else
-            rune_3 = rune_1
-        end
-
-        if rune then
             buff[1].name = rune_1
             buff[3].name = rune_2
             buff[5].name = rune_3
@@ -647,10 +648,10 @@ function self_command(command)
         end
         send_command(buff_cmd)
     elseif command == 'rune' then
-        local buffs = player.buff_details
-        for i = #buffs, 1, -1 do
-            if ability_rune:contains(buffs[i].name) then
-                send_command('input /ja '..windower.to_shift_jis(buffs[i].name)..' <me>;')
+        local self_buffs = player.buff_details
+        for i = #self_buffs, 1, -1 do
+            if ability_rune:contains(self_buffs[i].name) then
+                send_command('input /ja '..windower.to_shift_jis(self_buffs[i].name)..' <me>;')
                 return
             end
         end

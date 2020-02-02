@@ -188,8 +188,8 @@ function get_sets()
         back="月光の羽衣",
     }
     
-    -- マクロのブック, セット変更
-    send_command('input /macro book 20; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 20; wait 0.5; input /macro set 1; wait 0.5; input /si nin;')
 end
 
 function precast(spell)

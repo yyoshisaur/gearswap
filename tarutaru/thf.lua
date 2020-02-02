@@ -85,7 +85,7 @@ function get_sets()
     
     sets.precast.fc = {
         ammo="サピエンスオーブ",
-        head={ name="ヘルクリアヘルム", augments={'"Fast Cast"+5',}},
+        head={ name="ヘルクリアヘルム", augments={'"Fast Cast"+6',}},
         body={ name="テーオンタバード", augments={'"Fast Cast"+5','Phalanx +3',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="ムンムケックス+2",
@@ -126,8 +126,8 @@ function get_sets()
         right_ring="ＶＣリング+1",
         back="月光の羽衣",
     }
-    -- マクロのブック, セット変更
-    send_command('input /macro book 7; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 7; wait 0.5; input /macro set 1; wait 0.5; input /si thf;')
 end
 
 function precast(spell)

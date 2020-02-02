@@ -192,7 +192,7 @@ function get_sets()
     }
     
     sets.aftercast.melee = {
-        main="エーネアス",
+        -- main="エーネアス",
         range={ name="リノス", augments={'Accuracy+15','"Store TP"+4','Quadruple Attack +3',}},
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
@@ -226,8 +226,8 @@ function get_sets()
     
     sets.precast.ws["ルドラストーム"] = sets.precast.ws.wsd
     
-    -- マクロのブック, セット変更
-    send_command('input /macro book 19; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 19; wait 0.5; input /macro set 1; wait 0.5; input /si brd')
 end
 
 function precast(spell)
@@ -264,7 +264,7 @@ end
 
 function midcast(spell)
     local set_equip = nil
-     
+
     if spell.type == 'BardSong' then
         set_equip = get_song_gear(spell)
     elseif string.find(spell.name, 'ケアル') then

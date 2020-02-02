@@ -132,8 +132,8 @@ function get_sets()
         back={ name="ブリガンチアマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    -- マクロのブック, セット変更
-    send_command('input /macro book 15; wait 0.5; input /macro set 1')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 15; wait 0.5; input /macro set 1; wait 0.5; input /si drg;')
 end
 
 function precast(spell)

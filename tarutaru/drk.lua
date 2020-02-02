@@ -345,8 +345,8 @@ function get_sets()
         hands="レテクバングル+1",
     }
     
-    -- マクロのブック, セット変更
-    send_command('input /macro book 16; wait 0.5; input /macro set 10')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 16; wait 0.5; input /macro set 10; wait 0.5; input /si drk;')
 end
 
 function precast(spell)
