@@ -233,7 +233,7 @@ function get_sets()
         feet={ name="ＳＰサボ+3", mp=43},
         -- neck="エーラペンダント",
         neck="ソーサラストール+2",
-        waist="ルミネートサッシュ",
+        waist="エスカンストーン",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="スティキニリング+1",

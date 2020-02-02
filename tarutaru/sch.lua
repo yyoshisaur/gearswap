@@ -191,7 +191,7 @@ function get_sets()
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','Magic burst dmg.+5%','INT+5','Mag. Acc.+14',}},
         feet="ＡＣローファー+3",
         neck="ボルトサージトルク",
-        waist="ルミネートサッシュ",
+        waist="エスカンストーン",
         left_ear="王将の耳飾り",
         right_ear="バーカロルピアス",
         left_ring="スティキニリング+1",

@@ -208,7 +208,7 @@ function get_sets()
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}, hp=130},
         feet={ name="テーオンブーツ", augments={'DEF+20','Spell interruption rate down -10%','HP+50',}, hp=63,},
         neck="月光の首飾り",
-        waist="ルミネートサッシュ",
+        waist="オドンブラサッシュ",
         left_ear="ハラサズピアス",
         right_ear="磁界の耳",
         left_ring="守りの指輪",

@@ -26,6 +26,7 @@ function get_sets()
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="マーリンクラッコー", augments={'"Fast Cast"+7','CHR+2',}},
         neck="ボルトサージトルク",
+        wait="エンブラサッシュ",
         left_ear="エテオレートピアス",
         right_ear="マリグナスピアス",
         right_ring="プロリクスリング",
@@ -65,6 +66,7 @@ function get_sets()
         hands={ name="テルキネグローブ", augments={'Enh. Mag. eff. dur. +10',}},
         legs={ name="テルキネブラコーニ", augments={'Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Enh. Mag. eff. dur. +10',}},
+        waist="エンブラサッシュ",
     }
 
     sets.midcast.magic_mb = {
