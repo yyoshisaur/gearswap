@@ -77,7 +77,7 @@ function get_sets()
         ammo="銀銭",
         head="フラマツッケット+2",
         body="ＶＳメイル+3",
-        hands="ＶＳフィンガー+2",
+        hands="ＶＳフィンガー+3",
         legs="フラマディル+2",
         feet="オストログリーヴ",
         neck="シュルマヌカラー",

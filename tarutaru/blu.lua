@@ -1,3 +1,4 @@
+include('weather_obi')
 function get_sets()
     set_language('japanese')
     
@@ -9,6 +10,9 @@ function get_sets()
     sets.weapon = {}
 
     init_blue_magic()
+
+    init_elemental_obi()
+    set_elemental_obi("闇輪の帯")
 
     is_th = false
 
@@ -203,7 +207,7 @@ function get_sets()
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="ボルトサージトルク",
+        neck="ミラージストール+2",
         waist="エスカンストーン",
         left_ear="エンチャンピアス+1",
         right_ear="ディグニタリピアス",
@@ -219,7 +223,7 @@ function get_sets()
         hands="王将の袖飾り",
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
         feet="ジャリピガッシュ+2",
-        neck="サンクトネックレス",
+        neck="ミラージストール+2",
         waist="エスカンストーン",
         left_ear="王将の耳飾り",
         right_ear="ディグニタリピアス",
@@ -235,7 +239,7 @@ function get_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="サンクトネックレス",
+        neck="ミラージストール+2",
         waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear="フリオミシピアス",
@@ -251,7 +255,7 @@ function get_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="サンクトネックレス",
+        neck="ミラージストール+2",
         waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear="フリオミシピアス",
@@ -267,7 +271,7 @@ function get_sets()
         hands="ＨＳバズバンド+1",
         legs="ＨＳタイト+1",
         feet={ name="ＬＬチャルク+3", augments={'Enhances "Diffusion" effect',}},
-        neck="インカンタートルク",
+        neck="ミラージストール+2",
         waist="フルームベルト+1",
         left_ear="ロケイシャスピアス",
         right_ear="エンチャンピアス+1",
@@ -290,6 +294,14 @@ function get_sets()
         legs={ name="ヘルクリアトラウザ", augments={'Accuracy+1 Attack+1','"Mag.Atk.Bns."+11','Phalanx +4','Mag. Acc.+11 "Mag.Atk.Bns."+11',},},
         feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',},},
     }
+
+    sets.midcast.stoneskin = {
+        neck="ストーンゴルゲット",
+        waist="ジーゲルサッシュ",
+        left_ear="アースクライピアス",
+    }
+
+    sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {head={ name="ＡＭコイフ+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}}, waist="ギシドゥバサッシュ",})
 
     sets.aftercast.evasion = {
         ammo="ストンチタスラム+1",
@@ -346,7 +358,7 @@ function get_sets()
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="ロリケートトルク+1",
+        neck="ミラージストール+2",
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="テロスピアス",
@@ -364,7 +376,7 @@ function get_sets()
         hands="マリグナスグローブ",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
         feet="マリグナスブーツ",
-        neck="デュアルカラー+1",
+        neck="ミラージストール+2",
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="エテオレートピアス",
@@ -424,13 +436,23 @@ function midcast(spell)
         elseif blue_magic[spell.name].type == "refresh" then
             set_equip = sets.midcast.refresh
         elseif blue_magic[spell.name].type == "magic_atk_drk" then
-            set_equip = sets.midcast.magic_drk
+            set_equip = set_combine(sets.midcast.magic_drk, get_hachirin(spell.element))
         elseif blue_magic[spell.name].type == "enmity" then
             set_equip = sets.enmity
         end
     elseif spell.skill == '神聖魔法' then
         if spell.name == 'フラッシュ' then
             set_equip = sets.enmity
+        end
+    elseif spell.skill == '強化魔法' then
+        if spell.name == 'ファランクス' then
+            set_equip = sets.midcast.phalanx
+        elseif spell.name == 'ストンスキン' then
+            set_equip = sets.midcast.stoneskin
+        elseif spell.name == 'リフレシュ' then
+            set_equip = sets.midcast.refresh
+        else
+            set_equip = sets.midcast.enhance_duration
         end
     end
 
@@ -563,7 +585,7 @@ function init_blue_magic()
     blue_magic["パワーアタック"] = {type=blue_magic_type[1]}
     blue_magic["デスシザース"] = {type=blue_magic_type[1]}
     blue_magic["磁鉄粉"] = {type=blue_magic_type[4]}
-    blue_magic["アイズオンミー"] = {type=blue_magic_type[3]}
+    blue_magic["アイズオンミー"] = {type=blue_magic_type[9]}
     blue_magic["F.リップ"] = {type=blue_magic_type[1]}
     blue_magic["フライトフルロア"] = {type=blue_magic_type[4]}
     blue_magic["ヘカトンウェーブ"] = {type=blue_magic_type[4]}
@@ -671,7 +693,7 @@ function init_blue_magic()
     blue_magic["モータルレイ"] = {type=blue_magic_type[4]}
     blue_magic["水風船爆弾"] = {type=blue_magic_type[4]}
     blue_magic["重い一撃"] = {type=blue_magic_type[2]}
-    blue_magic["ダークオーブ"] = {type=blue_magic_type[3]}
+    blue_magic["ダークオーブ"] = {type=blue_magic_type[9]}
     blue_magic["ホワイトウィンド"] = {type=blue_magic_type[7]}
     blue_magic["サドンランジ"] = {type=blue_magic_type[5]}
     blue_magic["クアドラストライク"] = {type=blue_magic_type[1]}

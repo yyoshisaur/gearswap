@@ -97,7 +97,7 @@ function get_sets()
     sets.precast.ws.multi = {
         head="ヘヨカキャップ+1",
         body="マリグナスタバード",
-        hands="ヘヨカミトン+1",
+        hands="マリグナスグローブ",
         legs="ヘヨカサブリガ+1",
         feet="ヘヨカレギンス+1",
         neck="フォシャゴルゲット",

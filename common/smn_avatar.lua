@@ -187,7 +187,7 @@ bp['Diabolos'] = {
             [2] = {name='ドリームシュラウド', desc='魔攻, 魔防UP'},
         },
         debuff = {
-            [1] = {name='ソムノレンス', desc='範囲ヘヴィ'},
+            [1] = {name='ソ\\ムノレンス', desc='範囲ヘヴィ'},
             [2] = {name='アルティメットテラー', desc='範囲ステータスDOWN'},
             [3] = {name='パボルノクターナス', desc='デス'}
         },
@@ -232,11 +232,34 @@ bp['Atomos'] = {
         [2] = {name='クロノスフト', desc='強化付与'},
     },
 }
+bp['Siren'] = {
+    rage = {
+        [1] = {name='ヒステリックアサルト', desc='突属性3回(分解/貫通),HP吸収'},
+        [2] = {name='ソ\\ニックバフェット', desc='風属性,ディスペル'},
+        [3] = {name='ラウンドハウス', desc='物理攻撃'},
+        [4] = {name='ウェルト', desc='物理攻撃'},
+        [7] = {name='トルネドII', desc='風属性'},
+    },
+    ward = {
+        buff ={
+            [1] = {name='風の守り', desc='範囲魔法バリア'},
+            [2] = {name='シヌーク', desc='範囲アクアベール'},
+            [3] = {name='疾風の刃', desc='範囲エンエアロ'},
+        },
+        debuff = {
+            [1] = {name='ルナティックボイス', desc='範囲静寂'},
+            [2] = {name='修羅のエレジー', desc='エレジー'},
+        }
+    },
+    astralflow = {
+        [1] = {name='クラーサクコール', desc='風属性'},
+    },
+}
 
 bp_physical=S{'パンチ','ロックスロー','バラクーダダイブ','クロー','アクスキック','ショックストライク','カミサドー','リーガルスクラッチ','ポイズンネイル',
             'ムーンリットチャージ','クレセントファング','ロックバスター','テールウィップ','ダブルパンチ','メガリススロー','ダブルスラップ','エクリプスバイト',
             'マウンテンバスター','スピニングダイブ','プレデタークロー','ラッシュ','カオスストライク','クラッグスロー','ボルトストライク','リーガルガッシュ',
-            'クラッグスロー','ブラインドサイド'}
+            'クラッグスロー','ブラインドサイド','ヒステリックアサルト','ラウンドハウス','ウェルト'}
 
 bp_hybrid=S{'バーニングストライク','フレイムクラッシュ'}
 
@@ -244,14 +267,14 @@ bp_magical=S{'インフェルノ','アースフューリー','タイダルウェ
             'ルイナスオーメン','ファイアII','ストーンII','ウォータII','エアロII','ブリザドII','サンダーII','サンダースパーク','ソムノレンス',
             'プチメテオ','ファイアIV','ストーンIV','ウォータIV','エアロIV','ブリザドIV','サンダーIV','ネザーブラスト','メテオストライク',
             'ジオクラッシュ','グランドフォール','ウインドブレード','ヘヴンリーストライク','サンダーストーム','レベル？ホーリー','ホーリーミスト','ルナーベイ',
-            'ナイトテラー','コンフラグストライク','斬鉄剣','インパクト'}
+            'ナイトテラー','コンフラグストライク','斬鉄剣','インパクト','ソニックバフェット','トルネドII'}
             
 bp_debuff=S{'ルナークライ','ミュインララバイ','ナイトメア','ルナーロア','スロウガ','アルティメットテラー','スリプガ','イアリーアイ','タイダルロア',
-            'ダイヤモンドストーム','スタンガ','パボルノクターナス'}
+            'ダイヤモンドストーム','スタンガ','パボルノクターナス','ルナティックボイス','修羅のエレジー'}
             
 bp_buff=S{'ルビーの輝き','凍てつく鎧','雷鼓','紅蓮の咆哮','電雷の鎧','上弦の唸り','ヘイスガ','ノクトシールド',
             '下弦の咆哮','ドリームシュラウド','大地の守り','真空の具足','灼熱の咆哮','ルビーの安らぎ','ヘヴンズハウル',
-            'ルビーの煌き','ヘイスガII','クリスタルブレシング','真空の鎧','大地の鎧','スージングカレント','絶対防御'}
+            'ルビーの煌き','ヘイスガII','クリスタルブレシング','真空の鎧','大地の鎧','スージングカレント','絶対防御','風の守り','シヌーク','疾風の刃'}
 
 bp_other=S{'ルビーの癒し','レイズII','リレイズII','風の囁き','ルビーの贖罪','湧水','ルビーの癒しII','アルタナフェーバー'} 
 
@@ -316,7 +339,7 @@ function bp_commnad(command)
             windower.add_to_chat(122,'No avatar currently available.')
             return
         end
- 
+
         if not args[2] then
             windower.add_to_chat(123,'No bp type given.')
             return
@@ -355,7 +378,8 @@ function bp_commnad(command)
 				return
             end
 
-            local target_type = gearswap.res.job_abilities:with('ja', bp[pet.name][bp_type][rage_number]['name']).targets
+            local bp_name = bp[pet.name][bp_type][rage_number]['name']
+            local target_type = gearswap.res.job_abilities:with('ja', bp_name:gsub('\\','')).targets
             -- windower.add_to_chat(122, pacts[pact][pet.name])
             local target_str = '<me>'
             if target_type['Enemy'] then
@@ -382,7 +406,7 @@ function bp_commnad(command)
             
             -- windower.add_to_chat(122,pacts[pact][pet.name]..' '..target_str)
             send_command('input /pet '..windower.to_shift_jis(bp[pet.name][bp_type][rage_number]['name'])..' '..target_str)
-                
+
         elseif bp_type == 'ward' then
             if not args[3] then
                 windower.add_to_chat(123,'No ward type given.')
@@ -414,7 +438,8 @@ function bp_commnad(command)
 				return
             end
 
-            local target_type = gearswap.res.job_abilities:with('ja', bp[pet.name][bp_type][ward_type][ward_number]['name']).targets
+            local bp_name = bp[pet.name][bp_type][ward_type][ward_number]['name']
+            local target_type = gearswap.res.job_abilities:with('ja', bp_name:gsub('\\','')).targets
             -- windower.add_to_chat(122, pacts[pact][pet.name])
             local target_str = '<me>'
             if target_type['Enemy'] then

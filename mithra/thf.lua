@@ -104,7 +104,7 @@ function get_sets()
         ammo="ストンチタスラム+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
-        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands="マリグナスグローブ",
         legs="ムンムケックス+2",
         feet="マリグナスブーツ",
         neck="ロリケートトルク+1",

@@ -12,6 +12,7 @@ function get_sets()
     magic_geo = T{'ジオリジェネ', 'ジオポイズン', 'ジオリフレシュ', 'ジオヘイスト', 'ジオスト', 'ジオデック', 'ジオバイト', 'ジオアジル', 'ジオイン', 'ジオマイン', 'ジオカリス',
             'ジオフューリー', 'ジオバリア', 'ジオアキュメン', 'ジオフェンド', 'ジオプレサイス', 'ジオヴォイダンス', 'ジオフォーカス', 'ジオアトゥーン', 'ジオウィルト',
             'ジオフレイル', 'ジオフェイド', 'ジオマレーズ', 'ジオスリップ', 'ジオトーパー', 'ジオヴェックス', 'ジオランゴール', 'ジオスロウ', 'ジオパライズ', 'ジオグラビデ'}
+    sets.aspir = T{"アスピル", "アスピルII", "アスピルIII"}
 
     sets.cp = {back="アピトマント+1"}
     
@@ -22,11 +23,10 @@ function get_sets()
     }
     
     sets.precast.fc = {
-        main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        legs="ＧＯパンツ+2",
+        legs="ＧＯパンツ+3",
         feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
         neck="ボルトサージトルク",
         waist="エンブラサッシュ",
@@ -38,12 +38,11 @@ function get_sets()
     }
     
     sets.precast.cure_fc = {
-        main={ name="ソールスティス", augments={'Mag. Acc.+20','Pet: Damage taken -4%','"Fast Cast"+5',}},
         sub="ソーズシールド",
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        legs="ＧＯパンツ+2",
+        legs="ＧＯパンツ+3",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         waist="エンブラサッシュ",
         left_ear="ロケイシャスピアス",
@@ -55,14 +54,13 @@ function get_sets()
     sets.midcast.geo_skill = {
         main="イドリス",
         head="ＡＺフード+1",
-        body={ name="ＢＡチュニック+1", augments={'Enhances "Bolster" effect',}},
-        hands="ＧＯミテーヌ+2",
-        legs={ name="ＢＡパンツ+1", augments={'Enhances "Mending Halation" effect',}},
+        body="ＡＺコート+1",
+        hands="ＧＯミテーヌ+3",
+        legs={ name="ＢＡパンツ+3", augments={'Enhances "Mending Halation" effect',}},
         feet="ＡＺゲートル+1",
-        neck="バグアチャーム",
-        -- neck="インカンタートルク",
-        left_ring="スティキニリング",
-        right_ring="スティキニリング+1",
+        neck="バグアチャーム+2",
+        left_ring="守りの指輪",
+        right_ring="ゼラチナスリング+1",
         back={ name="龍脈の外套", augments={'Geomancy Skill +8','Indi. eff. dur. +20','Pet: Damage taken -2%',}},
     }
     
@@ -104,27 +102,44 @@ function get_sets()
     sets.midcast.magic_acc = {
         main="マクセンチアス",
         sub="アムラピシールド",
-        head="ＧＯガレーロ+2",
-        body="ＧＯチュニック+2",
-        hands="ＧＯミテーヌ+2",
-        legs="ＧＯパンツ+2",
-        feet="ＧＯサンダル+2",
-        neck="エーラペンダント",
+        head="ＧＯガレーロ+3",
+        body="ＧＯチュニック+3",
+        hands="ＧＯミテーヌ+3",
+        legs="ＧＯパンツ+3",
+        feet={ name="ＢＡサンダル+3", augments={'Enhances "Radial Arcana" effect',}},
+        neck="バグアチャーム+2",
         waist="ルーミネリサッシュ",
         left_ear="マリグナスピアス",
-        right_ear="ディグニタリピアス",
+        right_ear="王将の耳飾り",
         left_ring="キシャールリング",
         right_ring="スティキニリング+1",
         back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
     }
     
-    sets.midcast.magic_atk = {
+    sets.midcast.aspir = {
         main="マクセンチアス",
+        sub="アムラピシールド",
+        head="妖蟲の髪飾り+1",
+        body="ＧＯチュニック+3",
+        hands="ＧＯミテーヌ+3",
+        legs="ＧＯパンツ+3",
+        feet="ＧＯサンダル+3",
+        neck="エーラペンダント",
+        waist="風鳥の帯",
+        left_ear="王将の耳飾り",
+        right_ear="マリグナスピアス",
+        left_ring="アルコンリング",
+        right_ring="エバネセンスリング",
+        back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
+    }
+
+    sets.midcast.magic_atk = {
+        main="パルーグハンマー",
         sub="アムラピシールド",
         head="エアハット+1",
         body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="山吹の帯",
@@ -139,17 +154,18 @@ function get_sets()
         main="イドリス",
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head={ name="テルキネキャップ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -3%',}},
+        head={ name="テルキネキャップ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body="ＧＯチュニック+3",
+        hands={ name="ＢＡミテーヌ+3", augments={'Enhances "Curative Recantation" effect',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        neck="ロリケートトルク+1",
+        feet="ＧＯサンダル+3",
+        -- neck="ロリケートトルク+1",
+        neck="バグアチャーム+2",
         waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
-        right_ring="シュネデックリング",
+        right_ring="ゼラチナスリング+1",
         back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
     
@@ -157,19 +173,18 @@ function get_sets()
         main="イドリス",
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head={ name="テルキネキャップ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        head={ name="テルキネキャップ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -3%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        neck="ロリケートトルク+1",
+        feet={ name="ＢＡサンダル+3", augments={'Enhances "Radial Arcana" effect',}},
+        -- neck="ロリケートトルク+1",
+        neck="バグアチャーム+2",
         waist="イーサベルト",
         left_ear="エテオレートピアス",
         right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
-        -- right_ring="ゼラチナスリング+1",
-        right_ring="ピュリティーリング",
-        -- right_ring="シュネデックリング",
+        right_ring="ゼラチナスリング+1",
         back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
 
@@ -198,13 +213,13 @@ function precast(spell)
         if spell.name == 'フルサークル' then
             set_equip = {head="ＡＺフード+1",}
         elseif spell.name == 'ライフサイクル' then
-            set_equip = {body="ＧＯチュニック+2", back = "ナントセルタケープ",}
+            set_equip = {body="ＧＯチュニック+3", back = "ナントセルタケープ",}
         elseif spell.name == 'レイディアルアルカナ' then
-            set_equip = {feet="ＢＡサンダル+1",}
+            set_equip = {head={ name="ＢＡガレーロ+3", augments={'Enhances "Primeval Zeal" effect',}}, feet="ＢＡサンダル+3",}
         elseif spell.name == 'メンドハレイション' then
-            set_equip = {legs="ＢＡパンツ+1",}
+            set_equip = {head={ name="ＢＡガレーロ+3", augments={'Enhances "Primeval Zeal" effect',}}, legs="ＢＡパンツ+3",}
         elseif spell.name == 'ボルスター' then
-            set_equip = {body="ＢＡチュニック+1",}
+            set_equip = {body="ＢＡチュニック+3",}
         end
     end
     
@@ -231,8 +246,14 @@ function midcast(spell)
         else
             set_equip = sets.midcast.enhance_duration
         end
-    elseif spell.skill == '弱体魔法' or spell.skill == '暗黒魔法' then
+    elseif spell.skill == '弱体魔法' then
         set_equip = sets.midcast.magic_acc
+    elseif spell.skill == '暗黒魔法' then
+        if sets.aspir:contains(spell.name) then
+            set_equip = sets.midcast.aspir
+        else
+            set_equip = sets.midcast.magic_acc
+        end
     elseif spell.skill == '精霊魔法' then
         set_equip = sets.midcast.magic_atk
     end
@@ -252,10 +273,14 @@ function aftercast(spell)
     -- end
 
     if pet.name then
-        set_equip = sets.aftercast.idle_luopan
+        if spell.name == 'フルサークル' or spell.name == 'レイディアルアルカナ' or spell.name == 'メンドハレイション' then
+            send_command('wait 2; gs c idle')
+        else
+            set_equip = sets.aftercast.idle_luopan
+        end
     else
         if magic_geo:contains(spell.name) then
-            if spell.interrupted == true then
+            if spell.interrupted then
                 set_equip = sets.aftercast.idle
             else
                 set_equip = sets.aftercast.idle_luopan
@@ -273,9 +298,9 @@ end
 function status_change(new, old)
     local set_equip = nil
     
-    if new == 'Idle' then
-        set_equip = sets.aftercast.idle
-    elseif new == 'Engaged' then
+    if pet.name then
+        set_equip = sets.aftercast.idle_luopan
+    else
         set_equip = sets.aftercast.idle
     end
     
@@ -285,16 +310,13 @@ function status_change(new, old)
 end
 
 function self_command(command)
-    if command == 'cp' then
-        if is_cp then
-            is_cp = false
-            enable('back')
-            windower.add_to_chat(122,'+++ キャパポ装備 OFF +++')
+    if command == 'idle' then
+        if pet.name then
+            windower.add_to_chat(123, '---> 羅盤維持装備')
+            equip(sets.aftercast.idle_luopan)
         else
-            is_cp = true
-            equip(sets.cp)
-            disable('back')
-            windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
+            windower.add_to_chat(123, '---> リフレ, カット装備')
+            equip(sets.aftercast.idle)
         end
     elseif command == 'aspir' then
         local recasts = windower.ffxi.get_spell_recasts()

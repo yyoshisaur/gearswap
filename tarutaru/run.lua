@@ -25,7 +25,7 @@ function get_sets()
     is_sird = false
     is_th = false
 
-    delay_time = 0.15
+    delay_time = 0.2
 
     magic_ba = S{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
     ability_rune = S{'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ', 'ルックス', 'テネブレイ'}
@@ -40,7 +40,7 @@ function get_sets()
         neck={ name="フサルクトルク+2", hp=60,},
         waist={ name="カシリベルト", hp=30,},
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring={ name="アイワツリング", hp=70,},
         right_ring={ name="月光の指輪", hp=110,},
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60},
@@ -61,8 +61,8 @@ function get_sets()
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}, fc=0.08, hp=95,},
         neck={ name="ボルトサージトルク", fc=0.04,},
         waist={ name="ジーゲルサッシュ", fc=0.08,},
-        left_ear={ name="オノワイヤリング", hp=100,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring={ name="キシャールリング", fc=0.04},
         right_ring={ name="月光の指輪", hp=110,},
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
@@ -92,8 +92,8 @@ function get_sets()
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}, fc=0.08, hp=95,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist={ name="ゴールドモグベルト", hp=80,},
-        left_ear={ name="オノワイヤリング", hp=100,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring={ name="月光の指輪", hp=110,},
         back={ name="月光の羽衣", hp=275,},
@@ -177,8 +177,8 @@ function get_sets()
         feet={ name="ＥＲグリーヴ+1", hp=18,},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
-        left_ear={ name="オノワイヤリング", hp=100,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
@@ -193,8 +193,8 @@ function get_sets()
         feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',}, hp=9,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist="オリンポスサッシュ",
-        left_ear={ name="オノワイヤリング", hp=100,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="月光の羽衣", hp=275,},
@@ -244,7 +244,7 @@ function get_sets()
         neck={ name="フサルクトルク+2", hp=60,},
         waist="フルームベルト+1",
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Parrying rate+5%',}, hp=60,},
@@ -278,7 +278,7 @@ function get_sets()
         neck={ name="フサルクトルク+2", hp=60,},
         waist="エングレイブベルト",
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
@@ -295,7 +295,7 @@ function get_sets()
         neck={ name="フサルクトルク+2", hp=60,},
         waist="フルームベルト+1",
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear={ name="オノワイヤリング+1", hp=110,},
+        right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="リパルスマント", hp=30,},
@@ -367,6 +367,8 @@ function precast(spell)
         set_equip = sets.precast.fc_80
     elseif spell.type == 'Ninjutsu' then
         set_equip = get_fc_equip()
+    elseif spell.type == 'SummonerPact' then
+        set_equip = get_fc_equip()
     end
 
     if set_equip then
@@ -413,10 +415,10 @@ function enhances_effect_and_sird_equip(spell)
             set_equip = sets.midcast.sird
             if spell.name == 'ファランクス' then
                 -- set_equip = sets.midcast.phalanx
-                send_command('@wait '..wait..'; @input //gs c phalanx;')
+                send_command('@wait '..wait..'; input //gs c phalanx;')
             elseif spell.name == 'ストンスキン' then
                 -- set_equip = set_combine(sets.aftercast.dt, sets.midcast.stoneskin)
-                send_command('@wait '..wait..'; @input //gs c stoneskin;')
+                send_command('@wait '..wait..'; input //gs c stoneskin;')
             end
         elseif spell.skill == '青魔法' then
             -- set_equip = sets.enmity

@@ -129,7 +129,7 @@ function get_sets()
         feet="ヴォルトソルレ",
         neck="月光の首飾り",
         waist="フルームベルト+1",
-        left_ear="オノワイヤリング",
+        left_ear="トゥイストピアス",
         right_ear="オノワイヤリング+1",
         left_ring="アイワツリング",
         right_ring="ペトロフリング",
@@ -315,6 +315,7 @@ function self_command(command)
             windower.send_command('gs equip sets.aftercast.melee.chango')
         end
     elseif command == 'getabys' then
+        windower.send_command('jc sub nin')
         itemizer_get_abyssea()
     elseif command == 'putabys' then
         itemizer_put_abyssea()

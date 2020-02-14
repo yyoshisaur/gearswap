@@ -178,11 +178,11 @@ function get_sets()
 
     sets.precast.ws["サベッジブレード"] = sets.precast.ws.melee_phisical
 
-    sets.precast.ws['ガストスラッシュ'] = sets.precast.ws.magic
-    sets.precast.ws['サイクロン'] = sets.precast.ws.magic
-    sets.precast.ws['エナジースティール'] = sets.precast.ws.magic
-    sets.precast.ws['エナジードレイン'] = sets.precast.ws.magic
-    sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.magic
+    sets.precast.ws['ガストスラッシュ'] = set_combine(sets.precast.ws.magic, {waist="オルペウスサッシュ"})
+    sets.precast.ws['サイクロン'] = set_combine(sets.precast.ws.magic, {waist="オルペウスサッシュ"})
+    sets.precast.ws['エナジースティール'] = set_combine(sets.precast.ws.magic, {waist="オルペウスサッシュ"})
+    sets.precast.ws['エナジードレイン'] = set_combine(sets.precast.ws.magic, {waist="オルペウスサッシュ"})
+    sets.precast.ws['イオリアンエッジ'] = set_combine(sets.precast.ws.magic, {waist="オルペウスサッシュ"})
     sets.precast.ws['エヴィサレーション'] = sets.precast.ws.melee_phisical
 
     sets.precast.ability["ランダムディール"] ={body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},}

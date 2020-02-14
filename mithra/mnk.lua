@@ -129,7 +129,7 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="月虹帯+1",
         left_ear="オノワイヤリング+1",
-        right_ear="玄冥耳飾り",
+        right_ear="トゥイストピアス",
         left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
@@ -214,13 +214,13 @@ function get_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.aftercast.melee = get_melee_equip()
+    sets.aftercast.melee =  sets.aftercast.melee_multi_ma
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
-        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands="マリグナスグローブ",
         legs="ムンムケックス+2",
         feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
@@ -233,7 +233,7 @@ function get_sets()
     }
 
         -- マクロのブック, セット変更
-        send_command('input /macro book 5; wait 0.5; input /macro set 1; wait 1;gs c set_melee_equip;')
+        send_command('input /macro book 5; wait 0.5; input /macro set 1; wait 3;gs c set_melee_equip;')
 end
 
 function precast(spell)
@@ -267,7 +267,7 @@ function aftercast(spell)
     
     if spell.type == 'JobAbility' then
         if spell.name == 'インピタス' then
-            sets.aftercast.melee = sets.aftercast.melee_imp
+            sets.aftercast.melee = get_melee_equip_imp()
         end
     end
 
@@ -299,7 +299,7 @@ end
 function buff_change(name, gain, buff_details)
     if name == 'インピタス' then
         if gain then
-            sets.aftercast.melee = sets.aftercast.melee_imp
+            sets.aftercast.melee = get_melee_equip_imp()
         else
             sets.aftercast.melee = get_melee_equip()
         end
@@ -335,6 +335,18 @@ function get_melee_equip()
         melee_equip = sets.aftercast.melee_multi_ma
     else
         melee_equip = sets.aftercast.melee_multi
+    end
+    return melee_equip
+end
+
+function get_melee_equip_imp()
+    local melee_equip = nil
+    if player.equipment.main == sets.weapon["カランビット"].main then
+        melee_equip = sets.aftercast.melee_imp
+    elseif player.equipment.main == sets.weapon["サギッタ"].main then
+        melee_equip = sets.aftercast.melee_ma_imp
+    else
+        melee_equip = sets.aftercast.melee_imp
     end
     return melee_equip
 end

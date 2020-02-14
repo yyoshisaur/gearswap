@@ -92,9 +92,9 @@ function get_sets()
         neck="水影の首飾り",
         waist="オルペウスサッシュ",
         left_ear="マリグナスピアス",
-        right_ear="フリオミシピアス",
+        right_ear="王将の耳飾り",
         left_ring="フレキリング",
-        right_ring="女王の指輪+1",
+        right_ring="アルコンリング",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -405,7 +405,7 @@ function get_sets()
         left_ear="シェリダピアス",
         right_ear="素破の耳",
         left_ring="スティキニリング+1",
-        right_ring="アヤモリング",
+        right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 

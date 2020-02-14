@@ -212,7 +212,7 @@ function get_sets()
         neck="サンクトネックレス",
         waist="ゴールドモグベルト",
         left_ear="オノワイヤリング+1",
-        right_ear="オノワイヤリング",
+        right_ear="トゥイストピアス",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
         back="月光の羽衣",
