@@ -20,7 +20,7 @@ function get_sets()
     is_dw = false
 
     -- メインサブ武器変更
-    melee_weapon_cycle_num = 4
+    melee_weapon_cycle_num = 3
     melee_weapon_cycle = 0
     melee_weapon = 'tauret'
 
@@ -37,6 +37,8 @@ function get_sets()
     sets.magic_enfeeble_int = T{'ブライン', 'ブラインII', 'グラビデ', 'グラビデII',}
     sets.magic_enfeeble_int_acc = T{'スリプル', 'スリプルII', 'スリプガ', 'バインド', 'ブレイク'}
 
+    sets.weapon.hist = {main=empty, sub=empty}
+
     sets.weapon.tauret = {main="トーレット", sub="サクロバルワーク",}
     sets.weapon.naegling = {main="ネイグリング", sub="サクロバルワーク",}
     sets.weapon.d1 = {main="クトゥルブナイフ", sub="サクロバルワーク",}
@@ -46,6 +48,7 @@ function get_sets()
     sets.weapon.naegling_nin = {main="ネイグリング", sub="ターニオンダガー+1",}
     sets.weapon.d1_nin = {main="クトゥルブナイフ", sub="アーンダガー",}
     sets.weapon.crocea_nin = {main="クロセアモース", sub="ターニオンダガー+1",}
+    sets.weapon.crocea_daybreak_nin = {main="クロセアモース", sub="デイブレイクワンド",}
 
     sets.weapon.enfeeble_mnd = {main="デイブレイクワンド", sub="アムラピシールド",}
     sets.weapon.enfeeble_mnd_nin = {main="マクセンチアス", sub="デイブレイクワンド",}
@@ -169,7 +172,7 @@ function get_sets()
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -202,7 +205,7 @@ function get_sets()
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -219,13 +222,13 @@ function get_sets()
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
     sets.midcast.phalanx = sets.midcast.phalanx_self
 
-    sets.midcast.phalanx_others = set_combine(sets.midcast.enhance_duration_others, {left_ear="アンドアーピアス", right_ring="スティキニリング",})
+    sets.midcast.phalanx_others = set_combine(sets.midcast.enhance_duration_others, {left_ear="アンドアーピアス", right_ring="スティキニリング+1",})
 
     sets.midcast.cure = {
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
@@ -256,10 +259,10 @@ function get_sets()
         feet="ＶＩブーツ+3",
         neck="インカンタートルク",
         waist="ルミネートサッシュ",
-        left_ear="スノトラピアス",
+        left_ear="ヴォルピアス",
         right_ear="インフィブルピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +7','Mag. Acc.+9',}},
     }
 
@@ -291,7 +294,7 @@ function get_sets()
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
@@ -369,7 +372,7 @@ function get_sets()
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
-        waist="山吹の帯",
+        waist="サクロコード",
         left_ear="フリオミシピアス",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
@@ -378,6 +381,7 @@ function get_sets()
     }
 
     sets.aftercast.melee_atk = {
+        range=empty,
         ammo="銀銭",
         head="マリグナスシャポー",
         body="マリグナスタバード",
@@ -395,6 +399,7 @@ function get_sets()
 
     sets.aftercast.melee_en = {
         range="ウルル",
+        ammo=empty,
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
         body="アヤモコラッツァ+2",
         hands="アヤモマノポラ+2",
@@ -411,6 +416,7 @@ function get_sets()
 
     sets.aftercast.melee_en_dmg = {
         range="ウルル",
+        ammo=empty,
         head="ウムシクハット",
         body="アヤモコラッツァ+2",
         hands="アヤモマノポラ+2",
@@ -428,6 +434,7 @@ function get_sets()
     sets.aftercast.melee = sets.aftercast.melee_atk
 
     sets.aftercast.idle = {
+        range=empty,
         ammo="ホミリアリ",
         head="ＶＩシャポー+3",
         body="マリグナスタバード",
@@ -482,7 +489,7 @@ function get_sets()
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
-    send_command('wait 1; input //gs c wc')
+    send_command('wait 1; input //gs c ws')
     -- マクロのブック, セット変更
     send_command('input /macro book 8; wait 0.5; input /macro set 1')
     
@@ -502,15 +509,21 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         if weapon == 'tauret' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.tauret_nin)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.tauret_nin)
-        elseif weapon == 'naegling' then
-            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.naegling_nin)
-            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.naegling_nin)
         elseif weapon == 'd1' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.d1_nin)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.d1_nin)
         elseif weapon == 'crocea' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea_nin)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_nin)
+        end
+        
+        if sets.weapon.hist.main ~= empty then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, {main=sets.weapon.hist.main})
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, {main=sets.weapon.hist.main})
+        end
+        if sets.weapon.hist.sub ~= empty then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, {sub=sets.weapon.hist.sub})
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, {sub=sets.weapon.hist.sub})
         end
     else
         sets.midcast.magic_enfeeble_mnd = set_combine(sets.midcast.magic_enfeeble_mnd, sets.weapon.enfeeble_mnd)
@@ -528,17 +541,30 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         if weapon == 'tauret' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.tauret)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.tauret)
-        elseif weapon == 'naegling' then
-            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.naegling)
-            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.naegling)
         elseif weapon == 'd1' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.d1)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.d1)
-        elseif weapon == 'crocea' then
+        elseif weapon == 'crocea' or weapon == 'daybreak' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea)
         end
+
+        if sets.weapon.hist.main ~= empty then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, {main=sets.weapon.hist.main})
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, {main=sets.weapon.hist.main})
+        end
     end
+end
+
+local function set_weapon_hist()
+    if player.equipment.main ~= 'empty' then
+        sets.weapon.hist.main = player.equipment.main
+    end
+    if player.equipment.sub ~= 'empty' then
+        sets.weapon.hist.sub = player.equipment.sub
+    end
+    sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.hist)
+    sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.hist)
 end
 
 function pretarget(spell)
@@ -548,6 +574,8 @@ function pretarget(spell)
         windower.add_to_chat(122,'---> HP MAX DOWN')
         set_equip = sets.hp_max_down
     end
+
+    set_weapon_hist()
 
     if set_equip then
         equip(set_equip)
@@ -701,6 +729,7 @@ function self_command(command)
         windower.add_to_chat(122,'---> レジストハック: '..tostring(is_immunobreak))
     elseif command == 'wc' then
         melee_weapon_cycle = melee_weapon_cycle + 1
+        sets.weapon.hist = {main=empty, sub=empty}
         if melee_weapon_cycle % melee_weapon_cycle_num == 0 then
             melee_weapon = 'tauret'
             sets.aftercast.melee = sets.aftercast.melee_atk
@@ -708,24 +737,23 @@ function self_command(command)
             status_change(player.status)
             windower.add_to_chat(122,'---> トーレット')
         elseif melee_weapon_cycle % melee_weapon_cycle_num == melee_weapon_cycle_num - 1 then
-            melee_weapon = 'naegling'
-            sets.aftercast.melee = sets.aftercast.melee_atk
-            set_weapon_by_sub_job(player.sub_job, melee_weapon)
-            status_change(player.status)
-            windower.add_to_chat(122,'---> ネイグリング')
-        elseif melee_weapon_cycle % melee_weapon_cycle_num == melee_weapon_cycle_num - 2 then
             melee_weapon = 'd1'
             sets.aftercast.melee = sets.aftercast.melee_en
             set_weapon_by_sub_job(player.sub_job, melee_weapon)
             status_change(player.status)
             windower.add_to_chat(122,'---> D1')
-        elseif melee_weapon_cycle % melee_weapon_cycle_num == melee_weapon_cycle_num - 3 then
+        elseif melee_weapon_cycle % melee_weapon_cycle_num == melee_weapon_cycle_num - 2 then
             melee_weapon = 'crocea'
             sets.aftercast.melee = sets.aftercast.melee_atk
             set_weapon_by_sub_job(player.sub_job, melee_weapon)
             status_change(player.status)
             windower.add_to_chat(122,'---> クロセアモース')
         end
+    elseif command ==  'ws' then
+        melee_weapon = 'crocea'
+        sets.aftercast.melee = sets.aftercast.melee_atk
+        set_weapon_by_sub_job(player.sub_job, melee_weapon)
+        status_change(player.status)
     elseif command == 'cure_self' then
         is_cure_self = not is_cure_self
         windower.add_to_chat(122,'---> 自己ケアル: '..tostring(is_cure_self))
@@ -742,7 +770,7 @@ function self_command(command)
         end
     elseif command == 'endmg' then
         sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.aftercast.melee_en_dmg)
-        equip(sets.aftercast.melee)
+        status_change(player.status)
         windower.add_to_chat(122,'---> MELEE(魔法剣ダメージ+)')
     end
 end
@@ -750,9 +778,7 @@ end
 function sub_job_change(new, old)
     
     if new ~= old then
-        melee_weapon_cycle = 0
-        set_weapon_by_sub_job(new)
-        send_command('wait 1; input //gs c wc')
+        send_command('wait 1; input //gs c ws')
     end
 
 end

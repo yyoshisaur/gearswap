@@ -94,7 +94,7 @@ function get_sets()
         waist="オリンポスサッシュ",
         left_ear="ミミルピアス",
         right_ear="アンドアーピアス",
-        left_ring="スティキニリング",
+        left_ring="スティキニリング+1",
         right_ring="スティキニリング+1",
         back="フィフォレケープ+1",
     }
@@ -142,7 +142,7 @@ function get_sets()
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
-        waist="山吹の帯",
+        waist="サクロコード",
         left_ear="マリグナスピアス",
         right_ear="バーカロルピアス",
         left_ring="フレキリング",
@@ -159,8 +159,8 @@ function get_sets()
         hands={ name="ＢＡミテーヌ+3", augments={'Enhances "Curative Recantation" effect',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         feet="ＧＯサンダル+3",
-        -- neck="ロリケートトルク+1",
-        neck="バグアチャーム+2",
+        neck="ロリケートトルク+1",
+        -- neck="バグアチャーム+2",
         waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ルガルバンダピアス",
@@ -274,7 +274,7 @@ function aftercast(spell)
 
     if pet.name then
         if spell.name == 'フルサークル' or spell.name == 'レイディアルアルカナ' or spell.name == 'メンドハレイション' then
-            send_command('wait 2; gs c idle')
+            send_command('wait 4; gs c idle')
         else
             set_equip = sets.aftercast.idle_luopan
         end

@@ -33,14 +33,14 @@ function get_sets()
     sets.precast.fc = {
         ammo="インカントストーン",
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
-        body="ピンガチュニック",
+        body="ピンガチュニック+1",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs="ピンガズボン",
+        legs="ピンガズボン+1",
         feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
         neck="ボルトサージトルク",
-        waist="チャネラーストーン",
-        left_ear="エテオレートピアス",
-        right_ear="ロケイシャスピアス",
+        waist="エンブラサッシュ",
+        left_ear="ロケイシャスピアス",
+        right_ear="エテオレートピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
@@ -55,8 +55,8 @@ function get_sets()
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="ロリケートトルク+1",
         waist="ニヌルタサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="メンデカントピアス",
+        left_ear="メンデカントピアス",
+        right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
@@ -64,20 +64,20 @@ function get_sets()
     
     sets.precast.magic_skill_chain = {
         main="マリグナスポール",
-        sub="メンシストラップ+1",
-        ammo="インカントストーン",
-        head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
-        body="ピンガチュニック",
-        hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs="ピンガズボン",
-        feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
+        sub="コーンスー",
+        ammo="ヘイストピニオン+1",
+        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
+        body="ピンガチュニック+1",
+        hands="ＡＣブレーサー+3",
+        legs="ピンガズボン+1",
+        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="ボルトサージトルク",
-        waist="ニヌルタサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="ロケイシャスピアス",
+        waist="エンブラサッシュ",
+        left_ear="ロケイシャスピアス",
+        right_ear="マリグナスピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.precast.ws.mp = {
@@ -107,8 +107,8 @@ function get_sets()
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="ノデンズゴルゲット",
         waist="ピュシアサッシュ+1",
-        left_ear="ノーヴィアピアス",
-        right_ear="メンデカントピアス",
+        left_ear="メンデカントピアス",
+        right_ear="ノーヴィアピアス",
         left_ring="守りの指輪",
         right_ring="レベッチェリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
@@ -121,11 +121,29 @@ function get_sets()
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
         body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
-        waist="山吹の帯",
+        waist="サクロコード",
         left_ear="バーカロルピアス",
+        right_ear="マリグナスピアス",
+        left_ring="フレキリング",
+        right_ring="女王の指輪+1",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+    }
+
+    sets.midcast.magic_mb_klimaform = {
+        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        sub="エンキストラップ",
+        ammo="ペムフレドタスラム",
+        head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
+        body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
+        feet="ＡＢローファー+1",
+        neck="水影の首飾り",
+        waist="サクロコード",
+        left_ear="電界の耳",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring="女王の指輪+1",
@@ -144,7 +162,7 @@ function get_sets()
         legs="マルクィトルーズ+2",
         feet="ジャリピガッシュ+2",
         neck="アギュトストール+1",
-        waist="山吹の帯",
+        waist="サクロコード",
         left_ear="怯懦の耳",
         right_ear="電界の耳",
         left_ring="ジャリリング",
@@ -162,11 +180,29 @@ function get_sets()
         legs="マルクィトルーズ+2",
         feet="ジャリピガッシュ+2",
         neck="アギュトストール+1",
-        waist="山吹の帯",
+        waist="サクロコード",
         left_ear="電界の耳",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring="マルクィリング",
+        back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
+    }
+
+    sets.midcast.helix_mb_magic_dmg_dark = {
+        main="マクセンチアス",
+        sub="デイブレイクワンド",
+        ammo="ペムフレドタスラム",
+        head="妖蟲の髪飾り+1",
+        body="マルクィサイオ+2",
+        hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        legs="マルクィトルーズ+2",
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        neck="アギュトストール+1",
+        waist="サクロコード",
+        left_ear="怯懦の耳",
+        right_ear="マリグナスピアス",
+        left_ring="フレキリング",
+        right_ring="アルコンリング",
         back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
     }
 
@@ -177,16 +213,16 @@ function get_sets()
         sub="アムラピシールド",
         ammo="ペムフレドタスラム",
         head="ＡＣボード+3",
-        body="ＡＣガウン+2",
+        body="ＡＣガウン+3",
         hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
-        feet="ＡＣローファー+2",
+        feet="ＡＣローファー+3",
         neck="アギュトストール+1",
         waist="ルーミネリサッシュ",
-        left_ear="バーカロルピアス",
-        right_ear="ディグニタリピアス",
+        left_ear="王将の耳飾り",
+        right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
@@ -195,22 +231,22 @@ function get_sets()
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
-        body="ＡＣガウン+2",
-        hands="ＡＣブレーサー+2",
+        body="ＡＣガウン+3",
+        hands="ＡＣブレーサー+3",
         legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},
-        feet="ＡＣローファー+2",
+        feet="ＡＣローファー+3",
         neck="エーラペンダント",
         waist="風鳥の帯",
-        left_ear="バーカロルピアス",
-        right_ear="ディグニタリピアス",
-        left_ring="スティキニリング+1",
+        left_ear="王将の耳飾り",
+        right_ear="マリグナスピアス",
+        left_ring="アルコンリング",
         right_ring="エバネセンスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.enhance_duration = {
         main="ムサ",
-        sub="メンシストラップ+1",
+        sub="コーンスー",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
@@ -218,9 +254,9 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="ボルトサージトルク",
-        waist="ニヌルタサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="ロケイシャスピアス",
+        waist="エンブラサッシュ",
+        left_ear="ロケイシャスピアス",
+        right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
@@ -235,11 +271,11 @@ function get_sets()
     )
     sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
-    sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド", head="ＡＭコイフ+1", legs="シェダルサラウィル"})
+    sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド", sub="アムラピシールド", head="ＡＭコイフ+1", legs="シェダルサラウィル"})
 
     sets.midcast.enhance_skill = {
         main="ムサ",
-        sub="メンシストラップ+1",
+        sub="コーンスー",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
@@ -247,27 +283,27 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="インカンタートルク",
-        waist="オリンポスサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="オーグメントピアス",
+        waist="エンブラサッシュ",
+        left_ear="ミミルピアス",
+        right_ear="エテオレートピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back="フィフォレケープ+1",
     }
     
     sets.midcast.vagary_task = {
         main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="エンキストラップ",
+        sub="コーンスー",
         ammo="インカントストーン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body="ピンガチュニック",
+        body="ピンガチュニック+1",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet="ＡＣローファー+2",
+        feet="ＡＣローファー+3",
         neck="ボルトサージトルク",
         waist="ニヌルタサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="ロケイシャスピアス",
+        left_ear="ロケイシャスピアス",
+        right_ear="エテオレートピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -283,9 +319,9 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         neck="ロリケートトルク+1",
-        waist="キャリアーサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="サバントピアス",
+        waist="エンブラサッシュ",
+        left_ear="サバントピアス",
+        right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
@@ -400,12 +436,24 @@ function midcast(spell)
             is_immanence = false
         else
             if sets.helix:contains(spell.name) then
-                set_equip = sets.midcast.helix_mb
+                if spell.name == '闇門の計II' then
+                    set_equip = sets.midcast.helix_mb_magic_dmg_dark
+                else
+                    set_equip = sets.midcast.helix_mb
+                end
+                
+                if spell.target.distance < 10 then
+                    set_equip = set_combine(set_equip, {waist="オルペウスサッシュ",})
+                end
             else
                 if is_vagary_task then
                     set_equip = sets.midcast.vagary_task
                 else
-                    set_equip = set_combine(sets.midcast.magic_mb, get_hachirin(spell.element))
+                    if buffactive['虚誘掩殺の策'] then
+                        set_equip = set_combine(sets.midcast.magic_mb_klimaform, get_hachirin(spell.element))
+                    else
+                        set_equip = set_combine(sets.midcast.magic_mb, get_hachirin(spell.element))
+                    end
                 end
             end
         end

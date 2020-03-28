@@ -217,16 +217,31 @@ bp['Cait Sith'] = {
     },
 }
 bp['Odin'] = {
+    rage = {},
+    ward = {
+        buff = {},
+        debuff = {}
+    },
     astralflow = {
         [1] = {name='斬鉄剣', desc='範囲デス'},
     },
 }
 bp['Alexander'] ={
+    rage = {},
+    ward = {
+        buff = {},
+        debuff = {}
+    },
     astralflow = {
         [1] = {name='絶対防御', desc='被ダメカット, レジスト率UP'},
     },
 }
 bp['Atomos'] = {
+    rage = {},
+    ward = {
+        buff = {},
+        debuff = {}
+    },
     astralflow = {
         [1] = {name='ディコンストラクション', desc='強化吸収'},
         [2] = {name='クロノスフト', desc='強化付与'},
@@ -236,8 +251,8 @@ bp['Siren'] = {
     rage = {
         [1] = {name='ヒステリックアサルト', desc='突属性3回(分解/貫通),HP吸収'},
         [2] = {name='ソ\\ニックバフェット', desc='風属性,ディスペル'},
-        [3] = {name='ラウンドハウス', desc='物理攻撃'},
-        [4] = {name='ウェルト', desc='物理攻撃'},
+        [3] = {name='ラウンドハウス', desc='打属性'},
+        [4] = {name='ウェルト', desc='斬属性'},
         [7] = {name='トルネドII', desc='風属性'},
     },
     ward = {

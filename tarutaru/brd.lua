@@ -131,7 +131,7 @@ function get_sets()
     sets.midcast.ballad     = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", legs="ＦＬラングラヴ+1", feet="ＢＲスリッパー+3",})
     sets.midcast.minne      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
     sets.midcast.mambo      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
-    sets.midcast.carol      = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", hands="ムセスゲージ", feet="ＢＲスリッパー+3",})
+    sets.midcast.carol      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", hands="ムセスゲージ+1",})
     sets.midcast.minuet     = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", feet="ＢＲスリッパー+3",})
     sets.midcast.madrigal   = set_combine(sets.midcast.song_base,{head="ＦＬキャロ+1", legs="インヤガシャルワ+2", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
     sets.midcast.prelude    = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", feet="ＢＲスリッパー+3", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
@@ -139,7 +139,7 @@ function get_sets()
     sets.midcast.etude      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
     sets.midcast.scherzo    = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", legs="インヤガシャルワ+2", feet="ＦＬコテュルヌ+1"})
     sets.midcast.song_other = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
-    sets.midcast.threnody   = sets.midcast.magic_acc
+    sets.midcast.threnody   = set_combine(sets.midcast.magic_acc, {body="ムセスマンティル+1"})
 
     sets.midcast.enhance_duration = {
         sub="アムラピシールド",

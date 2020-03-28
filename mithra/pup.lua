@@ -27,7 +27,7 @@ function get_sets()
         main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         body="ＫＧファルセト+1",
         hands="ＦＯダスタナ+3",
-        neck="バフーンカラー",
+        neck="バフーンカラー+1",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
 
@@ -35,7 +35,7 @@ function get_sets()
         -- main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         body="ＫＧファルセト+1",
         hands="ＦＯダスタナ+3",
-        neck="バフーンカラー",
+        neck="バフーンカラー+1",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
 
@@ -43,7 +43,7 @@ function get_sets()
         -- main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         -- body="ＫＧファルセト+1",
         --  hands="ＦＯダスタナ+2",
-        neck="バフーンカラー",
+        neck="バフーンカラー+1",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
 
@@ -76,7 +76,7 @@ function get_sets()
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
         right_ring="ニックマドゥリング",
-        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back="サクロマント",
     }
 
     sets.precast.ws.critical = {
@@ -91,7 +91,7 @@ function get_sets()
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
-        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back="サクロマント",
     }
 
     sets.precast.ws.multi = {
@@ -124,7 +124,7 @@ function get_sets()
     sets.precast.ws["四神円舞"] = sets.precast.ws.multi
 
     sets.midcast.ws_tp = {
-        feet={ name="那伽脚絆", augments={'Pet: HP+100','Pet: Accuracy+25','Pet: Attack+25',}},
+        -- feet={ name="那伽脚絆", augments={'Pet: HP+100','Pet: Accuracy+25','Pet: Attack+25',}},
         back={ name="デスパースマント", augments={'STR+1','DEX+3','Pet: TP Bonus+500',}},
     }
 
@@ -203,7 +203,7 @@ function get_sets()
     sets.aftercast.idle_tank_melee = {
         main="カランビット",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         body="ＦＯトベ+3",
         hands="ヘヨカミトン+1",
         legs="ヘヨカサブリガ+1",
@@ -237,7 +237,7 @@ function get_sets()
     sets.aftercast.idle_tank_dt = {
         main="ニャフロンアダーガ",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         body={ name="羅王闘着改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         hands={ name="羅王篠篭手改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         legs={ name="羅王板佩楯改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
@@ -254,7 +254,7 @@ function get_sets()
     sets.aftercast.idle_tank_hp = {
         main="ニャフロンアダーガ",
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜", augments={'Pet: HP+100','Pet: Accuracy+15','Pet: Damage taken -3%',}},
+        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         body="ＦＯトベ+3",
         hands={ name="羅王篠篭手改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
         legs={ name="羅王板佩楯改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},

@@ -30,6 +30,9 @@ function get_sets()
     magic_ba = S{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
     ability_rune = S{'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ', 'ルックス', 'テネブレイ'}
 
+    sets.weapon = {}
+    sets.weapon.hist = {main=empty, sub=empty}
+
     sets.enmity = {
         ammo="サピエンスオーブ",
         head={ name="ハリタスヘルム", hp=88,},
@@ -338,6 +341,22 @@ function get_sets()
 
         -- マクロのブック, セット変更, 装備入れ替え
         send_command('input /macro book 17; wait 0.5; input /macro set 1; wait 0.5; input /si run;')
+end
+
+local function set_weapon_hist()
+    if player.equipment.main ~= 'empty' then
+        sets.weapon.hist.main = player.equipment.main
+    end
+    if player.equipment.sub ~= 'empty' then
+        sets.weapon.hist.sub = player.equipment.sub
+    end
+    sets.aftercast.dt = set_combine(sets.aftercast.dt, sets.weapon.hist)
+    sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.hist)
+    sets.aftercast.speed = set_combine(sets.aftercast.speed, sets.weapon.hist)
+end
+
+function pretarget(spell)
+    set_weapon_hist()
 end
 
 local function get_fc_equip()

@@ -69,16 +69,17 @@ function get_sets()
     
     sets.precast.doom = {
         main="ヤグルシュ",
+        ammo="ヘイストピニオン+1",
         head="ＥＢキャップ+1",
         body="ＥＢブリオー+1",
-        hands="ＴＥミトン+3",
+        hands="ファナチクグローブ",
         legs="ＴＥパンタロン+2",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="デビリスメダル",
         waist="ビショップサッシュ",
-        left_ear="エテオレートピアス",
-        right_ear="驕慢の耳",
-        left_ring="ハオマリング",
+        left_ear="ビティフィクピアス",
+        right_ear="メイリピアス",
+        left_ring="メネロスリング",
         right_ring="ハオマリング",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -149,7 +150,7 @@ function get_sets()
         left_ear="エテオレートピアス",
         right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
@@ -167,7 +168,7 @@ function get_sets()
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="メンディングケープ", augments={'Healing magic skill +9','Enha.mag. skill +9',}},
     }
     
@@ -185,7 +186,7 @@ function get_sets()
         left_ear="マリグナスピアス",
         right_ear="王将の耳飾り",
         left_ring="スティキニリング+1",
-        right_ring="スティキニリング",
+        right_ring="スティキニリング+1",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     

@@ -47,7 +47,7 @@ function get_sets()
     sets.precast.fc = {
         ammo="ストンチタスラム+1",
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
-        body="ピンガチュニック",
+        body="ピンガチュニック+1",
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="アヤモコッシャレ+2",
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
@@ -67,10 +67,10 @@ function get_sets()
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="アヤモガンビエラ+2",
-        neck="フォシャゴルゲット",
+        neck="ミラージストール+2",
         waist="フォシャベルト",
         left_ear="マーケピアス+1",
-        right_ear="マーケピアス+1",
+        right_ear="オドルピアス",
         left_ring="イラブラットリング",
         right_ring="エポナリング",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
@@ -182,7 +182,7 @@ function get_sets()
     sets.midcast.cure = {
         ammo="ストンチタスラム+1",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
-        body="ピンガチュニック",
+        body="ピンガチュニック+1",
         hands="ＨＳバズバンド+1",
         legs="ギーヴトラウザ",
         feet={ name="ミディアムサボ", augments={'MP+45','MND+9','"Conserve MP"+5','"Cure" potency +4%',}},
@@ -326,7 +326,7 @@ function get_sets()
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
-        neck="アイニアカラー",
+        neck="ミラージストール+2",
         waist="霊亀腰帯",
         left_ear="デディションピアス",
         right_ear="テロスピアス",
@@ -439,6 +439,8 @@ function midcast(spell)
             set_equip = set_combine(sets.midcast.magic_drk, get_hachirin(spell.element))
         elseif blue_magic[spell.name].type == "enmity" then
             set_equip = sets.enmity
+        elseif blue_magic[spell.name].type == "magic_atk_earth" then
+            set_equip = set_combine(sets.midcast.magic, {hands="ＨＳバズバンド+1",})
         end
     elseif spell.skill == '神聖魔法' then
         if spell.name == 'フラッシュ' then
@@ -533,9 +535,9 @@ function self_command(command)
         equip(sets.midcast.phalanx)
         windower.add_to_chat(122,'---> 被ファランクス用装備')
     elseif command == 'tenzen' then
-        send_command('aset set tenzen; input /macro book 11; wait 0.5; input /macro set 3; jc sub blm; gs c multi')
+        send_command('gs c almace; aset set tenzen; input /macro book 11; wait 0.5; input /macro set 3; jc sub blm; gs c multi')
     elseif command == 'delve' then
-        send_command('aset set tank; input /macro book 11; wait 0.5; input /macro set 6; jc sub pld; gs c dt')
+        send_command('gs c tizona; aset set tank; input /macro book 11; wait 0.5; input /macro set 6; jc sub pld; gs c dt')
     end
 end
 
@@ -551,6 +553,7 @@ function init_blue_magic()
         [8] = "refresh",
         [9] = "magic_atk_drk",
         [10] = "enmity",
+        [11] = "magic_atk_earth"
     }
 
     blue_magic = {}
@@ -558,7 +561,7 @@ function init_blue_magic()
     blue_magic["メイルシュトロム"] = {type=blue_magic_type[4]}
     blue_magic["メタルボディ"] = {type=blue_magic_type[6]}
     blue_magic["S.ドライバー"] = {type=blue_magic_type[1]}
-    blue_magic["MP吸収キッス"] = {type=blue_magic_type[4]}
+    blue_magic["MP吸収キッス"] = {type=blue_magic_type[9]}
     blue_magic["デスレイ"] = {type=blue_magic_type[3]}
     blue_magic["土竜巻"] = {type=blue_magic_type[4]}
     blue_magic["怒りの一撃"] = {type=blue_magic_type[1]}
@@ -725,7 +728,7 @@ function init_blue_magic()
     blue_magic["シアリングテンペスト"] = {type=blue_magic_type[3]}
     blue_magic["スペクトラルフロー"] = {type=blue_magic_type[3]}
     blue_magic["アンビルライトニング"] = {type=blue_magic_type[3]}
-    blue_magic["エントゥーム"] = {type=blue_magic_type[3]}
+    blue_magic["エントゥーム"] = {type=blue_magic_type[11]}
     blue_magic["サウリアンスライド"] = {type=blue_magic_type[5]}
     blue_magic["ポーリングサルヴォ"] = {type=blue_magic_type[4]}
     blue_magic["B.フルゴア"] = {type=blue_magic_type[3]}

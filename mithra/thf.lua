@@ -16,12 +16,13 @@ function get_sets()
     sets.precast.ws.wsd = {
         ammo="パルーグストーン",
         head="ＰＬボンネット+3",
-        body={ name="ＰＤベスト+3", augments={'Enhances "Ambush" effect',}},
+        body="ＰＬベスト+3",
         hands="メガナダグローブ+2",
         legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
-        feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
-        neck="カロネックレス",
-        waist="グルンフェルロープ",
+        -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
+        feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
+        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
+        waist="チナーズベルト+1",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
@@ -32,12 +33,13 @@ function get_sets()
     sets.precast.ws.sneak = {
         ammo="イェットシーラ+1",
         head="ＰＬボンネット+3",
-        body={ name="ＰＤベスト+3", augments={'Enhances "Ambush" effect',}},
+        body="ＰＬベスト+3",
         hands="メガナダグローブ+2",
         legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
-        feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
-        neck="カロネックレス",
-        waist="グルンフェルロープ",
+        -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
+        feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
+        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
+        waist="チナーズベルト+1",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
@@ -48,11 +50,11 @@ function get_sets()
     sets.precast.ws.multi = {
         ammo="パルーグストーン",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="ＰＬベスト+3",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs="ＰＬキュロット+3",
         feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
-        neck="フォシャゴルゲット",
+        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
         waist="フォシャベルト",
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -74,13 +76,14 @@ function get_sets()
         right_ear="オドルピアス",
         left_ring="ムンムリング",
         right_ring="イラブラットリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
+        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
     }
 
     sets.precast.ws['エヴィサレーション'] = sets.precast.ws.critical
     sets.precast.ws['エクゼンテレター'] = sets.precast.ws.multi
     sets.precast.ws['ルドラストーム'] = sets.precast.ws.wsd
     sets.precast.ws['マンダリクスタッブ'] = sets.precast.ws.wsd
+    sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.wsd
     
     sets.aftercast.melee_atk = {
         ammo="ヤメラング",
@@ -89,7 +92,7 @@ function get_sets()
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs="ＰＬキュロット+3",
         feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
-        neck="アヌートルク",
+        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
         waist="ウィンバフベルト+1",
         left_ear="シェリダピアス",
         right_ear="デディションピアス",
@@ -98,7 +101,29 @@ function get_sets()
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
     
-    sets.aftercast.melee = sets.aftercast.melee_atk
+    sets.aftercast.melee_atk_dnc = {
+        ammo="ヤメラング",
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="ＰＬベスト+3",
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="ＰＬキュロット+3",
+        feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
+        eck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
+        waist="ウィンバフベルト+1",
+        left_ear="シェリダピアス",
+        right_ear="デディションピアス",
+        left_ring="守りの指輪",
+        right_ring="ヘタイロイリング",
+        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+    }
+
+    local p = windower.ffxi.get_player()
+    if p.sub_job == 'DNC' then
+        sets.aftercast.melee = sets.aftercast.melee_atk_dnc
+        send_command('lua load autodnc')
+    else
+        sets.aftercast.melee = sets.aftercast.melee_atk
+    end
 
     sets.aftercast.idle_speed = {
         ammo="ストンチタスラム+1",
@@ -184,11 +209,13 @@ function self_command(command)
     if command == 'th' then
         if is_th then
             is_th = false
-            sets.aftercast.melee = sets.aftercast.melee_atk
+            sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.wsd
+            sets.aftercast.melee = sets.aftercast.melee
             sets.aftercast.idle = sets.aftercast.idle_speed
         else
             is_th = true
-            sets.aftercast.melee = set_combine(sets.aftercast.melee_atk, sets.th)
+            sets.precast.ws['イオリアンエッジ'] = set_combine(sets.precast.ws.wsd, sets.th)
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.th)
             sets.aftercast.idle = set_combine(sets.aftercast.idle_speed, sets.th)
         end
 
@@ -199,5 +226,26 @@ function self_command(command)
         end
 
         windower.add_to_chat(122,'----> トレハン装備: '..tostring(is_th))
+    end
+end
+
+function sub_job_change(new, old)
+    if new == '踊' then
+        sets.aftercast.melee = sets.aftercast.melee_atk_dnc
+        send_command('lua load autodnc;wait 1;dnc on;')
+    else
+        sets.aftercast.melee = sets.aftercast.melee_atk
+        if old == '踊' then
+            send_command('lua unload autodnc')
+        end
+    end
+
+    
+end
+
+function file_unload(file_name)
+    local p = windower.ffxi.get_player()
+    if p.sub_job == 'DNC' then
+        send_command('lua unload autodnc;wait 1; dnc on;')
     end
 end
