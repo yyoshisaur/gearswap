@@ -79,6 +79,7 @@ function get_sets()
     sets.midcast.magic_acc = {
         main="カルンウェナン",
         sub="アムラピシールド",
+        range="ギャッラルホルン",
         head="ＢＲランドリト+3",
         body="ＢＲジュスト+3",
         hands="ＢＲカフス+3",
@@ -96,6 +97,7 @@ function get_sets()
     sets.midcast.song_base = {
         main="カルンウェナン",
         sub="玄冥盾",
+        range="ギャッラルホルン",
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
         hands="アヤモマノポラ+2",
@@ -111,6 +113,7 @@ function get_sets()
     }
 
     sets.midcast.song_dummy = {
+        range="ダウルダヴラ",
         main={ name="カーリ", augments={'MP+60','Mag. Acc.+20','"Refresh"+1',}},
         sub="玄冥盾",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
@@ -193,7 +196,7 @@ function get_sets()
     
     sets.aftercast.melee = {
         -- main="エーネアス",
-        range={ name="リノス", augments={'Accuracy+15','"Store TP"+4','Quadruple Attack +3',}},
+        range={ name="リノス", augments={'Accuracy+15','"Dbl.Atk."+3','Quadruple Attack +3',}},
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
         hands="アヤモマノポラ+2",
@@ -228,6 +231,18 @@ function get_sets()
     
     -- マクロのブック, セット変更, 装備入れ替え
     send_command('input /macro book 19; wait 0.5; input /macro set 1; wait 0.5; input /si brd')
+end
+
+function pretarget(spell)
+    local set_equip = nil
+
+    if spell.name == '栄典の戴冠マーチ' then
+        set_equip = {range="マルシュアス",}
+    end
+
+    if set_equip then
+        equip(set_equip)
+    end
 end
 
 function precast(spell)
@@ -321,27 +336,152 @@ function status_change(new, old)
     end
 end
 
+local auto_song = false
+local update_time = os.clock()
+local update_interval = 605
+local overwirte_song_cmd = ''
+local cp_song = {
+    no_sp = {
+        start = {
+            [1] = {name = 'ナイチンゲール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [2] = {name = 'トルバドゥール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [3] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
+            [4] = {name = '栄典の戴冠マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [5] = {name = '栄光の凱旋マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [6] = {name = '戦士達のピーアン', wait = 3.5, pf = '/ma', t = '<me>'},
+            [7] = {name = '戦士達のピーアンII', wait = 3.5, pf = '/ma', t = '<me>'},
+            [8] = {name = '猛者のメヌエットV', wait = 3.5, pf = '/ma', t = '<me>'},
+            [9] = {name = '剣豪のマドリガル', wait = 3.5, pf = '/ma', t = '<me>'},
+            [10] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [11] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [12] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [13] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [14] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [15] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+            [16] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [17] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+        },
+        
+        overwirte = {
+            [1] = {name = 'ナイチンゲール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [2] = {name = 'トルバドゥール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [3] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
+            [4] = {name = '栄典の戴冠マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [5] = {name = '栄光の凱旋マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [6] = {name = '猛者のメヌエットV', wait = 3.5, pf = '/ma', t = '<me>'},
+            [7] = {name = '剣豪のマドリガル', wait = 3.5, pf = '/ma', t = '<me>'},
+            [8] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [9] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [10] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [11] = {name = '魔道士のバラードII', wait = 4, pf = '/ma', t = 'Kupipi'},
+            [12] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [13] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+            [14] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [15] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+        },
+    },
+    sp = {
+        start = {
+            [1] = {name = 'ナイチンゲール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [2] = {name = 'トルバドゥール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [3] = {name = 'クラリオンコール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [4] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
+            [5] = {name = '栄典の戴冠マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [6] = {name = '栄光の凱旋マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [7] = {name = '戦士達のピーアン', wait = 3.5, pf = '/ma', t = '<me>'},
+            [8] = {name = '戦士達のピーアンII', wait = 3.5, pf = '/ma', t = '<me>'},
+            [9] = {name = '戦士達のピーアンIII', wait = 3.5, pf = '/ma', t = '<me>'},
+            [10] = {name = '猛者のメヌエットV', wait = 3.5, pf = '/ma', t = '<me>'},
+            [11] = {name = '剣豪のマドリガル', wait = 3.5, pf = '/ma', t = '<me>'},
+            [12] = {name = '剣闘士のマドリガル', wait = 3.5, pf = '/ma', t = '<me>'},
+            [13] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [14] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [15] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [16] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [17] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [18] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+            [19] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [20] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+        },
+        overwirte = {
+            [1] = {name = 'ナイチンゲール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [2] = {name = 'トルバドゥール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [3] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
+            [4] = {name = '栄典の戴冠マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [5] = {name = '栄光の凱旋マーチ', wait = 3.5, pf = '/ma', t = '<me>'},
+            [6] = {name = '猛者のメヌエットV', wait = 3.5, pf = '/ma', t = '<me>'},
+            [7] = {name = '剣豪のマドリガル', wait = 3.5, pf = '/ma', t = '<me>'},
+            [8] = {name = '剣闘士のマドリガル', wait = 3.5, pf = '/ma', t = '<me>'},
+            [9] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [10] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [11] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [12] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Kupipi'},
+            [13] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [14] = {name = '魔道士のバラードIII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+            [15] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [16] = {name = '魔道士のバラードII', wait = 3.5, pf = '/ma', t = 'Koru-Moru'},
+        },
+    }
+}
+
 function self_command(command)
-    if command == 'melee' then
+    local cmd = command:split(' ')
+    if cmd[1] == 'melee' then
         if is_melee then
             is_melee = false
-            windower.add_to_chat(122,'+++ 待機装備モード +++')
+            windower.add_to_chat(122,'---> 待機装備モード')
         else
             is_melee = true
-            windower.add_to_chat(122,'+++ 近接装備モード +++')
+            windower.add_to_chat(122,'---> 近接装備モード')
         end
-    elseif command == 'dual' then
+    elseif cmd[1] == 'dual' then
         if is_dual then
             is_dual = false
-            windower.add_to_chat(122,'+++ 1刀装備モード +++')
+            windower.add_to_chat(122,'---> 1刀装備モード')
             enable('sub')
         else
             is_dual = true
-            windower.add_to_chat(122,'+++ 2刀装備モード +++')
+            windower.add_to_chat(122,'---> 2刀装備モード')
             disable('sub')
         end
+    elseif cmd[1] == 'autosong' then
+        if cmd[2] == 'off' then
+            auto_song = false
+        elseif cmd[2] == 'on' then
+            if cmd[3] == 'sp' then
+                local song_cmd = ''
+                for i,v in ipairs(cp_song.sp.start) do
+                    song_cmd = song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
+                end
+                for i,v in ipairs(cp_song.sp.overwirte) do
+                    overwirte_song_cmd = overwirte_song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
+                end
+                send_command(song_cmd)
+            else
+                local song_cmd = ''
+                for i,v in ipairs(cp_song.no_sp.start) do
+                    song_cmd = song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
+                end
+                for i,v in ipairs(cp_song.no_sp.overwirte) do
+                    overwirte_song_cmd = overwirte_song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
+                end
+                send_command(song_cmd)
+            end
+            update_time = os.clock()
+            auto_song = true
+        end
+        windower.add_to_chat(122,'---> AUTO SONG: '..tostring(auto_song))
     end
 end
+
+windower.register_event('time change', function(new, old)
+    local curr = os.clock()
+    if auto_song and (curr > update_time + update_interval) then
+        send_command(overwirte_song_cmd)
+        update_time = curr
+        windower.add_to_chat(122,'---> UPDATE SONGS')
+    end
+end)
 
 function get_song_gear(spell)
     if song[spell.name] == 'Dummy' then
@@ -366,6 +506,8 @@ function get_song_gear(spell)
         return sets.midcast.prelude
     elseif song[spell.name] == 'March' then
         return sets.midcast.march
+    elseif song[spell.name] == 'March_Marsyas' then
+        return set_combine(sets.midcast.march, {range="マルシュアス",})
     elseif song[spell.name] == 'Etude' then
         return sets.midcast.etude
     elseif song[spell.name] == 'Mazurka' then
@@ -457,7 +599,7 @@ function init_song()
 
     song['無敵の進撃マーチ'] = 'March'
     song['栄光の凱旋マーチ'] = 'March'
-    song['栄典の戴冠マーチ'] = 'March'
+    song['栄典の戴冠マーチ'] = 'March_Marsyas'
 
     song['魅了のエチュード'] = 'Etude'
     song['精神のエチュード'] = 'Etude'

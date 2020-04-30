@@ -36,6 +36,7 @@ function get_sets()
     sets.magic_enfeeble_mnd_acc = T{'ディア', 'ディアII', 'ディアIII', 'サイレス', 'フラズル', 'フラズルII',}
     sets.magic_enfeeble_int = T{'ブライン', 'ブラインII', 'グラビデ', 'グラビデII',}
     sets.magic_enfeeble_int_acc = T{'スリプル', 'スリプルII', 'スリプガ', 'バインド', 'ブレイク'}
+    sets.magic_enfeeble_duration_sabo = T{'スリプル', 'スリプルII', 'スリプガ', 'バインド', 'ブレイク', 'サイレス','ディア', 'ディアII', 'ディアIII','ポイズン', 'ポイズンII',}
 
     sets.weapon.hist = {main=empty, sub=empty}
 
@@ -55,6 +56,9 @@ function get_sets()
 
     sets.weapon.enfeeble_int = {main="ネイグリング", sub="アムラピシールド",}
     sets.weapon.enfeeble_int_nin = {main="ネイグリング", sub="マクセンチアス",}
+
+    sets.weapon.enfeeble_acc = {main="クロセアモース", sub="アムラピシールド",}
+    sets.weapon.enfeeble_acc_nin = {main="クロセアモース", sub="マクセンチアス",}
 
     sets.th = {
         head="白ララブキャップ+1",
@@ -346,6 +350,22 @@ function get_sets()
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
+    sets.midcast.magic_enfeeble_duration_sabo = {
+        range="ウルル",
+        head="ＬＴシャペル+1",
+        body="ＬＴサヨン+1",
+        hands="ＬＴガントロ+1",
+        legs="ＬＴフュゾー+1",
+        feet="ＬＴウゾー+1",
+        neck={ name="デュエルトルク+2", augments={'Path: A',}},
+        waist="ルーミネリサッシュ",
+        left_ear="スノトラピアス",
+        right_ear="マリグナスピアス",
+        left_ring="スティキニリング+1",
+        right_ring="キシャールリング",
+        back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
     sets.midcast.magic_acc = {
         range="ウルル",
         head="ＶＩシャポー+3",
@@ -359,7 +379,7 @@ function get_sets()
         right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
-        back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
+        back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
     sets.midcast.magic_mb = {
@@ -474,12 +494,12 @@ function get_sets()
         legs="ＡＴタイツ+3",
         feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
         neck="デュアルカラー+1",
-        waist="ゴールドモグベルト",
-        left_ear="メンデカントピアス",
-        right_ear="エテオレートピアス",
+        waist="ギシドゥバサッシュ",
+        left_ear="エテオレートピアス",
+        right_ear="メンデカントピアス",
         left_ring="クナジリング",
         right_ring="メネロスリング",
-        back="ソコルソキーマント",
+        back="月光の羽衣",
     }
 
     sets.aftercast.dw_30 = {
@@ -502,7 +522,8 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         sets.midcast.magic_enfeeble_mnd_acc = set_combine(sets.midcast.magic_enfeeble_mnd_acc, sets.weapon.enfeeble_mnd_nin)
         sets.midcast.magic_enfeeble_int = set_combine(sets.midcast.magic_enfeeble_int, sets.weapon.enfeeble_int_nin)
         sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_int_nin)
-        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_mnd_nin)
+        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_acc_nin)
+        sets.midcast.magic_enfeeble_duration_sabo = set_combine(sets.midcast.magic_enfeeble_duration_sabo, sets.weapon.enfeeble_acc_nin)
 
         sets.midcast.phalanx = sets.midcast.phalanx_self_nin
 
@@ -531,7 +552,8 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         sets.midcast.magic_enfeeble_mnd_acc = set_combine(sets.midcast.magic_enfeeble_mnd_acc, sets.weapon.enfeeble_mnd)
         sets.midcast.magic_enfeeble_int = set_combine(sets.midcast.magic_enfeeble_int, sets.weapon.enfeeble_int)
         sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_int)
-        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_int)
+        sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_acc)
+        sets.midcast.magic_enfeeble_duration_sabo = set_combine(sets.midcast.magic_enfeeble_duration_sabo, sets.weapon.enfeeble_acc)
 
         sets.midcast.phalanx = sets.midcast.phalanx_self
 
@@ -573,9 +595,14 @@ function pretarget(spell)
     if is_cure_self then
         windower.add_to_chat(122,'---> HP MAX DOWN')
         set_equip = sets.hp_max_down
+        is_cure_self = false
     end
 
     set_weapon_hist()
+
+    if spell.name == 'ディスペガ' then
+        set_equip = {main="デイブレイクワンド"}
+    end
 
     if set_equip then
         equip(set_equip)
@@ -614,8 +641,7 @@ function midcast(spell)
     local set_equip = nil
 
     if string.find(spell.name, 'ケアル') then
-        if is_cure_self then
-            is_cure_self = false
+        if spell.target.type == 'SELF' then
             set_equip = sets.midcast.cure_hp_max_down
         else
             set_equip = set_combine(sets.midcast.cure, get_hachirin(spell.element))
@@ -662,6 +688,8 @@ function midcast(spell)
         if is_immunobreak then
             set_equip = sets.midcast.enfeeble_skill
             is_immunobreak = false
+        elseif buffactive['サボトゥール'] and sets.magic_enfeeble_duration_sabo:contains(spell.name) then
+            set_equip = sets.midcast.magic_enfeeble_duration_sabo
         elseif sets.magic_enfeeble_mnd:contains(spell.name) then
             set_equip = sets.midcast.magic_enfeeble_mnd
         elseif sets.magic_enfeeble_mnd_and_skill:contains(spell.name) then
@@ -672,6 +700,8 @@ function midcast(spell)
             set_equip = sets.midcast.magic_enfeeble_int
         elseif sets.magic_enfeeble_int_acc:contains(spell.name) then
             set_equip = sets.midcast.magic_enfeeble_int_acc
+        elseif spell.name == 'ディスペガ' then
+            set_equip = sets.midcast.magic_enfeeble_mnd_acc
         else
             set_equip = sets.midcast.magic_acc
         end

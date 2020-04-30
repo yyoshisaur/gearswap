@@ -74,7 +74,7 @@ function get_sets()
     sets.precast.ws['シャッターソウル'] = sets.precast.ws.multi
 
     sets.precast.ability['ジャンプ'] =  {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
         body="ＶＳメイル+3",
         hands="ＶＳフィンガー+3",
@@ -101,7 +101,7 @@ function get_sets()
     sets.precast.ability['スピリットリンク'] = {hands="ＰＥバンブレス+1", right_ear="プラティクピアス",}
 
     sets.aftercast.melee = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="フロプトヘルム",
         body="フロプトブレスト",
         hands="フラママノポラ+2",

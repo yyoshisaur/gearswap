@@ -15,7 +15,7 @@ function get_sets()
     sets.weapon["サギッタ"] = {main="サギッタ",}
 
     sets.precast.ws.critical = {
-        ammo="ノブキエリ",
+        ammo="オゲルミルオーブ+1",
         head={ name="羅王頭成兜改", augments={'STR+12','DEX+12','Attack+20',}},
         body="ＡＮシクラス+3",
         hands={ name="龍王手甲改", augments={'STR+12','DEX+12','Accuracy+20',}},
@@ -48,13 +48,13 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="エパミノダスリング",
+        left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.precast.ws.wsd_vit = {
-        ammo="ノブキエリ",
+        ammo="オゲルミルオーブ+1",
         head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},
         body="ＡＮシクラス+3",
         hands="ＡＮグローブ+3",
@@ -65,13 +65,13 @@ function get_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear="イシュヴァラピアス",
-        left_ring="エパミノダスリング",
+        left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.precast.ws.multi = {
-        ammo="ノブキエリ",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="乾闥婆作務衣改",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -87,7 +87,7 @@ function get_sets()
     }
 
     sets.precast.ws.multi_dex = {
-        ammo="ノブキエリ",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="乾闥婆作務衣改",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -125,8 +125,7 @@ function get_sets()
     sets.precast.ability['気孔弾'] = {head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},}
     sets.precast.ability['マントラ'] = {feet={ name="ＨＥゲートル+3", augments={'Enhances "Mantra" effect',}},}
     sets.precast.ability['チャクラ'] = {
-        ammo="ブリガンチアペブル",
-        head="玄冥兜",
+        ammo="オゲルミルオーブ+1",
         body="ＡＮシクラス+3",
         hands={ name="ＨＥグローブ+3", augments={'Enhances "Invigorate" effect',}},
         legs="真膝丸膝甲",
@@ -156,7 +155,7 @@ function get_sets()
     }
 
     sets.aftercast.melee_multi = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="乾闥婆作務衣改",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -172,11 +171,11 @@ function get_sets()
     }
 
     sets.aftercast.melee_dt = {
-        ammo="ヘイストピニオン+1",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
-        legs={ name="ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},
+        legs="乾闥婆筒袴改",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
@@ -188,7 +187,7 @@ function get_sets()
     }
 
     sets.aftercast.melee_multi_ma = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="乾闥婆作務衣改",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -204,11 +203,11 @@ function get_sets()
     }
     
     sets.aftercast.melee_dt_ma = {
-        ammo="ヘイストピニオン+1",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
-        legs={ name="ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},
+        legs="乾闥婆筒袴改",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
@@ -220,7 +219,7 @@ function get_sets()
     }
     
     sets.aftercast.melee_imp = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="ＢＫシクラス+1",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -236,11 +235,11 @@ function get_sets()
     }
 
     sets.aftercast.melee_dt_imp = {
-        ammo="ヘイストピニオン+1",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="ＢＫシクラス+1",
         hands="マリグナスグローブ",
-        legs={ name="ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},
+        legs="乾闥婆筒袴改",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
@@ -252,7 +251,7 @@ function get_sets()
     }
 
     sets.aftercast.melee_ma_imp = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="ＢＫシクラス+1",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -269,11 +268,11 @@ function get_sets()
 
         
     sets.aftercast.melee_dt_ma_imp = {
-        ammo="ヘイストピニオン+1",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="ＢＫシクラス+1",
         hands="マリグナスグローブ",
-        legs={ name="ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},
+        legs="乾闥婆筒袴改",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
@@ -291,10 +290,10 @@ function get_sets()
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
-        legs="ムンムケックス+2",
+        legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
-        waist="月虹帯+1",
+        waist="キャリアーサッシュ",
         left_ear="シェリダピアス",
         right_ear="玄冥耳飾り",
         left_ring="守りの指輪",

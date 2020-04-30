@@ -9,6 +9,7 @@ function get_sets()
     is_th = false
 
     sets.th = {
+        sub = "ガンドリング",
         hands="ＰＤアムレット+3",
         -- waist="チャークベルト"
     }
@@ -58,8 +59,8 @@ function get_sets()
         waist="フォシャベルト",
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="イラブラットリング",
-        right_ring="ゲリリング",
+        left_ring="ゲリリング",
+        right_ring="イラブラットリング",
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
@@ -86,7 +87,7 @@ function get_sets()
     sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.wsd
     
     sets.aftercast.melee_atk = {
-        ammo="ヤメラング",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -102,7 +103,7 @@ function get_sets()
     }
     
     sets.aftercast.melee_atk_dnc = {
-        ammo="ヤメラング",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body="ＰＬベスト+3",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -130,7 +131,7 @@ function get_sets()
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
-        legs="ムンムケックス+2",
+        legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
         waist="ウィンバフベルト+1",
@@ -210,12 +211,12 @@ function self_command(command)
         if is_th then
             is_th = false
             sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.wsd
-            sets.aftercast.melee = sets.aftercast.melee
+            sets.aftercast.melee = sets.aftercast.melee_atk
             sets.aftercast.idle = sets.aftercast.idle_speed
         else
             is_th = true
             sets.precast.ws['イオリアンエッジ'] = set_combine(sets.precast.ws.wsd, sets.th)
-            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.th)
+            sets.aftercast.melee = set_combine(sets.aftercast.melee_atk, sets.th)
             sets.aftercast.idle = set_combine(sets.aftercast.idle_speed, sets.th)
         end
 
@@ -246,6 +247,6 @@ end
 function file_unload(file_name)
     local p = windower.ffxi.get_player()
     if p.sub_job == 'DNC' then
-        send_command('lua unload autodnc;wait 1; dnc on;')
+        send_command('lua unload autodnc;')
     end
 end

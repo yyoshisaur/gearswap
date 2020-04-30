@@ -324,7 +324,7 @@ function get_sets()
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back="月光の羽衣",
     }
     
     sets.aftercast.idle_refresh = {

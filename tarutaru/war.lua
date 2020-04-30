@@ -173,7 +173,7 @@ function get_sets()
     }
 
     sets.aftercast.melee.chango = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
         body={ name="バロラスメイル", augments={'Accuracy+27','"Dbl.Atk."+5','VIT+4','Attack+15',}},
         hands="スレビアガントレ+2",

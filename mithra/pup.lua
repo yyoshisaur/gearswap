@@ -124,6 +124,7 @@ function get_sets()
     sets.precast.ws["四神円舞"] = sets.precast.ws.multi
 
     sets.midcast.ws_tp = {
+        head="ＫＧカペッロ+1",
         -- feet={ name="那伽脚絆", augments={'Pet: HP+100','Pet: Accuracy+25','Pet: Attack+25',}},
         back={ name="デスパースマント", augments={'STR+1','DEX+3','Pet: TP Bonus+500',}},
     }
@@ -201,19 +202,19 @@ function get_sets()
     }
 
     sets.aftercast.idle_tank_melee = {
-        main="カランビット",
+        main={ name="オータス", augments={'Accuracy+70','Pet: Accuracy+70','Pet: Haste+10%',}},
         ammo="ルブリカント+3",
-        head={ name="羅王頭成兜改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
-        body="ＦＯトベ+3",
-        hands="ヘヨカミトン+1",
-        legs="ヘヨカサブリガ+1",
-        feet={ name="羅王篠脛当改", augments={'Pet: HP+125','Pet: Accuracy+20','Pet: Damage taken -4%',}},
+        head={ name="テーオンシャポー", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
+        body={ name="ＰＩトベ+3", augments={'Enhances "Overdrive" effect',}},
+        hands={ name="テーオングローブ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
+        legs={ name="テーオンタイツ", augments={'Pet: Accuracy+25 Pet: Rng.Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
+        feet={ name="テーオンブーツ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Haste+5',}},
         neck="シュルマヌカラー",
-        waist="月虹帯+1",
-        left_ear="セサンスピアス",
-        right_ear="ブルタルピアス",
-        left_ring="守りの指輪",
-        right_ring="ニックマドゥリング",
+        waist="クルスカサッシュ+1",
+        left_ear="ライムアイスピアス",
+        right_ear="エンメルカルピアス",
+        left_ring="パルーグリング",
+        right_ring="ヴァラールリング+1",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
     }
 

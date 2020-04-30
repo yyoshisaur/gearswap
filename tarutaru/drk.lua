@@ -258,7 +258,7 @@ function get_sets()
     
     sets.aftercast.melee_acc_1200 = {
         sub="ウトゥグリップ",
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
         body={ name="ＥＭオーベール+1", augments={'HP+65','DEX+12','Accuracy+20',}},
         hands={ name="ＥＭガントレ+1", augments={'HP+65','DEX+12','Accuracy+20',}},
@@ -471,7 +471,7 @@ function status_change(new, old)
 
         set_equip = sets.aftercast.melee
 
-         if is_mokusya then
+        if is_mokusya then
             if buffactive['ラストリゾート'] then
                 set_equip = set_combine(set_equip, sets.mokusya_last_resort)
             else

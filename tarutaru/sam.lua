@@ -126,7 +126,7 @@ function get_sets()
     }
 
     sets.precast.ability['護摩の守護円'] = {head="極脇戸桃形兜",}
-     
+    
     -- サポ剣
     sets.precast.ability['ヴァレション'] = sets.enmity
     sets.precast.ability['ソードプレイ'] = sets.enmity
@@ -139,7 +139,7 @@ function get_sets()
     }
     
     sets.aftercast.multi = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
         body="乾闥婆作務衣改",
         hands="極脇戸筒篭手",
@@ -172,7 +172,7 @@ function get_sets()
     }
     
     sets.aftercast.subtle_blow = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="乾闥婆陣鉢改",
         body="乾闥婆作務衣改",
         hands="極脇戸筒篭手",

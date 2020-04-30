@@ -39,8 +39,8 @@ function get_sets()
         waist="カシリベルト",
         left_ear="フリオミシピアス",
         right_ear="クリプティクピアス",
-        left_ring="アイワツリング",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="アイワツリング",
         back="月光の羽衣",
     }
 
@@ -55,13 +55,13 @@ function get_sets()
         waist="フルームベルト+1",
         left_ear="ロケイシャスピアス",
         right_ear="エテオレートピアス",
-        left_ring="ＶＣリング+1",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
         back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.precast.ws.critical = {
-        ammo="ファルコンアイ",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -71,13 +71,13 @@ function get_sets()
         waist="フォシャベルト",
         left_ear="マーケピアス+1",
         right_ear="オドルピアス",
-        left_ring="イラブラットリング",
-        right_ring="エポナリング",
+        left_ring="エポナリング",
+        right_ring="イラブラットリング",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
     }
 
     sets.precast.ws.wsd = {
-        ammo="マントテラアイ",
+        ammo="オゲルミルオーブ+1",
         head="ジャリコロナル+2",
         body="ＡＳジュバ+3",
         hands="ジャリカフス+2",
@@ -87,13 +87,13 @@ function get_sets()
         waist="フォシャベルト",
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="イラブラットリング",
-        right_ring="ルフェセントリング",
+        left_ring="ルフェセントリング",
+        right_ring="イラブラットリング",
         back={ name="ロスメルタケープ", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.precast.ws.expi = {
-        ammo="マントテラアイ",
+        ammo="オゲルミルオーブ+1",
         head="ジャリコロナル+2",
         body="ＡＳジュバ+3",
         hands="ジャリカフス+2",
@@ -103,8 +103,8 @@ function get_sets()
         waist="フォシャベルト",
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="イラブラットリング",
-        right_ring="ルフェセントリング",
+        left_ring="ルフェセントリング",
+        right_ring="イラブラットリング",
         back={ name="ロスメルタケープ", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -135,8 +135,8 @@ function get_sets()
         waist="エスカンストーン",
         left_ear="ディグニタリピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="スティキニリング+1",
-        right_ring="キシャールリング",
+        left_ring="キシャールリング",
+        right_ring="スティキニリング+1",
         back={ name="ロスメルタケープ", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -190,8 +190,8 @@ function get_sets()
         waist="ギシドゥバサッシュ",
         left_ear="オノワイヤリング+1",
         right_ear="メンデカントピアス",
-        left_ring="ＶＣリング+1",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
         back="月光の羽衣",
     }
 
@@ -211,8 +211,8 @@ function get_sets()
         waist="エスカンストーン",
         left_ear="エンチャンピアス+1",
         right_ear="ディグニタリピアス",
-        left_ring="スティキニリング+1",
-        right_ring="キシャールリング",
+        left_ring="キシャールリング",
+        right_ring="スティキニリング+1",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
@@ -227,8 +227,8 @@ function get_sets()
         waist="エスカンストーン",
         left_ear="王将の耳飾り",
         right_ear="ディグニタリピアス",
-        left_ring="スティキニリング+1",
-        right_ring="キシャールリング",
+        left_ring="キシャールリング",
+        right_ring="スティキニリング+1",
         back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
@@ -275,8 +275,8 @@ function get_sets()
         waist="フルームベルト+1",
         left_ear="ロケイシャスピアス",
         right_ear="エンチャンピアス+1",
-        left_ring="スティキニリング+1",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="スティキニリング+1",
         back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
@@ -314,25 +314,41 @@ function get_sets()
         waist="フルームベルト+1",
         left_ear="エアバニピアス",
         right_ear="エテオレートピアス",
-        left_ring="ＶＣリング+1",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.aftercast.melee_multi = {
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
-        neck="ミラージストール+2",
+        neck={ name="ミラージストール+2", augments={'Path: A',}},
+        waist="ウィンバフベルト+1",
+        left_ear="素破の耳",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="イラブラットリング",
+        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+    }
+
+    sets.aftercast.melee_stp = {
+        ammo="オゲルミルオーブ+1",
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="マリグナスタバード",
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="マリグナスブーツ",
+        neck={ name="ミラージストール+2", augments={'Path: A',}},
         waist="霊亀腰帯",
-        left_ear="デディションピアス",
-        right_ear="テロスピアス",
-        left_ring="イラブラットリング",
-        right_ring="守りの指輪",
-        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        left_ear="エアバニピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="イラブラットリング",
+        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.aftercast.melee_ambus = {
@@ -346,13 +362,13 @@ function get_sets()
         waist="霊亀腰帯",
         left_ear="デディションピアス",
         right_ear="テロスピアス",
-        left_ring="イラブラットリング",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="イラブラットリング",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.aftercast.melee_dt = {
-        ammo="ストンチタスラム+1",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
@@ -362,12 +378,12 @@ function get_sets()
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="テロスピアス",
-        left_ring="イラブラットリング",
-        right_ring="守りの指輪",
-        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','System: 1 ID: 640 Val: 4',}},
+        left_ring="守りの指輪",
+        right_ring="イラブラットリング",
+        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.aftercast.melee = sets.aftercast.melee_multi
+    sets.aftercast.melee = sets.aftercast.melee_stp
 
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
@@ -380,8 +396,8 @@ function get_sets()
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="エテオレートピアス",
-        left_ring="ＶＣリング+1",
-        right_ring="守りの指輪",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
@@ -531,6 +547,9 @@ function self_command(command)
     elseif command == 'multi' then
         sets.aftercast.melee= sets.aftercast.melee_multi
         windower.add_to_chat(122,'---> MELEE マルチ装備')
+    elseif command == 'stp' then
+        sets.aftercast.melee= sets.aftercast.melee_stp
+        windower.add_to_chat(122,'---> MELEE STP装備')
     elseif command == 'phalanx' then
         equip(sets.midcast.phalanx)
         windower.add_to_chat(122,'---> 被ファランクス用装備')
