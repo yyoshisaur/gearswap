@@ -59,11 +59,12 @@ function get_sets()
 
     sets.precast.snap = {
         -- ammo="クロノブレット",
-        -- head={ name="テーオンシャポー", augments={'"Mag.Atk.Bns."+20','"Snapshot"+5','"Snapshot"+5',}},
-        -- body="オショシベスト",
-        -- hands={ name="テーオングローブ", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        head={ name="テーオンシャポー", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        body="オショシベスト",
+        hands={ name="テーオングローブ", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        legs={ name="ＬＡトルーズ+3", augments={'Enhances "Snake Eye" effect',}},
         -- legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
-        -- feet="メガナダジャンボ+2",
+        feet="メガナダジャンボ+2",
         -- back={ name="カムラスマント", augments={'"Snapshot"+10',}},
     }
 
@@ -99,34 +100,33 @@ function get_sets()
     }
 
     sets.precast.ws.ra_phisical = {
-        -- ammo="クロノブレット",
-        -- head="メガナダバイザー+2",
-        -- body="ＬＫフラック+3",
-        -- hands="メガナダグローブ+2",
-        -- legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
-        -- feet="メガナダジャンボ+2",
-        -- neck="フォシャゴルゲット",
-        -- waist="フォシャベルト",
-        -- left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        -- right_ear="テロスピアス",
-        -- left_ring="王将の指輪",
-        -- right_ring="カコエシクリング+1",
-        -- back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','Weapon skill damage +10%',}},
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="メガナダグローブ+2",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="エナベートピアス",
+        left_ring="王将の指輪",
+        right_ring="イラブラットリング",
+        back="ソコルソキーマント",
     }
 
     sets.precast.ws.melee_phisical = {
-        -- head="メガナダバイザー+2",
-        -- body="ＬＫフラック+3",
-        -- hands="メガナダグローブ+2",
-        -- legs="メガナダショウス+2",
-        -- feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
-        -- neck="フォシャゴルゲット",
-        -- waist="メタルシングベルト",
-        -- left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        -- right_ear="テロスピアス",
-        -- left_ring="ルフェセントリング",
-        -- right_ring="王将の指輪",
-        -- back={ name="カムラスマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+        head="メガナダバイザー+2",
+        body="ＬＫフラック+3",
+        hands="メガナダグローブ+2",
+        legs="メガナダショウス+2",
+        feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
+        neck="フォシャゴルゲット",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="マーケピアス+1",
+        left_ring="王将の指輪",
+        right_ring="イラブラットリング",
+        back={ name="カムラスマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.precast.ws.leaden = {
@@ -164,27 +164,26 @@ function get_sets()
     -- sets.precast.ws["ラストスタンド"] = sets.precast.ws.ra_phisical
     -- sets.precast.ws["レデンサリュート"] = sets.precast.ws.leaden
     -- sets.precast.ws["ワイルドファイア"] = sets.precast.ws.magic
-    -- sets.precast.ws["サベッジブレード"] = sets.precast.ws.melee_phisical
+    sets.precast.ws["サベッジブレード"] = sets.precast.ws.melee_phisical
 
     sets.precast.ability["ランダムディール"] ={body={ name="ＬＡフラック+1", augments={'Enhances "Loaded Deck" effect',}},}
     sets.precast.ability["フォールド"] = {hands={ name="ＬＡガントリー+1", augments={'Enhances "Fold" effect',}},}
-    sets.precast.ability["スネークアイ"] = {legs={ name="ＬＡトルーズ+1", augments={'Enhances "Snake Eye" effect',}},}
-    sets.precast.ability["ワイドカード"] = {feet={ name="ＬＡブーツ+1", augments={'Enhances "Wild Card" effect',}},}
+    sets.precast.ability["スネークアイ"] = {legs={ name="ＬＡトルーズ+3", augments={'Enhances "Snake Eye" effect',}},}
+    sets.precast.ability["ワイドカード"] = {feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},}
 
     sets.midcast.ra = {
-        -- ammo="クロノブレット",
-        -- head="メガナダバイザー+2",
-        -- body="ＬＫフラック+3",
-        -- hands={ name="アデマリスト+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
-        -- legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
-        -- feet="メガナダジャンボ+2",
-        -- neck="イスクルゴルゲット",
-        -- waist="イェマヤベルト",
-        -- left_ear="エナベートピアス",
-        -- right_ear="テロスピアス",
-        -- left_ring="王将の指輪",
-        -- right_ring="カコエシクリング+1",
-        -- back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10',}},
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="イスクルゴルゲット",
+        waist="エスカンストーン",
+        left_ear="セサンスピアス",
+        right_ear="エナベートピアス",
+        left_ring="王将の指輪",
+        right_ring="イラブラットリング",
+        back="ソコルソキーマント",
     }
 
     sets.midcast.roll = {
@@ -192,7 +191,7 @@ function get_sets()
         head={ name="ＬＡトリコルヌ+1", augments={'Enhances "Winning Streak" effect',}},
         hands="ＣＳガントリー+1",
         -- legs={ name="デサルタタセッツ", augments={'"Sic" and "Ready" ability delay -5','"Phantom Roll" ability delay -5',}},
-        -- neck="王将の首飾り",
+        neck="王将の首飾り",
         left_ring="ルザフリング",
         right_ring="バラタリアリング",
         back="カムラスマント",
@@ -207,33 +206,39 @@ function get_sets()
     }
 
     sets.aftercast.melee = {
-        -- head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        -- body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        -- hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        -- legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
-        -- feet={ name="ヘルクリアブーツ", augments={'Accuracy+28','"Triple Atk."+4','Attack+13',}},
-        -- neck="コンバタントトルク",
-        -- waist="霊亀腰帯",
-        -- left_ear="セサンスピアス",
-        -- right_ear="テロスピアス",
-        -- left_ring="イラブラットリング",
-        -- right_ring="シーリチリング+1",
-        -- back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10',}},
+        range={ name="アナーキー+2", augments={'Delay:+60','TP Bonus +1000',}},
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="クロタリウストルク",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="ブルタルピアス",
+        right_ear="素破の耳",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.idle = {
-        body={ name="ＬＡフラック+1", augments={'Enhances "Loaded Deck" effect',}},
-        feet={ name="ＬＡブーツ+1", augments={'Enhances "Wild Card" effect',}},
+        range={ name="アナーキー+2", augments={'Delay:+60','TP Bonus +1000',}},
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
-        waist="ブロンズバンドリア",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="驕慢の耳",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
+        back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 6; wait 0.5; input /macro set 1')
+    send_command('input /macro book 6; wait 0.5; input /macro set 1; wait 0.5; input /si cor;')
 
     -- autocor
     send_command('lua load autocor')
@@ -325,6 +330,10 @@ function midcast(spell)
         set_equip = sets.midcast.ra
     elseif string.find(spell.name, 'ケアル') then
         set_equip = sets.midcast.cure
+    elseif spell.type == 'JobAbility' then
+        if spell.name == 'ダブルアップ' then
+            send_command('wait 0.5; input //gs c double-up-aftercast')
+        end
     end
 
     if set_equip then
@@ -406,7 +415,11 @@ function self_command(command)
             windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
         end
     elseif command == 'double-up-aftercast' then
-        equip(get_aftercast_equip())
+        if player.status == 'Engaged' then
+            equip(get_aftercast_equip())
+        else
+            equip(sets.aftercast.idle)
+        end
     end
 end
 

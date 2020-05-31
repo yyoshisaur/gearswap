@@ -1,3 +1,6 @@
+
+local rune_histroy = 'テネブレイ'
+
 function get_sets()
     set_language('japanese')
     
@@ -11,6 +14,7 @@ function get_sets()
     is_th = false
 
     magic_ba = S{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
+    ability_rune = S{'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ', 'ルックス', 'テネブレイ'}
 
     sets.enmity = {
         main="エピオラトリー",
@@ -157,16 +161,35 @@ function get_sets()
     sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {head="ＲＮバンド+3",})
     sets.midcast.refresh = set_combine(sets.midcast.enhance_duration, {waist="ギシドゥバサッシュ",})
 
+    sets.midcast.sird = {
+        ammo="ストンチタスラム+1",
+        head={ name="テーオンシャポー", augments={'Spell interruption rate down -9%','Phalanx +3',}},
+        body="ＲＮコート+3",
+        hands={ name="ローハイドグローブ", augments={'HP+50','Accuracy+15','Evasion+20',}},
+        legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
+        feet={ name="テーオンブーツ", augments={'Spell interruption rate down -9%','Phalanx +3',}},
+        neck="月明の首飾り",
+        waist="オドンブラサッシュ",
+        left_ear="ハラサズピアス",
+        right_ear="エテオレートピアス",
+        left_ring="守りの指輪",
+        right_ring="エバネセンスリング",
+        back="月光の羽衣",
+    }
+
     sets.aftercast.dt = {
         main="エピオラトリー",
-        sub="メンシストラップ+1",
+        -- sub="メンシストラップ+1",
+        sub="コーンスー",
         ammo="ストンチタスラム+1",
-        head="ラビッドバイザー",
+        -- head="ラビッドバイザー",
+        head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}},
         body="ＲＮコート+3",
-        hands="クーリスグローブ",
+        hands="トゥルムミトン+1",
         legs="ＥＲレグガード+1",
         feet="ＥＲグリーヴ+1",
-        neck="ロリケートトルク+1",
+        -- neck="ロリケートトルク+1",
+        neck="フサルクトルク+2",
         waist="エングレイブベルト",
         left_ear="クリプティクピアス",
         right_ear="エテオレートピアス",
@@ -180,14 +203,17 @@ function get_sets()
 
     sets.aftercast.speed = {
         main="エピオラトリー",
-        sub="メンシストラップ+1",
+        -- sub="メンシストラップ+1",
+        sub="コーンスー",
         ammo="ストンチタスラム+1",
-        head="ラビッドバイザー",
+        -- head="ラビッドバイザー",
+        head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}},
         body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}},
         hands="クーリスグローブ",
         legs="ＥＲレグガード+1",
         feet="ＥＲグリーヴ+1",
-        neck="ロリケートトルク+1",
+        -- neck="ロリケートトルク+1",
+        neck="フサルクトルク+2",
         waist="エングレイブベルト",
         left_ear="クリプティクピアス",
         right_ear="エテオレートピアス",
@@ -254,7 +280,7 @@ function midcast(spell)
             end
             set_equip = set_combine(sets.aftercast.dt, sets.midcast.stoneskin)
         elseif spell.name == 'アクアベール' then
-            set_equip = set_combine(sets.aftercast.dt, sets.midcast.enhance_duration)
+            set_equip = sets.midcast.sird 
         elseif string.find(spell.name, 'リジェネ') then
             set_equip = set_combine(sets.aftercast.dt, sets.midcast.rejen)
         elseif spell.name == 'リフレシュ' then
@@ -301,6 +327,10 @@ end
 function aftercast(spell)
     local set_equip = nil
 
+    if ability_rune:contains(spell.name) then
+        rune_histroy = spell.name
+    end
+
     if player.status == 'Engaged' then
         if is_melee then
             set_equip = sets.aftercast.melee
@@ -327,5 +357,68 @@ function status_change(new, old)
     
     if set_equip then
         equip(set_equip)
+    end
+end
+
+function self_command(command)
+    if command == 'buff' then
+        local buff = {
+            [1] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
+            [2] = {name = 'ストンスキン', wait = 5.5, pf = '/ma',},
+            [3] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
+            [4] = {name = 'アクアベール', wait = 5.5, pf = '/ma'},
+            [5] = {name = 'テネブレイ', wait = 1.5, pf = '/ja',},
+            [6] = {name = 'クルセード', wait = 4.5, pf = '/ma',},
+            [7] = {name = 'アイススパイク', wait = 4.5, pf = '/ma',},
+            [8] = {name = 'ファランクス', wait = 4.5, pf = '/ma',},
+        }
+        
+        local rune_1, rune_2, rune_3 = nil
+        local self_buffs = player.buff_details
+
+        for i = #self_buffs, 1, -1 do
+            if self_buffs[i] and ability_rune:contains(self_buffs[i].name) then
+                if not rune_1 then
+                    rune_1 = self_buffs[i].name
+                elseif not rune_2 then
+                    rune_2 = self_buffs[i].name
+                else
+                    rune_3 = self_buffs[i].name
+                end
+            end
+        end
+
+        if not rune_1 then
+            buff[1].name = 'テネブレイ'
+            buff[3].name = 'テネブレイ'
+            buff[5].name = 'テネブレイ'
+        elseif not rune_2 then
+            buff[1].name = rune_1
+            buff[3].name = rune_1
+            buff[5].name = rune_1
+        elseif not rune_3 then
+            buff[1].name = rune_1
+            buff[3].name = rune_2
+            buff[5].name = rune_2
+        else
+            buff[1].name = rune_1
+            buff[3].name = rune_2
+            buff[5].name = rune_3
+        end
+
+        local buff_cmd = ''
+        for i,v in ipairs(buff) do
+            buff_cmd = buff_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' <me>; wait '..v.wait..';'
+        end
+        send_command(buff_cmd)
+    elseif command == 'rune' then
+        local self_buffs = player.buff_details
+        for i = #self_buffs, 1, -1 do
+            if self_buffs[i] and ability_rune:contains(self_buffs[i].name) then
+                send_command('input /ja '..windower.to_shift_jis(self_buffs[i].name)..' <me>;')
+                return
+            end
+        end
+        send_command('input /ja '..windower.to_shift_jis(rune_histroy)..' <me>;')
     end
 end

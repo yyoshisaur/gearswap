@@ -54,6 +54,8 @@ function get_sets()
     sets.weapon.enfeeble_mnd = {main="デイブレイクワンド", sub="アムラピシールド",}
     sets.weapon.enfeeble_mnd_nin = {main="マクセンチアス", sub="デイブレイクワンド",}
 
+    sets.weapon.enfeeble_dispelga = {main="デイブレイクワンド", sub="マクセンチアス",}
+
     sets.weapon.enfeeble_int = {main="ネイグリング", sub="アムラピシールド",}
     sets.weapon.enfeeble_int_nin = {main="ネイグリング", sub="マクセンチアス",}
 
@@ -326,7 +328,7 @@ function get_sets()
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
-        waist="ルーミネリサッシュ",
+        waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
@@ -342,7 +344,7 @@ function get_sets()
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
-        waist="ルーミネリサッシュ",
+        waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
@@ -367,6 +369,22 @@ function get_sets()
     }
 
     sets.midcast.magic_acc = {
+        range="ウルル",
+        head="ＶＩシャポー+3",
+        body="ＬＴサヨン+1",
+        hands="ＬＴガントロ+1",
+        legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
+        feet="ＶＩブーツ+3",
+        neck="デュエルトルク+2",
+        waist="ルーミネリサッシュ",
+        left_ear="スノトラピアス",
+        right_ear="マリグナスピアス",
+        left_ring="スティキニリング+1",
+        right_ring="キシャールリング",
+        back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
+    sets.midcast.magic_dispelga = {
         range="ウルル",
         head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
@@ -511,7 +529,7 @@ function get_sets()
 
     send_command('wait 1; input //gs c ws')
     -- マクロのブック, セット変更
-    send_command('input /macro book 8; wait 0.5; input /macro set 1')
+    send_command('input /macro book 8; wait 0.5; input /macro set 1; wait 0.5; input /si rdm;')
     
 end
 
@@ -524,6 +542,8 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_int_nin)
         sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_acc_nin)
         sets.midcast.magic_enfeeble_duration_sabo = set_combine(sets.midcast.magic_enfeeble_duration_sabo, sets.weapon.enfeeble_acc_nin)
+
+        sets.midcast.magic_dispelga = set_combine(sets.midcast.magic_dispelga, sets.weapon.enfeeble_dispelga)
 
         sets.midcast.phalanx = sets.midcast.phalanx_self_nin
 
@@ -554,6 +574,8 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         sets.midcast.magic_enfeeble_int_acc = set_combine(sets.midcast.magic_enfeeble_int_acc, sets.weapon.enfeeble_int)
         sets.midcast.magic_acc = set_combine(sets.midcast.magic_acc, sets.weapon.enfeeble_acc)
         sets.midcast.magic_enfeeble_duration_sabo = set_combine(sets.midcast.magic_enfeeble_duration_sabo, sets.weapon.enfeeble_acc)
+
+        sets.midcast.magic_dispelga = set_combine(sets.midcast.magic_dispelga, sets.weapon.enfeeble_mnd)
 
         sets.midcast.phalanx = sets.midcast.phalanx_self
 
@@ -701,7 +723,7 @@ function midcast(spell)
         elseif sets.magic_enfeeble_int_acc:contains(spell.name) then
             set_equip = sets.midcast.magic_enfeeble_int_acc
         elseif spell.name == 'ディスペガ' then
-            set_equip = sets.midcast.magic_enfeeble_mnd_acc
+            set_equip = sets.midcast.magic_dispelga
         else
             set_equip = sets.midcast.magic_acc
         end

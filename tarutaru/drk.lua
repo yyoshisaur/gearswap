@@ -94,7 +94,7 @@ function get_sets()
     }
     
     sets.precast.ws.multi = {
-        ammo="ノブキエリ",
+        ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
         body="ＩＧキュイラス+3",
         hands="フラママノポラ+2",

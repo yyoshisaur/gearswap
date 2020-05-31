@@ -14,7 +14,7 @@ function get_sets()
         hands="ＭＸバングル+3",
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
-        neck="フォシャゴルゲット",
+        neck="エトワールゴルゲ+2",
         waist="チナーズベルト+1",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -30,7 +30,7 @@ function get_sets()
         hands="ＭＸバングル+3",
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
-        neck="フォシャゴルゲット",
+        neck="エトワールゴルゲ+2",
         waist="チナーズベルト+1",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -46,7 +46,7 @@ function get_sets()
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="マリグナスブーツ",
-        neck="フォシャゴルゲット",
+        neck="エトワールゴルゲ+2",
         waist="フォシャベルト",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -62,7 +62,7 @@ function get_sets()
         hands="ムンムリスト+2",
         legs="ムンムケックス+2",
         feet="ムンムゲマッシュ+2",
-        neck="フォシャゴルゲット",
+        neck="エトワールゴルゲ+2",
         waist="フォシャベルト",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -143,11 +143,28 @@ function get_sets()
     sets.aftercast.melee_atk = {
         ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="マリグナスタバード",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="マリグナスブーツ",
-        neck="アヌートルク",
+        -- neck="アヌートルク",
+        neck="エトワールゴルゲ+2",
+        waist="ウィンバフベルト+1",
+        left_ear="シェリダピアス",
+        right_ear="デディションピアス",
+        left_ring="シーリチリング+1",
+        right_ring="ゲリリング",
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+    }
+
+    sets.aftercast.melee_dt = {
+        ammo="ストンチタスラム+1",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck={ name="エトワールゴルゲ+2", augments={'Path: A',}},
         waist="ウィンバフベルト+1",
         left_ear="シェリダピアス",
         right_ear="デディションピアス",
@@ -165,7 +182,8 @@ function get_sets()
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="ロリケートトルク+1",
+        -- neck="ロリケートトルク+1",
+        neck="エトワールゴルゲ+2",
         waist="キャリアーサッシュ",
         left_ear="シェリダピアス",
         right_ear="デディションピアス",
@@ -273,6 +291,13 @@ end
 
 
 function self_command(command)
+    if command == 'multi' then
+        sets.aftercast.melee = sets.aftercast.melee_atk
+        windower.add_to_chat(122,'---> MELEE マルチアタック装備')
+    elseif command == 'dt' then
+        sets.aftercast.melee = sets.aftercast.melee_dt
+        windower.add_to_chat(122,'---> MELEE カット装備')
+    end
 end
 
 function file_unload(file_name)

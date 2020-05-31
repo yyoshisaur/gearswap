@@ -324,7 +324,7 @@ function get_sets()
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
-        back="月光の羽衣",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.aftercast.idle_refresh = {
@@ -337,7 +337,7 @@ function get_sets()
     }
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 4; wait 0.5; input /macro set 1')
+    send_command('input /macro book 4; wait 0.5; input /macro set 1; wait 0.5; input /si sch;')
 
 end
 

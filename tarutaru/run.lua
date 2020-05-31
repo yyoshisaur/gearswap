@@ -132,7 +132,7 @@ function get_sets()
     }
     
     sets.precast.ws.multi = {
-        ammo="ノブキエリ",
+        ammo="オゲルミルオーブ+1",
         head={ name="アヤモツッケット+2", hp=45,},
         body={ name="アヤモコラッツァ+2", hp=57,},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}, hp=22},
@@ -144,7 +144,7 @@ function get_sets()
         right_ear="シェリダピアス",
         left_ring="守りの指輪",
         right_ring="ニックマドゥリング",
-        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
     sets.precast.ws.acc = {
         ammo="ヤメラング",
@@ -159,7 +159,7 @@ function get_sets()
         right_ear="ディグニタリピアス",
         left_ring="守りの指輪",
         right_ring={ name="月光の指輪", hp=110,},
-        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     -- 両手剣
@@ -272,7 +272,7 @@ function get_sets()
 
     sets.aftercast.dt_ashera = {
         -- sub="メンシストラップ+1",
-        ammo="ストンチタスラム+1",
+        ammo="ヤメラング",
         head={ name="トゥルムキャップ+1", hp=94,},
         body={ name="アシェーラハーネス", hp=182,},
         hands={ name="トゥルムミトン+1", hp=74,},
@@ -281,10 +281,10 @@ function get_sets()
         neck={ name="フサルクトルク+2", hp=60,},
         waist="エングレイブベルト",
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear={ name="トゥイストピアス", hp=150,},
+        right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="守りの指輪",
-        right_ring="ＶＣリング+1",
-        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
+        right_ring={ name="月光の指輪", hp=110,},
+        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.dt_knock_back = {
@@ -320,7 +320,7 @@ function get_sets()
         right_ear="シェリダピアス",
         left_ring="守りの指輪",
         right_ring={ name="月光の指輪", hp=110,},
-        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.speed = {
@@ -569,14 +569,14 @@ function self_command(command)
     if command == 'sird' then
         is_sird = not is_sird
         windower.add_to_chat(122,'---> 詠唱中断率ダウン装備: '..tostring(is_sird))
-    elseif command == 'phalanx' then
+    elseif command == 'phalanx' or command == 'phalanx_equipment'then
         local set_equip = nil
         set_equip = sets.midcast.phalanx
         if buffactive['エンボルド'] then
             set_equip = set_combine(set_equip, {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},})
         end
         equip(set_equip)
-        set_priorities_by_hp()
+        -- set_priorities_by_hp()
     elseif command == 'bluemagic' then
         equip(sets.enmity)
         set_priorities_by_hp()
@@ -613,7 +613,7 @@ function self_command(command)
         equip(sets.aftercast.speed)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> 移動速度UP装備')
-    elseif command == 'dt' then
+    elseif command == 'dt' or command == 'update_equipment' then
         equip(sets.aftercast.dt)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> DT装備')
@@ -634,7 +634,7 @@ function self_command(command)
         local self_buffs = player.buff_details
 
         for i = #self_buffs, 1, -1 do
-            if ability_rune:contains(self_buffs[i].name) then
+            if self_buffs[i] and ability_rune:contains(self_buffs[i].name) then
                 if not rune_1 then
                     rune_1 = self_buffs[i].name
                 elseif not rune_2 then
@@ -671,7 +671,7 @@ function self_command(command)
     elseif command == 'rune' then
         local self_buffs = player.buff_details
         for i = #self_buffs, 1, -1 do
-            if ability_rune:contains(self_buffs[i].name) then
+            if self_buffs[i] and ability_rune:contains(self_buffs[i].name) then
                 send_command('input /ja '..windower.to_shift_jis(self_buffs[i].name)..' <me>;')
                 return
             end

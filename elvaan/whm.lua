@@ -226,7 +226,7 @@ function get_sets()
     }
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 2; wait 0.5; input /macro set 10')
+    send_command('input /macro book 2; wait 0.5; input /macro set 10; wait 0.5; input /si whm;')
     
 end
 

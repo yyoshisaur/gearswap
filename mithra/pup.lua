@@ -600,21 +600,20 @@ end
 local maneuver_time = 60
 
 function exec_maneuver()
-    local os_time = os.time()
+    -- local os_time = os.time()
     local buffs = player.buff_details
     local recasts = windower.ffxi.get_ability_recasts()
 
-    
     if not pet.isvalid then
         maneuver_time = 60
         return
     end
 
     for i = 1, #buffs do
-        if sets.maneuvers:contains(buffs[i].name) then
-            local buff_time = math.floor(buffs[i].time - os_time)
-            if buff_time > maneuver_time then
-                maneuver_time = buff_time
+        if buffs[i] and sets.maneuvers:contains(buffs[i].name) then
+            -- local buff_time = math.floor(buffs[i].time - os_time)
+            if buffs[i].duration > maneuver_time then
+                maneuver_time = buffs[i].duration
                 -- windower.add_to_chat(122, 'UPDATE MANUEVER TIME: '..maneuver_time..' sec ('..math.floor(maneuver_time*0.2)..' sec)')
                 break
             end
@@ -627,11 +626,11 @@ function exec_maneuver()
 
         -- Chcek exists manevers in buffs
         for i = #buffs, 1, -1 do
-            if buffs[i].name == auto_maneuvers[1].name and not maneuvers_exists[1] then
+            if buffs[i] and buffs[i].name == auto_maneuvers[1].name and not maneuvers_exists[1] then
                 maneuvers_exists[1] = true
-            elseif buffs[i].name == auto_maneuvers[2].name and not maneuvers_exists[2] then
+            elseif buffs[i] and buffs[i].name == auto_maneuvers[2].name and not maneuvers_exists[2] then
                 maneuvers_exists[2] = true
-            elseif buffs[i].name == auto_maneuvers[3].name and not maneuvers_exists[3] then
+            elseif buffs[i] and buffs[i].name == auto_maneuvers[3].name and not maneuvers_exists[3] then
                 maneuvers_exists[3] = true
             end
         end
@@ -648,30 +647,32 @@ function exec_maneuver()
 
         -- Check updates manevers
         for i = #buffs, 1, -1 do
-            local buff_time = buffs[i].time - os_time
-            if buffs[i].name == auto_maneuvers[1].name then
-                if buff_time < maneuver_time * 0.2 then
-                    if recasts[210] == 0 then
-                        -- windower.add_to_chat(122, 'UPDATE MANUEVER: '..auto_maneuvers[1].name)
-                        send_command('input /pet '..windower.to_shift_jis(auto_maneuvers[1].name)..' <me>;')
+            if buffs[i] then
+                if buffs[i] and buffs[i].name == auto_maneuvers[1].name then
+                    -- local buff_time = buffs[i].time - os_time
+                    if buffs[i].duration < maneuver_time * 0.2 then
+                        if recasts[210] == 0 then
+                            -- windower.add_to_chat(122, 'UPDATE MANUEVER: '..auto_maneuvers[1].name)
+                            send_command('input /pet '..windower.to_shift_jis(auto_maneuvers[1].name)..' <me>;')
+                        end
+                        return
                     end
-                    return
-                end
-            elseif buffs[i].name == auto_maneuvers[2].name then
-                if buff_time < maneuver_time * 0.2 then
-                    if recasts[210] == 0 then
-                        -- windower.add_to_chat(122, 'UPDATE MANUEVER: '..auto_maneuvers[2].name)
-                        send_command('input /pet '..windower.to_shift_jis(auto_maneuvers[2].name)..' <me>;')
+                elseif buffs[i] and buffs[i].name == auto_maneuvers[2].name then
+                    if buffs[i].duration < maneuver_time * 0.2 then
+                        if recasts[210] == 0 then
+                            -- windower.add_to_chat(122, 'UPDATE MANUEVER: '..auto_maneuvers[2].name)
+                            send_command('input /pet '..windower.to_shift_jis(auto_maneuvers[2].name)..' <me>;')
+                        end
+                        return
                     end
-                    return
-                end
-            elseif buffs[i].name == auto_maneuvers[3].name then
-                if buff_time < maneuver_time * 0.2 then
-                    if recasts[210] == 0 then
-                        -- windower.add_to_chat(122, 'UPDATE MANUEVER: '..auto_maneuvers[3].name)
-                        send_command('input /pet '..windower.to_shift_jis(auto_maneuvers[3].name)..' <me>;')
+                elseif buffs[i] and buffs[i].name == auto_maneuvers[3].name then
+                    if buffs[i].duration < maneuver_time * 0.2 then
+                        if recasts[210] == 0 then
+                            -- windower.add_to_chat(122, 'UPDATE MANUEVER: '..auto_maneuvers[3].name)
+                            send_command('input /pet '..windower.to_shift_jis(auto_maneuvers[3].name)..' <me>;')
+                        end
+                        return
                     end
-                    return
                 end
             end
         end

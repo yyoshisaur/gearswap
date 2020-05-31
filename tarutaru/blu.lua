@@ -456,7 +456,7 @@ function midcast(spell)
         elseif blue_magic[spell.name].type == "enmity" then
             set_equip = sets.enmity
         elseif blue_magic[spell.name].type == "magic_atk_earth" then
-            set_equip = set_combine(sets.midcast.magic, {hands="ＨＳバズバンド+1",})
+            set_equip = set_combine(sets.midcast.magic, {hands="ＨＳバズバンド+1", neck="クアンプネックレス",})
         end
     elseif spell.skill == '神聖魔法' then
         if spell.name == 'フラッシュ' then
@@ -550,9 +550,15 @@ function self_command(command)
     elseif command == 'stp' then
         sets.aftercast.melee= sets.aftercast.melee_stp
         windower.add_to_chat(122,'---> MELEE STP装備')
-    elseif command == 'phalanx' then
+    elseif command == 'phalanx_equipment' then
         equip(sets.midcast.phalanx)
-        windower.add_to_chat(122,'---> 被ファランクス用装備')
+        -- windower.add_to_chat(122,'---> 被ファランクス用装備')
+    elseif command == 'update_equipment' then
+        if player.status == 'Engaged' then
+            equip(sets.aftercast.melee)
+        else
+            equip(sets.aftercast.idle)
+        end
     elseif command == 'tenzen' then
         send_command('gs c almace; aset set tenzen; input /macro book 11; wait 0.5; input /macro set 3; jc sub blm; gs c multi')
     elseif command == 'delve' then
@@ -728,7 +734,7 @@ function init_blue_magic()
     blue_magic["N.メディテイト"] = {type=nil}
     blue_magic["T.アップヒーヴ"] = {type=blue_magic_type[1]}
     blue_magic["R.デルージュ"] = {type=blue_magic_type[4]}
-    blue_magic["エンバームアース"] = {type=blue_magic_type[4]}
+    blue_magic["エンバームアース"] = {type=blue_magic_type[11]}
     blue_magic["パラライズトライアド"] = {type=blue_magic_type[5]}
     blue_magic["ファウルウォーター"] = {type=blue_magic_type[4]}
     blue_magic["グルーティナスダート"] = {type=blue_magic_type[1]}
