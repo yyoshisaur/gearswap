@@ -64,7 +64,7 @@ function get_sets()
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}, fc=0.08, hp=95,},
         neck={ name="ボルトサージトルク", fc=0.04,},
         waist={ name="ジーゲルサッシュ", fc=0.08,},
-        left_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="エテオレートピアス", hp=50,},
         right_ear={ name="トゥイストピアス", hp=150,},
         left_ring={ name="キシャールリング", fc=0.04},
         right_ring={ name="月光の指輪", hp=110,},
@@ -95,7 +95,7 @@ function get_sets()
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}, fc=0.08, hp=95,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist={ name="ゴールドモグベルト", hp=80,},
-        left_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="エテオレートピアス", hp=50,},
         right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring={ name="月光の指輪", hp=110,},
@@ -180,7 +180,7 @@ function get_sets()
         feet={ name="ＥＲグリーヴ+1", hp=18,},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
-        left_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="エテオレートピアス", hp=50,},
         right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
@@ -196,7 +196,7 @@ function get_sets()
         feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',}, hp=9,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist="オリンポスサッシュ",
-        left_ear={ name="オノワイヤリング+1", hp=110,},
+        left_ear={ name="エテオレートピアス", hp=50,},
         right_ear={ name="トゥイストピアス", hp=150,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
@@ -245,9 +245,9 @@ function get_sets()
         legs={ name="ＥＲレグガード+1", hp=80,},
         feet={ name="トゥルムレギンス+1", hp=76,},
         neck={ name="フサルクトルク+2", hp=60,},
-        waist="フルームベルト+1",
+        waist="エングレイブベルト",
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear={ name="トゥイストピアス", hp=150,},
+        right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Parrying rate+5%',}, hp=60,},
@@ -260,14 +260,14 @@ function get_sets()
         body={ name="ＲＮコート+3", hp=218,},
         hands={ name="トゥルムミトン+1", hp=74,},
         legs={ name="ＥＲレグガード+1", hp=80,},
-        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        feet={ name="トゥルムレギンス+1", hp=76,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist="エングレイブベルト",
         left_ear={ name="クリプティクピアス", hp=40,},
-        right_ear="玄冥耳飾り",
+        right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
+        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}, hp=60,},
     }
 
     sets.aftercast.dt_ashera = {
@@ -336,7 +336,7 @@ function get_sets()
         right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60,},
+        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}, hp=60,},
     }
 
         -- マクロのブック, セット変更, 装備入れ替え
@@ -380,7 +380,7 @@ function precast(spell)
         if sets.precast.ws[spell.name] then
             set_equip = sets.precast.ws[spell.name]
         else
-            set_equip = sets.precast.ws.multi
+            set_equip = sets.aftercast.dt
         end
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc_80

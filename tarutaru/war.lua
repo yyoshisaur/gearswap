@@ -131,8 +131,8 @@ function get_sets()
         waist="フルームベルト+1",
         left_ear="トゥイストピアス",
         right_ear="オノワイヤリング+1",
-        left_ring="アイワツリング",
-        right_ring="ペトロフリング",
+        left_ring="守りの指輪",
+        right_ring="アイワツリング",
         back="月光の羽衣",
     }
 

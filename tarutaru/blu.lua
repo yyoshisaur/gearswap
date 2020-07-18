@@ -32,8 +32,8 @@ function get_sets()
         ammo="ストンチタスラム+1",
         head="ラビッドバイザー",
         body="エメットハーネス+1",
-        hands="ＡＳバズバンド+3",
-        legs="アヤモコッシャレ+2",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
         feet="アホシレギンス",
         neck="ロリケートトルク+1",
         waist="カシリベルト",
@@ -390,9 +390,9 @@ function get_sets()
         head="マリグナスシャポー",
         body="シャマシュローブ",
         hands="マリグナスグローブ",
-        legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet="マリグナスブーツ",
-        neck="ミラージストール+2",
+        legs="マリグナスタイツ",
+        feet="アホシレギンス",
+        neck={ name="ミラージストール+2", augments={'Path: A',}},
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="エテオレートピアス",
@@ -550,6 +550,8 @@ function self_command(command)
     elseif command == 'stp' then
         sets.aftercast.melee= sets.aftercast.melee_stp
         windower.add_to_chat(122,'---> MELEE STP装備')
+    elseif command == 'phalanx' then
+        equip(sets.midcast.phalanx)
     elseif command == 'phalanx_equipment' then
         equip(sets.midcast.phalanx)
         -- windower.add_to_chat(122,'---> 被ファランクス用装備')

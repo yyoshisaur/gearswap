@@ -42,6 +42,7 @@ function get_sets()
     sets.precast.ability = {}
     sets.midcast = {}
     sets.aftercast = {}
+    sets.weapon = {}
 
     init_elemental_obi()
     set_elemental_obi("闇輪の帯")
@@ -53,6 +54,18 @@ function get_sets()
 
     sets.obi_dark = {waist="闇輪の帯",}
     
+    sets.weapon.magic = {
+        main={ name="ロスタム", augments={'Path: C',}},
+        sub="トーレット",
+        range={ name="デスペナルティ", augments={'Path: A',}},
+    }
+
+    sets.weapon.phisical = {
+        main="ネイグリング",
+        sub="トーレット",
+        range={ name="アナーキー+3", augments={'Delay:+60','TP Bonus +1000',}},
+    }
+
     sets.th = {
         head="白ララブキャップ+1",
         body={ name="ヘルクリアベスト", augments={'Spell interruption rate down -6%','Pet: "Mag.Atk.Bns."+15','"Treasure Hunter"+2',}},
@@ -239,13 +252,13 @@ function get_sets()
 
     sets.aftercast.melee_dt = {
         head="マリグナスシャポー",
-        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="アイニアカラー",
-        waist="ウィンバフベルト+1",
-        left_ear="素破の耳",
+        neck="コンバタントトルク",
+        waist="霊亀腰帯",
+        left_ear="エアバニピアス",
         right_ear="テロスピアス",
         left_ring="守りの指輪",
         right_ring="シーリチリング+1",
@@ -449,5 +462,11 @@ function self_command(command)
     elseif command == 'th' then
         is_th = not is_th
         windower.add_to_chat(122, '---> トレハン装備')
+    elseif command == 'magic' then
+        equip(sets.weapon.magic)
+        windower.add_to_chat(122, '---> Weapon:Magic')
+    elseif command == 'phisical' then
+        equip(sets.weapon.phisical)
+        windower.add_to_chat(122, '---> Weapon:Phisical')
     end
 end

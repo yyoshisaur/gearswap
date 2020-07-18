@@ -52,7 +52,7 @@ function get_sets()
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         neck="ロリケートトルク+1",
         waist="ニヌルタサッシュ",
         left_ear="メンデカントピアス",
@@ -101,17 +101,17 @@ function get_sets()
     sets.midcast.cure = {
         ammo="インカントストーン",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
-        neck="ノデンズゴルゲット",
+        body="ヴリコダラジュポン",
+        hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
+        legs="ＡＣパンツ+3",
+        feet="ＡＣローファー+3",
+        neck="ロリケートトルク+1",
         waist="ピュシアサッシュ+1",
         left_ear="メンデカントピアス",
         right_ear="ノーヴィアピアス",
         left_ring="守りの指輪",
-        right_ring="レベッチェリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}},
+        back="ソレムニティケープ",
     }
     
     sets.midcast.magic_mb = {
@@ -337,7 +337,7 @@ function get_sets()
     }
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 4; wait 0.5; input /macro set 1; wait 0.5; input /si sch;')
+    send_command('input /macro book 4; wait 0.5; input /macro set 1; wait 0.5; input /si sch; wait 0.5; input /lockstyleset 2 echo;')
 
 end
 

@@ -195,7 +195,7 @@ function get_sets()
     sets.aftercast.idle = sets.aftercast.idle_speed
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 6; wait 0.5; input /macro set 1; lua load autodnc; wait 1; dnc on;')
+    send_command('input /macro book 6; wait 0.5; input /macro set 1; wait 0.5; input /lockstyleset 3 echo; lua load autodnc; wait 1; dnc on;')
 
 end
 

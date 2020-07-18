@@ -11,8 +11,9 @@ function get_sets()
 
     is_dt = false
 
-    sets.weapon["カランビット"] = {main="カランビット",}
-    sets.weapon["サギッタ"] = {main="サギッタ",}
+    sets.weapon.karambit = {main="カランビット",}
+    sets.weapon.sagitta = {main="サギッタ",}
+    sets.weapon.xoanon = {main="ゾアノン", sub="フランジドグリップ"}
 
     sets.precast.ws.critical = {
         ammo="オゲルミルオーブ+1",
@@ -21,10 +22,11 @@ function get_sets()
         hands={ name="龍王手甲改", augments={'STR+12','DEX+12','Accuracy+20',}},
         legs="乾闥婆筒袴改",
         feet="乾闥婆脛当改",
-        neck="フォシャゴルゲット",
+        neck="モンクの喉輪+2",
         waist="月虹帯+1",
         left_ear="シェリダピアス",
-        right_ear="オドルピアス",
+        -- right_ear="オドルピアス",
+        right_ear="シテレアパール",
         left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%',}},
@@ -102,6 +104,22 @@ function get_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
+    sets.precast.ws.acc = {
+        ammo="ペムフレドタスラム",
+        head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="サンクトネックレス",
+        waist="月虹帯+1",
+        left_ear="シェリダピアス",
+        right_ear="ディグニタリピアス",
+        left_ring="王将の指輪",
+        right_ring="ニックマドゥリング",
+        back="サクロマント",
+    }
+
     sets.precast.ws["コンボ"] = sets.precast.ws.multi
     sets.precast.ws["タックル"] = sets.precast.ws.multi
     sets.precast.ws["短勁"] = sets.precast.ws.multi
@@ -120,6 +138,8 @@ function get_sets()
     sets.precast.ws_imp["バックハンドブロー"] = sets.precast.ws.critical_imp
     sets.precast.ws_imp["アスケーテンツォルン"] = sets.precast.ws.critical_imp
     sets.precast.ws_imp["ビクトリースマイト"] = sets.precast.ws.critical_imp
+
+    sets.precast.ws["シェルクラッシャー"] = sets.precast.ws.acc
 
     sets.precast.ability['百烈拳'] = {name={"ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},}
     sets.precast.ability['気孔弾'] = {head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},}
@@ -283,6 +303,22 @@ function get_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
+    sets.aftercast.melee_staff = {
+        ammo="オゲルミルオーブ+1",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="乾闥婆筒袴改",
+        feet="乾闥婆脛当改",
+        neck="アヌートルク",
+        waist="月虹帯+1",
+        left_ear="シェリダピアス",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+        right_ring="ニックマドゥリング",
+        back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.melee =  sets.aftercast.melee_multi_ma
 
     sets.aftercast.idle = {
@@ -302,7 +338,7 @@ function get_sets()
     }
 
         -- マクロのブック, セット変更
-        send_command('input /macro book 5; wait 0.5; input /macro set 1; wait 3;')
+        send_command('input /macro book 5; wait 0.5; input /macro set 1; wait 0.5; input /lockstyleset 2 echo;')
 end
 
 function precast(spell)
@@ -403,17 +439,17 @@ end
 function get_melee_equip()
     local melee_equip = nil
     if is_dt then
-        if player.equipment.main == sets.weapon["カランビット"].main then
+        if player.equipment.main == sets.weapon.karambit.main then
             melee_equip = sets.aftercast.melee_dt
-        elseif player.equipment.main == sets.weapon["サギッタ"].main then
+        elseif player.equipment.main == sets.weapon.sagitta.main then
             melee_equip = sets.aftercast.melee_dt_ma
         else
             melee_equip = sets.aftercast.melee_dt
         end
     else
-        if player.equipment.main == sets.weapon["カランビット"].main then
+        if player.equipment.main == sets.weapon.karambit.main then
             melee_equip = sets.aftercast.melee_multi
-        elseif player.equipment.main == sets.weapon["サギッタ"].main then
+        elseif player.equipment.main == sets.weapon.sagitta.main then
             melee_equip = sets.aftercast.melee_multi_ma
         else
             melee_equip = sets.aftercast.melee_multi
@@ -426,17 +462,17 @@ end
 function get_melee_equip_imp()
     local melee_equip = nil
     if is_dt then
-        if player.equipment.main == sets.weapon["カランビット"].main then
+        if player.equipment.main == sets.weapon.karambit.main then
             melee_equip = sets.aftercast.melee_dt_imp
-        elseif player.equipment.main == sets.weapon["サギッタ"].main then
+        elseif player.equipment.main == sets.weapon.sagitta.main then
             melee_equip = sets.aftercast.melee_dt_ma_imp
         else
             melee_equip = sets.aftercast.melee_dt_imp
         end
     else
-        if player.equipment.main == sets.weapon["カランビット"].main then
+        if player.equipment.main == sets.weapon.karambit.main then
             melee_equip = sets.aftercast.melee_imp
-        elseif player.equipment.main == sets.weapon["サギッタ"].main then
+        elseif player.equipment.main == sets.weapon.sagitta.main then
             melee_equip = sets.aftercast.melee_ma_imp
         else
             melee_equip = sets.aftercast.melee_imp

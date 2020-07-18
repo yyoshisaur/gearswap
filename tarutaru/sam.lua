@@ -198,7 +198,7 @@ function get_sets()
         feet="乾闥婆脛当改",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
-        left_ear="玄冥耳飾り",
+        left_ear="オノワイヤリング+1",
         right_ear="テロスピアス",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",

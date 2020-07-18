@@ -241,7 +241,7 @@ function get_sets()
         body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs="ＡＴタイツ+3",
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         waist="ピュシアサッシュ+1",
         left_ear="メンデカントピアス",
         right_ear="ノーヴィアピアス",
@@ -354,7 +354,7 @@ function get_sets()
 
     sets.midcast.magic_enfeeble_duration_sabo = {
         range="ウルル",
-        head="ＬＴシャペル+1",
+        head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
         legs="ＬＴフュゾー+1",
@@ -411,7 +411,7 @@ function get_sets()
         feet="ジャリピガッシュ+2",
         neck="水影の首飾り",
         waist="サクロコード",
-        left_ear="フリオミシピアス",
+        left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring="女王の指輪+1",
@@ -507,10 +507,10 @@ function get_sets()
     sets.midcast.cure_hp_max_down = {
         ammo="プシロメン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body="アノインカラシリス",
+        body="ヴリコダラジュポン",
         hands={ name="ブレムテグローブ", augments={'HP+30','MP+30','HP+30',}},
         legs="ＡＴタイツ+3",
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         neck="デュアルカラー+1",
         waist="ギシドゥバサッシュ",
         left_ear="エテオレートピアス",
@@ -566,6 +566,7 @@ local function set_weapon_by_sub_job(sub_job, weapon)
             sets.aftercast.melee = set_combine(sets.aftercast.melee, {sub=sets.weapon.hist.sub})
             sets.aftercast.idle = set_combine(sets.aftercast.idle, {sub=sets.weapon.hist.sub})
         end
+        send_command('input /lockstyleset 4 echo;')
     else
         sets.midcast.magic_enfeeble_mnd = set_combine(sets.midcast.magic_enfeeble_mnd, sets.weapon.enfeeble_mnd)
         sets.midcast.magic_enfeeble_mnd_and_skill = set_combine(sets.midcast.magic_enfeeble_mnd_and_skill, sets.weapon.enfeeble_mnd)
@@ -597,6 +598,7 @@ local function set_weapon_by_sub_job(sub_job, weapon)
             sets.aftercast.melee = set_combine(sets.aftercast.melee, {main=sets.weapon.hist.main})
             sets.aftercast.idle = set_combine(sets.aftercast.idle, {main=sets.weapon.hist.main})
         end
+        send_command('input /lockstyleset 5 echo;')
     end
 end
 

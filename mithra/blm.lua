@@ -142,7 +142,7 @@ function get_sets()
     }
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 2; wait 0.5; input /macro set 1')
+    send_command('input /macro book 2; wait 0.5; input /macro set 1; wait 0.5; input /lockstyleset 1 echo;')
 
     -- grimoire
     send_command('lua load grimoire')

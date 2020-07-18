@@ -11,14 +11,11 @@ function get_sets()
     sets.midcast = {}
     sets.aftercast = {}
     
-    is_cp = false
     is_doom = false
     
     sets.sa_na = T{'ポイゾナ', 'パラナ', 'ブライナ', 'サイレナ', 'カーズナ', 'ウィルナ', 'ストナ', 'イレース'}
     sets.addi = T{'アディバイト', 'アディマイン', 'アディカリス', 'アディアジル', 'アディスト', 'アディイン', 'アディデック'}
     sets.ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
-    
-    sets.cp = {back="アピトマント+1"}
 
     -- 女神の愛撫
     sets.caress = {
@@ -43,9 +40,10 @@ function get_sets()
     }
 
     sets.precast.fc_cure = {
+        body="インヤガジュバ+2",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
         legs="ＥＢパンタロン+1",
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         right_ring="プロリクスリング",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -68,15 +66,15 @@ function get_sets()
     }
     
     sets.precast.doom = {
-        main="ヤグルシュ",
+        main="ガンバンテイン",
         ammo="ヘイストピニオン+1",
-        head="ＥＢキャップ+1",
+        head={ name="ヴァニヤフード", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         body="ＥＢブリオー+1",
-        hands="ファナチクグローブ",
-        legs="ＴＥパンタロン+2",
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        hands={ name="ファナチクグローブ", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
+        legs="ＴＥパンタロン+3",
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         neck="デビリスメダル",
-        waist="ビショップサッシュ",
+        waist="ギシドゥバサッシュ",
         left_ear="ビティフィクピアス",
         right_ear="メイリピアス",
         left_ring="メネロスリング",
@@ -100,6 +98,23 @@ function get_sets()
         back={ name="アラウナスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Damage taken-5%',}},
     }
 
+    sets.precast.ws.mnd = {
+        ammo="アマークラスター",
+        head={ name="ＰＩキャップ+3", augments={'Enhances "Devotion" effect',}},
+        body={ name="ＰＩブリオー+3", augments={'Enhances "Benediction" effect',}},
+        hands={ name="ＰＩミトン+3", augments={'Enhances "Martyr" effect',}},
+        legs={ name="ＰＩパンタロン+3", augments={'Enhances "Afflatus Misery" effect',}},
+        feet={ name="ＰＩダックビル+3", augments={'Enhances "Afflatus Solace" effect',}},
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="王将の耳飾り",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        right_ring="イラブラットリング",
+        back={ name="アラウナスケープ", augments={'MND+20','Accuracy+20 Attack+20','MND+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
+    sets.precast.ws["ミスティックブーン"] = set_combine(sets.precast.ws.mnd, {neck="クレリクトルク", waist="グルンフェルロープ",})
     sets.midcast.enhance_duration = {
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
         sub="アムラピシールド",
@@ -119,20 +134,20 @@ function get_sets()
         body="ＥＢブリオー+1",
         hands="ＴＥミトン+3",
         legs="ＥＢパンタロン+1",
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
-        neck="クレリクトルク",
+        feet={ name="ＰＩダックビル+3", augments={'Enhances "Afflatus Solace" effect',}},
+        neck={ name="クレリクトルク", augments={'Path: A',}},
         waist="ニヌルタサッシュ",
         left_ear="朝露の耳飾",
         right_ear="ノーヴィアピアス",
         left_ring="守りの指輪",
-        right_ring="レベッチェリング",
+        right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}},
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
     sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {right_ear="ブラキュラピアス",})
     sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {right_ear="ブラキュラピアス",})
     sets.midcast.auspice = set_combine(sets.midcast.enhance_duration, {feet="ＥＢダックビル+1",})
-    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {main="ボレラブンガ", head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+2",})
+    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {main="ボレラブンガ", head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+3",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド", legs="シェダルサラウィル"})
     
@@ -177,7 +192,7 @@ function get_sets()
         sub="アムラピシールド",
         ammo="ペムフレドタスラム",
         head="ＴＥキャップ+2",
-        body="ＴＥブリオー+2",
+        body="ＴＥブリオー+3",
         hands="ＰＩミトン+3",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＴＥダックビル+3",
@@ -266,7 +281,7 @@ function precast(spell)
         if sets.precast.ws[spell.name] then
             set_equip = sets.precast.ws[spell.name]
         else
-            set_equip = sets.precast.ws.multi
+            set_equip = sets.precast.ws.mnd
         end
     elseif spell.type == 'Trust' then
         set_equip = sets.precast.fc
@@ -282,11 +297,11 @@ end
 function midcast(spell)
     local set_equip = nil
     
-    if string.find(spell.name, 'ケアルガ') then
+    if string.find(spell.name, 'ケアルガ') or string.find(spell.name, 'ケアルラ')then
         if buffactive['極光の陣'] or buffactive['極光の陣II'] then
-            set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+2", waist="光輪の帯"})
+            set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+3", waist="光輪の帯"})
         else
-            set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+2",})
+            set_equip = set_combine(sets.midcast.cure, {body="ＴＥブリオー+3",})
         end
     elseif string.find(spell.name, 'ケアル') or spell.name == 'フルケア' then
         if buffactive['極光の陣'] or buffactive['極光の陣II'] then
@@ -358,24 +373,8 @@ function status_change(new, old)
 end
 
 function self_command(command)
-    if command == 'cp' then
-        if is_cp then
-            is_cp = false
-            enable('back')
-            windower.add_to_chat(122,'--- キャパポ装備 OFF ---')
-        else
-            is_cp = true
-            equip(sets.cp)
-            disable('back')
-            windower.add_to_chat(122,'+++ キャパポ装備 ON +++')
-        end
-    elseif command == 'doom' then
-        if is_doom then
-            is_doom =false
-            windower.add_to_chat(122,'--- カーズナ+装備 OFF ---')
-        else
-            is_doom = true
-            windower.add_to_chat(122,'+++ カーズナ+装備 ON +++')
-        end
+    if command == 'doom' then
+        is_doom = not is_doom
+        windower.add_to_chat(122, '---> カーズナ+装備: '..tostring(is_doom))
     end
 end

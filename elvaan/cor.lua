@@ -69,18 +69,16 @@ function get_sets()
     }
 
     sets.precast.fc = {
-        -- head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
-        -- body={ name="テーオンタバード", augments={'"Fast Cast"+5','Phalanx +3',}},
-        -- hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        -- legs={ name="ローハイドトラウザ", augments={'MP+50','"Fast Cast"+5','"Refresh"+1',}},
-        -- feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
-        -- neck="ボルトサージトルク",
-        -- waist="フルームベルト+1",
-        -- left_ear="ロケイシャスピアス",
-        -- right_ear="エンチャンピアス+1",
-        -- left_ring="ラハブリング",
-        -- right_ring="キシャールリング",
-        -- back="月光の羽衣",
+        head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
+        body={ name="テーオンタバード", augments={'"Fast Cast"+5','Phalanx +3',}},
+        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        feet={ name="カマイングリーヴ+1", augments={'Accuracy+12','DEX+12','MND+20',}},
+        neck="ボルトサージトルク",
+        waist="ニヌルタサッシュ",
+        left_ear="エテオレートピアス",
+        right_ear="ロケイシャスピアス",
+        left_ring="プロリクスリング",
+        right_ring="キシャールリング",
     }
 
     sets.precast.quick_draw = {
@@ -238,7 +236,7 @@ function get_sets()
     }
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 6; wait 0.5; input /macro set 1; wait 0.5; input /si cor;')
+    send_command('input /macro book 6; wait 0.5; input /macro set 1; wait 0.5; input /si cor; wait 0.5; input /lockstyleset 4 echo;')
 
     -- autocor
     send_command('lua load autocor')

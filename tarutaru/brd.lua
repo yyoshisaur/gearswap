@@ -10,7 +10,8 @@ function get_sets()
     -- self_command用フラグ
     is_melee = false
     is_dual = false
-    
+    is_string_inst = false
+
     song = {}
     init_song()
     set_dummy_song('戦士達のピーアン')
@@ -106,7 +107,7 @@ function get_sets()
         neck="月虹の呼び子+1",
         waist="ニヌルタサッシュ",
         left_ear="エテオレートピアス",
-        right_ear="玄冥耳飾り",
+        right_ear="オノワイヤリング+1",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -187,7 +188,7 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear="エテオレートピアス",
-        right_ear="玄冥耳飾り",
+        right_ear="オノワイヤリング+1",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         -- back="月光の羽衣",
@@ -236,6 +237,10 @@ end
 function pretarget(spell)
     local set_equip = nil
 
+    if is_string_inst then
+        set_equip = {range="ダウルダヴラ",}
+    end
+
     if spell.name == '栄典の戴冠マーチ' then
         set_equip = {range="マルシュアス",}
     end
@@ -282,6 +287,12 @@ function midcast(spell)
 
     if spell.type == 'BardSong' then
         set_equip = get_song_gear(spell)
+
+        if is_string_inst then
+            set_equip = set_combine(set_equip, {range="ダウルダヴラ",})
+            is_string_inst = false
+        end
+
     elseif string.find(spell.name, 'ケアル') then
         -- windower.add_to_chat(122,'+++ ケアル +++')
         set_equip = sets.midcast.cure
@@ -444,6 +455,9 @@ function self_command(command)
             windower.add_to_chat(122,'---> 2刀装備モード')
             disable('sub')
         end
+    elseif cmd[1] == 'string' then
+        is_string_inst = not is_string_inst
+        windower.add_to_chat(122,'---> 弦楽器:'..tostring(is_string_inst))
     elseif cmd[1] == 'autosong' then
         if cmd[2] == 'off' then
             auto_song = false

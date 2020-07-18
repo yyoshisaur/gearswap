@@ -121,7 +121,7 @@ function get_sets()
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear="エテオレートピアス",
-        right_ear="玄冥耳飾り",
+        right_ear="オノワイヤリング+1",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back="月光の羽衣",

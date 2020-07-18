@@ -57,6 +57,7 @@ function get_sets()
     sets.precast.ability.maneuvers = sets.precast.ability.maneuvers_mid_strain
 
     sets.precast.ability['リペアー'] = {
+        legs={ name="デサルタタセッツ", augments={'"Sic" and "Ready" ability delay -5','"Repair" potency +10%',}},
         feet="ＦＯバブーシュ+3",
         left_ear="ギニョルピアス",
         right_ear="プラティクピアス",
@@ -202,7 +203,7 @@ function get_sets()
     }
 
     sets.aftercast.idle_tank_melee = {
-        main={ name="オータス", augments={'Accuracy+70','Pet: Accuracy+70','Pet: Haste+10%',}},
+        main={ name="シュコアトル", augments={'Path: C',}},
         ammo="ルブリカント+3",
         head={ name="テーオンシャポー", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         body={ name="ＰＩトベ+3", augments={'Enhances "Overdrive" effect',}},
@@ -215,7 +216,7 @@ function get_sets()
         right_ear="エンメルカルピアス",
         left_ring="パルーグリング",
         right_ring="ヴァラールリング+1",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
     }
 
     sets.aftercast.idle_tank_dt_and_hp = {
@@ -290,7 +291,7 @@ function get_sets()
     sets.aftercast.idle_speed = set_combine(sets.aftercast.idle, {neck="ロリケートトルク+1", right_ring="シュネデックリング",})
 
     -- マクロのブック, セット変更
-    send_command('input /macro book 3; wait 0.5; input /macro set 1')
+    send_command('input /macro book 3; wait 0.5; input /macro set 1; wait 0.5; input /lockstyleset 2 echo;')
 
 end
 

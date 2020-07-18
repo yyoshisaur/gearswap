@@ -38,12 +38,11 @@ function get_sets()
     }
     
     sets.precast.cure_fc = {
-        sub="ソーズシールド",
         head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         legs="ＧＯパンツ+3",
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         waist="エンブラサッシュ",
         left_ear="ロケイシャスピアス",
         right_ear="メンデカントピアス",
@@ -65,13 +64,12 @@ function get_sets()
     }
     
     sets.midcast.cure = {
-        sub="ソーズシールド",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body="アノインカラシリス",
+        body="ヴリコダラジュポン",
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        feet={ name="ヴァニヤクロッグ", augments={'"Cure" potency +5%','"Cure" spellcasting time -15%','"Conserve MP"+6',}},
+        feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         right_ear="メンデカントピアス",
-        right_ring="レベッチェリング",
+        back="ソレムニティケープ",
     }
     
     sets.midcast.enhance_duration = {
@@ -89,7 +87,7 @@ function get_sets()
         main={ name="ガーダ", augments={'Enh. Mag. eff. dur. +5','VIT+3','Mag. Acc.+6',}},
         sub="アムラピシールド",
         head="ビファウルクラウン",
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear="ミミルピアス",
@@ -157,7 +155,7 @@ function get_sets()
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         body="ＧＯチュニック+3",
         hands={ name="ＢＡミテーヌ+3", augments={'Enhances "Curative Recantation" effect',}},
-        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         feet="ＧＯサンダル+3",
         neck="ロリケートトルク+1",
         -- neck="バグアチャーム+2",
@@ -174,9 +172,9 @@ function get_sets()
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
-        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        body={ name="テルキネシャジュブ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -3%',}},
-        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
         feet={ name="ＢＡサンダル+3", augments={'Enhances "Radial Arcana" effect',}},
         -- neck="ロリケートトルク+1",
         neck="バグアチャーム+2",

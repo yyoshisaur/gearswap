@@ -20,11 +20,11 @@ function get_sets()
         main="エピオラトリー",
         ammo="ストンチタスラム+1",
         head="ラビッドバイザー",
-        body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}},
+        body="エメットハーネス+1",
         hands="クーリスグローブ",
         legs="ＥＲレグガード+1",
         feet="ＥＲグリーヴ+1",
-        neck="アンムーヴカラー+1",
+        neck="月明の首飾り",
         waist="カシリベルト",
         left_ear="クリプティクピアス",
         right_ear="エテオレートピアス",
@@ -58,7 +58,7 @@ function get_sets()
 
     sets.precast.ability['ヴァレション'] = set_combine(sets.enmity, {body={ name="ＲＮコート+3", hp=218,}, legs={ name="ＦＵトラウザ+3", augments={'Enhances "Inspire" effect',}, hp=107,}, back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60},})
     sets.precast.ability['ヴァリエンス'] = sets.precast.ability['ヴァレション']
-    sets.precast.ability['リエモン'] = set_combine(sets.precast.ability['ヴァレション'], {body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
+    sets.precast.ability['リエモン'] = set_combine(sets.precast.ability['ヴァレション'], {body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
     sets.precast.ability['エンボルド'] = {back={ name="ディバートケープ", augments={'"Embolden"+15',},}}
     sets.precast.ability['ビベイシャス'] = {head={ name="ＥＲガレア+1", hp=91,}}
     sets.precast.ability['ガンビット'] = set_combine(sets.enmity, {hands={ name="ＲＮミトン+1", hp=85,}})
@@ -81,7 +81,7 @@ function get_sets()
     }
     sets.precast.ability['フルーグ'] = set_combine(sets.enmity, {feet={ name="ＲＮブーツ+1", hp=74,}})
     sets.precast.ability['ソードプレイ'] = sets.enmity
-    sets.precast.ability['E.スフォルツォ'] = set_combine(sets.enmity, {body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
+    sets.precast.ability['E.スフォルツォ'] = set_combine(sets.enmity, {body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
 
     -- sub war
     sets.precast.ability['挑発'] = sets.enmity
@@ -123,7 +123,7 @@ function get_sets()
     sets.midcast.enhance_skill = {
         ammo="ストンチタスラム+1",
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
-        body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}},
+        body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}},
         hands="ＲＮミトン+1",
         legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}},
         feet="ＥＲグリーヴ+1",
@@ -146,7 +146,7 @@ function get_sets()
     })
 
     sets.midcast.stoneskin = {
-        body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
+        body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
         neck="ストーンゴルゲット",
         waist="ジーゲルサッシュ",
         left_ear="アースクライピアス",
@@ -178,18 +178,15 @@ function get_sets()
     }
 
     sets.aftercast.dt = {
-        main="エピオラトリー",
-        -- sub="メンシストラップ+1",
+        main={ name="エピオラトリー", augments={'Path: A',}},
         sub="コーンスー",
         ammo="ストンチタスラム+1",
-        -- head="ラビッドバイザー",
-        head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}},
-        body="ＲＮコート+3",
+        head="ヴォルトキャップ",
+        body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}},
         hands="トゥルムミトン+1",
         legs="ＥＲレグガード+1",
-        feet="ＥＲグリーヴ+1",
-        -- neck="ロリケートトルク+1",
-        neck="フサルクトルク+2",
+        feet="トゥルムレギンス+1",
+        neck={ name="フサルクトルク+2", augments={'Path: A',}},
         waist="エングレイブベルト",
         left_ear="クリプティクピアス",
         right_ear="エテオレートピアス",
@@ -199,26 +196,18 @@ function get_sets()
     }
 
     sets.aftercast.melee = {
-    }
-
-    sets.aftercast.speed = {
-        main="エピオラトリー",
-        -- sub="メンシストラップ+1",
-        sub="コーンスー",
-        ammo="ストンチタスラム+1",
-        -- head="ラビッドバイザー",
-        head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}},
-        body={ name="ＦＵコート+1", augments={'Enhances "Elemental Sforzo" effect',}},
-        hands="クーリスグローブ",
-        legs="ＥＲレグガード+1",
-        feet="ＥＲグリーヴ+1",
-        -- neck="ロリケートトルク+1",
-        neck="フサルクトルク+2",
-        waist="エングレイブベルト",
-        left_ear="クリプティクピアス",
-        right_ear="エテオレートピアス",
+        ammo="ヤメラング",
+        head="アヤモツッケット+2",
+        body="アヤモコラッツァ+2",
+        hands="トゥルムミトン+1",
+        legs="メガナダショウス+2",
+        feet={ name="カマイングリーヴ+1", augments={'Accuracy+12','DEX+12','MND+20',}},
+        neck={ name="フサルクトルク+2", augments={'Path: A',}},
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="シェリダピアス",
+        right_ear="デディションピアス",
         left_ring="守りの指輪",
-        right_ring="シュネデックリング",
+        right_ring="イラブラットリング",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}},
     }
 
@@ -420,5 +409,8 @@ function self_command(command)
             end
         end
         send_command('input /ja '..windower.to_shift_jis(rune_histroy)..' <me>;')
+    elseif command == 'melee' then
+        is_melee = not is_melee
+        windower.add_to_chat(122,'---> アタッカー装備: '..tostring(is_melee))
     end
 end
