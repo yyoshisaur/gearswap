@@ -576,7 +576,7 @@ function self_command(command)
             set_equip = set_combine(set_equip, {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},})
         end
         equip(set_equip)
-        -- set_priorities_by_hp()
+        set_priorities_by_hp()
     elseif command == 'bluemagic' then
         equip(sets.enmity)
         set_priorities_by_hp()

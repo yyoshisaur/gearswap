@@ -109,8 +109,8 @@ function get_sets()
 
     sets.precast.ws.multi = {
         ammo="イェットシーラ+1",
-        head="アヤモツッケット+2",
-        body="アヤモコラッツァ+2",
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
+        body="マリグナスタバード",
         hands="マリグナスグローブ",
         legs="ＶＩタイツ+3",
         feet="セレオイドグリーヴ",

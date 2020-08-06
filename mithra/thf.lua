@@ -25,7 +25,7 @@ function get_sets()
         -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
         neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
-        waist="チナーズベルト+1",
+        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
@@ -42,7 +42,7 @@ function get_sets()
         -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
         neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
-        waist="チナーズベルト+1",
+        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="エパミノダスリング",
@@ -68,7 +68,7 @@ function get_sets()
 
     sets.precast.ws.critical = {
         ammo="イェットシーラ+1",
-        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body={ name="ＰＤベスト+3", augments={'Enhances "Ambush" effect',}},
         hands="ムンムリスト+2",
         legs="ＰＬキュロット+3",

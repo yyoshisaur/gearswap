@@ -81,7 +81,7 @@ function get_sets()
     }
 
     sets.precast.ws.critical = {
-        head="ヘヨカキャップ+1",
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body="アブノーバカフタン",
         hands={ name="龍王手甲改", augments={'STR+12','DEX+12','Accuracy+20',}},
         legs="ヘヨカサブリガ+1",
@@ -96,11 +96,11 @@ function get_sets()
     }
 
     sets.precast.ws.multi = {
-        head="ヘヨカキャップ+1",
-        body="マリグナスタバード",
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
+        body="タリアマンティル+2",
         hands="マリグナスグローブ",
-        legs="ヘヨカサブリガ+1",
-        feet="ヘヨカレギンス+1",
+        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="マリグナスブーツ",
         neck="フォシャゴルゲット",
         waist="月虹帯+1",
         left_ear="マーケピアス+1",

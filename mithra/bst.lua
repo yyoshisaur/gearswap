@@ -44,12 +44,12 @@ function get_sets()
 
     sets.precast.ws.str_multi = {
         ammo="オゲルミルオーブ+1",
-        head={ name="ＡＫヘルム+3", augments={'Enhances "Killer Instinct" effect',}},
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body={ name="ルストラハーネス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
         hands="ＴＯグローブ+3",
         legs="メガナダショウス+2",
         feet={ name="ルストラレギンス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
-        neck="フォシャゴルゲット",
+        neck="獣使いの首輪+2",
         waist="フォシャベルト",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
@@ -59,7 +59,7 @@ function get_sets()
     }
 
     sets.precast.ws["スマッシュ"] = sets.precast.ws.str_wsd
-    sets.precast.ws["ランページ"] = sets.precast.ws.str_wsd
+    sets.precast.ws["ランページ"] = sets.precast.ws.str_multi
     sets.precast.ws["デシメーション"] = sets.precast.ws.str_multi
     sets.precast.ws["ルイネーター"] = sets.precast.ws.str_multi
     
@@ -82,7 +82,7 @@ function get_sets()
     sets.midcast.pet_atk = {
         ammo="ボルスパタスラム",
         head={ name="テーオンシャポー", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
-        body="タリアマンティル+2",
+        body={ name="テーオンタバード", augments={'Pet: Attack+25 Pet: Rng.Atk.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         hands="ＮＫマノプラス+1",
         legs={ name="テーオンタイツ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         feet={ name="テーオンブーツ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Haste+5',}},
@@ -183,7 +183,7 @@ function pet_midcast(spell)
     -- windower.add_to_chat(122,'spell.name: '..spell.name)
     local set_equip = nil
     if spell.type == 'MonsterSkill' then
-        set_equip = sets.midcast.pet_acc
+        set_equip = sets.midcast.pet_atk
     end
 
     if set_equip then

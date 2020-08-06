@@ -201,7 +201,7 @@ function get_sets()
     sets.precast.ability["ランダムディール"] ={body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},}
     sets.precast.ability["フォールド"] = {hands={ name="ＬＡガントリー+1", augments={'Enhances "Fold" effect',}},}
     sets.precast.ability["スネークアイ"] = {legs={ name="ＬＡトルーズ+1", augments={'Enhances "Snake Eye" effect',}},}
-    sets.precast.ability["ワイドカード"] = {feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},}
+    sets.precast.ability["ワイルドカード"] = {feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},}
 
     sets.midcast.ra = {
         ammo="クロノブレット",

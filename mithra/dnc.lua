@@ -15,7 +15,7 @@ function get_sets()
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
         neck="エトワールゴルゲ+2",
-        waist="チナーズベルト+1",
+        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="王将の指輪",
@@ -31,7 +31,7 @@ function get_sets()
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
         neck="エトワールゴルゲ+2",
-        waist="チナーズベルト+1",
+        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="王将の指輪",
@@ -57,7 +57,7 @@ function get_sets()
 
     sets.precast.ws.critical = {
         ammo="カリスフェザー",
-        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body="ムンムジャケット+2",
         hands="ムンムリスト+2",
         legs="ムンムケックス+2",

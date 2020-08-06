@@ -165,9 +165,9 @@ function get_sets()
     sets.precast.ws['アップヒーバル'] = sets.precast.ws.multi
     
     sets.precast.ability['ラストリゾート'] = {feet="ＦＬソルレット+3", back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},}
-    sets.precast.ability['ウェポンバッシュ'] = {hands="ＩＧガントレ+2",}
+    sets.precast.ability['ウェポンバッシュ'] = {hands="ＩＧガントレ+3",}
     sets.precast.ability['ネザーヴォイド'] = {legs="ＨＴフランチャ+1",}
-    sets.precast.ability['アルケインサークル'] = {feet='ＩＧソルレット+2',}
+    sets.precast.ability['アルケインサークル'] = {feet='ＩＧソルレット+3',}
     sets.precast.ability['ブラッドウェポン'] = {body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},}
 
     sets.midcast.magic_acc = {

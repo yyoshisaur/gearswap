@@ -56,9 +56,9 @@ function get_sets()
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.precast.ability["ソウルボイス"] = {legs={ name="ＢＩキャニオンズ+1", augments={'Enhances "Soul Voice" effect',}},}
-    sets.precast.ability["ナイチンゲール"] = {feet={ name="ＢＩスリッパー+1", augments={'Enhances "Nightingale" effect',}},}
-    sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+1", augments={'Enhances "Troubadour" effect',}},}
+    sets.precast.ability["ソウルボイス"] = {legs={ name="ＢＩキャニオンズ+3", augments={'Enhances "Soul Voice" effect',}},}
+    sets.precast.ability["ナイチンゲール"] = {feet={ name="ＢＩスリッパー+3", augments={'Enhances "Nightingale" effect',}},}
+    sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+3", augments={'Enhances "Troubadour" effect',}},}
 
     sets.midcast.song_duration = {
         main="カルンウェナン",
@@ -215,7 +215,7 @@ function get_sets()
     sets.precast.ws.wsd = {
         range={ name="リノス", augments={'Accuracy+15','Weapon skill damage +3%','DEX+8',}},
         head="アヤモツッケット+2",
-        body="アヤモコラッツァ+2",
+        body={ name="ＢＩジュストコル+3", augments={'Enhances "Troubadour" effect',}},
         hands="アヤモマノポラ+2",
         legs="アヤモコッシャレ+2",
         feet="アヤモガンビエラ+2",

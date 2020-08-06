@@ -17,7 +17,7 @@ function get_sets()
 
     sets.precast.ws.critical = {
         ammo="オゲルミルオーブ+1",
-        head={ name="羅王頭成兜改", augments={'STR+12','DEX+12','Attack+20',}},
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body="ＡＮシクラス+3",
         hands={ name="龍王手甲改", augments={'STR+12','DEX+12','Accuracy+20',}},
         legs="乾闥婆筒袴改",
@@ -25,8 +25,8 @@ function get_sets()
         neck="モンクの喉輪+2",
         waist="月虹帯+1",
         left_ear="シェリダピアス",
-        -- right_ear="オドルピアス",
-        right_ear="シテレアパール",
+        right_ear="オドルピアス",
+        -- right_ear="シテレアパール",
         left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%',}},
@@ -371,7 +371,7 @@ function aftercast(spell)
     local set_equip = nil
     
     if spell.type == 'JobAbility' then
-        if spell.name == 'インピタス' then
+        if spell.name == 'インピタス' and not spell.interrupted then
             sets.aftercast.melee = get_melee_equip_imp()
         end
     end

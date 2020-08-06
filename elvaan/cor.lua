@@ -72,7 +72,7 @@ function get_sets()
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
         body={ name="テーオンタバード", augments={'"Fast Cast"+5','Phalanx +3',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        feet={ name="カマイングリーヴ+1", augments={'Accuracy+12','DEX+12','MND+20',}},
+        feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
         neck="ボルトサージトルク",
         waist="ニヌルタサッシュ",
         left_ear="エテオレートピアス",
