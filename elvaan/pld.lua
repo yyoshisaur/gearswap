@@ -195,18 +195,18 @@ function midcast(spell)
         set_equip = sets.midcast.sird
         if spell.name == 'ファランクス' then
             local cast_time = get_cast_time(spell)
-            local wait = cast_time * delay_rate
+            local sird_wait = cast_time * delay_rate
             local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
             set_equip = sets.midcast.sird
             is_sird = true
-            windower.send_command('wait '..wait..'; input //gs c phalanx;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
+            windower.send_command('wait '..sird_wait..'; input //gs c phalanx;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
         elseif string.find(spell.name, 'プロテ') or string.find(spell.name, 'シェル') then
             local cast_time = get_cast_time(spell)
-            local wait = cast_time * delay_rate
+            local sird_wait = cast_time * delay_rate
             local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
             set_equip = sets.midcast.sird
             is_sird = true
-            windower.send_command('wait '..wait..'; input //gs c protect;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
+            windower.send_command('wait '..sird_wait..'; input //gs c protect;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
         end
     elseif spell.skill == '神聖魔法' then
         set_equip = sets.midcast.sird
@@ -217,19 +217,19 @@ function midcast(spell)
         set_equip = sets.midcast.sird
         if string.find(spell.name, 'ケアル') then
             local cast_time = get_cast_time(spell)
-            local wait = cast_time * delay_rate
+            local sird_wait = cast_time * delay_rate
             local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
             set_equip = sets.midcast.sird
             is_sird = true
-            windower.send_command('wait '..wait..'; input //gs c cure;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
+            windower.send_command('wait '..sird_wait..'; input //gs c cure;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
         end
     elseif spell.skill == '青魔法' then
         local cast_time = get_cast_time(spell)
-        local wait = cast_time * delay_rate
+        local sird_wait = cast_time * delay_rate
         local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
         set_equip = sets.midcast.sird
         is_sird = true
-        send_command('@wait '..wait..'; input //gs c blue;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
+        send_command('wait '..sird_wait..'; input //gs c blue;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
     elseif spell.skill == '暗黒魔法' then
         if spell.name == 'スタン' then
             set_equip = sets.enmity
