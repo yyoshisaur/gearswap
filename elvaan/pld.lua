@@ -8,6 +8,7 @@ function get_sets()
     sets.aftercast = {}
 
     is_melee = false
+    is_sird = false
 
     sets.enmity = {
         ammo="ストンチタスラム+1",
@@ -53,7 +54,7 @@ function get_sets()
 
     sets.precast.ws['ロイエ'] = sets.precast.ws.wsd
 
-    sets.precast.ability['ランパート'] = set_combine(sets.enmity, {head={ name="ＣＢコロネット+1", augments={'Enhances "Iron Will" effect',}, hp=96,},})
+    sets.precast.ability['ランパート'] = set_combine(sets.enmity, {head={ name="ＣＢコロネット+3", augments={'Enhances "Iron Will" effect',}, hp=96,},})
     sets.precast.ability['ホーリーサークル'] = set_combine(sets.enmity, {feet={ name="ＲＶレギンス+1", hp=48,}})
     sets.precast.ability['フィールティ'] = set_combine(sets.enmity, {body={ name="ＣＢサーコート+3", augments={'Enhances "Fealty" effect',}, hp=118,},})
     sets.precast.ability['シバルリー'] = set_combine(sets.enmity, {hands={ name="ＣＢガントレ+3", augments={'Enhances "Chivalry" effect',}, hp=124,},})
@@ -75,7 +76,8 @@ function get_sets()
         -- neck="月光の首飾り",
         waist="オドンブラサッシュ",
         left_ear="ナイトリーピアス",
-        right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
+        -- right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
+        right_ear="ハラサズピアス",
         left_ring="守りの指輪",
         right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}, hp=110,},
         back={ name="月光の羽衣", hp=275,},
@@ -128,14 +130,14 @@ function get_sets()
 
     sets.aftercast.melee = {
         ammo="ストンチタスラム+1",
-        head={ name="ＳＶシャレル+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=280,},
-        body={ name="ＳＶキュイラス+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=171,},
-        hands={ name="ＳＶハントシュ+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=239,},
-        legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}, hp=50,},
-        feet={ name="ＳＶシュー+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=227,},
+        head={ name="ＣＢコロネット+3", augments={'Enhances "Iron Will" effect',}, hp=116,},
+        body={ name="ＣＢサーコート+3", augments={'Enhances "Fealty" effect',}, hp=138,},
+        hands={ name="ＣＢガントレ+3", augments={'Enhances "Chivalry" effect',}, hp=124,},
+        legs={ name="ＣＢブリーチズ+3", augments={'Enhances "Invincible" effect',}, hp=72,},
+        feet={ name="ＣＢレギンス+3", augments={'Enhances "Guardian" effect',}, hp=63,},
         neck="クリードカラー",
-        waist={ name="セールフィベルト+1", augments={'Path: A',}},
-        left_ear="素破の耳",
+        waist="霊亀腰帯",
+        left_ear={ name="エアバニピアス", hp=45,},
         right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
         left_ring="守りの指輪",
         right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}, hp=110,},
@@ -175,7 +177,8 @@ function precast(spell)
     end
 end
 
-local delay_time = 0.5
+local delay_rate = 0.85
+local aftercast_delay = 1.5
 local function get_cast_time(spell)
     if not spell.cast_time then
         return 0
@@ -192,14 +195,18 @@ function midcast(spell)
         set_equip = sets.midcast.sird
         if spell.name == 'ファランクス' then
             local cast_time = get_cast_time(spell)
-            local wait = cast_time - delay_time
+            local wait = cast_time * delay_rate
+            local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
             set_equip = sets.midcast.sird
-            send_command('wait '..wait..'; input //gs c phalanx;')
+            is_sird = true
+            windower.send_command('wait '..wait..'; input //gs c phalanx;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
         elseif string.find(spell.name, 'プロテ') or string.find(spell.name, 'シェル') then
             local cast_time = get_cast_time(spell)
-            local wait = cast_time - delay_time
+            local wait = cast_time * delay_rate
+            local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
             set_equip = sets.midcast.sird
-            send_command('wait '..wait..'; input //gs c protect;')
+            is_sird = true
+            windower.send_command('wait '..wait..'; input //gs c protect;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
         end
     elseif spell.skill == '神聖魔法' then
         set_equip = sets.midcast.sird
@@ -210,15 +217,19 @@ function midcast(spell)
         set_equip = sets.midcast.sird
         if string.find(spell.name, 'ケアル') then
             local cast_time = get_cast_time(spell)
-            local wait = cast_time - delay_time
+            local wait = cast_time * delay_rate
+            local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
             set_equip = sets.midcast.sird
-            send_command('wait '..wait..'; input //gs c cure;')
+            is_sird = true
+            windower.send_command('wait '..wait..'; input //gs c cure;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
         end
     elseif spell.skill == '青魔法' then
         local cast_time = get_cast_time(spell)
-        local wait = cast_time - delay_time
+        local wait = cast_time * delay_rate
+        local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
         set_equip = sets.midcast.sird
-        -- send_command('@wait '..wait..'; input //gs c blue;')
+        is_sird = true
+        send_command('@wait '..wait..'; input //gs c blue;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
     elseif spell.skill == '暗黒魔法' then
         if spell.name == 'スタン' then
             set_equip = sets.enmity
@@ -238,6 +249,11 @@ end
 function aftercast(spell)
     local set_equip = nil
     
+    if is_sird then
+        is_sird = false
+        return
+    end
+
     if player.status == 'Engaged' then
         if is_melee then
             set_equip = sets.aftercast.melee
@@ -301,6 +317,24 @@ function self_command(command)
         equip(sets.aftercast.idle)
         set_priorities_by_hp()
         windower.add_to_chat(122,'---> DT装備')
+    elseif command == 'aftercast' then
+        local set_equip = nil
+    
+        if player.status == 'Engaged' then
+            if is_melee then
+                set_equip = sets.aftercast.melee
+            else
+                set_equip = sets.aftercast.idle
+            end
+        else
+            set_equip = sets.aftercast.idle
+        end
+        
+        if set_equip then
+            equip(set_equip)
+            set_priorities_by_hp()
+        end
+        -- windower.add_to_chat(122,'---> aftercast')
     end
 end
 
