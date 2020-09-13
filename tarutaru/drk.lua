@@ -46,6 +46,7 @@ function get_sets()
     
     sets.precast.fc_impact = {
         ammo="サピエンスオーブ",
+        head=empty,
         body="トワイライトプリス",
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs={ name="ヨリウムクウィス", augments={'Mag. Evasion+20','"Fast Cast"+3','Damage taken-3%',}},
@@ -141,6 +142,54 @@ function get_sets()
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.precast.ws.scythe_wsd = {
+        ammo="ノブキエリ",
+        head="ラトリサリット+1",
+        body="ＩＧキュイラス+3",
+        hands="ラトリガドリング+1",
+        legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
+        feet="スレビアレギンス+2",
+        neck={ name="暗黒の数珠+2", augments={'Path: A',}},
+        waist="フォシャベルト",
+        left_ear="スラッドピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="ニックマドゥリング",
+        right_ring="王将の指輪",
+        back={ name="アンコウマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
+    sets.precast.ws.scythe_multi_int = {
+        ammo="ノブキエリ",
+        head="フラマツッケット+2",
+        body="ＩＧキュイラス+3",
+        hands="レテクバングル+1",
+        legs="ＩＧフランチャ+3",
+        feet="フラマガンビエラ+2",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="スラッドピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="ニックマドゥリング",
+        right_ring="王将の指輪",
+        back={ name="アンコウマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.precast.ws.scythe_mythic = {
+        ammo="ノブキエリ",
+        head="ラトリサリット+1",
+        body="ＩＧキュイラス+3",
+        hands="ラトリガドリング+1",
+        legs="ＩＧフランチャ+3",
+        feet="スレビアレギンス+2",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="スラッドピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="ニックマドゥリング",
+        right_ring="王将の指輪",
+        back={ name="アンコウマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
     sets.precast.ws.acc_1250 = {head='ＩＧバゴネット+3',}
     
     -- 両手剣
@@ -150,10 +199,10 @@ function get_sets()
     sets.precast.ws['スピンスラッシュ'] = sets.precast.ws.str
     sets.precast.ws['ショックウェーブ'] = sets.precast.ws.acc
     -- 両手鎌
-    sets.precast.ws['エントロピー'] = sets.precast.ws.multi
-    sets.precast.ws['クワイタス'] = sets.precast.ws.str
-    sets.precast.ws['インサージェンシー'] = sets.precast.ws.multi
-    sets.precast.ws['クロスリーパー'] = sets.precast.ws.str
+    sets.precast.ws['エントロピー'] = sets.precast.ws.scythe_multi_int
+    sets.precast.ws['クワイタス'] = sets.precast.ws.scythe_wsd
+    sets.precast.ws['インサージェンシー'] = sets.precast.ws.scythe_mythic
+    sets.precast.ws['クロスリーパー'] = sets.precast.ws.scythe_wsd
     sets.precast.ws['ギロティン'] = sets.precast.ws.multi
     sets.precast.ws['ダークハーベスト'] = sets.precast.ws.magic
     sets.precast.ws['シャドーオブデス'] = sets.precast.ws.magic
@@ -278,7 +327,7 @@ function get_sets()
     
     sets.aftercast.melee_khonsu = {
         sub="コーンスー",
-        ammo="ストンチタスラム+1",
+        ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
         -- body="デーゴンブレスト",
         body="フロプトブレスト",
@@ -299,18 +348,18 @@ function get_sets()
     
     sets.aftercast.idle = {
         ammo="ストンチタスラム+1",
-        head="フロプトヘルム",
-        body="フロプトブレスト",
+        head="ラトリサリット+1",
+        body="サクロブレスト",
         hands="スレビアガントレ+2",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
+        feet="ヴォルトソルレ",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
-        left_ear="オノワイヤリング+1",
+        left_ear={ name="オノワイヤリング+1", augments={'Path: A',}},
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
-        back="月光の羽衣",
+        back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
     sets.midcast.trehun = {

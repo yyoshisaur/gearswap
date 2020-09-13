@@ -80,17 +80,17 @@ function get_sets()
     sets.precast.ws.magic = {
         ammo="ノブキエリ",
         head="フラマツッケット+2",
-        body={ name="ファウンダブレスト", augments={'Accuracy+14','Mag. Acc.+13','Attack+14','"Mag.Atk.Bns."+14',}},
+        body="サクロブレスト",
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
-        legs="フラマディル+2",
-        feet={ name="ファウンダグリーヴ", augments={'VIT+9','Accuracy+14','"Mag.Atk.Bns."+13','Mag. Evasion+15',}},
+        legs="極脇戸板佩楯",
+        feet="フラマガンビエラ+2",
         neck="サンクトネックレス",
-        waist="エスカンストーン",
+        waist="オルペウスサッシュ",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        right_ear="テロスピアス",
+        right_ear="フリオミシピアス",
         left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
-        back={ name="スメルトリオマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
     sets.precast.ws['壱之太刀・飛燕'] = sets.precast.ws.multi

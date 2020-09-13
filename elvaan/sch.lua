@@ -77,20 +77,20 @@ function get_sets()
         right_ear="マリグナスピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="フィフォレケープ+1", augments={'Path: A',}},
     }
     
     sets.precast.ws.mp = {
         ammo="プシロメン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body={ name="ウェーザーローブ+1", augments={'MP+120',}},
+        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="オトミグローブ", augments={'HP+30','MP+30','MP+30',}},
-        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="サイクロスブーツ", augments={'MP+50','INT+7','"Conserve MP"+6',}},
+        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="デュアルカラー+1",
         waist="神術帯+1",
-        left_ear="エテオレートピアス",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="エテオレートピアス",
         left_ring="メフィタスリング+1",
         right_ring="メフィタスリング",
         back="フィフォレケープ+1",
@@ -306,7 +306,7 @@ function get_sets()
         right_ear="エテオレートピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="フィフォレケープ+1", augments={'Path: A',}},
     }
 
     sets.aftercast.idle = {

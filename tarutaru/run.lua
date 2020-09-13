@@ -339,8 +339,8 @@ function get_sets()
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}, hp=60,},
     }
 
-        -- マクロのブック, セット変更, 装備入れ替え
-        send_command('input /macro book 17; wait 0.5; input /macro set 1; wait 0.5; input /si run;')
+    -- マクロのブック, セット変更, 装備入れ替え
+    send_command('input /macro book 17; wait 0.5; input /macro set 1; wait 0.5; input /si run;')
 end
 
 local function set_weapon_hist()

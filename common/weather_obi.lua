@@ -103,3 +103,5 @@ end
 function get_elemental_obi()
     return elemental_obi
 end
+
+init_elemental_obi()

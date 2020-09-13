@@ -329,7 +329,7 @@ function get_sets()
         neck={ name="ミラージストール+2", augments={'Path: A',}},
         waist="ウィンバフベルト+1",
         left_ear="素破の耳",
-        right_ear="ブルタルピアス",
+        right_ear="テロスピアス",
         left_ring="守りの指輪",
         right_ring="イラブラットリング",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
@@ -345,7 +345,7 @@ function get_sets()
         neck={ name="ミラージストール+2", augments={'Path: A',}},
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
-        right_ear="ブルタルピアス",
+        right_ear="テロスピアス",
         left_ring="守りの指輪",
         right_ring="イラブラットリング",
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
@@ -527,6 +527,8 @@ function self_command(command)
         send_command('gs c empty_weapon;wait 0.5;gs equip sets.weapon.tizona')
     elseif command == 'sequence' then
         send_command('gs c empty_weapon;wait 0.5;gs equip sets.weapon.sequence')
+    elseif command == 'magic' then
+        send_command('gs c empty_weapon;wait 0.5;gs equip sets.weapon.magic')
     elseif command == 'sword' then
         sword_cycle = sword_cycle + 1
         if sword_cycle % 3 == 0 then

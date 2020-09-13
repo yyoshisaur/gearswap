@@ -15,7 +15,7 @@ function get_sets()
     
     sets.precast.call_beast = {hands={ name="ＡＫグローブ+1", augments={'Enhances "Beast Affinity" effect',}},}
     sets.precast.reward = {
-        body="ＴＯジャック+1",
+        body="ＴＯジャック+3",
         legs={ name="ＡＫトラウザ+3", augments={'Enhances "Familiar" effect',}},
         back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
@@ -35,7 +35,7 @@ function get_sets()
         feet={ name="ルストラレギンス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
-        left_ear="シェリダピアス",
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="スラッドピアス",
         left_ring="王将の指輪",
         right_ring="ゲリリング",
@@ -45,24 +45,42 @@ function get_sets()
     sets.precast.ws.str_multi = {
         ammo="オゲルミルオーブ+1",
         head={ name="ブリスタサリット+1", augments={'Path: A',}},
-        body={ name="ルストラハーネス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
-        hands="ＴＯグローブ+3",
+        body={ name="アゴシホーバーク+1", augments={'STR+12','Attack+20','"Store TP"+6',}},
+        hands={ name="アゴシマフラ+1", augments={'STR+20','"Dbl.Atk."+3','Haste+3%',}},
         legs="メガナダショウス+2",
-        feet={ name="ルストラレギンス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
-        neck="獣使いの首輪+2",
+        feet={ name="アゴシソルレット+1", augments={'HP+65','"Dbl.Atk."+3','"Store TP"+5',}},
+        neck={ name="獣使いの首輪+2", augments={'Path: A',}},
         waist="フォシャベルト",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring="王将の指輪",
+        left_ring="エポナリング",
         right_ring="ゲリリング",
         back={ name="アルティオマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.precast.ws.magic = {
+        ammo="ペムフレドタスラム",
+        head={ name="ＡＫヘルム+3", augments={'Enhances "Killer Instinct" effect',}},
+        body="サクロブレスト",
+        hands="ＴＯグローブ+3",
+        legs={ name="オーグリクウィス+1", augments={'Path: A',}},
+        feet="マリグナスブーツ",
+        neck="サンクトネックレス",
+        waist="エスカンストーン",
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="フリオミシピアス",
+        left_ring="王将の指輪",
+        right_ring="エパミノダスリング",
+        back="サクロマント",
     }
 
     sets.precast.ws["スマッシュ"] = sets.precast.ws.str_wsd
     sets.precast.ws["ランページ"] = sets.precast.ws.str_multi
     sets.precast.ws["デシメーション"] = sets.precast.ws.str_multi
     sets.precast.ws["ルイネーター"] = sets.precast.ws.str_multi
-    
+    sets.precast.ws["クラウドスプリッタ"] = sets.precast.ws.magic
+    sets.precast.ws["プライマルレンド"] = sets.precast.ws.magic
+
     sets.midcast.pet_acc = {
         ammo="ボルスパタスラム",
         head="タリアターバン+2",

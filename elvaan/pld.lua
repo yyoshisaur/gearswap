@@ -28,9 +28,10 @@ function get_sets()
 
     sets.precast.fc = {
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}, hp=38,},
+        body={ name="ＲＶサーコート+3", hp=254,},
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}, hp=95,},
         neck={ name="アンムーヴカラー+1", augments={'Path: A',}, hp=200,},
-        back={ name="月光の羽衣", hp=275,},
+        back={ name="ルディアノスマント", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Damage taken-5%',}, hp=80,},
     }
 
     sets.precast.ws.multi = {
@@ -49,7 +50,7 @@ function get_sets()
         right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
         left_ring="守りの指輪",
         right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}, hp=110,},
-        back={ name="ルディアノスマント", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Weapon skill damage +10%','Damage taken-5%',}, hp=80,},
+        back={ name="ルディアノスマント", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%',}, hp=80,},
     }
 
     sets.precast.ws['ロイエ'] = sets.precast.ws.wsd
@@ -72,12 +73,10 @@ function get_sets()
         hands={ name="ＳＶハントシュ+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=239,},
         legs={ name="ファウンダホーズ", augments={'MND+5','Mag. Acc.+2','Breath dmg. taken -2%',}, hp=54,},
         feet={ name="ＳＶシュー+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=227},
-        neck="月明の首飾り",
-        -- neck="月光の首飾り",
+        neck="月光の首飾り",
         waist="オドンブラサッシュ",
         left_ear="ナイトリーピアス",
-        -- right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
-        right_ear="ハラサズピアス",
+        right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
         left_ring="守りの指輪",
         right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}, hp=110,},
         back={ name="月光の羽衣", hp=275,},
@@ -178,13 +177,19 @@ function precast(spell)
 end
 
 local delay_rate = 0.85
+local delay_rate_blu = 0.9
 local aftercast_delay = 1.5
 local function get_cast_time(spell)
     if not spell.cast_time then
         return 0
     end 
-    local equip_fc = 0.22
+    local equip_fc = 0.42
     local cast_time = spell.cast_time*(1-equip_fc)
+
+    -- local sird_wait = cast_time * delay_rate
+    -- local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
+    -- windower.add_to_chat(122, spell.name..'('..spell.cast_time..') ct='..cast_time..' sw='..sird_wait..' aw='..aftercast_wait..' d='..(cast_time-sird_wait))
+
     return cast_time
 end
 
@@ -225,8 +230,8 @@ function midcast(spell)
         end
     elseif spell.skill == '青魔法' then
         local cast_time = get_cast_time(spell)
-        local sird_wait = cast_time * delay_rate
-        local aftercast_wait = cast_time * (1-delay_rate) + aftercast_delay
+        local sird_wait = cast_time * delay_rate_blu
+        local aftercast_wait = cast_time * (1-delay_rate_blu) + aftercast_delay
         set_equip = sets.midcast.sird
         is_sird = true
         send_command('wait '..sird_wait..'; input //gs c blue;'..'wait '..aftercast_wait..'; input //gs c aftercast;')
