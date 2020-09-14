@@ -313,13 +313,13 @@ function init_gear_sets()
     sets.engaged.Ranged = sets.idle
 end
 
-function job_pretarget(spell, action, spellMap, eventArgs)
+function job_post_pretarget(spell, action, spellMap, eventArgs)
     if spell.type == 'CorsairRoll' then
         disp_roll_info(spell)
     end
 
     if spell.type == 'CorsairRoll' or spell.name == 'ダブルアップ' then
-        equip(sets.LuzafRing[state.LuzafRing.value])
+        equip(sets.LuzafRing[state.LuzafRing.current])
     end
 end
 
