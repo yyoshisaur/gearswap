@@ -25,19 +25,23 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+    include('weather_obi')
 end
 
 function user_setup()
     state.OffenseMode:options('Normal', 'SubtleBlow', 'DW31', 'EnSpell')
     state.HybridMode:options('Normal')
     state.WeaponskillMode:options('Normal')
-    state.CastingMode:options('Normal', 'MB')
+    state.CastingMode:options('MB', 'Normal')
     state.IdleMode:options('Normal', 'Refresh')
     state.Weapons = M{['description']='Use Weapons'}
 
-    state.Hi_EnSpell = M(false, "High EnSpell")
+    state.Hi_EnSpell = M(false, 'High EnSpell')
+    state.Immunobreak = M(false, "Immunobreak")
 
-    bool_state = {{label='Hi-EnSpell', mode='Hi_EnSpell'}}
+    bool_state = {
+        {label='Hi-EnSpell', mode='Hi_EnSpell', alys_disp=false},
+        {label='Immunobreak', mode='Immunobreak', alys_disp=false}}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Cast', mode='CastingMode'},
@@ -683,39 +687,23 @@ end
 function job_precast(spell, action, spellMap, eventArgs)
 end
 
-function job_midcast(spell, action, spellMap, eventArgs)
-    -- if spell.skill == '強化魔法'then
-    --     if S{'EnSpell', 'Temper', 'BarElement', 'BoostStat', 'Phalanx', 'Refresh', 'Regen', 'Protect', 'Shell'}:contains(spellMap) then
-    --         classes.CustomClass = spellMap
-    --     elseif S{'ストンスキン', 'アクアベール'}:contains(spell.name) then
-    --         classes.CustomClass = nil
-    --     else
-    --         classes.CustomClass = 'Enhancing'
-    --     end
-    -- elseif spell.skill == '回復魔法' then
-    --     if S{'Cure'}:contains(spellMap) then
-    --         classes.CustomClass = spellMap
-    --     else
-    --         classes.CustomClass = nil
-    --     end
-    -- end
+function job_post_precast(spell, action, spellMap, eventArgs)
+end
 
-    -- if classes.CustomClass then
-    --     if spell.target.type == 'SELF' then
-    --         classes.CustomClass = classes.CustomClass..'_Self'
-    --     else
-    --         classes.CustomClass = classes.CustomClass..'_Others'
-    --     end
-    -- end
+function job_midcast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
+    if spell.skill == '精霊魔法' then
+        equip(get_hachirin(spell.element))
+    end
 end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
+    if state.DisplayMode.value then update_job_states() end
 end
 
 function customize_idle_set(idleSet)
@@ -779,7 +767,13 @@ function job_get_spell_map(spell, default_spell_map)
     local new_spell_map = default_spell_map
     if spell.skill == '弱体魔法' then
         new_spell_map = enfeeble_spell_maps[spell.name]
-        if state.Buff['サボトゥール'] then
+        if state.Immunobreak.value then
+            if _global.current_event == 'midcast' then
+                new_spell_map = 'Immunobreak'
+            elseif _global.current_event == 'aftercast' and not spell.interrupted then
+                state.Immunobreak:unset()
+            end
+        elseif state.Buff['サボトゥール'] then
             new_spell_map = enfeeble_spell_maps_saboteur[spell.name] or enfeeble_spell_maps[spell.name]
         end
     elseif spell.skill == '強化魔法' then

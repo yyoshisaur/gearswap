@@ -11,6 +11,7 @@ function job_setup()
     -- state.Buff['ネザーヴォイド'] = buffactive['ネザーヴォイド'] or false
 
     include('Mote-TreasureHunter')
+    include('Mote-Display')
 end
 
 function user_setup()
@@ -18,6 +19,14 @@ function user_setup()
     state.HybridMode:options('Normal', 'DT')
     state.WeaponskillMode:options('Normal', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Trishula', 'ShiningOne'}
+
+    bool_state = {}
+    mode_state = {
+        {label='Offense', mode='OffenseMode'},
+        {label='Hybrid', mode='HybridMode'},
+        {label='WS', mode='WeaponskillMode'},
+        {label='Weapon', mode='Weapons'}}
+    init_job_states(bool_state, mode_state)
 end
 
 function binds_on_load()
@@ -82,6 +91,22 @@ function init_gear_sets()
         right_ring="ラハブリング",
     }
 
+    sets.precast.WS = { -- Multi
+        ammo="ノブキエリ",
+        head="フラマツッケット+2",
+        body="デーゴンブレスト",
+        hands="スレビアガントレ+2",
+        legs="フラマディル+2",
+        feet="フラマガンビエラ+2",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="シェリダピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="ニックマドゥリング",
+        right_ring="王将の指輪",
+        back={ name="ブリガンチアマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
     sets.precast.WS.wsd = {
         ammo="ノブキエリ",
         head={ name="バロラスマスク", augments={'Accuracy+28','Weapon skill damage +5%','Attack+13',}},
@@ -96,22 +121,6 @@ function init_gear_sets()
         left_ring="ニックマドゥリング",
         right_ring="王将の指輪",
         back={ name="ブリガンチアマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
-    }
-
-    sets.precast.WS.multi = {
-        ammo="ノブキエリ",
-        head="フラマツッケット+2",
-        body="デーゴンブレスト",
-        hands="スレビアガントレ+2",
-        legs="フラマディル+2",
-        feet="フラマガンビエラ+2",
-        neck="フォシャゴルゲット",
-        waist="フォシャベルト",
-        left_ear="シェリダピアス",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="ニックマドゥリング",
-        right_ring="王将の指輪",
-        back={ name="ブリガンチアマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.precast.WS.magic_acc = {
@@ -130,58 +139,44 @@ function init_gear_sets()
         back={ name="ブリガンチアマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.precast.WS.ammo = sets.precast.WS.multi.ammo
-    sets.precast.WS.head = sets.precast.WS.multi.head
-    sets.precast.WS.body = sets.precast.WS.multi.body
-    sets.precast.WS.hands = sets.precast.WS.multi.hands
-    sets.precast.WS.legs = sets.precast.WS.multi.legs
-    sets.precast.WS.feet = sets.precast.WS.multi.feet
-    sets.precast.WS.neck = sets.precast.WS.multi.neck
-    sets.precast.WS.waist = sets.precast.WS.multi.waist
-    sets.precast.WS.left_ear = sets.precast.WS.multi.left_ear
-    sets.precast.WS.right_ear = sets.precast.WS.multi.right_ear
-    sets.precast.WS.left_ring = sets.precast.WS.multi.left_ring
-    sets.precast.WS.right_ring = sets.precast.WS.multi.right_ring
-    sets.precast.WS.back = sets.precast.WS.multi.back
-
-    sets.precast.WS['ダブルスラスト'] = sets.precast.WS.multi
+    sets.precast.WS['ダブルスラスト'] = sets.precast.WS
     sets.precast.WS['サンダースラスト'] = sets.precast.WS.wsd
     sets.precast.WS['ライデンスラスト'] = sets.precast.WS.wsd
     sets.precast.WS['足払い'] = sets.precast.WS.magic_acc
-    sets.precast.WS['ペンタスラスト'] = sets.precast.WS.multi
+    sets.precast.WS['ペンタスラスト'] = sets.precast.WS
     sets.precast.WS['ボーパルスラスト'] = sets.precast.WS.wsd
-    sets.precast.WS['スキュアー'] = sets.precast.WS.multi
+    sets.precast.WS['スキュアー'] = sets.precast.WS
     sets.precast.WS['大車輪'] = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",})
     sets.precast.WS['インパルスドライヴ'] = sets.precast.WS.wsd
     sets.precast.WS['ソニックスラスト'] = sets.precast.WS.wsd
-    sets.precast.WS['雲蒸竜変'] = sets.precast.WS.multi
+    sets.precast.WS['雲蒸竜変'] = sets.precast.WS
     sets.precast.WS['カムラン'] = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",})
-    sets.precast.WS['スターダイバー'] = sets.precast.WS.multi
+    sets.precast.WS['スターダイバー'] = sets.precast.WS
 
     sets.precast.WS['フルスイング'] = sets.precast.WS.wsd
     sets.precast.WS['レトリビューション'] = sets.precast.WS.wsd
-    sets.precast.WS['シャッターソウル'] = sets.precast.WS.multi
+    sets.precast.WS['シャッターソウル'] = sets.precast.WS
 
     sets.precast.WS.dmglim = {head={ name="スティンガヘルム+1", augments={'Path: A',}},}
-    sets.precast.WS.DmgLim = set_combine(sets.precast.WS.multi, sets.precast.dmglim)
+    sets.precast.WS.DmgLim = set_combine(sets.precast.WS, sets.precast.dmglim)
 
-    sets.precast.WS['ダブルスラスト'].DmgLim = set_combine(sets.precast.WS.multi, sets.precast.WS.dmglim)
+    sets.precast.WS['ダブルスラスト'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     sets.precast.WS['サンダースラスト'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
     sets.precast.WS['ライデンスラスト'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
     sets.precast.WS['足払い'].DmgLim = sets.precast.WS.magic_acc
-    sets.precast.WS['ペンタスラスト'].DmgLim = set_combine(sets.precast.WS.multi, sets.precast.WS.dmglim)
+    sets.precast.WS['ペンタスラスト'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     sets.precast.WS['ボーパルスラスト'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
-    sets.precast.WS['スキュアー'].DmgLim = set_combine(sets.precast.WS.multi, sets.precast.WS.dmglim)
+    sets.precast.WS['スキュアー'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     sets.precast.WS['大車輪'].DmgLim = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",}, sets.precast.WS.dmglim)
     sets.precast.WS['インパルスドライヴ'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
     sets.precast.WS['ソニックスラスト'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
-    sets.precast.WS['雲蒸竜変'].DmgLim = set_combine(sets.precast.WS.multi, sets.precast.WS.dmglim)
+    sets.precast.WS['雲蒸竜変'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     sets.precast.WS['カムラン'].DmgLim = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",}, sets.precast.WS.dmglim)
-    sets.precast.WS['スターダイバー'].DmgLim = set_combine(sets.precast.WS.multi, sets.precast.WS.dmglim)
+    sets.precast.WS['スターダイバー'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
 
     sets.precast.WS['フルスイング'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
     sets.precast.WS['レトリビューション'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
-    sets.precast.WS['シャッターソウル'].DmgLim = set_combine(sets.precast.WS.multi, sets.precast.WS.dmglim)
+    sets.precast.WS['シャッターソウル'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
 
     sets.precast.JA['ジャンプ'] =  {
         ammo="オゲルミルオーブ+1",
@@ -293,8 +288,6 @@ end
 function job_buff_change(buff, gain)
 end
 
-function update_combat_form()
-end
-
 function job_update(cmdParams, eventArgs)
+    if state.DisplayMode.value then update_job_states() end
 end

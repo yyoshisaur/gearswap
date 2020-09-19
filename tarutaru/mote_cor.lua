@@ -6,15 +6,14 @@ function get_sets()
 end
 
 function job_setup()
-    state.LuzafRing = M(false, "Luzaf's Ring")
-
     include('Mote-TreasureHunter')
+    include('Mote-Display')
     include('weather_obi')
 
     set_elemental_obi("闇輪の帯")
     set_elemental_obi("火輪の帯")
 
-    _magical_ws_use_elemental_obi = S{'レデンサリュート', 'ワイルドファイア',}
+    magical_ws_use_elemental_obi = S{'レデンサリュート', 'ワイルドファイア',}
 
     define_roll_values()
 end
@@ -24,8 +23,20 @@ function user_setup()
     state.HybridMode:options('Normal', 'DT')
     state.WeaponskillMode:options('Normal')
     state.RangedMode:options('Normal')
-    state.Weapons = M{['description']='Use Weapon', 'DaggerDW', 'SwordDW', 'Dagger', 'Sword'}
+    state.Weapons = M{['description']='Use Weapon'}
     state.RangedWeapons = M{['description']='Use Ranged Weapon', 'DeathPenalty', 'Fomalhaut', 'Armageddon', 'TPBonus'}
+    state.QDMode = M{['description']='QuickDraw Mode', 'Magic', 'En-QD', 'Stp'}
+
+    state.LuzafRing = M(false, "Luzaf's Ring")
+
+    select_default_macro_book()
+    bool_state = {{label='Luzaf', mode='LuzafRing'}}
+    mode_state = {
+        {label='Offense', mode='OffenseMode'},
+        {label='Hybrid', mode='HybridMode'},
+        {label='QD', mode='QDMode'},
+        {label='RW', mode='RangedWeapons'}}
+    init_job_states(bool_state, mode_state)
 end
 
 function binds_on_load()
@@ -38,6 +49,7 @@ function binds_on_load()
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
     send_command('bind f5 gs c toggle LuzafRing')
+    send_command('bind ^f5 gs c cycle QDMode')
 
     -- send_command('bind !f4 gs c reset DefenseMode')
     -- send_command('bind f2 gs c set DefenseMode Physical')
@@ -61,6 +73,7 @@ function binds_on_unload()
     send_command('unbind f4')
     send_command('unbind ^f4')
     send_command('unbind f5')
+    send_command('unbind ^f5')
 
     -- send_command('unbind ^-')
     -- send_command('unbind ^=')
@@ -113,7 +126,7 @@ function init_gear_sets()
         back={ name="カムラスマント", augments={'"Snapshot"+10',}},
     }
 
-    sets.precast.WS_ra_p = {
+    sets.precast.WS = { -- 物理遠隔WS
         ammo="クロノブレット",
         head="マリグナスシャポー",
         body="ＬＫフラック+3",
@@ -128,7 +141,7 @@ function init_gear_sets()
         right_ring="イラブラットリング",
         back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','Weapon skill damage +10%',}},
     }
-    sets.precast.WS_ra_m = {
+    sets.precast.WS.ra_m = {
         ammo="ライヴブレット",
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
@@ -144,7 +157,7 @@ function init_gear_sets()
         back={ name="カムラスマント", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
     }
 
-    sets.precast.WS_ra_m_dark = {
+    sets.precast.WS.ra_m_dark = {
         ammo="ライヴブレット",
         head="妖蟲の髪飾り+1",
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
@@ -160,7 +173,7 @@ function init_gear_sets()
         back={ name="カムラスマント", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
     }
 
-    sets.precast.WS_melee_wsd = {
+    sets.precast.WS.melee_wsd = {
         ammo="ホクスボクブレット",
         head="メガナダバイザー+2",
         body="ＬＫフラック+3",
@@ -176,7 +189,7 @@ function init_gear_sets()
         back={ name="カムラスマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
     }
     
-    sets.precast.WS_melee_critical = {
+    sets.precast.WS.melee_critical = {
         ammo="ホクスボクブレット",
         head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body="ムンムジャケット+2",
@@ -192,25 +205,23 @@ function init_gear_sets()
         back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.precast.WS_melee_magic = set_combine(sets.precast.WS_ra_m, {ammo="ホクスボクブレット", waist="オルペウスサッシュ"})
-
-    sets.precast.WS = sets.precast.WS_ra_p
+    sets.precast.WS.melee_magic = set_combine(sets.precast.WS.ra_m, {ammo="ホクスボクブレット", waist="オルペウスサッシュ"})
 
     -- 射撃
-    sets.precast.WS["ラストスタンド"] = sets.precast.WS_ra_p
-    sets.precast.WS["レデンサリュート"] = sets.precast.WS_ra_m_dark
-    sets.precast.WS["ワイルドファイア"] = sets.precast.WS_ra_m
+    sets.precast.WS["ラストスタンド"] = sets.precast.WS.ra_p
+    sets.precast.WS["レデンサリュート"] = sets.precast.WS.ra_m_dark
+    sets.precast.WS["ワイルドファイア"] = sets.precast.WS.ra_m
 
     -- 片手剣
-    sets.precast.WS["サベッジブレード"] = sets.precast.WS_melee_wsd
+    sets.precast.WS["サベッジブレード"] = sets.precast.WS.melee_wsd
 
     -- 短剣
-    sets.precast.WS['ガストスラッシュ'] = sets.precast.WS_melee_magic
-    sets.precast.WS['サイクロン'] = sets.precast.WS_melee_magic
-    sets.precast.WS['エナジースティール'] = sets.precast.WS_melee_magic
-    sets.precast.WS['エナジードレイン'] = sets.precast.WS_melee_magic
-    sets.precast.WS['イオリアンエッジ'] = sets.precast.WS_melee_magic
-    sets.precast.WS['エヴィサレーション'] = sets.precast.WS_melee_critical
+    sets.precast.WS["ガストスラッシュ"] = sets.precast.WS.melee_magic
+    sets.precast.WS["サイクロン"] = sets.precast.WS.melee_magic
+    sets.precast.WS["エナジースティール"] = sets.precast.WS.melee_magic
+    sets.precast.WS["エナジードレイン"] = sets.precast.WS.melee_magic
+    sets.precast.WS["イオリアンエッジ"] = sets.precast.WS.melee_magic
+    sets.precast.WS["エヴィサレーション"] = sets.precast.WS.melee_critical
 
     sets.precast.JA["ランダムディール"] ={body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},}
     sets.precast.JA["フォールド"] = {hands={ name="ＬＡガントリー+1", augments={'Enhances "Fold" effect',}},}
@@ -234,12 +245,12 @@ function init_gear_sets()
     sets.precast.CorsairRoll["アライズロール"] = set_combine(sets.precast.CorsairRoll, {hands="ＣＳガントリー+1",})
 
     sets.precast.CorsairShot = {
-        ammo="ライヴブレット",
+        ammo="ホクスボクブレット",
         head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
-        feet="ＣＳブーツ+1",
+        feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
         left_ear="ノーヴィオピアス",
@@ -247,6 +258,24 @@ function init_gear_sets()
         left_ring="アルビナリング+1",
         right_ring="ディンジルリング",
         back={ name="カムラスマント", augments={'AGI+20','Mag. Acc+20 /Mag. Dmg.+20','AGI+10','Weapon skill damage +10%',}},
+    }
+
+    sets.precast.CorsairShot['En-QD'] = set_combine(sets.precast.CorsairShot, {feet="ＣＳブーツ+1",})
+
+    sets.precast.CorsairShot["Stp"] = {
+        ammo="ホクスボクブレット",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="アイニアカラー",
+        waist="霊亀腰帯",
+        left_ear="デディションピアス",
+        right_ear="テロスピアス",
+        left_ring="イラブラットリング",
+        right_ring="シーリチリング+1",
+        back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.midcast.RA = {
@@ -311,6 +340,8 @@ function init_gear_sets()
     }
 
     sets.engaged.Ranged = sets.idle
+
+    set_weapons_by_sub_job(player.sub_job)
 end
 
 function job_post_pretarget(spell, action, spellMap, eventArgs)
@@ -324,10 +355,13 @@ function job_post_pretarget(spell, action, spellMap, eventArgs)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
+    if spell.type == 'CorsairShot' then
+        classes.JAMode = state.QDMode.value
+    end
 end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
-    if spell.type == 'WeaponSkill' and _magical_ws_use_elemental_obi:contains(spell.name) then
+    if spell.type == 'WeaponSkill' and magical_ws_use_elemental_obi:contains(spell.name) then
         equip(get_hachirin(spell.element))
     end
 end
@@ -356,11 +390,27 @@ end
 function job_buff_change(buff, gain)
 end
 
-function update_combat_form()
+function job_update(cmdParams, eventArgs)
+    if state.DisplayMode.value then update_job_states() end
 end
 
-function job_update(cmdParams, eventArgs)
-    update_combat_form()
+function set_weapons_by_sub_job(subJob)
+    -- state.Weapons = M{['description']='Use Weapon', 'DaggerDW', 'SwordDW', 'Dagger', 'Sword'}
+    state.Weapons:reset()
+    if S{'忍', '踊'}:contains(subJob) then
+        state.Weapons:options('DaggerDW', 'SwordDW')
+    else
+        state.Weapons:options('Dagger', 'Sword')
+    end
+    if state.DisplayMode.value then update_job_states() end
+end
+
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_weapons_by_sub_job(newSubjob)
+end
+
+function select_default_macro_book()
+    set_macro_page(1, 8)
 end
 
 function define_roll_values()

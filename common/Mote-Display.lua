@@ -86,8 +86,10 @@ function update_job_states()
     end
 
     for i,n in pairs(stateBool) do
-        stateBox:append(string.format("%s"..n.label..':%s'..state[n.mode].current.."%s", clr.w, clr.h, clr.n))
-        stateBox:append(spc)
+        if n.alys_disp or state[n.mode].value then
+            stateBox:append(string.format("%s"..n.label..':%s'..state[n.mode].current.."%s", clr.w, clr.h, clr.n))
+            stateBox:append(spc)
+        end
     end
     
     stateBox:update(info)

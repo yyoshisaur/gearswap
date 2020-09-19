@@ -11,13 +11,23 @@ function job_setup()
     state.Buff['ネザーヴォイド'] = buffactive['ネザーヴォイド'] or false
 
     include('Mote-TreasureHunter')
+    include('Mote-Display')
 end
 
 function user_setup()
     state.OffenseMode:options('Normal', 'Stp')
     state.HybridMode:options('Normal', 'DT')
-    state.WeaponskillMode:options('Normal', 'Acc')
+    state.WeaponskillMode:options('Normal', 'Acc', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Caladbolg', 'Liberator', 'Anguta', 'Lycurgos'}
+
+    bool_state = {}
+    mode_state = {
+        {label='Offense', mode='OffenseMode'},
+        {label='Hybrid', mode='HybridMode'},
+        {label='WS', mode='WeaponskillMode'},
+        {label='Weapon', mode='Weapons'},
+        {label='Combat', mode='CombatForm'}}
+    init_job_states(bool_state, mode_state)
 end
 
 function binds_on_load()
@@ -102,7 +112,23 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
-    sets.precast.WS_vit = {
+    sets.precast.WS = { -- Multi
+        ammo="オゲルミルオーブ+1",
+        head="フラマツッケット+2",
+        body="ＩＧキュイラス+3",
+        hands="フラママノポラ+2",
+        legs="ＩＧフランチャ+3",
+        feet="フラマガンビエラ+2",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="テロスピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="ニックマドゥリング",
+        right_ring="王将の指輪",
+        back={ name="アンコウマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.precast.WS.vit = {
         ammo="ノブキエリ",
         head={ name="オディシアヘルム", augments={'Accuracy+25 Attack+25','Weapon skill damage +5%','Accuracy+5','Attack+4',}},
         body="ＩＧキュイラス+3",
@@ -118,7 +144,7 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
-    sets.precast.WS_str = {
+    sets.precast.WS.str = {
         ammo="ノブキエリ",
         head={ name="オディシアヘルム", augments={'Accuracy+25 Attack+25','Weapon skill damage +5%','Accuracy+5','Attack+4',}},
         body="ＩＧキュイラス+3",
@@ -134,23 +160,7 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
-    sets.precast.WS_multi = {
-        ammo="オゲルミルオーブ+1",
-        head="フラマツッケット+2",
-        body="ＩＧキュイラス+3",
-        hands="フラママノポラ+2",
-        legs="ＩＧフランチャ+3",
-        feet="フラマガンビエラ+2",
-        neck="フォシャゴルゲット",
-        waist="フォシャベルト",
-        left_ear="テロスピアス",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="ニックマドゥリング",
-        right_ring="王将の指輪",
-        back={ name="アンコウマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
-    }
-    
-    sets.precast.WS_acc = {
+    sets.precast.WS.magic_acc = {
         ammo="ストンチタスラム+1",
         head="フラマツッケット+2",
         body="フラマコラジン+2",
@@ -166,7 +176,7 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     
-    sets.precast.WS_magic = {
+    sets.precast.WS.magic = {
         ammo="ノブキエリ",
         head={ name="ＦＬバーゴネット+3", augments={'Enhances "Dark Seal" effect',}},
         body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},
@@ -182,7 +192,7 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.precast.WS_scythe_wsd = {
+    sets.precast.WS.scythe_wsd = {
         ammo="ノブキエリ",
         head="ラトリサリット+1",
         body="ＩＧキュイラス+3",
@@ -198,7 +208,7 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
-    sets.precast.WS_scythe_multi_int = {
+    sets.precast.WS.scythe_multi_int = {
         ammo="ノブキエリ",
         head="フラマツッケット+2",
         body="ＩＧキュイラス+3",
@@ -214,7 +224,7 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
-    sets.precast.WS_scythe_mythic = {
+    sets.precast.WS.scythe_mythic = {
         ammo="ノブキエリ",
         head="ラトリサリット+1",
         body="ＩＧキュイラス+3",
@@ -230,51 +240,72 @@ function init_gear_sets()
         back={ name="アンコウマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
-    sets.precast.WSAcc = {head='ＩＧバゴネット+3',}
-
-    sets.precast.WS = sets.precast.WS_multi
-    sets.precast.WS.Acc = set_combine(sets.precast.WS_multi, sets.precast.WSAcc)
     -- 両手剣
-    sets.precast.WS['トアクリーバー'] = sets.precast.WS_vit 
-    sets.precast.WS['レゾルーション'] = sets.precast.WS_multi
-    sets.precast.WS['グラウンドストライク'] = sets.precast.WS_str
-    sets.precast.WS['スピンスラッシュ'] = sets.precast.WS_str
-    sets.precast.WS['ショックウェーブ'] = sets.precast.WS_acc
+    sets.precast.WS['トアクリーバー'] = sets.precast.WS.vit 
+    sets.precast.WS['レゾルーション'] = sets.precast.WS
+    sets.precast.WS['グラウンドストライク'] = sets.precast.WS.str
+    sets.precast.WS['スピンスラッシュ'] = sets.precast.WS.str
+    sets.precast.WS['ショックウェーブ'] = sets.precast.WS.magic_acc
     -- 両手鎌
-    sets.precast.WS['エントロピー'] = sets.precast.WS_scythe_multi_int
-    sets.precast.WS['クワイタス'] = sets.precast.WS_scythe_wsd
-    sets.precast.WS['インサージェンシー'] = sets.precast.WS_scythe_mythic
-    sets.precast.WS['クロスリーパー'] = sets.precast.WS_scythe_wsd
-    sets.precast.WS['ギロティン'] = sets.precast.WS_multi
-    sets.precast.WS['ダークハーベスト'] = sets.precast.WS_magic
-    sets.precast.WS['シャドーオブデス'] = sets.precast.WS_magic
-    sets.precast.WS['インファナルサイズ'] = sets.precast.WS_magic
+    sets.precast.WS['エントロピー'] = sets.precast.WS.scythe_multi_int
+    sets.precast.WS['クワイタス'] = sets.precast.WS.scythe_wsd
+    sets.precast.WS['インサージェンシー'] = sets.precast.WS.scythe_mythic
+    sets.precast.WS['クロスリーパー'] = sets.precast.WS.scythe_wsd
+    sets.precast.WS['ギロティン'] = sets.precast.WS
+    sets.precast.WS['ダークハーベスト'] = sets.precast.WS.magic
+    sets.precast.WS['シャドーオブデス'] = sets.precast.WS.magic
+    sets.precast.WS['インファナルサイズ'] = sets.precast.WS.magic
     -- 両手斧
-    sets.precast.WS['アーマーブレイク'] = sets.precast.WS_acc
-    sets.precast.WS['ウェポンブレイク'] = sets.precast.WS_acc
-    sets.precast.WS['フルグレイク'] = sets.precast.WS_acc
-    sets.precast.WS['アップヒーバル'] = sets.precast.WS_multi
+    sets.precast.WS['アーマーブレイク'] = sets.precast.WS.magic_acc
+    sets.precast.WS['ウェポンブレイク'] = sets.precast.WS.magic_acc
+    sets.precast.WS['フルグレイク'] = sets.precast.WS.magic_acc
+    sets.precast.WS['アップヒーバル'] = sets.precast.WS
 
+    sets.precast.WS.acc = {head='ＩＧバゴネット+3',}
+    sets.precast.WS.Acc = set_combine(sets.precast.WS, sets.precast.WS.acc)
     -- 両手剣
-    sets.precast.WS['トアクリーバー'].Acc = set_combine(sets.precast.WS_vit, sets.precast.WSAcc)
-    sets.precast.WS['レゾルーション'].Acc = set_combine(sets.precast.WS_multi, sets.precast.WSAcc)
-    sets.precast.WS['グラウンドストライク'].Acc = set_combine(sets.precast.WS_str, sets.precast.WSAcc)
-    sets.precast.WS['スピンスラッシュ'].Acc = set_combine(sets.precast.WS_str, sets.precast.WSAcc)
-    sets.precast.WS['ショックウェーブ'].Acc = set_combine(sets.precast.WS_acc, sets.precast.WSAcc)
+    sets.precast.WS['トアクリーバー'].Acc = set_combine(sets.precast.WS.vit, sets.precast.WS.acc)
+    sets.precast.WS['レゾルーション'].Acc = set_combine(sets.precast.WS, sets.precast.WS.acc)
+    sets.precast.WS['グラウンドストライク'].Acc = set_combine(sets.precast.WS.str, sets.precast.WS.acc)
+    sets.precast.WS['スピンスラッシュ'].Acc = set_combine(sets.precast.WS.str, sets.precast.WS.acc)
+    sets.precast.WS['ショックウェーブ'].Acc = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.acc)
     -- 両手鎌
-    sets.precast.WS['エントロピー'].Acc = set_combine(sets.precast.WS_scythe_multi_int, sets.precast.WSAcc)
-    sets.precast.WS['クワイタス'].Acc = set_combine(sets.precast.WS_scythe_wsd, sets.precast.WSAcc)
-    sets.precast.WS['インサージェンシー'].Acc = set_combine(sets.precast.WS_scythe_mythic, sets.precast.WSAcc)
-    sets.precast.WS['クロスリーパー'].Acc = set_combine(sets.precast.WS_scythe_wsd, sets.precast.WSAcc)
-    sets.precast.WS['ギロティン'].Acc = set_combine(sets.precast.WS_multi, sets.precast.WSAcc)
-    sets.precast.WS['ダークハーベスト'].Acc = set_combine(sets.precast.WS_magic, sets.precast.WSAcc)
-    sets.precast.WS['シャドーオブデス'].Acc = set_combine(sets.precast.WS_magic, sets.precast.WSAcc)
-    sets.precast.WS['インファナルサイズ'].Acc = set_combine(sets.precast.WS_magic, sets.precast.WSAcc)
+    sets.precast.WS['エントロピー'].Acc = set_combine(sets.precast.WS.scythe_multi_int, sets.precast.WS.acc)
+    sets.precast.WS['クワイタス'].Acc = set_combine(sets.precast.WS.scythe_wsd, sets.precast.WS.acc)
+    sets.precast.WS['インサージェンシー'].Acc = set_combine(sets.precast.WS.scythe_mythic, sets.precast.WS.acc)
+    sets.precast.WS['クロスリーパー'].Acc = set_combine(sets.precast.WS.scythe_wsd, sets.precast.WS.acc)
+    sets.precast.WS['ギロティン'].Acc = set_combine(sets.precast.WS, sets.precast.WS.acc)
+    sets.precast.WS['ダークハーベスト'].Acc = set_combine(sets.precast.WS.magic, sets.precast.WS.acc)
+    sets.precast.WS['シャドーオブデス'].Acc = set_combine(sets.precast.WS.magic, sets.precast.WS.acc)
+    sets.precast.WS['インファナルサイズ'].Acc = set_combine(sets.precast.WS.magic, sets.precast.WS.acc)
     -- 両手斧
-    sets.precast.WS['アーマーブレイク'].Acc = set_combine(sets.precast.WS_acc, sets.precast.WSAcc)
-    sets.precast.WS['ウェポンブレイク'].Acc = set_combine(sets.precast.WS_acc, sets.precast.WSAcc)
-    sets.precast.WS['フルグレイク'].Acc = set_combine(sets.precast.WS_acc, sets.precast.WSAcc)
-    sets.precast.WS['アップヒーバル'].Acc = set_combine(sets.precast.WS_multi, sets.precast.WSAcc)
+    sets.precast.WS['アーマーブレイク'].Acc = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.acc)
+    sets.precast.WS['ウェポンブレイク'].Acc = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.acc)
+    sets.precast.WS['フルグレイク'].Acc = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.acc)
+    sets.precast.WS['アップヒーバル'].Acc = set_combine(sets.precast.WS, sets.precast.WS.acc)
+
+    sets.precast.WS.dmglim = {head={ name="スティンガヘルム+1", augments={'Path: A',}},}
+    sets.precast.WS.DmgLim = set_combine(sets.precast.WS, sets.precast.dmglim)
+    -- 両手剣
+    sets.precast.WS['トアクリーバー'].DmgLim = set_combine(sets.precast.WS.vit, sets.precast.WS.dmglim)
+    sets.precast.WS['レゾルーション'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
+    sets.precast.WS['グラウンドストライク'].DmgLim = set_combine(sets.precast.WS.str, sets.precast.WS.dmglim)
+    sets.precast.WS['スピンスラッシュ'].DmgLim = set_combine(sets.precast.WS.str, sets.precast.WS.dmglim)
+    sets.precast.WS['ショックウェーブ'].DmgLim = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.dmglim)
+    -- 両手鎌
+    sets.precast.WS['エントロピー'].DmgLim = set_combine(sets.precast.WS.scythe_multi_int, sets.precast.WS.dmglim)
+    sets.precast.WS['クワイタス'].DmgLim = set_combine(sets.precast.WS.scythe_wsd, sets.precast.WS.dmglim)
+    sets.precast.WS['インサージェンシー'].DmgLim = set_combine(sets.precast.WS.scythe_mythic, sets.precast.WS.dmglim)
+    sets.precast.WS['クロスリーパー'].DmgLim = set_combine(sets.precast.WS.scythe_wsd, sets.precast.WS.dmglim)
+    sets.precast.WS['ギロティン'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
+    sets.precast.WS['ダークハーベスト'].DmgLim = set_combine(sets.precast.WS.magic, sets.precast.WS.dmglim)
+    sets.precast.WS['シャドーオブデス'].DmgLim = set_combine(sets.precast.WS.magic, sets.precast.WS.dmglim)
+    sets.precast.WS['インファナルサイズ'].DmgLim = set_combine(sets.precast.WS.magic, sets.precast.WS.dmglim)
+    -- 両手斧
+    sets.precast.WS['アーマーブレイク'].DmgLim = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.dmglim)
+    sets.precast.WS['ウェポンブレイク'].DmgLim = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.dmglim)
+    sets.precast.WS['フルグレイク'].DmgLim = set_combine(sets.precast.WS.magic_acc, sets.precast.WS.dmglim)
+    sets.precast.WS['アップヒーバル'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
 
     sets.precast.JA['ラストリゾート'] = {feet="ＦＬソルレット+3", back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},}
     sets.precast.JA['ウェポンバッシュ'] = {hands="ＩＧガントレ+3",}
@@ -506,6 +537,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
 end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
+    update_combat_form()
     custom_aftermath_timers_aftercast(spell)
 end
 
@@ -526,17 +558,17 @@ end
 
 function job_buff_change(buff, gain)
     if buff == 'ラストリゾート' then
-        if gain or state.Buff['ラストリゾート'] then
-            state.CombatForm:set('ラストリゾート')
-        else
-            state.CombatForm:reset()
+        update_combat_form()
+
+        if not S{'precast', 'midcast'}:contains(_global.current_event) then
+            handle_equipping_gear(player.status)
         end
-        handle_equipping_gear(player.status)
     end
+    if state.DisplayMode.value then update_job_states() end
 end
 
 function update_combat_form()
-    if state.Buff['ラストリゾート'] or buffactive['ラストリゾート'] then
+    if state.Buff['ラストリゾート'] then
         state.CombatForm:set('ラストリゾート')
     else
         state.CombatForm:reset()
@@ -545,4 +577,5 @@ end
 
 function job_update(cmdParams, eventArgs)
     update_combat_form()
+    if state.DisplayMode.value then update_job_states() end
 end
