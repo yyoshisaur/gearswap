@@ -115,7 +115,7 @@ function get_sets()
     }
     
     sets.midcast.magic_mb = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -133,7 +133,7 @@ function get_sets()
     }
 
     sets.midcast.magic_mb_klimaform = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -171,7 +171,7 @@ function get_sets()
     }
 
     sets.midcast.helix_mb_int_400 = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -227,7 +227,7 @@ function get_sets()
     }
     
     sets.midcast.aspir = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
@@ -292,7 +292,7 @@ function get_sets()
     }
     
     sets.midcast.vagary_task = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="コーンスー",
         ammo="インカントストーン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},

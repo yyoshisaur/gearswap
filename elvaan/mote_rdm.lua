@@ -7,6 +7,7 @@ end
 
 function job_setup()
     state.Buff['サボトゥール'] = buffactive['サボトゥール'] or false
+    state.Buff['コンポージャー'] = buffactive['コンポージャー'] or false
 
     enfeeble_spell_maps = {
         ['パライズ']='MND', ['パライズII']='MND', ['スロウ']='MND', ['スロウII']='MND', ['アドル']='MND', ['アドルII']='MND',
@@ -311,15 +312,15 @@ function init_gear_sets()
 
     sets.midcast['強化魔法'].Phalanx_Others = set_combine(sets.midcast['強化魔法'].Others, {left_ear="アンドアーピアス", right_ring="スティキニリング+1",})
 
-    sets.midcast['強化魔法']['ストンスキン'] = set_combine(sets.midcast['強化魔法'].Self, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
-    sets.midcast['強化魔法']['アクアベール'] = set_combine(sets.midcast['強化魔法'].Self, {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
-    sets.midcast['強化魔法'].Refresh = set_combine(sets.midcast['強化魔法'].Self, {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
+    sets.midcast['強化魔法']['ストンスキン'] = set_combine(sets.midcast['強化魔法'], {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
+    sets.midcast['強化魔法']['アクアベール'] = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
+    sets.midcast['強化魔法'].Refresh = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
     sets.midcast['強化魔法'].Refresh_Others = set_combine(sets.midcast['強化魔法'].Others, {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
-    sets.midcast['強化魔法'].Regen = set_combine(sets.midcast['強化魔法'].Self, {main="ボレラブンガ", sub="アムラピシールド",})
+    sets.midcast['強化魔法'].Regen = set_combine(sets.midcast['強化魔法'], {main="ボレラブンガ", sub="アムラピシールド",})
     sets.midcast['強化魔法'].Regen_Others = set_combine(sets.midcast['強化魔法'].Others, {main="ボレラブンガ", sub="アムラピシールド",})
-    sets.midcast['強化魔法'].Protect = set_combine(sets.midcast['強化魔法'].Self, {right_ear="ブラキュラピアス",})
+    sets.midcast['強化魔法'].Protect = set_combine(sets.midcast['強化魔法'], {right_ear="ブラキュラピアス",})
     sets.midcast['強化魔法'].Protect_Others = sets.midcast['強化魔法'].Others
-    sets.midcast['強化魔法'].Shell = set_combine(sets.midcast['強化魔法'].Self, {right_ear="ブラキュラピアス",})
+    sets.midcast['強化魔法'].Shell = set_combine(sets.midcast['強化魔法'], {right_ear="ブラキュラピアス",})
     sets.midcast['強化魔法'].Shell_Others = sets.midcast['強化魔法'].Others
 
     sets.midcast['回復魔法'] = sets.midcast.FastRecast
@@ -777,7 +778,7 @@ function job_get_spell_map(spell, default_spell_map)
             new_spell_map = enfeeble_spell_maps_saboteur[spell.name] or enfeeble_spell_maps[spell.name]
         end
     elseif spell.skill == '強化魔法' then
-        if spell.target.type ~= 'SELF' then
+        if spell.target.type ~= 'SELF' and state.Buff['コンポージャー'] then
             new_spell_map = 'Others'
             if S{'Phalanx', 'Refresh', 'Regen', 'Protect', 'Shell'}:contains(default_spell_map) then
                 new_spell_map = default_spell_map..'_'..new_spell_map

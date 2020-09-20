@@ -119,7 +119,22 @@ function init_gear_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
 
-    sets.precast.FC['インパクト'] = {}
+    sets.precast.FC['インパクト'] = {
+        ammo="インカントストーン",
+        head=empty,
+        body="トワイライトプリス",
+        hands="ＡＣブレーサー+3",
+        legs="ピンガズボン+1",
+        feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
+        neck="ボルトサージトルク",
+        waist="エンブラサッシュ",
+        left_ear="ロケイシャスピアス",
+        right_ear="エテオレートピアス",
+        left_ring="キシャールリング",
+        right_ring="プロリクスリング",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
     sets.precast.FC['震天動地の章'] = {
         main="マリグナスポール",
         sub="コーンスー",
@@ -137,6 +152,8 @@ function init_gear_sets()
         right_ring="プロリクスリング",
         back={ name="フィフォレケープ+1", augments={'Path: A',}},
     }
+
+    sets.precast.FC['震天動地の章_Helix'] = sets.precast.FC['震天動地の章']
 
     sets.precast.WS = { -- MAX MP
         ammo="プシロメン",
@@ -159,6 +176,8 @@ function init_gear_sets()
     sets.precast.JA['連環計'] = {legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},}
     sets.precast.JA['大悟徹底'] = {body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},}
 
+    sets.midcast.FastRecast = {waist="ニヌルタサッシュ",}
+
     sets.midcast.Cure = {
         ammo="インカントストーン",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
@@ -177,7 +196,6 @@ function init_gear_sets()
 
     sets.midcast['疾風迅雷の章'] = {feet={ name="ＰＤローファー+3", augments={'Enhances "Stormsurge" effect',}},}
     sets.midcast['陣頭指揮'] = {feet={ name="ＰＤローファー+3", augments={'Enhances "Stormsurge" effect',}},}
-    sets.midcast['震天動地の章_Helix'] = {waist="ニヌルタサッシュ",}
     sets.midcast['令狸執鼠の章'] = {hands='ＡＢブレーサー+1',}
     sets.midcast['オルペウスサッシュ'] = {waist="オルペウスサッシュ",}
 
@@ -202,10 +220,26 @@ function init_gear_sets()
     sets.midcast['弱体魔法'] = sets.midcast.magic_acc
     sets.midcast['暗黒魔法'] = sets.midcast.magic_acc
 
-    sets.midcast['インパクト'] = {}
+    sets.midcast['インパクト'] = {
+        main="マクセンチアス",
+        sub="アムラピシールド",
+        ammo="ペムフレドタスラム",
+        head=empty,
+        body="トワイライトプリス",
+        hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
+        legs="ＡＣパンツ+3",
+        feet="ＡＣローファー+3",
+        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        waist={ name="アキュイテベルト+1", augments={'Path: A',}},
+        left_ear="王将の耳飾り",
+        right_ear="マリグナスピアス",
+        left_ring="スティキニリング+1",
+        right_ring="スティキニリング+1",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+    }
 
     sets.midcast['精霊魔法'] = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -223,7 +257,7 @@ function init_gear_sets()
     }
 
     sets.midcast['精霊魔法'].MB = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -239,11 +273,11 @@ function init_gear_sets()
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
--- skill spellmap casting
+
     sets.midcast['精霊魔法']['虚誘掩殺の策'] = set_combine(sets.midcast['精霊魔法'], {feet="ＡＢローファー+1",})
 
     sets.midcast['精霊魔法']['虚誘掩殺の策'].MB = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -261,7 +295,7 @@ function init_gear_sets()
     }
 
     sets.midcast['暗黒魔法']['メルトン'] = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
@@ -279,7 +313,7 @@ function init_gear_sets()
     }
 
     sets.midcast['暗黒魔法']['メルトン'].MB = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
@@ -315,7 +349,7 @@ function init_gear_sets()
     }
 
     sets.midcast.Helix.MB = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
@@ -351,7 +385,7 @@ function init_gear_sets()
     }
 
     sets.midcast['闇門の計II'].MB = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
@@ -404,7 +438,7 @@ function init_gear_sets()
     }
 
     sets.midcast.Aspir = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
@@ -419,6 +453,24 @@ function init_gear_sets()
         left_ring="アルコンリング",
         right_ring="エバネセンスリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
+    sets.midcast.Vagary = {
+        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
+        sub="コーンスー",
+        ammo="インカントストーン",
+        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
+        body="ＡＣガウン+3",
+        hands="ＡＣブレーサー+3",
+        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        feet="ＡＣローファー+3",
+        neck="ボルトサージトルク",
+        waist="ニヌルタサッシュ",
+        left_ear="ロケイシャスピアス",
+        right_ear="マリグナスピアス",
+        left_ring="キシャールリング",
+        right_ring="プロリクスリング",
+        back={ name="フィフォレケープ+1", augments={'Path: A',}},
     }
 
     sets.midcast['強化魔法'] = {
@@ -472,37 +524,19 @@ function init_gear_sets()
     sets.midcast['ストンスキン'] = set_combine(sets.midcast['強化魔法'], {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     sets.midcast['アクアベール'] = set_combine(sets.midcast['強化魔法'], {main="バドースロッド", sub="アムラピシールド", head="ＡＭコイフ+1", legs="シェダルサラウィル"})
 
-    sets.midcast.vagary_task = {
-        main={ name="アカデモス", augments={'INT+15','"Mag.Atk.Bns."+15','Mag. Acc.+15',}},
-        sub="コーンスー",
-        ammo="インカントストーン",
-        head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body="ピンガチュニック+1",
-        hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet="ＡＣローファー+3",
-        neck="ボルトサージトルク",
-        waist="ニヌルタサッシュ",
-        left_ear="ロケイシャスピアス",
-        right_ear="エテオレートピアス",
-        left_ring="キシャールリング",
-        right_ring="プロリクスリング",
-        back={ name="フィフォレケープ+1", augments={'Path: A',}},
-    }
-
     sets.idle = {
         main="マリグナスポール",
         sub="メンシストラップ+1",
         ammo="ホミリアリ",
         head="ヴォルトキャップ",
-        body="ピンガチュニック+1",
+        body="ＡＣガウン+3",
         hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
         legs="ピンガズボン+1",
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         neck="ロリケートトルク+1",
         waist="キャリアーサッシュ",
         left_ear="ルガルバンダピアス",
-        right_ear="エテオレートピアス",
+        right_ear="驕慢の耳",
         left_ring="守りの指輪",
         right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}},
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -534,7 +568,7 @@ function init_gear_sets()
         legs="アシドゥイズボン+1",
         feet={ name="マーリンクラッコー", augments={'INT+3','Pet: Crit.hit rate +1','"Refresh"+2','Accuracy+20 Attack+20',}},
         waist="キャリアーサッシュ",
-        left_ear="ルガルバンダピアス",
+        right_ear="エテオレートピアス",
     })
 end
 
@@ -547,21 +581,24 @@ end
 function job_midcast(spell, action, spellMap, eventArgs)
     if spellMap == '震天動地の章' then
         eventArgs.handled = true
-    elseif spell.element == world.weather_element and state.Buff['虚誘掩殺の策'] then
-        classes.CustomClass = '虚誘掩殺の策'
     end
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
+
+    if spellMap == '震天動地の章' then
+        return
+    end
+
     if state.Buff['疾風迅雷の章'] and spell.name == 'スタン' then
         equip(sets.midcast['疾風迅雷の章'])
     elseif spell.skill == '強化魔法' then
         if spellMap == 'Storm' and state.StormsurgeMode.value then
             equip(sets.midcast['陣頭指揮'])
-        elseif state.Buff['令狸執鼠の章'] and spell.skill == '強化魔法' then
+        elseif state.Buff['令狸執鼠の章'] then
             equip(sets.midcast['令狸執鼠の章'])
         end
-    elseif spell.skill == '精霊魔法' then 
+    elseif spell.skill == '精霊魔法' then
         if spellMap == 'Helix' then
             if spell.target.distance < 10 then
                 equip(sets.midcast['オルペウスサッシュ'])
@@ -579,8 +616,6 @@ function job_post_aftercast(spell, action, spellMap, eventArgs)
 end
 
 function job_buff_change(buff, gain)
-    -- state.Buff['机上演習:蓄積中'] = buffactive['机上演習:蓄積中'] or false
-    -- state.Buff['机上演習:蓄積完了'] = buffactive['机上演習:蓄積完了'] or false
     if string.find(buff, '机上演習') then
         if state.Buff['机上演習:蓄積中'] then
             state.SublimationMode:set('Activated')
@@ -605,11 +640,13 @@ end
 
 function job_get_spell_map(spell, default_spell_map)
     local new_spell_map = default_spell_map
-    if state.Buff['震天動地の章'] and spell.skill == '精霊魔法' then
-        if default_spell_map == 'Helix' and _global.current_event == 'midcast' then
-            new_spell_map = '震天動地の章_Helix'
-        else
+    if spell.skill == '精霊魔法' then
+        if state.Buff['震天動地の章'] then
             new_spell_map = '震天動地の章'
+        elseif state.VagaryMode.value then
+            new_spell_map = 'Vagary'
+        elseif state.Buff['虚誘掩殺の策'] and spell.element == world.weather_element then
+            new_spell_map = '虚誘掩殺の策'
         end
     end
     return new_spell_map
