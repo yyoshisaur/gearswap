@@ -70,9 +70,9 @@ function get_sets()
     }
 
     sets.midcast.magic_mb = {
-        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
+        main={ name="マランスタッフ+1", augments={'Path: A',}},
         sub="エンキストラップ",
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="エアハット+1",
         body="ＳＰコート+3",
         hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
@@ -88,7 +88,7 @@ function get_sets()
     }
 
     sets.midcast.magic_acc = {
-        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
+        main={ name="マランスタッフ+1", augments={'Path: A',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="マルクィシャポー+2",
@@ -106,7 +106,7 @@ function get_sets()
     }
 
     sets.midcast.aspir = {
-        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
+        main={ name="マランスタッフ+1", augments={'Path: A',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
@@ -124,7 +124,7 @@ function get_sets()
     }
 
     sets.aftercast.idle = {
-        main={ name="ラシ", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
+        main={ name="マランスタッフ+1", augments={'Path: A',}},
         sub="エンキストラップ",
         ammo="ストンチタスラム+1",
         head="エアハット+1",

@@ -573,24 +573,25 @@ function init_gear_sets()
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
+    set_custom_class(spell)
 end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
 end
 
 function job_midcast(spell, action, spellMap, eventArgs)
-    if spellMap == '震天動地の章' then
+    if classes.CustomClass == '震天動地の章' then
         eventArgs.handled = true
     end
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
 
-    if spellMap == '震天動地の章' then
+    if classes.CustomClass == '震天動地の章' or classes.CustomClass == 'Vagary' then
         return
     end
 
-    if state.Buff['疾風迅雷の章'] and spell.name == 'スタン' then
+    if state.Buff['疾風迅雷の章'] and spell.name == 'スタン' and spell.element == world.weather_element then
         equip(sets.midcast['疾風迅雷の章'])
     elseif spell.skill == '強化魔法' then
         if spellMap == 'Storm' and state.StormsurgeMode.value then
@@ -638,18 +639,31 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
-function job_get_spell_map(spell, default_spell_map)
-    local new_spell_map = default_spell_map
+-- function job_get_spell_map(spell, default_spell_map)
+--     local new_spell_map = default_spell_map
+--     if spell.skill == '精霊魔法' then
+--         if state.Buff['震天動地の章'] then
+--             new_spell_map = '震天動地の章'
+--         elseif state.VagaryMode.value then
+--             new_spell_map = 'Vagary'
+--         elseif state.Buff['虚誘掩殺の策'] and spell.element == world.weather_element then
+--             new_spell_map = '虚誘掩殺の策'
+--         end
+--     end
+--     return new_spell_map
+-- end
+
+function set_custom_class(spell)
+    classes.CustomClass = nil
     if spell.skill == '精霊魔法' then
         if state.Buff['震天動地の章'] then
-            new_spell_map = '震天動地の章'
+            classes.CustomClass = '震天動地の章'
         elseif state.VagaryMode.value then
-            new_spell_map = 'Vagary'
+            classes.CustomClass = 'Vagary'
         elseif state.Buff['虚誘掩殺の策'] and spell.element == world.weather_element then
-            new_spell_map = '虚誘掩殺の策'
+            classes.CustomClass = '虚誘掩殺の策'
         end
     end
-    return new_spell_map
 end
 
 function select_default_macro_book()

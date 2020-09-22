@@ -704,6 +704,11 @@ function job_aftercast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
+
+    if  spell.skill == '弱体魔法' and state.Immunobreak.value and not spell.interrupted then
+        state.Immunobreak:unset()
+    end
+    
     if state.DisplayMode.value then update_job_states() end
 end
 
@@ -769,11 +774,7 @@ function job_get_spell_map(spell, default_spell_map)
     if spell.skill == '弱体魔法' then
         new_spell_map = enfeeble_spell_maps[spell.name]
         if state.Immunobreak.value then
-            if _global.current_event == 'midcast' then
-                new_spell_map = 'Immunobreak'
-            elseif _global.current_event == 'aftercast' and not spell.interrupted then
-                state.Immunobreak:unset()
-            end
+            new_spell_map = 'Immunobreak'
         elseif state.Buff['サボトゥール'] then
             new_spell_map = enfeeble_spell_maps_saboteur[spell.name] or enfeeble_spell_maps[spell.name]
         end
