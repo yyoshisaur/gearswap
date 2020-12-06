@@ -24,7 +24,7 @@ function user_setup()
     state.PetSubMode = M{['desctiption']='Pet Sub Mode'}
     state.PetTankMode = M{['desctiption']='Pet Sub Mode', 'Enmity', 'HPDT', 'HP', 'DT'}
     state.ManeuverMode = M{['description']='Maneuver Mode', 'Mid', 'Low', 'High', 'Status'}
-    state.Weapons = M{['description']='Use Weapons', 'Kenkonken', 'Xiucoatl', 'Gnafron', 'Karambit',}
+    state.Weapons = M{['description']='Use Weapons', 'Kenkonken', 'Xiucoatl', 'Gnafron', 'Verethragna', 'Karambit',}
     state.Animator = M{['description']='Use Animator', 'I', 'II'}
 
     bool_state = {
@@ -41,6 +41,8 @@ function user_setup()
         {label='A', mode='Animator'},
     }
     init_job_states(bool_state, mode_state)
+    select_default_macro_book()
+    mogmaster('pup')
 end
 
 function binds_on_load()
@@ -81,6 +83,7 @@ function init_gear_sets()
     sets.weapons.Kenkonken = {main="乾坤圏", ammo="ルブリカント+3",}
     sets.weapons.Xiucoatl = {main="シュコアトル", ammo="ルブリカント+3",}
     sets.weapons.Gnafron = {main="ニャフロンアダーガ", ammo="ルブリカント+3",}
+    sets.weapons.Verethragna = {main="ウルスラグナ", ammo="ルブリカント+3",}
     sets.weapons.Karambit = {main="カランビット", ammo="ルブリカント+3",}
 
     sets.animator = {}
@@ -131,7 +134,7 @@ function init_gear_sets()
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ゲリリング",
         right_ring="ニックマドゥリング",
-        back="サクロマント",
+        back={ name="ビスシアスマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Crit.hit rate+10','Damage taken-5%',}},
     }
 
     sets.precast.WS.multi = {
@@ -203,7 +206,7 @@ function init_gear_sets()
         hands={ name="ヘルクリアグローブ", augments={'Pet: "Mag.Atk.Bns."+24','Pet: Phys. dmg. taken -1%','Pet: INT+12','Pet: Attack+14 Pet: Rng.Atk.+14',}},
         legs={ name="ＰＩチュリダル+3", augments={'Enhances "Ventriloquy" effect',}},
         feet={ name="ＰＩバブーシュ+3", augments={'Enhances "Role Reversal" effect',}},
-        neck="アダドアミュレット",
+        neck="絡繰士の首輪+2",
         waist="ウッコサッシュ",
         left_ear="ブラーナピアス",
         right_ear="エンメルカルピアス",
@@ -213,12 +216,12 @@ function init_gear_sets()
     }
 
     sets.midcast.Pet['弱体魔法'] = {
-        head="タリアターバン+1",
-        body="タリアマンティル+1",
+        head="タリアターバン+2",
+        body="タリアマンティル+2",
         hands="タリアゲージ+1",
         legs={ name="ＰＩチュリダル+3", augments={'Enhances "Ventriloquy" effect',}},
         feet="ＦＯバブーシュ+3",
-        neck="アダドアミュレット",
+        neck="絡繰士の首輪+2",
         waist="ウッコサッシュ",
         left_ear="カイリーンピアス",
         right_ear="エンメルカルピアス",
@@ -263,7 +266,7 @@ function init_gear_sets()
         right_ear="デディションピアス",
         left_ring="シーリチリング+1",
         right_ring="シーリチリング+1",
-        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="ビスシアスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.engaged.MA = set_combine(sets.engaged, {left_ear="マーケピアス+1"})
@@ -525,4 +528,12 @@ function job_self_command(cmdParams, eventArgs)
             set_maneuvers(maneuver_1, maneuver_2, maneuver_3)
         end
     end
+end
+
+function select_default_macro_book()
+    set_macro_page(1, 3)
+end
+
+function mogmaster(job)
+    send_command('input /si '..job..';')
 end

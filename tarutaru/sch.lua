@@ -140,7 +140,7 @@ function get_sets()
         waist="山吹の帯",
         left_ear="王将の耳飾り",
         right_ear="バーカロルピアス",
-        left_ring="女王の指輪+1",
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
         right_ring="フレキリング",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }

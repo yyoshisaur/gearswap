@@ -224,7 +224,7 @@ function get_sets()
         left_ear="マーケピアス+1",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="イラブラットリング",
-        right_ring="ペトロフリング",
+        left_ring={ name="カコエシクリング+1", augments={'Path: A',}},
         back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
@@ -371,6 +371,8 @@ local cp_song = {
             [15] = {name = '魔道士のバラードIII', wait = 4, pf = '/ma', t = 'Koru-Moru'},
             [16] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
             [17] = {name = '魔道士のバラードII', wait = 4, pf = '/ma', t = 'Koru-Moru'},
+            [18] = {name = 'アクアベール', wait = 5, pf = '/ma', t = '<me>'},
+            [19] = {name = 'リフレシュ', wait = 5, pf = '/ma', t = '<p1>'},
         },
         
         overwirte = {
@@ -389,6 +391,8 @@ local cp_song = {
             [13] = {name = '魔道士のバラードIII', wait = 4, pf = '/ma', t = 'Koru-Moru'},
             [14] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
             [15] = {name = '魔道士のバラードII', wait = 4, pf = '/ma', t = 'Koru-Moru'},
+            [16] = {name = 'アクアベール', wait = 5, pf = '/ma', t = '<me>'},
+            [17] = {name = 'リフレシュ', wait = 5, pf = '/ma', t = '<p1>'},
         },
     },
     sp = {

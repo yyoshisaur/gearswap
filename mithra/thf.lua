@@ -13,7 +13,15 @@ function get_sets()
     sets.th = {
         sub = "ガンドリング",
         hands="ＰＤアムレット+3",
-        -- waist="チャークベルト"
+    }
+
+    sets.precast.snap = {
+        head={ name="テーオンシャポー", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        body={ name="テーオンタバード", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        hands={ name="テーオングローブ", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        legs={ name="テーオンタイツ", augments={'"Snapshot"+5','"Snapshot"+5',}},
+        feet="メガナダジャンボ+2",
+        back={ name="トゥタティスケープ", augments={'"Snapshot"+10',}},
     }
 
     sets.precast.ws.wsd = {
@@ -88,6 +96,21 @@ function get_sets()
     sets.precast.ws['マンダリクスタッブ'] = sets.precast.ws.wsd
     sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.wsd
     
+    sets.midcast.ra = {
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="サンクトネックレス",
+        waist="エスカンストーン",
+        left_ear="ディグニタリピアス",
+        right_ear="レンポイヤリング",
+        left_ring="ムンムリング",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        back="サクロマント",
+    }
+
     sets.aftercast.melee_atk = {
         ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -160,6 +183,8 @@ function precast(spell)
         else
             set_equip = sets.precast.ws.wsd
         end
+    elseif spell.name == '飛び道具' then
+        set_equip = sets.precast.snap
     elseif spell.type == 'WhiteMagic' then
         -- set_equip = sets.precast.fc
     elseif spell.type == 'Trust' then
@@ -173,6 +198,13 @@ end
 
 function midcast(spell)
     local set_equip = nil
+    if spell.name == '飛び道具' then
+        set_equip = sets.midcast.ra
+    end
+    
+    if set_equip then
+        equip(set_equip)
+    end
 end
 
 function aftercast(spell)

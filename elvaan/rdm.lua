@@ -20,7 +20,7 @@ function get_sets()
     is_dw = false
 
     -- メインサブ武器変更
-    melee_weapon_cycle_num = 3
+    melee_weapon_cycle_num = 4
     melee_weapon_cycle = 0
     melee_weapon = 'tauret'
 
@@ -32,24 +32,26 @@ function get_sets()
                                     'バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ', 'オーラ',}
     sets.magic_gain = T{ 'ゲインバイト', 'ゲインマイン', 'ゲインカリス', 'ゲインアジル', 'ゲインスト', 'ゲインイン', 'ゲインデック',}
     sets.magic_enfeeble_mnd = T{'パライズ', 'パライズII', 'スロウ', 'スロウII', 'アドル', 'アドルII',}
-    sets.magic_enfeeble_mnd_and_skill = T{'ディストラ', 'ディストラII', 'ディストラIII', 'フラズルIII', 'ポイズン', 'ポイズンII',}
+    sets.magic_enfeeble_mnd_and_skill = T{'ディストラ', 'ディストラII', 'ディストラIII', 'フラズルIII',}
     sets.magic_enfeeble_mnd_acc = T{'ディア', 'ディアII', 'ディアIII', 'サイレス', 'フラズル', 'フラズルII',}
-    sets.magic_enfeeble_int = T{'ブライン', 'ブラインII', 'グラビデ', 'グラビデII',}
+    sets.magic_enfeeble_int = T{'ブライン', 'ブラインII', 'グラビデ', 'グラビデII','ポイズン', 'ポイズンII',}
     sets.magic_enfeeble_int_acc = T{'スリプル', 'スリプルII', 'スリプガ', 'バインド', 'ブレイク'}
     sets.magic_enfeeble_duration_sabo = T{'スリプル', 'スリプルII', 'スリプガ', 'バインド', 'ブレイク', 'サイレス','ディア', 'ディアII', 'ディアIII','ポイズン', 'ポイズンII',}
 
-    sets.weapon.hist = {main=empty, sub=empty}
+    sets.weapon.hist = {main='empty', sub='empty'}
 
     sets.weapon.tauret = {main="トーレット", sub="サクロバルワーク",}
     sets.weapon.naegling = {main="ネイグリング", sub="サクロバルワーク",}
     sets.weapon.d1 = {main="クトゥルブナイフ", sub="サクロバルワーク",}
-    sets.weapon.crocea = {main="クロセアモース", sub="サクロバルワーク",}
-    
+    sets.weapon.crocea_c = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
+    sets.weapon.crocea_b = {main={ name="クロセアモース", augments={'Path: B',}}, sub="サクロバルワーク",}
+
     sets.weapon.tauret_nin = {main="トーレット", sub="ターニオンダガー+1",}
     sets.weapon.naegling_nin = {main="ネイグリング", sub="ターニオンダガー+1",}
     sets.weapon.d1_nin = {main="クトゥルブナイフ", sub="アーンダガー",}
-    sets.weapon.crocea_nin = {main="クロセアモース", sub="ターニオンダガー+1",}
-    sets.weapon.crocea_daybreak_nin = {main="クロセアモース", sub="デイブレイクワンド",}
+    sets.weapon.crocea_c_nin = {main={ name="クロセアモース", augments={'Path: C',}}, sub="ターニオンダガー+1",}
+    sets.weapon.crocea_daybreak_nin = {main={ name="クロセアモース", augments={'Path: C',}}, sub="デイブレイクワンド",}
+    sets.weapon.crocea_b_nin = {main={ name="クロセアモース", augments={'Path: B',}}, sub="ターニオンダガー+1",}
 
     sets.weapon.enfeeble_mnd = {main="デイブレイクワンド", sub="アムラピシールド",}
     sets.weapon.enfeeble_mnd_nin = {main="マクセンチアス", sub="デイブレイクワンド",}
@@ -108,6 +110,22 @@ function get_sets()
     }
 
     sets.precast.ws.multi = {
+        ammo="オゲルミルオーブ+1",
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="ＶＩタイツ+3",
+        feet="マリグナスブーツ",
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear="シェリダピアス",
+        right_ear="マーケピアス+1",
+        left_ring={ name="カコエシクリング+1", augments={'Path: A',}},
+        right_ring="イラブラットリング",
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.precast.ws.critical = {
         ammo="イェットシーラ+1",
         head={ name="ブリスタサリット+1", augments={'Path: A',}},
         body="マリグナスタバード",
@@ -118,9 +136,9 @@ function get_sets()
         waist="フォシャベルト",
         left_ear="シェリダピアス",
         right_ear="マーケピアス+1",
-        left_ring="隠者の指輪+1",
+        left_ring={ name="カコエシクリング+1", augments={'Path: A',}},
         right_ring="イラブラットリング",
-        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Phys. dmg. taken-10%',}},
     }
 
     sets.precast.ws['ガストスラッシュ'] = sets.precast.ws.magic
@@ -128,7 +146,7 @@ function get_sets()
     sets.precast.ws['エナジースティール'] = sets.precast.ws.magic
     sets.precast.ws['エナジードレイン'] = sets.precast.ws.magic
     sets.precast.ws['イオリアンエッジ'] = sets.precast.ws.magic
-    sets.precast.ws['エヴィサレーション'] = sets.precast.ws.multi
+    sets.precast.ws['エヴィサレーション'] = sets.precast.ws.critical
     
     sets.precast.ws['バーニングブレード'] = sets.precast.ws.magic
     sets.precast.ws['レッドロータス'] = sets.precast.ws.magic
@@ -136,7 +154,7 @@ function get_sets()
     sets.precast.ws['セラフブレード'] = sets.precast.ws.magic
     sets.precast.ws['サンギンブレード'] = sets.precast.ws.magic_dark
     sets.precast.ws['サベッジブレード'] = sets.precast.ws.multi
-    sets.precast.ws['シャンデュシニュ'] = sets.precast.ws.multi
+    sets.precast.ws['シャンデュシニュ'] = sets.precast.ws.critical
     sets.precast.ws['レクイエスカット'] = sets.precast.ws.multi
 
     sets.precast.ability['連続魔'] = {body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},}
@@ -167,7 +185,7 @@ function get_sets()
 
     sets.midcast.enhance_skill = {
         main="プクラトムージュ+1",
-        sub="プクラトムージュ",
+        sub={ name="フォフェンド+1", augments={'Path: A',}},
         head="ビファウルクラウン",
         body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands="ＶＩグローブ+3",
@@ -177,8 +195,8 @@ function get_sets()
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 1"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -296,7 +314,7 @@ function get_sets()
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
-        waist="ルーミネリサッシュ",
+        waist="ルミネートサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
         left_ring="スティキニリング+1",
@@ -401,26 +419,41 @@ function get_sets()
     }
 
     sets.midcast.magic_mb = {
-        main={ name="グリオアヴァール", augments={'Spell interruption rate down -3%','INT+14','Mag. Acc.+29','"Mag.Atk.Bns."+29','Magic Damage +5',}},
+        -- main={ name="マランスタッフ+1", augments={'Path: A',}},
+        -- sub="エンキストラップ",
+        -- ammo="ペムフレドタスラム",
+        -- head="エアハット+1",
+        -- body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        -- hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        -- legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
+        -- feet="ジャリピガッシュ+2",
+        -- neck="水影の首飾り",
+        -- waist="サクロコード",
+        -- left_ear="王将の耳飾り",
+        -- right_ear="マリグナスピアス",
+        -- left_ring="フレキリング",
+        -- right_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        -- back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
+        main={ name="マランスタッフ+1", augments={'Path: A',}},
         sub="エンキストラップ",
         ammo="ペムフレドタスラム",
         head="エアハット+1",
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
-        feet="ジャリピガッシュ+2",
+        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet={ name="ＶＩブーツ+3", augments={'Immunobreak Chance',}},
         neck="水影の首飾り",
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.aftercast.melee_atk = {
         range=empty,
-        ammo="銀銭",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="アヤモマノポラ+2",
@@ -435,6 +468,23 @@ function get_sets()
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
+    sets.aftercast.melee_sb = {
+        range=empty,
+        ammo="オゲルミルオーブ+1",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck={ name="バーシチョーカー+1", augments={'Path: A',}},
+        waist="霊亀腰帯",
+        left_ear="シェリダピアス",
+        right_ear="エアバニピアス",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Phys. dmg. taken-10%',}},
+    }
+
     sets.aftercast.melee_en = {
         range="ウルル",
         ammo=empty,
@@ -447,7 +497,7 @@ function get_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="素破の耳",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 1"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
@@ -464,7 +514,7 @@ function get_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring="守りの指輪",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 1"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
@@ -499,7 +549,7 @@ function get_sets()
         waist="スカウターロープ",
         left_ear="インフラクスピアス",
         right_ear="グライアピアス",
-        left_ring="メフィタスリング",
+        left_ring="サンゴマリング",
         right_ring="メフィタスリング+1",
         back="ヴァテスケープ+1",
     }
@@ -553,16 +603,20 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         elseif weapon == 'd1' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.d1_nin)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.d1_nin)
-        elseif weapon == 'crocea' then
-            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea_nin)
-            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_nin)
+        elseif weapon == 'crocea_c' then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea_c_nin)
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_c_nin)
+        elseif weapon == 'crocea_b' then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea_b_nin)
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_b_nin)
         end
         
-        if sets.weapon.hist.main ~= empty then
+        if sets.weapon.hist.main ~= 'empty' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, {main=sets.weapon.hist.main})
             sets.aftercast.idle = set_combine(sets.aftercast.idle, {main=sets.weapon.hist.main})
         end
-        if sets.weapon.hist.sub ~= empty then
+        if sets.weapon.hist.sub ~= 'empty' then
+            add_to_chat(sets.weapon.hist.sub_job)
             sets.aftercast.melee = set_combine(sets.aftercast.melee, {sub=sets.weapon.hist.sub})
             sets.aftercast.idle = set_combine(sets.aftercast.idle, {sub=sets.weapon.hist.sub})
         end
@@ -589,12 +643,15 @@ local function set_weapon_by_sub_job(sub_job, weapon)
         elseif weapon == 'd1' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.d1)
             sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.d1)
-        elseif weapon == 'crocea' or weapon == 'daybreak' then
-            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea)
-            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea)
+        elseif weapon == 'crocea_c' or weapon == 'daybreak' then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea_c)
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_c)
+        elseif weapon == 'crocea_b' then
+            sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.crocea_b)
+            sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.crocea_b)
         end
 
-        if sets.weapon.hist.main ~= empty then
+        if sets.weapon.hist.main ~= 'empty' then
             sets.aftercast.melee = set_combine(sets.aftercast.melee, {main=sets.weapon.hist.main})
             sets.aftercast.idle = set_combine(sets.aftercast.idle, {main=sets.weapon.hist.main})
         end
@@ -604,10 +661,10 @@ end
 
 local function set_weapon_hist()
     if player.equipment.main ~= 'empty' then
-        sets.weapon.hist.main = player.equipment.main
+        sets.weapon.hist.main = gearswap.equip_list_history.main
     end
     if player.equipment.sub ~= 'empty' then
-        sets.weapon.hist.sub = player.equipment.sub
+        sets.weapon.hist.sub = gearswap.equip_list_history.sub
     end
     sets.aftercast.melee = set_combine(sets.aftercast.melee, sets.weapon.hist)
     sets.aftercast.idle = set_combine(sets.aftercast.idle, sets.weapon.hist)
@@ -797,14 +854,20 @@ function self_command(command)
             status_change(player.status)
             windower.add_to_chat(122,'---> D1')
         elseif melee_weapon_cycle % melee_weapon_cycle_num == melee_weapon_cycle_num - 2 then
-            melee_weapon = 'crocea'
+            melee_weapon = 'crocea_b'
+            sets.aftercast.melee = sets.aftercast.melee_sb
+            set_weapon_by_sub_job(player.sub_job, melee_weapon)
+            status_change(player.status)
+            windower.add_to_chat(122,'---> クロセアモース(B)')
+        elseif melee_weapon_cycle % melee_weapon_cycle_num == melee_weapon_cycle_num - 3 then
+            melee_weapon = 'crocea_c'
             sets.aftercast.melee = sets.aftercast.melee_atk
             set_weapon_by_sub_job(player.sub_job, melee_weapon)
             status_change(player.status)
-            windower.add_to_chat(122,'---> クロセアモース')
+            windower.add_to_chat(122,'---> クロセアモース(C)')
         end
     elseif command ==  'ws' then
-        melee_weapon = 'crocea'
+        melee_weapon = 'crocea_c'
         sets.aftercast.melee = sets.aftercast.melee_atk
         set_weapon_by_sub_job(player.sub_job, melee_weapon)
         status_change(player.status)

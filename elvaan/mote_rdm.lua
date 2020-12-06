@@ -50,6 +50,7 @@ function user_setup()
         {label='Weapon', mode='Weapons'}}
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
+    mogmaster('rdm')
 end
 
 function binds_on_load()
@@ -85,15 +86,19 @@ function init_gear_sets()
     sets.weapons.Crocea_C_DW = {main={ name="クロセアモース", augments={'Path: C',}}, sub="トーレット",}
     sets.weapons.Crocea_B_DW = {main={ name="クロセアモース", augments={'Path: B',}}, sub="ターニオンダガー+1",}
     sets.weapons.Crocea_C_DayBreak_DW = {main={ name="クロセアモース", augments={'Path: C',}}, sub="デイブレイクワンド",}
+    sets.weapons.Crocea_C_Levante_DW = {main={ name="クロセアモース", augments={'Path: C',}}, sub="レヴァンテダガー",}
     sets.weapons.DayBreak_DW = {main="デイブレイクワンド", sub="トーレット"}
     sets.weapons.Tauret_DW = {main="トーレット", sub="ターニオンダガー+1"}
-    sets.weapons.D1_DW = {main="クトゥルブナイフ", sub="アーンダガー",}
+    sets.weapons.Mandau_DW = {main="マンダウ", sub="ターニオンダガー+1"}
+    sets.weapons.D1_DW = {main="クトゥルブナイフ", sub="インフィルトレータ",}
 
     sets.weapons.Crocea_C = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
     sets.weapons.Crocea_B = {main={ name="クロセアモース", augments={'Path: B',}}, sub="サクロバルワーク",}
     sets.weapons.Crocea_C_DayBreak = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
+    sets.weapons.Crocea_C_Levante = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
     sets.weapons.DayBreak = {main="デイブレイクワンド", sub="サクロバルワーク"}
     sets.weapons.Tauret = {main="トーレット", sub="サクロバルワーク"}
+    sets.weapons.Mandau = {main="マンダウ", sub="サクロバルワーク"}
     sets.weapons.D1 = {main="クトゥルブナイフ", sub="サクロバルワーク",}
 
     sets.weapons.Enfeeble_MND = {main="デイブレイクワンド", sub="アムラピシールド",}
@@ -121,6 +126,10 @@ function init_gear_sets()
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
+    sets.precast.FC.Phalanx = {
+        back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
     sets.precast.FC['インパクト'] = {
         head=empty,
         body="トワイライトプリス",
@@ -131,6 +140,8 @@ function init_gear_sets()
         left_ear="エテオレートピアス",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
+
+    sets.precast.FC['ディスペガ'] = set_combine(sets.precast.FC, {main="デイブレイクワンド",})
 
     sets.midcast.FastRecast = set_combine(sets.precast.FC, {waist="ニヌルタサッシュ",})
 
@@ -198,19 +209,36 @@ function init_gear_sets()
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Phys. dmg. taken-10%',}},
     }
 
+    sets.precast.WS.wsd = {
+        ammo="オゲルミルオーブ+1",
+        head={ name="ＶＩシャポー+3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+        body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
+        hands="ＡＴグローブ+3",
+        legs={ name="ＶＩタイツ+3", augments={'Enspell Damage','Accuracy',}},
+        feet="ＡＴブーツ+3",
+        neck="フォシャゴルゲット",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="シェリダピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        right_ring="イラブラットリング",
+        back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
     sets.precast.WS['ガストスラッシュ'] = sets.precast.WS.magic
     sets.precast.WS['サイクロン'] = sets.precast.WS.magic
     sets.precast.WS['エナジースティール'] = sets.precast.WS.magic
     sets.precast.WS['エナジードレイン'] = sets.precast.WS.magic
     sets.precast.WS['イオリアンエッジ'] = sets.precast.WS.magic
     sets.precast.WS['エヴィサレーション'] = sets.precast.WS.critical
+    sets.precast.WS['マーシーストローク'] = sets.precast.WS.wsd
     
     sets.precast.WS['バーニングブレード'] = sets.precast.WS.magic
     sets.precast.WS['レッドロータス'] = sets.precast.WS.magic
     sets.precast.WS['シャインブレード'] = sets.precast.WS.magic
     sets.precast.WS['セラフブレード'] = sets.precast.WS.magic
     sets.precast.WS['サンギンブレード'] = sets.precast.WS.magic_dark
-    sets.precast.WS['サベッジブレード'] = sets.precast.WS
+    sets.precast.WS['サベッジブレード'] = sets.precast.WS.wsd
     sets.precast.WS['シャンデュシニュ'] = sets.precast.WS.critical
     sets.precast.WS['レクイエスカット'] = sets.precast.WS
 
@@ -397,7 +425,7 @@ function init_gear_sets()
     sets.midcast['弱体魔法'].Immunobreak = sets.midcast.enfeeble_skill
 
     sets.midcast['弱体魔法'].MND = {
-        ammo="クォーツタスラム+1",
+        ammo="王将の玉",
         head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
@@ -413,7 +441,7 @@ function init_gear_sets()
     }
 
     sets.midcast['弱体魔法'].MND_Skill = {
-        ammo="クォーツタスラム+1",
+        ammo="王将の玉",
         head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
@@ -445,7 +473,7 @@ function init_gear_sets()
     }
     
     sets.midcast['弱体魔法'].INT = {
-        ammo="ペムフレドタスラム",
+        ammo="王将の玉",
         head="ＶＩシャポー+3",
         body="ＬＴサヨン+1",
         hands="ＬＴガントロ+1",
@@ -714,7 +742,7 @@ end
 
 function customize_idle_set(idleSet)
     local weapons = sets.weapons
-    idleSet = set_combine(idleSet, weapons[state.Weapons.value], {sub=get_melee_set().sub})
+    idleSet = set_combine(idleSet, weapons[state.Weapons.value])
     return idleSet
 end
 
@@ -749,7 +777,16 @@ end
 function set_weapons_by_sub_job(subJob)
     state.Weapons:reset()
     sub_job_suffix = S{'忍', '踊'}:contains(subJob) and '_DW' or ''
-    state.Weapons:options('Crocea_C'..sub_job_suffix, 'Crocea_B'..sub_job_suffix, 'Tauret'..sub_job_suffix, 'Crocea_C_DayBreak'..sub_job_suffix, 'DayBreak'..sub_job_suffix, 'D1'..sub_job_suffix)
+    state.Weapons:options(
+        'Crocea_C'..sub_job_suffix,
+        'Crocea_B'..sub_job_suffix,
+        'Tauret'..sub_job_suffix,
+        'Mandau'..sub_job_suffix,
+        'Crocea_C_DayBreak'..sub_job_suffix,
+        'D1'..sub_job_suffix,
+        'DayBreak'..sub_job_suffix,
+        'Crocea_C_Levante'..sub_job_suffix
+    )
     set_equip_weapon(sets.midcast['弱体魔法'].MND, sets.weapons['Enfeeble_MND'..sub_job_suffix])
     set_equip_weapon(sets.midcast['弱体魔法'].MND_Skill, sets.weapons['Enfeeble_MND'..sub_job_suffix])
     set_equip_weapon(sets.midcast['弱体魔法'].MND_Acc, sets.weapons['Enfeeble_MND'..sub_job_suffix])
@@ -770,6 +807,8 @@ function job_sub_job_change(newSubjob, oldSubjob)
 end
 
 function job_get_spell_map(spell, default_spell_map)
+    if _global.current_event ~= 'midcast' then return default_spell_map end
+
     local new_spell_map = default_spell_map
     if spell.skill == '弱体魔法' then
         new_spell_map = enfeeble_spell_maps[spell.name]
@@ -798,4 +837,8 @@ end
 
 function select_default_macro_book()
     set_macro_page(1, 8)
+end
+
+function mogmaster(job)
+    send_command('input /si '..job..';')
 end

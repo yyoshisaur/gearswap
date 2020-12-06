@@ -49,7 +49,7 @@ function get_sets()
         left_ear={ name="エテオレートピアス", mp=50},
         right_ear={ name="ロケイシャスピアス", mp=30},
         left_ring={name="メフィタスリング+1", mp=110},
-        right_ring={name="メフィタスリング", mp=100},
+        right_ring={name="サンゴマリング", mp=70},
         back={ name="タラナスケープ", augments={'MP+60','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}, mp=60},
     }
     
@@ -87,7 +87,7 @@ function get_sets()
         left_ear={ name="エテオレートピアス", mp=50},
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring={name="メフィタスリング+1", mp=110},
-        right_ring={name="メフィタスリング", mp=100},
+        right_ring={name="サンゴマリング", mp=70},
         back={ name="ベーンケープ", augments={'Elem. magic skill +10','Dark magic skill +7',}, mp=90},
     }
 
@@ -110,7 +110,7 @@ function get_sets()
     }
 
     sets.midcast.comet = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="妖蟲の髪飾り+1", mp=120},
         body={ name="ＳＰコート+3", mp=98},
         hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}, mp=34,},
@@ -168,7 +168,7 @@ function get_sets()
     }
 
     sets.midcast.elemental = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="ＡＲペタソス+3", augments={'Increases Ancient Magic II damage',}, mp=52},
         body={ name="ＳＰコート+3", mp=98},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
@@ -247,7 +247,7 @@ function get_sets()
     }
 
     sets.midcast.mb_sp = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="エアハット+1", mp=65},
         body={ name="ＳＰコート+3", mp=98},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
@@ -264,7 +264,7 @@ function get_sets()
 
     -- mb high acc 250 atk 380
     sets.midcast.mb_high = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="エアハット+1", mp=65},
         body={ name="エアウプランド+1", mp=109},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
@@ -280,7 +280,7 @@ function get_sets()
     }
     -- mb mid acc 300 atk 360
     sets.midcast.mb_mid = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="エアハット+1", mp=65},
         body={ name="エアウプランド+1", mp=109},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
@@ -296,7 +296,7 @@ function get_sets()
     }
     -- mb low acc 320 atk 340
     sets.midcast.mb_low = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="エアハット+1", mp=65},
         body={ name="エアウプランド+1", mp=109},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
@@ -313,7 +313,7 @@ function get_sets()
 
     -- mb ラシA acc 320 atk 390
     sets.midcast.mb_lathi = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="ＡＲペタソス+3", augments={'Increases Ancient Magic II damage',}},
         body="エアウプランド+1",
         hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}},

@@ -27,6 +27,8 @@ function user_setup()
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'}}
     init_job_states(bool_state, mode_state)
+    select_default_macro_book()
+    mogmaster('drg')
 end
 
 function binds_on_load()
@@ -158,7 +160,7 @@ function init_gear_sets()
     sets.precast.WS['シャッターソウル'] = sets.precast.WS
 
     sets.precast.WS.dmglim = {head={ name="スティンガヘルム+1", augments={'Path: A',}},}
-    sets.precast.WS.DmgLim = set_combine(sets.precast.WS, sets.precast.dmglim)
+    sets.precast.WS.DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
 
     sets.precast.WS['ダブルスラスト'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     sets.precast.WS['サンダースラスト'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
@@ -290,4 +292,12 @@ end
 
 function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
+end
+
+function select_default_macro_book()
+    set_macro_page(1, 15)
+end
+
+function mogmaster(job)
+    send_command('input /si '..job..';')
 end

@@ -6,6 +6,9 @@ function get_sets()
 end
 
 function job_setup()
+    state.Buff['トリプルショット'] = buffactive['トリプルショット'] or false
+    state.Buff['スナップ'] = buffactive['スナップ'] or false
+
     include('Mote-TreasureHunter')
     include('Mote-Display')
     include('weather_obi')
@@ -34,9 +37,12 @@ function user_setup()
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
+        {label='Ranged', mode='RangedMode'},
         {label='QD', mode='QDMode'},
         {label='RW', mode='RangedWeapons'}}
     init_job_states(bool_state, mode_state)
+    select_default_macro_book()
+    mogmaster('cor')
 end
 
 function binds_on_load()
@@ -85,9 +91,9 @@ end
 function init_gear_sets()
     sets.weapons = {}
     sets.weapons.SwordDW = {main="ネイグリング", sub="トーレット"}
-    sets.weapons.DaggerDW = {main="ロスタム", sub="トーレット"}
+    sets.weapons.DaggerDW = {main={ name="ロスタム", augments={'Path: A',}}, sub="トーレット"}
     sets.weapons.Sword = {main="ネイグリング", sub="ヌスクシールド"}
-    sets.weapons.Dagger = {main="ロスタム", sub="ヌスクシールド"}
+    sets.weapons.Dagger = {main={ name="ロスタム", augments={'Path: A',}}, sub="ヌスクシールド"}
     sets.weapons.DeathPenalty = {range="デスペナルティ", ammo="ホクスボクブレット"}
     sets.weapons.Fomalhaut = {range="フォーマルハウト", ammo="ホクスボクブレット"}
     sets.weapons.Armageddon = {range="アルマゲドン", ammo="ホクスボクブレット"}
@@ -119,10 +125,24 @@ function init_gear_sets()
     sets.precast.RA = {
         ammo="クロノブレット",
         head={ name="テーオンシャポー", augments={'"Mag.Atk.Bns."+20','"Snapshot"+5','"Snapshot"+5',}},
-        body="オショシベスト",
-        hands={ name="テーオングローブ", augments={'"Snapshot"+5','"Snapshot"+5',}},
-        legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
+        body="ＬＫフラック+3",
+        hands={ name="ＬＡガントリー+3", augments={'Enhances "Fold" effect',}},
+        legs={ name="アデマケックス+1", augments={'AGI+12','"Rapid Shot"+13','Enmity-6',}},
         feet="メガナダジャンボ+2",
+        neck="コモドアチャーム+2",
+        waist="インパルスベルト",
+        back={ name="カムラスマント", augments={'"Snapshot"+10',}},
+    }
+
+    sets.precast.RA['スナップ'] = {
+        ammo="クロノブレット",
+        head="ＣＳトリコルヌ+1",
+        body="ＬＫフラック+3",
+        hands={ name="ＬＡガントリー+3", augments={'Enhances "Fold" effect',}},
+        legs={ name="アデマケックス+1", augments={'AGI+12','"Rapid Shot"+13','Enmity-6',}},
+        feet="メガナダジャンボ+2",
+        neck="コモドアチャーム+2",
+        waist="イェマヤベルト",
         back={ name="カムラスマント", augments={'"Snapshot"+10',}},
     }
 
@@ -148,7 +168,7 @@ function init_gear_sets()
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
         legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
-        neck="サンクトネックレス",
+        neck="コモドアチャーム+2",
         waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="フリオミシピアス",
@@ -164,7 +184,7 @@ function init_gear_sets()
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
         legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
-        neck="サンクトネックレス",
+        neck="コモドアチャーム+2",
         waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="フリオミシピアス",
@@ -208,11 +228,13 @@ function init_gear_sets()
     sets.precast.WS.melee_magic = set_combine(sets.precast.WS.ra_m, {ammo="ホクスボクブレット", waist="オルペウスサッシュ"})
 
     -- 射撃
-    sets.precast.WS["ラストスタンド"] = sets.precast.WS.ra_p
+    sets.precast.WS["ラストスタンド"] = sets.precast.WS
     sets.precast.WS["レデンサリュート"] = sets.precast.WS.ra_m_dark
     sets.precast.WS["ワイルドファイア"] = sets.precast.WS.ra_m
 
     -- 片手剣
+    sets.precast.WS['シャインブレード'] = sets.precast.WS.melee_magic
+    sets.precast.WS["サークルブレード"] = sets.precast.WS.melee_wsd
     sets.precast.WS["サベッジブレード"] = sets.precast.WS.melee_wsd
 
     -- 短剣
@@ -224,7 +246,7 @@ function init_gear_sets()
     sets.precast.WS["エヴィサレーション"] = sets.precast.WS.melee_critical
 
     sets.precast.JA["ランダムディール"] ={body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},}
-    sets.precast.JA["フォールド"] = {hands={ name="ＬＡガントリー+1", augments={'Enhances "Fold" effect',}},}
+    sets.precast.JA["フォールド"] = {hands={ name="ＬＡガントリー+3", augments={'Enhances "Fold" effect',}},}
     sets.precast.JA["スネークアイ"] = {legs={ name="ＬＡトルーズ+1", augments={'Enhances "Snake Eye" effect',}},}
     sets.precast.JA["ワイルドカード"] = {feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},}
 
@@ -240,7 +262,7 @@ function init_gear_sets()
 
     -- sets.precast.CorsairRoll["キャスターズロール"] = set_combine(sets.precast.CorsairRoll, {legs="ＣＳトルーズ+1"})
     sets.precast.CorsairRoll["コアサーズロール"] = set_combine(sets.precast.CorsairRoll, {feet="ＣＳブーツ+1"})
-    -- sets.precast.CorsairRoll["ブリッツァロール"] = set_combine(sets.precast.CorsairRoll, {head="ＣＳトリコルヌ+1"})
+    sets.precast.CorsairRoll["ブリッツァロール"] = set_combine(sets.precast.CorsairRoll, {head="ＣＳトリコルヌ+1"})
     sets.precast.CorsairRoll["タクティックロール"] = set_combine(sets.precast.CorsairRoll,  {body="ＣＳフラック+1",})
     sets.precast.CorsairRoll["アライズロール"] = set_combine(sets.precast.CorsairRoll, {hands="ＣＳガントリー+1",})
 
@@ -251,7 +273,7 @@ function init_gear_sets()
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
-        neck="サンクトネックレス",
+        neck="コモドアチャーム+2",
         waist="エスカンストーン",
         left_ear="ノーヴィオピアス",
         right_ear="フリオミシピアス",
@@ -282,16 +304,32 @@ function init_gear_sets()
         ammo="クロノブレット",
         head="マリグナスシャポー",
         body="マリグナスタバード",
-        hands={ name="アデマリスト+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
-        legs={ name="アデマケックス+1", augments={'AGI+12','Rng.Acc.+20','Rng.Atk.+20',}},
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
         feet="マリグナスブーツ",
+        neck="イスクルゴルゲット",
+        waist="イェマヤベルト",
+        left_ear="デディションピアス",
+        right_ear="テロスピアス",
+        left_ring="シーリチリング+1",
+        right_ring="イラブラットリング",
+        back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10','Damage taken-5%',}},
+    }
+
+    sets.midcast.RA['トリプルショット'] = {
+        ammo="クロノブレット",
+        head="オショシマスク+1",
+        body="ＣＳフラック+1",
+        hands={ name="ＬＡガントリー+3", augments={'Enhances "Fold" effect',}},
+        legs="マリグナスタイツ",
+        feet="オショシレギンス+1",
         neck="イスクルゴルゲット",
         waist="イェマヤベルト",
         left_ear="エナベートピアス",
         right_ear="テロスピアス",
-        left_ring="王将の指輪",
+        left_ring={ name="カコエシクリング+1", augments={'Path: A',}},
         right_ring="イラブラットリング",
-        back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10',}},
+        back={ name="カムラスマント", augments={'AGI+20','Rng.Acc.+20 Rng.Atk.+20','AGI+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.idle = {
@@ -358,11 +396,21 @@ function job_precast(spell, action, spellMap, eventArgs)
     if spell.type == 'CorsairShot' then
         classes.JAMode = state.QDMode.value
     end
+
+    if state.Buff['スナップ'] then
+        classes.CustomClass = 'スナップ'
+    end
 end
 
 function job_post_precast(spell, action, spellMap, eventArgs)
     if spell.type == 'WeaponSkill' and magical_ws_use_elemental_obi:contains(spell.name) then
         equip(get_hachirin(spell.element))
+    end
+end
+
+function job_midcast(spell, action, spellMap, eventArgs)
+    if state.Buff['トリプルショット'] then
+        classes.CustomClass = 'トリプルショット'
     end
 end
 
@@ -454,4 +502,8 @@ function disp_roll_info(spell)
     local lucky = rolls[spell.name].lucky
     local unlucky = rolls[spell.name].unlucky
     windower.add_to_chat(2, spell.name .. ' [' ..desc ..'] Lucky=' .. lucky .. ' '.. ' Unluck='.. unlucky)
+end
+
+function mogmaster(job)
+    send_command('input /si '..job..';')
 end

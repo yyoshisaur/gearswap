@@ -111,6 +111,7 @@ function get_sets()
 
     sets.precast.fc = {
         ammo="サピエンスオーブ",
+        body="サクロブレスト",
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         neck="ボルトサージトルク",
         waist="ニヌルタサッシュ",

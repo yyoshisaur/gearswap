@@ -109,7 +109,7 @@ function get_sets()
     }
 
     sets.precast.ws.magic = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="ＡＳケフィエ+3",
         body="ＡＳジュバ+3",
         hands="ジャリカフス+2",
@@ -141,7 +141,7 @@ function get_sets()
     }
 
     sets.precast.ws.magic_drk = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
         body="ＡＳジュバ+3",
         hands="ジャリカフス+2",
@@ -233,7 +233,7 @@ function get_sets()
     }
     
     sets.midcast.magic = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="ＡＳケフィエ+3",
         body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
@@ -244,12 +244,12 @@ function get_sets()
         left_ear="王将の耳飾り",
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
     sets.midcast.magic_drk = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
         body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
@@ -260,7 +260,7 @@ function get_sets()
         left_ear="王将の耳飾り",
         right_ear="フリオミシピアス",
         left_ring="アルコンリング",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 

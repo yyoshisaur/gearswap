@@ -35,6 +35,7 @@ function user_setup()
     }
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
+    mogmaster('sch')
 end
 
 function binds_on_load()
@@ -167,7 +168,7 @@ function init_gear_sets()
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="エテオレートピアス",
         left_ring="メフィタスリング+1",
-        right_ring="メフィタスリング",
+        right_ring="サンゴマリング",
         back="フィフォレケープ+1",
     }
 
@@ -666,6 +667,32 @@ function set_custom_class(spell)
     end
 end
 
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'aspir' then
+        local recasts = windower.ffxi.get_spell_recasts()
+        local recast_time_a2 = recasts[248]/60
+        local recast_time_a = recasts[247]/60
+
+        if recast_time_a2 == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピルII')..' <stnpc>')
+        elseif recast_time_a == 0 then
+            send_command('input /magic '..windower.to_shift_jis('アスピル')..' <stnpc>')
+        else
+            windower.add_to_chat(30, 'アスピル リキャスト---> II: %.1fs, I: %.1fs':format(recast_time_a2, recast_time_a))
+        end
+    elseif cmdParams[1]  == '1p' then
+        send_command('input /macro book 4')
+        windower.add_to_chat(122,'---> 震天動地 1ポチマクロ')
+    elseif cmdParams[1]  == '2p' then
+        send_command('input /macro book 5')
+        windower.add_to_chat(122,'---> 震天動地 2ポチマクロ')
+    end
+end
+
 function select_default_macro_book()
     set_macro_page(1, 4)
+end
+
+function mogmaster(job)
+    send_command('input /si '..job..';')
 end

@@ -42,6 +42,20 @@ function get_sets()
         right_ear="マリグナスピアス",
     }
 
+    sets.precast.fc_impact = {
+        ammo="サピエンスオーブ",
+        body="トワイライトプリス",
+        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        neck={ name="ボルトサージトルク", mp=20},
+        waist="エンブラサッシュ",
+        left_ear="バーカロルピアス",
+        right_ear="マリグナスピアス",
+        left_ring="プロリクスリング",
+        right_ring="キシャールリング",
+        back={ name="タラナスケープ", augments={'"Fast Cast"+10',}},
+    }
+
     sets.precast.ws.mp = {
         ammo="ペムフレドタスラム",
         head="妖蟲の髪飾り+1",
@@ -123,6 +137,21 @@ function get_sets()
         back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
+    sets.midcast.impact = {
+        ammo="ペムフレドタスラム",
+        body="トワイライトプリス",
+        hands={ name="ＡＲグローブ+3", augments={'Increases Elemental Magic accuracy',}},
+        legs={ name="ＡＲトンバン+3", augments={'Increases Elemental Magic debuff time and potency',}},
+        feet={ name="ＡＲサボ+3", augments={'Increases Aspir absorption amount',}},
+        neck={ name="ソーサラストール+1", augments={'Path: A',}},
+        waist="サクロコード",
+        left_ear="バーカロルピアス",
+        right_ear="マリグナスピアス",
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        right_ring="スティキニリング",
+        back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+    }
+
     sets.aftercast.idle = {
         main={ name="マランスタッフ+1", augments={'Path: A',}},
         sub="エンキストラップ",
@@ -153,7 +182,11 @@ function precast(spell)
 
     if spell.type == 'BlackMagic' then
         if spell.skill == '精霊魔法' then
-            set_equip = sets.precast.fc_elemental
+            if spell.name == 'インパクト' then
+                set_equip = sets.precast.fc_impact
+            else
+                set_equip = sets.precast.fc_elemental
+            end
         else
             set_equip = sets.precast.fc
         end
@@ -178,6 +211,8 @@ function midcast(spell)
     if spell.skill == '精霊魔法' then
         if elementally_enfeeble_magic:contains(spell.name) then
             set_equip = sets.midcast.magic_acc
+        elseif spell.name == 'インパクト' then
+                set_equip = sets.midcast.impact
         else
             set_equip = set_combine(sets.midcast.magic_mb, get_hachirin(spell.element))
         end

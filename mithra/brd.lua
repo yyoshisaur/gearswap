@@ -58,22 +58,22 @@ function get_sets()
     sets.precast.ability["ナイチンゲール"] = {feet={ name="ＢＩスリッパー+1", augments={'Enhances "Nightingale" effect',}},}
     sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+1", augments={'Enhances "Troubadour" effect',}},}
 
-    sets.midcast.song_duration = {
-        main="カルンウェナン",
-        sub="玄冥盾",
-        head="ＦＬキャロ+1",
-        body="ＦＬオングルリヌ+1",
-        hands="ＦＬマンシェト+1",
-        legs="インヤガシャルワ+2",
-        feet="ＢＲスリッパー+3",
-        neck="月虹の呼び子+1",
-        waist="フルームベルト+1",
-        left_ear="エテオレートピアス",
-        right_ear="ロケイシャスピアス",
-        left_ring="守りの指輪",
-        right_ring="スティキニリング+1",
-        back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
-    }
+    -- sets.midcast.song_duration = {
+    --     main="カルンウェナン",
+    --     sub="玄冥盾",
+    --     head="ＦＬキャロ+1",
+    --     body="ＦＬオングルリヌ+1",
+    --     hands="ＦＬマンシェト+1",
+    --     legs="インヤガシャルワ+2",
+    --     feet="ＢＲスリッパー+3",
+    --     neck="月虹の呼び子+1",
+    --     waist="フルームベルト+1",
+    --     left_ear="エテオレートピアス",
+    --     right_ear="ロケイシャスピアス",
+    --     left_ring="守りの指輪",
+    --     right_ring="スティキニリング+1",
+    --     back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+    -- }
     
     sets.midcast.magic_acc = {
         main={ name="カーリ", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
@@ -322,8 +322,8 @@ local overwirte_song_cmd = ''
 local cp_song = {
     no_sp = {
         start = {
-            [1] = {name = 'ナイチンゲール', wait = 2.5, pf = '/ja', t = '<me>'},
-            [2] = {name = 'トルバドゥール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [1] = {name = 'ナイチンゲール', wait = 3, pf = '/ja', t = '<me>'},
+            [2] = {name = 'トルバドゥール', wait = 3, pf = '/ja', t = '<me>'},
             [3] = {name = '無敵の進撃マーチ', wait = 5, pf = '/ma', t = '<me>'},
             [4] = {name = '栄光の凱旋マーチ', wait = 5, pf = '/ma', t = '<me>'},
             [5] = {name = '戦士達のピーアン', wait = 5, pf = '/ma', t = '<me>'},
@@ -337,11 +337,13 @@ local cp_song = {
             [13] = {name = '魔道士のバラードIII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
             [14] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
             [15] = {name = '魔道士のバラードII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
+            [16] = {name = 'アクアベール', wait = 5, pf = '/ma', t = '<me>'},
+            [17] = {name = 'リフレシュ', wait = 5, pf = '/ma', t = '<p1>'},
         },
         
         overwirte = {
-            [1] = {name = 'ナイチンゲール', wait = 2.5, pf = '/ja', t = '<me>'},
-            [2] = {name = 'トルバドゥール', wait = 2.5, pf = '/ja', t = '<me>'},
+            [1] = {name = 'ナイチンゲール', wait = 3, pf = '/ja', t = '<me>'},
+            [2] = {name = 'トルバドゥール', wait = 3, pf = '/ja', t = '<me>'},
             [3] = {name = '無敵の進撃マーチ', wait = 5, pf = '/ma', t = '<me>'},
             [4] = {name = '栄光の凱旋マーチ', wait = 5, pf = '/ma', t = '<me>'},
             [5] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
@@ -354,6 +356,8 @@ local cp_song = {
             [12] = {name = '魔道士のバラードIII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
             [13] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
             [14] = {name = '魔道士のバラードII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
+            [15] = {name = 'アクアベール', wait = 5, pf = '/ma', t = '<me>'},
+            [16] = {name = 'リフレシュ', wait = 5, pf = '/ma', t = '<p1>'},
         },
     },
     sp = {

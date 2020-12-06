@@ -138,7 +138,7 @@ function get_sets()
         left_ear="ノーヴィオピアス",
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
@@ -283,7 +283,7 @@ function get_sets()
     }
     
     sets.midcast.elemental = {
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＦＬバーゴネット+3", augments={'Enhances "Dark Seal" effect',}},
         body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},
         hands={ name="ＦＬガントレット+3", augments={'Enhances "Diabolic Eye" effect',}},
@@ -294,7 +294,7 @@ function get_sets()
         left_ear="ノーヴィオピアス",
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     

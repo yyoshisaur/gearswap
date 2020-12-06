@@ -28,6 +28,8 @@ function user_setup()
         {label='Weapon', mode='Weapons'},
         {label='Combat', mode='CombatForm'}}
     init_job_states(bool_state, mode_state)
+    select_default_macro_book()
+    mogmaster('drk')
 end
 
 function binds_on_load()
@@ -188,7 +190,7 @@ function init_gear_sets()
         left_ear="ノーヴィオピアス",
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
@@ -285,7 +287,7 @@ function init_gear_sets()
     sets.precast.WS['アップヒーバル'].Acc = set_combine(sets.precast.WS, sets.precast.WS.acc)
 
     sets.precast.WS.dmglim = {head={ name="スティンガヘルム+1", augments={'Path: A',}},}
-    sets.precast.WS.DmgLim = set_combine(sets.precast.WS, sets.precast.dmglim)
+    sets.precast.WS.DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     -- 両手剣
     sets.precast.WS['トアクリーバー'].DmgLim = set_combine(sets.precast.WS.vit, sets.precast.WS.dmglim)
     sets.precast.WS['レゾルーション'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
@@ -374,7 +376,7 @@ function init_gear_sets()
         left_ear="ノーヴィオピアス",
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
@@ -578,4 +580,12 @@ end
 function job_update(cmdParams, eventArgs)
     update_combat_form()
     if state.DisplayMode.value then update_job_states() end
+end
+
+function select_default_macro_book()
+    set_macro_page(10, 16)
+end
+
+function mogmaster(job)
+    send_command('input /si '..job..';')
 end

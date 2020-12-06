@@ -92,7 +92,7 @@ function get_sets()
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="エテオレートピアス",
         left_ring="メフィタスリング+1",
-        right_ring="メフィタスリング",
+        right_ring="サンゴマリング",
         back="フィフォレケープ+1",
     }
 
