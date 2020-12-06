@@ -1,3 +1,10 @@
+include('spell_catcher')
+
+spell_catcher_detect_spell.phalanx_2.begin_cmd = 'gs c phalanx_equipment'
+spell_catcher_detect_spell.phalanx_2.finish_cmd = 'wait 0.5;gs c update_equipment'
+spell_catcher_detect_spell_accession.phalanx.begin_cmd = 'gs c phalanx_equipment'
+spell_catcher_detect_spell_accession.phalanx.finish_cmd = 'wait 0.5;gs c update_equipment'
+
 local function get_fc_rate(equip_set)
     local equip_fc = 0
     for i,v in pairs(equip_set) do

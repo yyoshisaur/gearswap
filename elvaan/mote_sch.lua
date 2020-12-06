@@ -136,6 +136,16 @@ function init_gear_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
+    sets.precast.FC.Phalanx = {
+        head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
+        body="ピンガチュニック+1",
+        hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
+        legs="ピンガズボン+1",
+        feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
+        waist="エンブラサッシュ",
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
     sets.precast.FC['震天動地の章'] = {
         main="マリグナスポール",
         sub="コーンスー",
