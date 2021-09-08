@@ -82,7 +82,7 @@ function get_sets()
 
     sets.precast.ws.critical = {
         head={ name="ブリスタサリット+1", augments={'Path: A',}},
-        body="アブノーバカフタン",
+        body="ヘヨカハーネス+1",
         hands={ name="龍王手甲改", augments={'STR+12','DEX+12','Accuracy+20',}},
         legs="ヘヨカサブリガ+1",
         feet="ヘヨカレギンス+1",

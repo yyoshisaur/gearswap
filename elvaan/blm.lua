@@ -14,7 +14,7 @@ function get_sets()
         legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
         feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
         neck="ボルトサージトルク",
-        waist="チャネラーストーン",
+        waist="エンブラサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ロケイシャスピアス",
         left_ring="キシャールリング",
@@ -32,16 +32,16 @@ function get_sets()
     sets.precast.ws.mp = {
         ammo="プシロメン",
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}},
-        body={ name="ウェーザーローブ+1", augments={'MP+120',}},
+        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="オトミグローブ", augments={'HP+30','MP+30','MP+30',}},
-        legs={ name="サイクロスラッパ", augments={'MP+80','Mag. Acc.+15','"Fast Cast"+7',}},
-        feet={ name="サイクロスブーツ", augments={'MP+50','INT+7','"Conserve MP"+6',}},
+        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="デュアルカラー+1",
         waist="神術帯+1",
         left_ear="エテオレートピアス",
         right_ear="アンドアーピアス",
         left_ring="メフィタスリング+1",
-        right_ring="メフィタスリング",
+        right_ring="サンゴマリング",
         back="フィフォレケープ+1",
     }
 
@@ -50,17 +50,30 @@ function get_sets()
     sets.midcast.elemental = {
         ammo="ペムフレドタスラム",
         head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
-        body="ＳＰコート+2",
+        body="ＳＰコート+3",
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+5','"Mag.Atk.Bns."+14',}},
-        feet="ジャリピガッシュ+2",
+        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','"Occult Acumen"+10','INT+15','Mag. Acc.+9','"Mag.Atk.Bns."+13',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="水影の首飾り",
-        waist="エスカンストーン",
+        waist="サクロコード",
         left_ear="バーカロルピアス",
         right_ear="怯懦の耳",
-        left_ring="女王の指輪+1",
+        left_ring="フレキリング",
         right_ring="女王の指輪+1",
-        back="アピトマント+1",
+        -- back="アピトマント+1",
+        -- ammo="ペムフレドタスラム",
+        -- head={ name="マーリンフード", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','INT+7','Mag. Acc.+8','"Mag.Atk.Bns."+11',}},
+        -- body="ＳＰコート+3",
+        -- hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        -- legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+9%','INT+13','"Mag.Atk.Bns."+1',}},
+        -- feet="ジャリピガッシュ+2",
+        -- neck="水影の首飾り",
+        -- waist="山吹の帯",
+        -- left_ear="バーカロルピアス",
+        -- right_ear="電界の耳",
+        -- left_ring="女王の指輪+1",
+        -- right_ring="女王の指輪+1",
+        -- back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
     sets.midcast.enhance_duration = {
@@ -80,12 +93,12 @@ function get_sets()
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="ロリケートトルク+1",
-        waist="スリポーサッシュ",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="驕慢の耳",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
-        back="アピトマント+1",
+        back={ name="タラナスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
     -- マクロのブック, セット変更
@@ -128,7 +141,7 @@ function midcast(spell)
             set_equip = sets.midcast.enhance_duration
         end
     elseif spell.skill == '弱体魔法' or spell.skill == '暗黒魔法' then
-        set_equip = sets.midcast.elementa
+        set_equip = sets.midcast.elemental
     elseif spell.skill == '精霊魔法' then
         set_equip = sets.midcast.elemental
     end

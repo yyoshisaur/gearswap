@@ -322,42 +322,37 @@ local overwirte_song_cmd = ''
 local cp_song = {
     no_sp = {
         start = {
-            [1] = {name = 'ナイチンゲール', wait = 3, pf = '/ja', t = '<me>'},
-            [2] = {name = 'トルバドゥール', wait = 3, pf = '/ja', t = '<me>'},
-            [3] = {name = '無敵の進撃マーチ', wait = 5, pf = '/ma', t = '<me>'},
-            [4] = {name = '栄光の凱旋マーチ', wait = 5, pf = '/ma', t = '<me>'},
-            [5] = {name = '戦士達のピーアン', wait = 5, pf = '/ma', t = '<me>'},
-            [6] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
-            [7] = {name = '剣豪のマドリガル', wait = 5, pf = '/ma', t = '<me>'},
-            [8] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [9] = {name = '魔道士のバラードIII', wait = 5, pf = '/ma', t = 'Kupipi'},
-            [10] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [11] = {name = '魔道士のバラードII', wait = 5, pf = '/ma', t = 'Kupipi'},
-            [12] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [13] = {name = '魔道士のバラードIII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
-            [14] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [15] = {name = '魔道士のバラードII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
-            [16] = {name = 'アクアベール', wait = 5, pf = '/ma', t = '<me>'},
-            [17] = {name = 'リフレシュ', wait = 5, pf = '/ma', t = '<p1>'},
+            [1] = {name = '無敵の進撃マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [2] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [3] = {name = '戦士達のピーアン', wait = 5.5, pf = '/ma', t = '<me>'},
+            [4] = {name = '剣豪のマドリガル', wait = 5.5, pf = '/ma', t = '<me>'},
+            [5] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [6] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Kupipi'},
+            [7] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [8] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Kupipi'},
+            [9] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [10] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Koru-Moru'},
+            [11] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [12] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Koru-Moru'},
+            [13] = {name = 'アクアベール', wait = 5.5, pf = '/ma', t = '<me>'},
+            [14] = {name = 'リフレシュ', wait = 5.5, pf = '/ma', t = '<p1>'},
         },
         
         overwirte = {
-            [1] = {name = 'ナイチンゲール', wait = 3, pf = '/ja', t = '<me>'},
-            [2] = {name = 'トルバドゥール', wait = 3, pf = '/ja', t = '<me>'},
-            [3] = {name = '無敵の進撃マーチ', wait = 5, pf = '/ma', t = '<me>'},
-            [4] = {name = '栄光の凱旋マーチ', wait = 5, pf = '/ma', t = '<me>'},
-            [5] = {name = 'マルカート', wait = 2.5, pf = '/ja', t = '<me>'},
-            [6] = {name = '剣豪のマドリガル', wait = 5, pf = '/ma', t = '<me>'},
+            [1] = {name = '無敵の進撃マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [2] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [3] = {name = '戦士達のピーアン', wait = 5.5, pf = '/ma', t = '<me>'},
+            [4] = {name = '剣豪のマドリガル', wait = 5.5, pf = '/ma', t = '<me>'},
+            [5] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [6] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Kupipi'},
             [7] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [8] = {name = '魔道士のバラードIII', wait = 5, pf = '/ma', t = 'Kupipi'},
+            [8] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Kupipi'},
             [9] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [10] = {name = '魔道士のバラードII', wait = 5, pf = '/ma', t = 'Kupipi'},
+            [10] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Koru-Moru'},
             [11] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [12] = {name = '魔道士のバラードIII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
-            [13] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [14] = {name = '魔道士のバラードII', wait = 5, pf = '/ma', t = 'Koru-Moru'},
-            [15] = {name = 'アクアベール', wait = 5, pf = '/ma', t = '<me>'},
-            [16] = {name = 'リフレシュ', wait = 5, pf = '/ma', t = '<p1>'},
+            [12] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Koru-Moru'},
+            [13] = {name = 'アクアベール', wait = 5.5, pf = '/ma', t = '<me>'},
+            [14] = {name = 'リフレシュ', wait = 5.5, pf = '/ma', t = '<p1>'},
         },
     },
     sp = {
@@ -401,7 +396,29 @@ local cp_song = {
             [15] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
             [16] = {name = '魔道士のバラードII', wait = 4, pf = '/ma', t = 'Koru-Moru'},
         },
-    }
+    },
+    amb = {
+        start = {
+            [1] = {name = '無敵の進撃マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [2] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [3] = {name = '戦士達のピーアン', wait = 5.5, pf = '/ma', t = '<me>'},
+            [4] = {name = '剣豪のマドリガル', wait = 5.5, pf = '/ma', t = '<me>'},
+            [5] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [6] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+            [7] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [8] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+        },
+        overwirte = {
+            [1] = {name = '無敵の進撃マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [2] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [3] = {name = '戦士達のピーアン', wait = 5.5, pf = '/ma', t = '<me>'},
+            [4] = {name = '剣豪のマドリガル', wait = 5.5, pf = '/ma', t = '<me>'},
+            [5] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [6] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+            [7] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
+            [8] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+        },
+    },
 }
 
 function self_command(command)
@@ -430,26 +447,30 @@ function self_command(command)
     elseif cmd[1] == 'autosong' then
         if cmd[2] == 'off' then
             auto_song = false
+            overwirte_song_cmd = ''
         elseif cmd[2] == 'on' then
+            local start_song
+            local overwirte_song
+
             if cmd[3] == 'sp' then
-                local song_cmd = ''
-                for i,v in ipairs(cp_song.sp.start) do
-                    song_cmd = song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
-                end
-                for i,v in ipairs(cp_song.sp.overwirte) do
-                    overwirte_song_cmd = overwirte_song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
-                end
-                send_command(song_cmd)
+                start_song = cp_song.sp.start
+                overwirte_song = cp_song.sp.overwirte
+            elseif cmd[3] == 'amb' then
+                start_song = cp_song.amb.start
+                overwirte_song = cp_song.amb.overwirte
             else
-                local song_cmd = ''
-                for i,v in ipairs(cp_song.no_sp.start) do
-                    song_cmd = song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
-                end
-                for i,v in ipairs(cp_song.no_sp.overwirte) do
-                    overwirte_song_cmd = overwirte_song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
-                end
-                send_command(song_cmd)
+                start_song = cp_song.no_sp.start
+                overwirte_song = cp_song.no_sp.overwirte
             end
+
+            local song_cmd = ''
+            for i,v in ipairs(start_song) do
+                song_cmd = song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
+            end
+            for i,v in ipairs(overwirte_song) do
+                overwirte_song_cmd = overwirte_song_cmd..'input '..v.pf..' '..windower.to_shift_jis(v.name)..' '..v.t..'; wait '..v.wait..';'
+            end
+            send_command(song_cmd)
             update_time = os.clock()
             auto_song = true
         end
@@ -466,6 +487,11 @@ windower.register_event('time change', function(new, old)
             windower.add_to_chat(122,'---> UPDATE SONGS')
         end
     end
+end)
+
+windower.register_event('zone change', function()
+    auto_song = false
+    overwirte_song_cmd = ''
 end)
 
 function get_song_gear(spell)

@@ -137,11 +137,11 @@ function init_gear_sets()
     }
 
     sets.precast.FC.Phalanx = {
-        head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
-        body="ピンガチュニック+1",
+        -- head={ name="マーリンフード", augments={'"Fast Cast"+7','INT+8','Mag. Acc.+15',}},
+        -- body="ピンガチュニック+1",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs="ピンガズボン+1",
-        feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
+        -- legs="ピンガズボン+1",
+        -- feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
         waist="エンブラサッシュ",
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -540,7 +540,7 @@ function init_gear_sets()
         sub="メンシストラップ+1",
         ammo="ホミリアリ",
         head="ヴォルトキャップ",
-        body="ＡＣガウン+3",
+        body="シャマシュローブ",
         hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
         legs="ピンガズボン+1",
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
@@ -574,7 +574,7 @@ function init_gear_sets()
     sets.idle.Refresh = set_combine(sets.idle, {
         ammo="ホミリアリ",
         head="ビファウルクラウン",
-        body="ＡＣガウン+3",
+        body="シャマシュローブ",
         hands={ name="マーリンダスタナ", augments={'Pet: Haste+2','AGI+1','"Refresh"+2','Accuracy+16 Attack+16',}},
         legs="アシドゥイズボン+1",
         feet={ name="マーリンクラッコー", augments={'INT+3','Pet: Crit.hit rate +1','"Refresh"+2','Accuracy+20 Attack+20',}},

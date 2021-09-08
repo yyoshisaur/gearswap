@@ -10,6 +10,7 @@ function job_setup()
     state.Buff['だまし討ち'] = buffactive['だまし討ち'] or false
     state.Buff['フェイント'] = buffactive['フェイント'] or false
 
+    include('Mote-TreasureHunter')
     include('Mote-Display')
 end
 
@@ -39,7 +40,7 @@ function binds_on_load()
     -- send_command('bind f3 gs c cycle CastingMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
-    -- send_command('bind ^f4 gs c cycle TreasureMode')
+    send_command('bind ^f4 gs c cycle TreasureMode')
 
     -- send_command('bind !f4 gs c reset DefenseMode')
     -- send_command('bind f2 gs c set DefenseMode Physical')

@@ -621,7 +621,7 @@ function init_gear_sets()
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
-    sets.idle.Refresh = set_combine(sets.idle, {body="ＡＴタバード+3",})
+    sets.idle.Refresh = set_combine(sets.idle, {body="シャマシュローブ",})
 
     sets.engaged = {
         range=empty,

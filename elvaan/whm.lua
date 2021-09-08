@@ -209,9 +209,9 @@ function get_sets()
         main="ボレラブンガ",
         sub="玄冥盾",
         ammo="ホミリアリ",
-        head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
-        body="ＰＩブリオー+3",
-        hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
+        head="インヤガティアラ+2",
+        body="シャマシュローブ",
+        hands="インヤガダスタナ+2",
         legs="インヤガシャルワ+2",
         feet="インヤガクラッコ+2",
         neck="ロリケートトルク+1",
@@ -257,6 +257,9 @@ function precast(spell)
     elseif sets.sa_na:contains(spell.name) then
         if spell.name == 'カーズナ' and is_doom == true then
             set_equip = sets.precast.doom
+            if S{'忍','踊'}:contains(player.sub_job) then
+                set_equip = set_combine(sets.precast.doom, {main="ヤグルシュ", sub="ガンバンテイン"})
+            end
             is_doom = false
         else
             if buffactive['女神の愛撫'] then
