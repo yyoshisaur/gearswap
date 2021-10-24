@@ -27,6 +27,7 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
     include('weather_obi')
+    include('lockstyle')
 end
 
 function user_setup()
@@ -279,8 +280,8 @@ function init_gear_sets()
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe"},
-        right_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -686,7 +687,7 @@ function init_gear_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="素破の耳",
-        left_ring={name="スティキニリング+1", bag="Wardrobe"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
@@ -703,12 +704,32 @@ function init_gear_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
 
     sets.engaged.EnSpell = sets.melee_enspell
+
+    sets.lockstyle = {
+        main = 'クロセアモース',
+        sub = 'リフキンガード',
+        head = {name='アートシクハット'},
+        body = 'テセラサイオ',
+        hands = 'コンポーザーミトン',
+        legs = 'ＧＯパンツ+3',
+        feet = 'ＡＢローファー+1',
+    }
+
+    sets.lockstyle_DW = {
+        main = 'クロセアモース',
+        sub = 'ロスタム',
+        head = {name='アートシクハット'},
+        body = 'テセラサイオ',
+        hands = 'コンポーザーミトン',
+        legs = 'ＧＯパンツ+3',
+        feet = 'ＡＢローファー+1',
+    }
 
     set_weapons_by_sub_job(player.sub_job)
 end
@@ -801,6 +822,8 @@ function set_weapons_by_sub_job(subJob)
     sets.midcast.Phalanx_Self = sets.midcast['phalanx_self'..sub_job_suffix]
 
     if state.DisplayMode.value then update_job_states() end
+
+    lockstyle(sets['lockstyle'..sub_job_suffix], sub_job_suffix)
 end
 
 function job_sub_job_change(newSubjob, oldSubjob)

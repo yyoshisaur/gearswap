@@ -195,8 +195,8 @@ function get_sets()
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe"},
-        right_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +9','Enha.mag. skill +10','Mag. Acc.+9','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -497,7 +497,7 @@ function get_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="素破の耳",
-        left_ring={name="スティキニリング+1", bag="Wardrobe"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
@@ -514,7 +514,7 @@ function get_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
