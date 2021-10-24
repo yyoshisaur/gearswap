@@ -17,7 +17,7 @@ function get_sets()
         hands={ name="ＳＶハントシュ+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=239,},
         legs={ name="ＳＶディヒリン+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=162,},
         feet={ name="ＳＶシュー+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=227,},
-        neck="月明の首飾り",
+        neck="月光の首飾り",
         waist={ name="クリードボードリエ", hp=40,},
         left_ear={ name="クリプティクピアス", hp=40,},
         right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},

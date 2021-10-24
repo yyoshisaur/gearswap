@@ -84,6 +84,22 @@ function get_sets()
         back={ name="カンペストレケープ", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Mag. Acc+20 /Mag. Dmg.+20','Pet: Magic Damage+10','"Mag.Atk.Bns."+10',}},
     }
 
+    sets.midcast.bp_hybrid = {
+        ammo="サンカスサシェ+1",
+        head={ name="ＡＰクラウン+1", augments={'Pet: Attack+25','Pet: "Mag.Atk.Bns."+25','Blood Pact Dmg.+8',}, hp=-110, mp=59,},
+        body={ name="ＣＮダブレット+3", hp=85, mp=211,},
+        hands={ name="マーリンダスタナ", augments={'Pet: Mag. Acc.+12 Pet: "Mag.Atk.Bns."+12','Blood Pact Dmg.+10','Pet: Mag. Acc.+9',}, hp=9, mp=20,},
+        legs={ name="ＡＰズボン+1", augments={'Pet: STR+20','Blood Pact Dmg.+14','Pet: "Dbl. Atk."+4',}, hp=-110, mp=56,},
+        feet={ name="ＣＮピガッシュ+3", hp=23, mp=71,},
+        neck={ name="召喚士の首輪+2", hp=50,},
+        waist={ name="王将の帯", hp=88,},
+        left_ear={ name="ゲロスピアス", mp=35,},
+        right_ear="ルガルバンダピアス",
+        left_ring="ヴァラールリング+1",
+        right_ring="ヴァラールリング+1",
+        back={ name="カンペストレケープ", augments={'Pet: M.Acc.+20 Pet: M.Dmg.+20','Mag. Acc+20 /Mag. Dmg.+20','Pet: Magic Damage+10','"Mag.Atk.Bns."+10',}},
+    }
+
     sets.midcast.cure = {
         head={ name="ヴァニヤフード", augments={'MP+50','"Fast Cast"+10','Haste+2%',}, hp=36, mp=82},
         body={ name="ヴリコダラジュポン", hp=54, mp=59},
@@ -241,7 +257,7 @@ function pet_midcast(spell)
         if bp_physical:contains(spell.name) then
             set_equip = sets.midcast.bp_physical
         elseif bp_hybrid:contains(spell.name) then
-            set_equip = sets.midcast.bp_physical
+            set_equip = sets.midcast.bp_hybrid
         elseif bp_magical:contains(spell.name) then
             set_equip = sets.midcast.bp_magical
         elseif bp_debuff:contains(spell.name) then

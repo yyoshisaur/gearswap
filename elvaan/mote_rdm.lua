@@ -279,7 +279,7 @@ function init_gear_sets()
         waist="オリンポスサッシュ",
         left_ear="アンドアーピアス",
         right_ear="ミミルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe 1"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe"},
         right_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
@@ -686,7 +686,7 @@ function init_gear_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="素破の耳",
-        left_ring={name="スティキニリング+1", bag="Wardrobe 1"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
@@ -703,7 +703,7 @@ function init_gear_sets()
         waist="オルペウスサッシュ",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe 1"},
+        left_ring={name="スティキニリング+1", bag="Wardrobe"},
         right_ring="ヘタイロイリング",
         back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dual Wield"+10','Phys. dmg. taken-10%',}},
     }
@@ -797,6 +797,7 @@ function set_weapons_by_sub_job(subJob)
     set_equip_weapon(sets.midcast['暗黒魔法'], sets.weapons['Enfeeble_Acc'..sub_job_suffix])
     set_equip_weapon(sets.midcast['ディスペガ'], sets.weapons['Enfeeble_dispelga'..sub_job_suffix])
     set_equip_weapon(sets.midcast['インパクト'], sets.weapons['Enfeeble_Acc'..sub_job_suffix])
+    set_equip_weapon(sets.midcast['弱体魔法'].Saboteur, sets.weapons['Enfeeble_MND'..sub_job_suffix])
     sets.midcast.Phalanx_Self = sets.midcast['phalanx_self'..sub_job_suffix]
 
     if state.DisplayMode.value then update_job_states() end

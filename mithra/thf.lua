@@ -105,7 +105,7 @@ function get_sets()
         neck="サンクトネックレス",
         waist="エスカンストーン",
         left_ear="ディグニタリピアス",
-        right_ear="レンポイヤリング",
+        right_ear="昏黄の耳飾り",
         left_ring="ムンムリング",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back="サクロマント",

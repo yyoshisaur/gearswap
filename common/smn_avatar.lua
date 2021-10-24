@@ -503,7 +503,7 @@ function spirit_command()
 end
 
 local texts = require('texts')
-bp_box = texts.new('${name}\n${hpp}%\n神獣の加護: ${favor_state}\n契約の履行:\n${pact}',{text={font='ＭＳ ゴシック', size=10}, pos={x=760, y=550}, padding = 5, bg={alpha=180}})
+bp_box = texts.new('${name}\n${hpp}%\n神獣の加護: ${favor_state}\n契約の履行:\n${pact}',{text={font='ＭＳ ゴシック', size=6}, pos={x=760, y=550}, padding = 5, bg={alpha=180}})
 bp_box:show()
 
 function bp_update()

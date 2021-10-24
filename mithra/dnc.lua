@@ -102,7 +102,7 @@ function get_sets()
         feet="マリグナスブーツ",
         neck="エトワールゴルゲ+2",
         waist="エスカンストーン",
-        left_ear="レンポイヤリング",
+        left_ear="昏黄の耳飾り",
         right_ear="ディグニタリピアス",
         left_ring="守りの指輪",
         right_ring="ムンムリング",

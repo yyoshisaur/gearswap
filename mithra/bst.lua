@@ -116,16 +116,20 @@ function get_sets()
     sets.aftercast.melee = {
         ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
-        body="マリグナスタバード",
+        -- body="マリグナスタバード",
+        body="サクロブレスト",
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="アヌートルク",
+        -- neck="アヌートルク",
+        neck={ name="バーシチョーカー+1", augments={'Path: A',}},
         waist="霊亀腰帯",
         left_ear="シェリダピアス",
         right_ear="エアバニピアス",
-        left_ring="エポナリング",
-        right_ring="ゲリリング",
+        left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
+        right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
+        -- left_ring="エポナリング",
+        -- right_ring="ゲリリング",
         back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
@@ -201,7 +205,7 @@ function pet_midcast(spell)
     -- windower.add_to_chat(122,'spell.name: '..spell.name)
     local set_equip = nil
     if spell.type == 'MonsterSkill' then
-        set_equip = sets.midcast.pet_atk
+        set_equip = sets.midcast.pet_acc
     end
 
     if set_equip then
@@ -239,7 +243,7 @@ end
 function self_command(command)
     if command == 'petfood' then
         itemizer_get_petfood()
-        send_command(windower.to_shift_jis('wait 1; gs c petfoodequip; wait 1; input /ja いたわる <me>'))
+        send_command(windower.to_shift_jis('wait 2;gs c petfoodequip; wait 2; input /ja いたわる <me>'))
     elseif command == 'petfoodequip' then
         equip({ammo="ペットシータ"})
     elseif command == 'getpet' then

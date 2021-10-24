@@ -185,6 +185,7 @@ function get_sets()
     }
 
     sets.midcast.roll = {
+        main={ name="ロスタム", augments={'Path: C',}},
         range="コンペンセーター",
         head={ name="ＬＡトリコルヌ+1", augments={'Enhances "Winning Streak" effect',}},
         hands="ＣＳガントリー+1",

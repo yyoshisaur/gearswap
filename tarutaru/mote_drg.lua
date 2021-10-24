@@ -155,6 +155,7 @@ function init_gear_sets()
     sets.precast.WS['カムラン'] = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",})
     sets.precast.WS['スターダイバー'] = sets.precast.WS
 
+    sets.precast.WS['シェルクラッシャー'] = sets.precast.WS.magic_acc
     sets.precast.WS['フルスイング'] = sets.precast.WS.wsd
     sets.precast.WS['レトリビューション'] = sets.precast.WS.wsd
     sets.precast.WS['シャッターソウル'] = sets.precast.WS
@@ -176,6 +177,7 @@ function init_gear_sets()
     sets.precast.WS['カムラン'].DmgLim = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",}, sets.precast.WS.dmglim)
     sets.precast.WS['スターダイバー'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
 
+    sets.precast.WS['シェルクラッシャー'].DmgLim = sets.precast.WS.magic_acc
     sets.precast.WS['フルスイング'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
     sets.precast.WS['レトリビューション'].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
     sets.precast.WS['シャッターソウル'].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)

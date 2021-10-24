@@ -23,6 +23,7 @@ function user_setup()
     state.PetMode = M{['description']='Pet Mode', 'None', 'Tank', 'Melee', 'Ranged', 'Magic', 'Heal', 'Nuke',}
     state.PetSubMode = M{['desctiption']='Pet Sub Mode'}
     state.PetTankMode = M{['desctiption']='Pet Sub Mode', 'Enmity', 'HPDT', 'HP', 'DT'}
+    state.PetMeleeMode = M{['desctiption']='Pet Sub Mode', 'Multi', 'Stp'}
     state.ManeuverMode = M{['description']='Maneuver Mode', 'Mid', 'Low', 'High', 'Status'}
     state.Weapons = M{['description']='Use Weapons', 'Kenkonken', 'Xiucoatl', 'Gnafron', 'Verethragna', 'Karambit',}
     state.Animator = M{['description']='Use Animator', 'I', 'II'}
@@ -170,25 +171,25 @@ function init_gear_sets()
         body="ＫＧファルセト+1",
         hands="ＦＯダスタナ+3",
         neck="バフーンカラー+1",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
     }
     sets.precast.JA.Maneuver.Mid = sets.precast.JA.Maneuver
     sets.precast.JA.Maneuver.Low = {
         neck="バフーンカラー+1",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
     }
     sets.precast.JA.Maneuver.High = {
         main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         body="ＫＧファルセト+1",
         hands="ＦＯダスタナ+3",
         neck="バフーンカラー+1",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
     }
     sets.precast.JA.Maneuver.Status = {
         main={ name="ミッドナイト", augments={'Pet: Attack+25','Pet: Accuracy+25','Pet: Damage taken -3%',}},
         hands="ＦＯダスタナ+3",
         left_ear="ブラーナピアス",
-        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: "Regen"+10','System: 1 ID: 1247 Val: 4',}},
+        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
     }
 
     sets.precast.JA['リペアー'] = {
@@ -262,7 +263,7 @@ function init_gear_sets()
         feet="マリグナスブーツ",
         neck="絡繰士の首輪+2",
         waist="月虹帯+1",
-        left_ear="セサンスピアス",
+        left_ear="昏黄の耳飾り",
         right_ear="デディションピアス",
         left_ring="シーリチリング+1",
         right_ring="シーリチリング+1",
@@ -392,7 +393,8 @@ function init_gear_sets()
     }
 
     sets.idle.Pet.Melee = sets.idle.Pet
-    sets.idle.Pet.Engaged.Melee =  {
+    sets.idle.Pet.Engaged.Melee = {}
+    sets.idle.Pet.Engaged.Melee.Multi =  {
         head={ name="テーオンシャポー", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         body={ name="ＰＩトベ+3", augments={'Enhances "Overdrive" effect',}},
         hands={ name="テーオングローブ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
@@ -402,8 +404,24 @@ function init_gear_sets()
         waist="クルスカサッシュ+1",
         left_ear="ライムアイスピアス",
         right_ear="エンメルカルピアス",
-        left_ring="パルーグリング",
-        right_ring="ヴァラールリング+1",
+        left_ring="ヴァラールリング+1",
+        right_ring="パルーグリング",
+        back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
+    }
+
+    sets.idle.Pet.Engaged.Melee.Stp =  {
+        head={ name="ヘルクリアヘルム", augments={'Pet: Accuracy+21 Pet: Rng. Acc.+21','Pet: "Store TP"+11','Pet: DEX+3','Pet: Attack+7 Pet: Rng.Atk.+7',}},
+        body={ name="ＰＩトベ+3", augments={'Enhances "Overdrive" effect',}},
+        hands={ name="ヘルクリアグローブ", augments={'Pet: Accuracy+28 Pet: Rng. Acc.+28','Pet: "Store TP"+10','Pet: DEX+7','Pet: Attack+12 Pet: Rng.Atk.+12','Pet: "Mag.Atk.Bns."+4',}},
+        legs={ name="ヘルクリアトラウザ", augments={'Pet: Accuracy+26 Pet: Rng. Acc.+26','Pet: "Store TP"+10','Pet: DEX+10','Pet: "Mag.Atk.Bns."+1',}},
+        -- feet={ name="ヘルクリアブーツ", augments={'Pet: Attack+22 Pet: Rng.Atk.+22','Pet: "Store TP"+11','Pet: DEX+9',}},
+        feet={ name="テーオンブーツ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Haste+5',}},
+        neck="シュルマヌカラー",
+        waist="クルスカサッシュ+1",
+        left_ear="ライムアイスピアス",
+        right_ear="エンメルカルピアス",
+        left_ring="ヴァラールリング+1",
+        right_ring="パルーグリング",
         back={ name="ビスシアスマント", augments={'Pet: Acc.+20 Pet: R.Acc.+20 Pet: Atk.+20 Pet: R.Atk.+20','Accuracy+20 Attack+20','Pet: Accuracy+10 Pet: Rng. Acc.+10','Pet: Haste+10','System: 1 ID: 1247 Val: 4',}},
     }
 
@@ -472,6 +490,8 @@ function job_state_change(stateField, newValue, oldValue)
     if stateField == state.PetMode.description then
         if state.PetMode.value == 'Tank' then
             state.PetSubMode = state.PetTankMode
+        elseif state.PetMode.value == 'Melee' then
+            state.PetSubMode = state.PetMeleeMode
         else
             state.PetSubMode = M{['desctiption']='Pet Sub Mode'}
         end

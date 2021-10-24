@@ -6,9 +6,7 @@ function get_sets()
 end
 
 function job_setup()
-    state.Buff['不意打ち'] = buffactive['不意打ち'] or false
-    state.Buff['だまし討ち'] = buffactive['だまし討ち'] or false
-    state.Buff['フェイント'] = buffactive['フェイント'] or false
+    state.Buff['C.フラリッシュ'] = buffactive['C.フラリッシュ'] or false
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
@@ -16,9 +14,9 @@ end
 
 function user_setup()
     state.OffenseMode:options('Normal','DT')
-    state.HybridMode:options('Normal','TH')
+    state.HybridMode:options('Normal')
     state.WeaponskillMode:options('Normal', 'DmgLim')
-    state.Weapons = M{['description']='Use Weapons', 'Gandring', 'Twashtar', 'Tauret', 'Centovente'}
+    state.Weapons = M{['description']='Use Weapons', 'Twashtar', 'Tauret', 'Centovente'}
 
     bool_state = {}
     mode_state = {
@@ -29,7 +27,7 @@ function user_setup()
     }
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
-    mogmaster('thf')
+    mogmaster('dnc')
 end
 
 function binds_on_load()
@@ -71,13 +69,14 @@ end
 
 function init_gear_sets()
     sets.weapons = {}
-    sets.weapons.Gandring = { main={name="ガンドリング"}, sub={ name="トゥワシュトラ"}}
     sets.weapons.Twashtar = { main={name="トゥワシュトラ"}, sub={ name="ターニオンダガー+1"}}
     sets.weapons.Tauret = { main={name="トーレット"}, sub={ name="トゥワシュトラ"}}
     sets.weapons.Centovente = { main={name="トゥワシュトラ"}, sub={ name="セントヴェンテ"}}
 
     sets.TreasureHunter = {
-        hands={ name="ＰＤアムレット+3", augments={'Enhances "Perfect Dodge" effect',}},
+        head="白ララブキャップ+1",
+        legs={ name="ヘルクリアトラウザ", augments={'MND+10','"Rapid Shot"+3','"Treasure Hunter"+2',}},
+        waist="チャークベルト",
     }
 
     sets.precast.FC = {
@@ -92,79 +91,68 @@ function init_gear_sets()
         right_ring="プロリクスリング",
     }
 
-    sets.precast.RA = {
-        head={ name="テーオンシャポー", augments={'"Snapshot"+5','"Snapshot"+5',}},
-        body={ name="テーオンタバード", augments={'"Snapshot"+5','"Snapshot"+5',}},
-        hands={ name="テーオングローブ", augments={'"Snapshot"+5','"Snapshot"+5',}},
-        legs={ name="テーオンタイツ", augments={'"Snapshot"+5','"Snapshot"+5',}},
-        feet="メガナダジャンボ+2",
-        back={ name="トゥタティスケープ", augments={'"Snapshot"+10',}},
-    }
-
     sets.precast.WS = { -- Multi
         ammo="パルーグストーン",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        body="ＰＬベスト+3",
+        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        legs="ＰＬキュロット+3",
-        feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
-        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
+        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="マリグナスブーツ",
+        neck="エトワールゴルゲ+2",
         waist="フォシャベルト",
-        left_ear="シェリダピアス",
+        left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="ゲリリング",
-        right_ring="イラブラットリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+        left_ring="イラブラットリング",
+        right_ring="ゲリリング",
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.precast.WS.wsd = {
         ammo="パルーグストーン",
-        head="ＰＬボンネット+3",
-        body="ＰＬベスト+3",
-        hands="メガナダグローブ+2",
-        legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
-        -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="ＭＸバングル+3",
+        legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
-        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
+        neck="エトワールゴルゲ+2",
         waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="エパミノダスリング",
+        left_ring="王将の指輪",
         right_ring="イラブラットリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
-    sets.precast.WS.sata = {
-        ammo="イェットシーラ+1",
-        head="ＰＬボンネット+3",
-        body="ＰＬベスト+3",
-        hands="メガナダグローブ+2",
-        legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
-        -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
+    sets.precast.WS.cf = {
+        ammo="カリスフェザー",
+        head="ＭＣティアラ+1",
+        body="メガナダクウィリ+2",
+        hands="ＭＸバングル+3",
+        legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
-        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
+        neck="エトワールゴルゲ+2",
         waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="エパミノダスリング",
+        left_ring="王将の指輪",
         right_ring="イラブラットリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
     sets.precast.WS.critical = {
-        ammo="イェットシーラ+1",
+        ammo="カリスフェザー",
         head={ name="ブリスタサリット+1", augments={'Path: A',}},
-        body="ＰＬベスト+3",
+        body="ムンムジャケット+2",
         hands="ムンムリスト+2",
-        legs="ＰＬキュロット+3",
+        legs="ムンムケックス+2",
         feet="ムンムゲマッシュ+2",
-        neck="フォシャゴルゲット",
+        neck="エトワールゴルゲ+2",
         waist="フォシャベルト",
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ムンムリング",
         right_ring="イラブラットリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
     }
     
     sets.precast.WS['ワスプスティング'] = sets.precast.WS.wsd
@@ -181,33 +169,64 @@ function init_gear_sets()
     sets.precast.WS['エヴィサレーション'] = sets.precast.WS.critical
     sets.precast.WS['エクゼンテレター'] = sets.precast.WS
     sets.precast.WS['ルドラストーム'] = sets.precast.WS.wsd
-    sets.precast.WS['マンダリクスタッブ'] = sets.precast.WS.wsd
     
-    sets.precast.WS['ワスプスティング'].SATA = sets.precast.WS.sata
-    sets.precast.WS['バイパーバイト'].SATA = sets.precast.WS.sata
-    sets.precast.WS['シャークバイト'].SATA = sets.precast.WS.sata
-    sets.precast.WS['ルドラストーム'].SATA = sets.precast.WS.sata
-    sets.precast.WS['マンダリクスタッブ'].SATA = sets.precast.WS.sata
+    sets.precast.WS['ワスプスティング'].CF = sets.precast.WS.cf
+    sets.precast.WS['バイパーバイト'].CF = sets.precast.WS.cf
+    sets.precast.WS['シャークバイト'].CF = sets.precast.WS.cf
+    sets.precast.WS['ルドラストーム'].CF = sets.precast.WS.cf
+    sets.precast.WS['エヴィサレーション'] = set_combine(sets.precast.WS.critical, {head="ＭＣティアラ+1", body="メガナダクウィリ+2",})
 
-    sets.precast.JA['絶対回避'] = {hands={ name="ＰＤアムレット+3", augments={'Enhances "Perfect Dodge" effect',}},}
-    sets.precast.JA['かくれる'] = {body="ＰＬベスト+3",}
-    sets.precast.JA['とんずら'] = {feet="ＰＬプーレーヌ+3",}
-    sets.precast.JA['フェイント'] = {legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},}
-
-    sets.midcast.RA = {
+    sets.precast.acc = {
+        ammo="ヤメラング",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
-        legs="マリグナスタイツ",
+        legs="ムンムケックス+2",
         feet="マリグナスブーツ",
-        neck="サンクトネックレス",
+        neck="エトワールゴルゲ+2",
         waist="エスカンストーン",
-        left_ear="ディグニタリピアス",
-        right_ear="昏黄の耳飾り",
-        left_ring="ムンムリング",
-        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        left_ear="昏黄の耳飾り",
+        right_ear="ディグニタリピアス",
+        left_ring="守りの指輪",
+        right_ring="ムンムリング",
         back="サクロマント",
     }
+    sets.precast.JA.Step = set_combine(sets.precast.acc, {feet={ name="ＨＯトーシュー+3", augments={'Enhances "Closed Position" effect',}},})
+    sets.precast.JA.Step['フェザーステップ'] = set_combine(sets.precast.acc, {feet="ＭＣトーシュー+1",})
+    sets.precast.JA.Waltz = {
+        ammo="ヤメラング",
+        head="ムンムボンネット+2",
+        body="ＭＸカザク+1",
+        feet="ＭＸトーシュー+3",
+        neck="エトワールゴルゲ+2",
+        right_ring="アスクレピアリング",
+        back={ name="トータッパーマント", augments={'"Store TP"+1','"Dual Wield"+4','"Rev. Flourish"+30','Weapon skill damage +4%',}},
+    }
+    sets.precast.JA.Waltz.Others = {
+        ammo="ヤメラング",
+        body="ＭＸカザク+1",
+        feet="ＭＸトーシュー+3",
+        neck="エトワールゴルゲ+2",
+        back={ name="トータッパーマント", augments={'"Store TP"+1','"Dual Wield"+4','"Rev. Flourish"+30','Weapon skill damage +4%',}},
+    }
+
+    sets.precast.JA.Jig = {legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}}, feet="ＭＸトーシュー+3",}
+    sets.precast.JA.Samba = {head="ＭＸティアラ+1", back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},}
+    sets.precast.JA['Flourish3'] = {
+        ['C.フラリッシュ'] = {head="ＭＣティアラ+1",}
+    }
+    sets.precast.JA['Flourish2'] = {
+        ['R.フラリッシュ'] = {hands="ＭＣバングル+1", back={ name="トータッパーマント", augments={'"Store TP"+1','"Dual Wield"+4','"Rev. Flourish"+30','Weapon skill damage +4%',}},}
+    }
+    sets.precast.JA['Flourish1'] = {
+        ['D.フラリッシュ'] = sets.precast.acc,
+        ['V.フラリッシュ'] = set_combine(sets.precast.acc, {body={ name="ＨＯカザク+3", augments={'Enhances "No Foot Rise" effect',}},})
+    }
+
+    sets.precast.JA['トランス'] = {}
+    sets.precast.JA['剣の舞い'] = {legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},}
+    sets.precast.JA['扇の舞い'] = {}
+    sets.precast.JA['ノーフットライズ'] = {body={ name="ＨＯカザク+3", augments={'Enhances "No Foot Rise" effect',}},}
 
     sets.idle = {
         ammo="ストンチタスラム+1",
@@ -216,57 +235,52 @@ function init_gear_sets()
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="ロリケートトルク+1",
-        waist="霊亀腰帯",
+        neck="エトワールゴルゲ+2",
+        waist="キャリアーサッシュ",
         left_ear="シェリダピアス",
         right_ear="デディションピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.engaged = {
         ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        body="ＰＬベスト+3",
+        body="マリグナスタバード",
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        legs="ＰＬキュロット+3",
-        feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
-        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
-        waist="霊亀腰帯",
+        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
+        feet="マリグナスブーツ",
+        neck="エトワールゴルゲ+2",
+        waist="ウィンバフベルト+1",
         left_ear="シェリダピアス",
         right_ear="デディションピアス",
-        left_ring="守りの指輪",
-        right_ring="ヘタイロイリング",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+        left_ring="シーリチリング+1",
+        right_ring="ゲリリング",
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
-    sets.engaged.TH = set_combine(sets.engaged, sets.TreasureHunter)
 
     sets.engaged.DT = {
-        ammo="オゲルミルオーブ+1",
+        ammo="ストンチタスラム+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck={ name="アサシンゴルゲ+2", augments={'Path: A',}},
-        waist="霊亀腰帯",
+        neck={ name="エトワールゴルゲ+2", augments={'Path: A',}},
+        waist="ウィンバフベルト+1",
         left_ear="シェリダピアス",
         right_ear="デディションピアス",
         left_ring="守りの指輪",
-        right_ring="シーリチリング+1",
-        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+        right_ring="ゲリリング",
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
-    sets.engaged.DT.TH = set_combine(sets.engaged.DT, sets.TreasureHunter)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
-    if state.HybridMode.value == 'TH' and string.find(spell.type, 'Magic') then
-        equip(sets.TreasureHunter)
-    end
 end
 
 function job_aftercast(spell, action, spellMap, eventArgs)
@@ -276,8 +290,8 @@ function job_post_aftercast(spell, action, spellMap, eventArgs)
 end
 
 function get_custom_wsmode(spell, spellMap, default_wsmode)
-    if state.Buff['不意打ち'] or state.Buff['だまし討ち'] then
-        return 'SATA'
+    if state.Buff['C.フラリッシュ'] then
+        return 'CF'
     end
 end
 
@@ -313,7 +327,7 @@ function job_update(cmdParams, eventArgs)
 end
 
 function select_default_macro_book()
-    set_macro_page(1, 4)
+    set_macro_page(1, 6)
 end
 
 function mogmaster(job)

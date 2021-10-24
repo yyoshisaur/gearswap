@@ -163,7 +163,7 @@ function init_gear_sets()
     }
     sets.precast.WS.ra_m = {
         ammo="ライヴブレット",
-        head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
+        head={ name="ヘルクリアヘルム", augments={'"Mag.Atk.Bns."+24','"Triple Atk."+2','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
         hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
         legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
@@ -268,7 +268,7 @@ function init_gear_sets()
 
     sets.precast.CorsairShot = {
         ammo="ホクスボクブレット",
-        head={ name="ヘルクリアヘルム", augments={'Mag. Acc.+18 "Mag.Atk.Bns."+18','"Fast Cast"+2','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+14',}},
+        head={ name="ヘルクリアヘルム", augments={'"Mag.Atk.Bns."+24','"Triple Atk."+2','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
@@ -458,7 +458,7 @@ function job_sub_job_change(newSubjob, oldSubjob)
 end
 
 function select_default_macro_book()
-    set_macro_page(1, 8)
+    set_macro_page(1, 14)
 end
 
 function define_roll_values()

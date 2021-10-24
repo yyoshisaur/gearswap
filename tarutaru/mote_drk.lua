@@ -15,7 +15,7 @@ function job_setup()
 end
 
 function user_setup()
-    state.OffenseMode:options('Normal', 'Stp')
+    state.OffenseMode:options('Normal', 'Stp', 'Gaol')
     state.HybridMode:options('Normal', 'DT')
     state.WeaponskillMode:options('Normal', 'Acc', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Caladbolg', 'Liberator', 'Anguta', 'Lycurgos'}
@@ -263,7 +263,7 @@ function init_gear_sets()
     sets.precast.WS['フルグレイク'] = sets.precast.WS.magic_acc
     sets.precast.WS['アップヒーバル'] = sets.precast.WS
 
-    sets.precast.WS.acc = {head='ＩＧバゴネット+3',}
+    sets.precast.WS.acc = {head='ＩＧバゴネット+3', left_ear="シェレピアス",}
     sets.precast.WS.Acc = set_combine(sets.precast.WS, sets.precast.WS.acc)
     -- 両手剣
     sets.precast.WS['トアクリーバー'].Acc = set_combine(sets.precast.WS.vit, sets.precast.WS.acc)
@@ -422,7 +422,7 @@ function init_gear_sets()
         body="サクロブレスト",
         hands="スレビアガントレ+2",
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet="ヴォルトソルレ",
+        feet="サクパタレギンス",
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear={ name="オノワイヤリング+1", augments={'Path: A',}},
@@ -523,6 +523,30 @@ function init_gear_sets()
     sets.engaged['ラストリゾート'].Stp.DT = set_combine(sets.engaged.Stp.DT, {
         ammo="オゲルミルオーブ+1",
         waist="ウィンバフベルト+1",
+    })
+
+    sets.engaged.Gaol = {
+        sub="コーンスー",
+        ammo={ name="シーズボムレット+1", augments={'Path: A',}},
+        head="フロプトヘルム",
+        body="フラマコラジン+2",
+        hands="サクパタガントレ",
+        legs="フラマディル+2",
+        feet="フラマガンビエラ+2",
+        neck={ name="暗黒の数珠+2", augments={'Path: A',}},
+        waist="イオスケハベルト+1",
+        left_ear="シェレピアス",
+        right_ear="昏黄の耳飾り",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
+    }
+
+    sets.engaged['ラストリゾート'].Gaol = set_combine(sets.engaged.Gaol, {
+        ammo="オゲルミルオーブ+1",
+        body="デーゴンブレスト",
+        feet={ name="ＦＬソルレット+3", augments={'Enhances "Desperate Blows" effect',}},
+        waist="サリサフロイベルト",
     })
 end
 

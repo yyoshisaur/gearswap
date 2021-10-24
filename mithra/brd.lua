@@ -54,9 +54,9 @@ function get_sets()
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
-    sets.precast.ability["ソウルボイス"] = {legs={ name="ＢＩキャニオンズ+1", augments={'Enhances "Soul Voice" effect',}},}
-    sets.precast.ability["ナイチンゲール"] = {feet={ name="ＢＩスリッパー+1", augments={'Enhances "Nightingale" effect',}},}
-    sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+1", augments={'Enhances "Troubadour" effect',}},}
+    sets.precast.ability["ソウルボイス"] = {legs={ name="ＢＩキャニオンズ+3", augments={'Enhances "Soul Voice" effect',}},}
+    sets.precast.ability["ナイチンゲール"] = {feet={ name="ＢＩスリッパー+3", augments={'Enhances "Nightingale" effect',}},}
+    sets.precast.ability["トルバドゥール"] = {body={ name="ＢＩジュストコル+3", augments={'Enhances "Troubadour" effect',}},}
 
     -- sets.midcast.song_duration = {
     --     main="カルンウェナン",
@@ -79,11 +79,11 @@ function get_sets()
         main={ name="カーリ", augments={'Mag. Acc.+15','String instrument skill +10','Wind instrument skill +10',}},
         sub="アムラピシールド",
         range="ギャッラルホルン",
-        head="ＢＲランドリト+2",
-        body="ＢＲジュスト+2",
-        hands="ＢＲカフス+2",
+        head="ＢＲランドリト+3",
+        body="ＢＲジュスト+3",
+        hands="ＢＲカフス+3",
         legs="ＦＬラングラヴ+1",
-        feet="ＢＲスリッパー+2",
+        feet="ＢＲスリッパー+3",
         neck="月虹の呼び子+1",
         waist="エスカンストーン",
         left_ear="王将の耳飾り",

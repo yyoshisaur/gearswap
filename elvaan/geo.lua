@@ -106,7 +106,7 @@ function get_sets()
         legs="ＧＯパンツ+3",
         feet={ name="ＢＡサンダル+3", augments={'Enhances "Radial Arcana" effect',}},
         neck="バグアチャーム+2",
-        waist="ルーミネリサッシュ",
+        waist="サクロコード",
         left_ear="マリグナスピアス",
         right_ear="王将の耳飾り",
         left_ring="キシャールリング",
@@ -191,6 +191,18 @@ function get_sets()
 
 end
 
+function pretarget(spell)
+    local set_equip = nil
+
+    if spell.name == 'ディスペガ' then
+        set_equip = {main="デイブレイクワンド"}
+    end
+
+    if set_equip then
+        equip(set_equip)
+    end
+end
+
 function precast(spell)
     local set_equip = nil
     -- windower.add_to_chat(123, spell.name)
@@ -221,6 +233,10 @@ function precast(spell)
         end
     end
     
+    if spell.name == 'ディスペガ' then
+        set_equip = set_combine(set_equip, {main="デイブレイクワンド"})
+    end
+
     if set_equip then
         equip(set_equip)
     end
@@ -256,6 +272,10 @@ function midcast(spell)
         set_equip = sets.midcast.magic_atk
     end
     
+    if spell.name == 'ディスペガ' then
+        set_equip = set_combine(set_equip, {main="デイブレイクワンド"})
+    end
+
     if set_equip then
         equip(set_equip)
     end
