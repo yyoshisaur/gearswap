@@ -28,12 +28,15 @@ function lockstyle(lock_style_set, lock_style_name)
         end
     end
 
-    for bag_id in pairs(gearswap.res.bags) do
-        for _, v in ipairs(windower.ffxi.get_items(bag_id)) do
-            for s, i in pairs(ls_set) do
-                if v.id ==  i.id then
-                    ls_set[s].slot = v.slot
-                    ls_set[s].bag = bag_id
+    for s, i in pairs(ls_set) do
+        for bag_id in pairs(gearswap.res.bags) do
+            if not ls_set[s].slot and not ls_set[s].bag then 
+                for _, item_in_bag in ipairs(windower.ffxi.get_items(bag_id)) do
+                    if item_in_bag.id ==  i.id then
+                        ls_set[s].slot = item_in_bag.slot
+                        ls_set[s].bag = bag_id
+                        break
+                    end
                 end
             end
         end
