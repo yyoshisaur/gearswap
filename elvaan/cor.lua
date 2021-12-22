@@ -113,17 +113,17 @@ function get_sets()
     }
 
     sets.precast.ws.melee_phisical = {
-        head="メガナダバイザー+2",
-        body="ＬＫフラック+3",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="メガナダグローブ+2",
-        legs="メガナダショウス+2",
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="フォシャゴルゲット",
         waist={ name="セールフィベルト+1", augments={'Path: A',}},
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="マーケピアス+1",
         left_ring="王将の指輪",
-        right_ring="イラブラットリング",
+        right_ring={ name="カコエシクリング+1", augments={'Path: A',}},
         back={ name="カムラスマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -205,22 +205,24 @@ function get_sets()
     }
 
     sets.aftercast.melee = {
+        main="ネイグリング",
         range={ name="アナーキー+2", augments={'Delay:+60','TP Bonus +1000',}},
-        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        body={ name="アデマジャケット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck="クロタリウストルク",
-        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        waist="霊亀腰帯",
         left_ear="ブルタルピアス",
-        right_ear="素破の耳",
+        right_ear="エアバニピアス",
         left_ring="守りの指輪",
         right_ring="シーリチリング+1",
         back={ name="カムラスマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.aftercast.idle = {
+        main="ネイグリング",
         range={ name="アナーキー+2", augments={'Delay:+60','TP Bonus +1000',}},
         head="マリグナスシャポー",
         body="マリグナスタバード",

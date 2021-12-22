@@ -12,6 +12,8 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+    
+    include('mystyle')
 end
 
 function user_setup()
@@ -144,7 +146,7 @@ function init_gear_sets()
     }
     
     sets.precast.WS.wsd_vit = {
-        ammo="オゲルミルオーブ+1",
+        ammo="ノブキエリ",
         head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},
         body="ＡＮシクラス+3",
         hands="ＡＮグローブ+3",
@@ -160,6 +162,23 @@ function init_gear_sets()
         back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
+    sets.precast.WS.wsd_kick = {
+        ammo="ノブキエリ",
+        head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},
+        body="ＡＮシクラス+3",
+        hands="ＡＮグローブ+3",
+        legs="真膝丸膝甲",
+        -- feet="乾闥婆脛当改",
+        feet="ＡＮゲートル+3",
+        neck="モンクの喉輪+2",
+        waist="月虹帯+1",
+        left_ear="シェリダピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="王将の指輪",
+        right_ring="ニックマドゥリング",
+        back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
     sets.precast.WS.multi_dex = {
         ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
@@ -178,17 +197,17 @@ function init_gear_sets()
     
     sets.precast.WS.acc = {
         ammo="ペムフレドタスラム",
-        head={ name="ＨＥクラウン+3", augments={'Enhances "Penance" effect',}},
+        head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck="サンクトネックレス",
-        waist="月虹帯+1",
-        left_ear="シェリダピアス",
+        waist="エスカンストーン",
+        left_ear="昏黄の耳飾り",
         right_ear="ディグニタリピアス",
-        left_ring="王将の指輪",
-        right_ring="ニックマドゥリング",
+        left_ring="ムンムリング",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back="サクロマント",
     }
 
@@ -199,9 +218,9 @@ function init_gear_sets()
     sets.precast.WS["乱撃"] = sets.precast.WS
     sets.precast.WS["スピンアタック"] = sets.precast.WS.wsd_vit
     sets.precast.WS["空鳴拳"] = sets.precast.WS.wsd
-    sets.precast.WS["双竜脚"] = sets.precast.WS.wsd
+    sets.precast.WS["双竜脚"] = sets.precast.WS.wsd_kick
     sets.precast.WS["夢想阿修羅拳"] = sets.precast.WS.wsd
-    sets.precast.WS["闘魂旋風脚"] = sets.precast.WS.wsd
+    sets.precast.WS["闘魂旋風脚"] = sets.precast.WS.wsd_kick
     sets.precast.WS["ファイナルヘヴン"] = set_combine(sets.precast.WS.wsd_vit, {right_ear="イシュヴァラピアス",})
     sets.precast.WS["アスケーテンツォルン"] = sets.precast.WS.critical
     sets.precast.WS["ビクトリースマイト"] = sets.precast.WS.critical
@@ -223,9 +242,9 @@ function init_gear_sets()
     sets.precast.WS["乱撃"].DmgLim = set_combine(sets.precast.WS, sets.precast.WS.dmglim)
     sets.precast.WS["スピンアタック"].DmgLim = set_combine(sets.precast.WS.wsd_vit, sets.precast.WS.dmglim)
     sets.precast.WS["空鳴拳"].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
-    sets.precast.WS["双竜脚"].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
+    sets.precast.WS["双竜脚"].DmgLim = set_combine(sets.precast.WS.wsd_kick, sets.precast.WS.dmglim)
     sets.precast.WS["夢想阿修羅拳"].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
-    sets.precast.WS["闘魂旋風脚"].DmgLim = set_combine(sets.precast.WS.wsd, sets.precast.WS.dmglim)
+    sets.precast.WS["闘魂旋風脚"].DmgLim = set_combine(sets.precast.WS.wsd_kick, sets.precast.WS.dmglim)
     sets.precast.WS["ファイナルヘヴン"].DmgLim = set_combine(sets.precast.WS.wsd_vit, {right_ear="イシュヴァラピアス",}, sets.precast.WS.dmglim)
     sets.precast.WS["アスケーテンツォルン"].DmgLim = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim)
     sets.precast.WS["ビクトリースマイト"].DmgLim = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim)
@@ -469,6 +488,8 @@ function init_gear_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     sets.engaged['インピタス'].Xoanon.DT =  set_combine(sets.engaged.Xoanon.DT, {})
+
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -544,10 +565,26 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('モ', player.sub_job)
+    end
+end
+
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_equip_by_sub_job(newSubjob)
+end
+
 function select_default_macro_book()
     set_macro_page(1, 5)
 end
 
 function mogmaster(job)
     send_command('input /si '..job..';')
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

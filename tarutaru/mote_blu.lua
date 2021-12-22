@@ -155,13 +155,13 @@ function init_gear_sets()
 
     sets.precast.WS.wsd = {
         ammo="オゲルミルオーブ+1",
-        head="ジャリコロナル+2",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="ＡＳジュバ+3",
-        hands="ジャリカフス+2",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
-        feet={ name="ヘルクリアブーツ", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+10','Accuracy+2',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
-        waist="フォシャベルト",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ルフェセントリング",
@@ -171,13 +171,13 @@ function init_gear_sets()
     
     sets.precast.WS.expi = {
         ammo="オゲルミルオーブ+1",
-        head="ジャリコロナル+2",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="ＡＳジュバ+3",
-        hands="ジャリカフス+2",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
-        feet="ジャリピガッシュ+2",
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
-        waist="フォシャベルト",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ルフェセントリング",
@@ -204,32 +204,32 @@ function init_gear_sets()
     sets.precast.WS.magic = {
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="ＡＳケフィエ+3",
-        body="ＡＳジュバ+3",
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ジャリカフス+2",
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
-        feet="ジャリピガッシュ+2",
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="サンクトネックレス",
         waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="アルコンリング",
-        right_ring="女王の指輪+1",
+        left_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="ロスメルタケープ", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
     sets.precast.WS.magic_drk = {
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
-        body="ＡＳジュバ+3",
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ジャリカフス+2",
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
-        feet="ジャリピガッシュ+2",
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="サンクトネックレス",
         waist="オルペウスサッシュ",
         left_ear="王将の耳飾り",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="女王の指輪+1",
         left_ring="アルコンリング",
-        right_ring="女王の指輪+1",
         back={ name="ロスメルタケープ", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -391,6 +391,32 @@ function init_gear_sets()
     sets.midcast['ディフュージョン'] = {feet={ name="ＬＬチャルク+3", augments={'Enhances "Diffusion" effect',}},}
     sets.midcast['エフラックス'] = {legs="ＨＳタイト+1",}
 
+    sets.midcast['強化魔法'] = {}
+    sets.midcast['強化魔法']['ファランクス'] = {
+        ammo="ストンチタスラム+1",
+        body={ name="ヘルクリアベスト", augments={'Magic dmg. taken -2%','Rng.Atk.+13','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}, hp=61,},
+        hands={ name="ヘルクリアグローブ", augments={'INT+9','AGI+4','Phalanx +4','Accuracy+1 Attack+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}, hp=20,},
+        legs={ name="ヘルクリアトラウザ", augments={'Accuracy+1 Attack+1','"Mag.Atk.Bns."+11','Phalanx +4','Mag. Acc.+11 "Mag.Atk.Bns."+11',}, hp=38,},
+        feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',}, hp=9,},
+        waist="オリンポスサッシュ",
+        left_ear={ name="エテオレートピアス", hp=50,},
+        right_ear={ name="トゥイストピアス", hp=150,},
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back={ name="月光の羽衣", hp=275,},
+    }
+
+    sets.midcast['強化魔法']['ストンスキン']  = {
+        neck="ストーンゴルゲット",
+        waist="ジーゲルサッシュ",
+        left_ear="アースクライピアス",
+    }
+
+    sets.midcast['強化魔法'].Refresh = sets.midcast.refresh
+
+    sets.midcast['回復魔法'] = {}
+    sets.midcast['回復魔法'].Cure = sets.midcast.cure
+
     sets.idle = {
         ammo="ストンチタスラム+1",
         head="マリグナスシャポー",
@@ -450,8 +476,10 @@ function init_gear_sets()
         waist="霊亀腰帯",
         left_ear="エアバニピアス",
         right_ear="ディグニタリピアス",
-        left_ring="守りの指輪",
-        right_ring="シーリチリング+1",
+        -- left_ring="守りの指輪",
+        -- right_ring="シーリチリング+1",
+        left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
+        right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
         back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
@@ -500,6 +528,12 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         end
         if state.Buff['エフラックス'] then
         equip(sets.midcast['エフラックス'])
+        end
+    end
+
+    if state.TreasureMode.value == 'Tag' then
+        if L{'吶喊'}:contains(spell.name) then
+            equip(sets.TreasureHunter)
         end
     end
 end

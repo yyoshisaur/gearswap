@@ -12,7 +12,8 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
 
-    include('run_auto')
+    include('auto_run')
+    include('mystyle')
 end
 
 function user_setup()
@@ -26,7 +27,10 @@ function user_setup()
 
     state.SIRD = M(false, "SIRD")
 
-    bool_state = {{label='SIRD', mode='SIRD'}}
+    bool_state = {
+        {label='SIRD', mode='SIRD'},
+        {label='AutoWS', mode='AutoWS'}
+    }
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
@@ -49,6 +53,7 @@ function binds_on_load()
     send_command('bind ^f3 gs c cycle AutoRune')
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
+    send_command('bind f5 gs c cycle AutoWS')
 
     -- send_command('bind !f4 gs c reset DefenseMode')
     -- send_command('bind f2 gs c set DefenseMode Physical')
@@ -69,6 +74,7 @@ function binds_on_unload()
     send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
+    send_command('unbind f5')
 
     -- send_command('unbind ^-')
     -- send_command('unbind ^=')
@@ -129,15 +135,28 @@ function init_gear_sets()
     }
 
     sets.precast.WS.dex = {
+        ammo="ノブキエリ",
+        head={ name="ニャメヘルム", augments={'Path: B',}, hp=91},
+        body={ name="ニャメメイル", augments={'Path: B',}, hp=136},
+        hands={ name="ニャメガントレ", augments={'Path: B',}, hp=91},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}, hp=114},
+        feet={ name="ニャメソルレット", augments={'Path: B',}, hp=68},
+        neck="フォシャゴルゲット",
+        waist="フォシャベルト",
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="シェリダピアス",
+        left_ring={ name="イラブラットリング", hp=60},
+        right_ring={ name="王将の指輪", hp=50},
+        back={ name="ディバートケープ", augments={'"Embolden"+15',}},
     }
         
     sets.precast.WS.acc = {
         ammo="ヤメラング",
-        head={ name="アヤモツッケット+2", hp=45,},
-        body={ name="アヤモコラッツァ+2", hp=57,},
-        hands={ name="アヤモマノポラ+2", hp=22,},
-        legs={ name="アヤモコッシャレ+2", hp=45,},
-        feet={ name="アヤモガンビエラ+2", hp=11,},
+        head={ name="ニャメヘルム", augments={'Path: B',}, hp=91},
+        body={ name="ニャメメイル", augments={'Path: B',}, hp=136},
+        hands={ name="ニャメガントレ", augments={'Path: B',}, hp=91},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}, hp=114},
+        feet={ name="ニャメソルレット", augments={'Path: B',}, hp=68},
         neck={ name="サンクトネックレス", hp=35,},
         waist={ name="エスカンストーン", hp=20,},
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -319,6 +338,7 @@ function init_gear_sets()
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60},
     }
 
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -387,9 +407,15 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_equip_by_sub_job(newSubjob)
+end
+
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1] == 'rune' then
         windower.chat.input('/ja "'..windower.to_shift_jis(state.AutoRune.value) ..'" <me>')
+    elseif cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('剣', player.sub_job)
     end
 end
 
@@ -419,4 +445,10 @@ function set_priorities_by_hp()
         end
         -- windower.add_to_chat(123,future[i].name.." priority="..future[i].priority)
     end
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

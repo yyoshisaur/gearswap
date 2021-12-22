@@ -10,6 +10,9 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('auto_dnc')
+    include('mystyle')
 end
 
 function user_setup()
@@ -18,12 +21,15 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Twashtar', 'Tauret', 'Centovente'}
 
+    init_auto_mode()
+
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hydrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'},
+        {label='Auto', mode='AutoMode'},
     }
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
@@ -35,6 +41,7 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
+    send_command('bind f3 gs c cycle AutoMode')
     -- send_command('bind f3 gs c cycle CastingMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
@@ -55,7 +62,7 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
+    send_command('unbind f3')
     -- send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
@@ -109,8 +116,10 @@ function init_gear_sets()
 
     sets.precast.WS.wsd = {
         ammo="パルーグストーン",
-        head="マリグナスシャポー",
-        body="マリグナスタバード",
+        -- head="マリグナスシャポー",
+        -- body="マリグナスタバード",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ＭＸバングル+3",
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
         feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
@@ -119,7 +128,7 @@ function init_gear_sets()
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="王将の指輪",
-        right_ring="イラブラットリング",
+        right_ring="エパミノダスリング",
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
@@ -135,23 +144,36 @@ function init_gear_sets()
         left_ear="オドルピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="王将の指輪",
-        right_ring="イラブラットリング",
+        right_ring="エパミノダスリング",
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
     sets.precast.WS.critical = {
+        -- ammo="カリスフェザー",
+        -- head={ name="ブリスタサリット+1", augments={'Path: A',}},
+        -- body="ムンムジャケット+2",
+        hands="ムンムリスト+2",
+        -- legs="ムンムケックス+2",
+        -- feet="ムンムゲマッシュ+2",
+        -- neck="エトワールゴルゲ+2",
+        -- waist="フォシャベルト",
+        -- left_ear="オドルピアス",
+        -- right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        -- left_ring="ムンムリング",
+        -- right_ring="イラブラットリング",
+        -- back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
         ammo="カリスフェザー",
         head={ name="ブリスタサリット+1", augments={'Path: A',}},
-        body="ムンムジャケット+2",
-        hands="ムンムリスト+2",
-        legs="ムンムケックス+2",
-        feet="ムンムゲマッシュ+2",
-        neck="エトワールゴルゲ+2",
+        body="グレティキュイラス",
+        -- hands="グレティガントレ",
+        legs="グレティブリーチズ",
+        feet="グレティブーツ",
+        neck={ name="エトワールゴルゲ+2", augments={'Path: A',}},
         waist="フォシャベルト",
         left_ear="オドルピアス",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="ムンムリング",
-        right_ring="イラブラットリング",
+        right_ear="シェリダピアス",
+        left_ring="王将の指輪",
+        right_ring="ムンムリング",
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
     }
     
@@ -174,7 +196,7 @@ function init_gear_sets()
     sets.precast.WS['バイパーバイト'].CF = sets.precast.WS.cf
     sets.precast.WS['シャークバイト'].CF = sets.precast.WS.cf
     sets.precast.WS['ルドラストーム'].CF = sets.precast.WS.cf
-    sets.precast.WS['エヴィサレーション'] = set_combine(sets.precast.WS.critical, {head="ＭＣティアラ+1", body="メガナダクウィリ+2",})
+    sets.precast.WS['エヴィサレーション'].CF = set_combine(sets.precast.WS.critical, {head="ＭＣティアラ+1", body="メガナダクウィリ+2",})
 
     sets.precast.acc = {
         ammo="ヤメラング",
@@ -199,6 +221,7 @@ function init_gear_sets()
         body="ＭＸカザク+1",
         feet="ＭＸトーシュー+3",
         neck="エトワールゴルゲ+2",
+        right_ear={ name="オノワイヤリング+1", augments={'Path: A',}},
         right_ring="アスクレピアリング",
         back={ name="トータッパーマント", augments={'"Store TP"+1','"Dual Wield"+4','"Rev. Flourish"+30','Weapon skill damage +4%',}},
     }
@@ -237,8 +260,8 @@ function init_gear_sets()
         feet="マリグナスブーツ",
         neck="エトワールゴルゲ+2",
         waist="キャリアーサッシュ",
-        left_ear="シェリダピアス",
-        right_ear="デディションピアス",
+        left_ear="デディションピアス",
+        right_ear="シェリダピアス",
         left_ring="守りの指輪",
         right_ring="シュネデックリング",
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
@@ -253,15 +276,15 @@ function init_gear_sets()
         feet="マリグナスブーツ",
         neck="エトワールゴルゲ+2",
         waist="ウィンバフベルト+1",
-        left_ear="シェリダピアス",
-        right_ear="デディションピアス",
+        left_ear="デディションピアス",
+        right_ear="シェリダピアス",
         left_ring="シーリチリング+1",
         right_ring="ゲリリング",
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
 
     sets.engaged.DT = {
-        ammo="ストンチタスラム+1",
+        ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
@@ -269,12 +292,14 @@ function init_gear_sets()
         feet="マリグナスブーツ",
         neck={ name="エトワールゴルゲ+2", augments={'Path: A',}},
         waist="ウィンバフベルト+1",
-        left_ear="シェリダピアス",
-        right_ear="デディションピアス",
+        left_ear="デディションピアス",
+        right_ear="シェリダピアス",
         left_ring="守りの指輪",
         right_ring="ゲリリング",
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
+
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -326,10 +351,26 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('踊', player.sub_job)
+    end
+end
+
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_equip_by_sub_job(newSubjob)
+end
+
 function select_default_macro_book()
     set_macro_page(1, 6)
 end
 
 function mogmaster(job)
     send_command('input /si '..job..';')
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

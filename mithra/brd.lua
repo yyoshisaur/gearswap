@@ -101,7 +101,7 @@ function get_sets()
         body="ＦＬオングルリヌ+1",
         hands="ＦＬマンシェト+1",
         legs="インヤガシャルワ+2",
-        feet="ＢＲスリッパー+2",
+        feet="ＢＲスリッパー+3",
         neck="月虹の呼び子+1",
         waist="ニヌルタサッシュ",
         left_ear="エテオレートピアス",
@@ -399,24 +399,24 @@ local cp_song = {
     },
     amb = {
         start = {
-            [1] = {name = '無敵の進撃マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
-            [2] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [1] = {name = '猛者のメヌエットV', wait = 5.5, pf = '/ma', t = '<me>'},
+            [2] = {name = '猛者のメヌエットIV', wait = 5.5, pf = '/ma', t = '<me>'},
             [3] = {name = '戦士達のピーアン', wait = 5.5, pf = '/ma', t = '<me>'},
-            [4] = {name = '剣豪のマドリガル', wait = 5.5, pf = '/ma', t = '<me>'},
+            [4] = {name = '冒険者のダージュ', wait = 5.5, pf = '/ma', t = '<me>'},
             [5] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [6] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+            [6] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<p1>'},
             [7] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [8] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+            [8] = {name = '魔物のシルベント', wait = 5.5, pf = '/ma', t = '<p1>'},
         },
         overwirte = {
-            [1] = {name = '無敵の進撃マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
-            [2] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<me>'},
+            [1] = {name = '猛者のメヌエットV', wait = 5.5, pf = '/ma', t = '<me>'},
+            [2] = {name = '猛者のメヌエットIV', wait = 5.5, pf = '/ma', t = '<me>'},
             [3] = {name = '戦士達のピーアン', wait = 5.5, pf = '/ma', t = '<me>'},
-            [4] = {name = '剣豪のマドリガル', wait = 5.5, pf = '/ma', t = '<me>'},
+            [4] = {name = '冒険者のダージュ', wait = 5.5, pf = '/ma', t = '<me>'},
             [5] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [6] = {name = '魔道士のバラードIII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+            [6] = {name = '栄光の凱旋マーチ', wait = 5.5, pf = '/ma', t = '<p1>'},
             [7] = {name = 'ピアニッシモ', wait = 2.5, pf = '/ja', t = '<me>'},
-            [8] = {name = '魔道士のバラードII', wait = 5.5, pf = '/ma', t = 'Cherukiki'},
+            [8] = {name = '魔物のシルベント', wait = 5.5, pf = '/ma', t = '<p1>'},
         },
     },
 }
@@ -478,7 +478,7 @@ function self_command(command)
     end
 end
 
-windower.register_event('time change', function(new, old)
+windower.raw_register_event('time change', function(new, old)
     local curr = os.clock()
     if auto_song then 
         if curr > (update_time + update_interval) then
@@ -489,7 +489,7 @@ windower.register_event('time change', function(new, old)
     end
 end)
 
-windower.register_event('zone change', function()
+windower.raw_register_event('zone change', function()
     auto_song = false
     overwirte_song_cmd = ''
 end)

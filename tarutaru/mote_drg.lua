@@ -12,6 +12,8 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('auto_drg')
 end
 
 function user_setup()
@@ -20,12 +22,16 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Trishula', 'ShiningOne'}
 
+    init_auto_mode()
+
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
-        {label='Weapon', mode='Weapons'}}
+        {label='Weapon', mode='Weapons'},
+        {label='Auto', mode='AutoMode'},
+    }
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
     mogmaster('drg')
@@ -36,6 +42,7 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
+    send_command('bind f3 gs c cycle AutoMode')
     -- send_command('bind f3 gs c cycle CastingMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
@@ -56,7 +63,7 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
+    send_command('unbind f3')
     -- send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
@@ -111,8 +118,8 @@ function init_gear_sets()
 
     sets.precast.WS.wsd = {
         ammo="ノブキエリ",
-        head={ name="バロラスマスク", augments={'Accuracy+28','Weapon skill damage +5%','Attack+13',}},
-        body={ name="バロラスメイル", augments={'Accuracy+28','Weapon skill damage +5%','STR+10',}},
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands={ name="ＰＴフィンガー+3", augments={'Enhances "Angon" effect',}},
         legs="ＶＳブレー+3",
         feet="スレビアレギンス+2",
@@ -234,8 +241,10 @@ function init_gear_sets()
         sub="ウトゥグリップ",
         ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
-        body="デーゴンブレスト",
-        hands="スレビアガントレ+2",
+        -- body="デーゴンブレスト",
+        -- hands="スレビアガントレ+2",
+        body={ name="ＥＭオーベール+1", augments={'HP+65','DEX+12','Accuracy+20',}},
+        hands={ name="ＥＭガントレ+1", augments={'HP+65','DEX+12','Accuracy+20',}},
         legs={ name="ＰＴブレー+3", augments={'Enhances "Strafe" effect',}},
         feet="フラマガンビエラ+2",
         neck="シュルマヌカラー",

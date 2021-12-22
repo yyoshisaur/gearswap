@@ -13,6 +13,7 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
     include('pup_maneuvers')
+    include('mystyle')
 end
 
 function user_setup()
@@ -200,6 +201,9 @@ function init_gear_sets()
     }
     
     sets.precast.JA['オーバードライヴ'] = {body={ name="ＰＩトベ+3", augments={'Enhances "Overdrive" effect',}},}
+    sets.precast.JA['腹話術'] = {legs={ name="ＰＩチュリダル+3", augments={'Enhances "Ventriloquy" effect',}},}
+    sets.precast.JA['黒衣チェンジ'] = {feet={ name="ＰＩバブーシュ+3", augments={'Enhances "Role Reversal" effect',}},}
+
 
     sets.midcast.Pet['精霊魔法'] = {
         head={ name="ヘルクリアヘルム", augments={'Pet: "Mag.Atk.Bns."+29','Pet: INT+10',}},
@@ -217,14 +221,14 @@ function init_gear_sets()
     }
 
     sets.midcast.Pet['弱体魔法'] = {
-        head="タリアターバン+2",
-        body="タリアマンティル+2",
-        hands="タリアゲージ+1",
+        head="ニャメヘルム",
+        body="ニャメメイル",
+        hands="ニャメガントレ",
         legs={ name="ＰＩチュリダル+3", augments={'Enhances "Ventriloquy" effect',}},
         feet="ＦＯバブーシュ+3",
         neck="絡繰士の首輪+2",
         waist="ウッコサッシュ",
-        left_ear="カイリーンピアス",
+        left_ear="昏黄の耳飾り",
         right_ear="エンメルカルピアス",
         left_ring="タリアリング",
         right_ring="パルーグリング",
@@ -449,6 +453,8 @@ function init_gear_sets()
 
     sets.idle.Pet.Nuke = sets.idle.Pet.Magic
     sets.idle.Pet.Engaged.Nuke = sets.idle.Pet.Engaged.Magic
+
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -503,6 +509,10 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_equip_by_sub_job(newSubjob)
+end
+
 function job_pet_change(pet, gain)
     update_pet_mode()
 end
@@ -518,6 +528,13 @@ function update_custom_groups()
     end
 end
 
+--[[
+    ・自動マニューバを有効
+    //gs c am 炎 光 土　or //gs c am ファイアマニューバ ライトマニューバ アースマニューバ
+    "炎"や"ファイアマニューバ"は定型文も有効
+    ・自動マニューバを無効
+    //gs c am off
+]]
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1] == 'am' then
         if cmdParams[2] == 'off' then
@@ -547,6 +564,8 @@ function job_self_command(cmdParams, eventArgs)
             end
             set_maneuvers(maneuver_1, maneuver_2, maneuver_3)
         end
+    elseif cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('か', player.sub_job)
     end
 end
 
@@ -556,4 +575,10 @@ end
 
 function mogmaster(job)
     send_command('input /si '..job..';')
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

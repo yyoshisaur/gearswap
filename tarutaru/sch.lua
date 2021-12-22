@@ -589,7 +589,7 @@ end
 
 update_time = 0
 update_interval = 1
--- windower.register_event('prerender', function()
+-- windower.raw_register_event('prerender', function()
 --     local curr = os.clock()
 --     if curr > update_time + update_interval then
 --         update_time = curr
@@ -597,7 +597,7 @@ update_interval = 1
 --     end
 -- end)
 
-windower.register_event('time change', function(new, old)
+windower.raw_register_event('time change', function(new, old)
     local curr = os.clock()
     if curr > update_time + update_interval then
         update_time = curr

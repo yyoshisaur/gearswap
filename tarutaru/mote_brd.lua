@@ -133,17 +133,17 @@ function init_gear_sets()
     sets.precast.FC['BardSong'].March_Marsyas = set_combine(sets.precast.FC['BardSong'], {range="マルシュアス",})
 
     sets.precast.WS = set_combine(sets.Linos_ws, { -- wsd
-        head="アヤモツッケット+2",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body={ name="ＢＩジュストコル+3", augments={'Enhances "Troubadour" effect',}},
-        hands="アヤモマノポラ+2",
-        legs="アヤモコッシャレ+2",
-        feet="アヤモガンビエラ+2",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
-        waist="フォシャベルト",
+        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="マーケピアス+1",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="イラブラットリング",
-        left_ring={ name="カコエシクリング+1", augments={'Path: A',}},
+        right_ring={ name="カコエシクリング+1", augments={'Path: A',}},
         back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     })
 
@@ -222,10 +222,10 @@ function init_gear_sets()
         neck="ボルトサージトルク",
         waist="ニヌルタサッシュ",
         left_ear="メンデカントピアス",
-        right_ear="ロケイシャスピアス",
-        left_ring="ラハブリング",
-        right_ring="キシャールリング",
-        back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+        right_ear="オノワイヤリング+1",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back="月光の羽衣",
     }
 
     sets.midcast['回復魔法'].Curaga = sets.midcast['回復魔法'].Cure
@@ -281,6 +281,11 @@ function init_gear_sets()
         back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
     }
     
+    sets.midcast.lullaby_troubadour = {
+        body="ＦＬオングルリヌ+1",
+        legs="インヤガシャルワ+2",
+    }
+
     sets.midcast.song_base = {
         main="カルンウェナン",
         range="ギャッラルホルン",
@@ -324,7 +329,7 @@ function init_gear_sets()
     sets.midcast['BardSong'].Madrigal   = set_combine(sets.midcast.song_base,{head="ＦＬキャロ+1", legs="インヤガシャルワ+2", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
     sets.midcast['BardSong'].Prelude    = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", feet="ＢＲスリッパー+3", back={ name="インタラアスケープ", augments={'CHR+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}}})
     sets.midcast['BardSong'].March      = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", hands="ＦＬマンシェト+1", legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",}) 
-    sets.midcast['BardSong'].MarchMarsyas = set_combine(sets.midcast['BardSong'].March, {range="マルシュアス",})
+    sets.midcast['BardSong'].March_Marsyas = set_combine(sets.midcast['BardSong'].March, {range="マルシュアス",})
     sets.midcast['BardSong'].Etude      = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
     sets.midcast['BardSong'].Scherzo    = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", legs="インヤガシャルワ+2", feet="ＦＬコテュルヌ+1"})
     sets.midcast['BardSong'].Threnody   = set_combine(sets.midcast.magic_acc, {body="ムセスマンティル+1"})
@@ -343,6 +348,8 @@ function init_gear_sets()
 
     sets.midcast['BardSong'].Dummy = sets.midcast.song_dummy
 
+    sets.midcast['弱体魔法'] = sets.midcast.magic_acc
+
     sets.idle = {
         head="インヤガティアラ+2",
         body="アシェーラハーネス",
@@ -350,7 +357,7 @@ function init_gear_sets()
         legs="インヤガシャルワ+2",
         feet="ＦＬコテュルヌ+1",
         neck="ロリケートトルク+1",
-        waist="フルームベルト+1",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="オノワイヤリング+1",
         left_ring="守りの指輪",
@@ -362,13 +369,13 @@ function init_gear_sets()
         range={ name="リノス", augments={'Accuracy+15','"Dbl.Atk."+3','Quadruple Attack +3',}},
         head="アヤモツッケット+2",
         body="アシェーラハーネス",
-        hands="アヤモマノポラ+2",
+        hands="ブンジグローブ",
         legs="アヤモコッシャレ+2",
-        feet="アヤモガンビエラ+2",
+        feet="ブンジサボ",
         neck="コンバタントトルク",
-        waist="霊亀腰帯",
+        waist="サリサフロイベルト",
         left_ear="テロスピアス",
-        right_ear="エアバニピアス",
+        right_ear="ディグニタリピアス",
         left_ring="月光の指輪",
         right_ring="シーリチリング+1",
         back={ name="インタラアスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
@@ -470,6 +477,9 @@ function set_lullaby_aoe_equip(spell, spellMap)
     if spell.type == 'BardSong' then
         if spellMap == 'LullabyAoE' then
             equip(sets.Lullaby[state.Lullaby.Value])
+        end
+        if state.Buff['トルバドゥール'] then
+            equip(sets.midcast.lullaby_troubadour)
         end
     end
 end

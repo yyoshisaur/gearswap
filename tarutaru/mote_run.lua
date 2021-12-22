@@ -12,7 +12,14 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
 
-    include('run_auto')
+    include('auto_run')
+
+    include('spell_catcher')
+
+    spell_catcher_detect_spell.phalanx_2.begin_cmd = 'gs c phalanx'
+    spell_catcher_detect_spell.phalanx_2.finish_cmd = 'gs c update user'
+    spell_catcher_detect_spell_accession.phalanx.begin_cmd = 'gs c phalanx'
+    spell_catcher_detect_spell_accession.phalanx.finish_cmd = 'gs c update user'
 end
 
 function user_setup()
@@ -26,7 +33,11 @@ function user_setup()
 
     state.SIRD = M(false, "SIRD")
 
-    bool_state = {{label='SIRD', mode='SIRD'}}
+    bool_state = {
+        {label='SIRD', mode='SIRD'},
+        {label='AutoWS', mode='AutoWS'}
+    }
+
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
@@ -49,6 +60,7 @@ function binds_on_load()
     send_command('bind ^f3 gs c cycle AutoRune')
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
+    send_command('bind f5 gs c cycle AutoWS')
 
     -- send_command('bind !f4 gs c reset DefenseMode')
     -- send_command('bind f2 gs c set DefenseMode Physical')
@@ -69,6 +81,7 @@ function binds_on_unload()
     send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
+    send_command('unbind f5')
 
     -- send_command('unbind ^-')
     -- send_command('unbind ^=')
@@ -127,11 +140,11 @@ function init_gear_sets()
 
     sets.precast.WS = { -- Multi
         ammo="オゲルミルオーブ+1",
-        head={ name="アヤモツッケット+2", hp=45,},
-        body={ name="アヤモコラッツァ+2", hp=57,},
-        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}, hp=22},
-        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}, hp=41,},
-        feet={ name="ヘルクリアブーツ", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+10','Accuracy+2',}, hp=9},
+        head={ name="ニャメヘルム", augments={'Path: B',}, hp=91},
+        body={ name="ニャメメイル", augments={'Path: B',}, hp=136},
+        hands={ name="ニャメガントレ", augments={'Path: B',}, hp=91},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}, hp=114},
+        feet={ name="ニャメソルレット", augments={'Path: B',}, hp=68},
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -143,11 +156,11 @@ function init_gear_sets()
 
     sets.precast.WS.dex = {
         ammo="ノブキエリ",
-        head={ name="メガナダバイザー+2", hp=25,},
-        body={ name="ヘルクリアベスト", augments={'Accuracy+21 Attack+21','DEX+14','Accuracy+14','Attack+10',}, hp=61,},
-        hands={ name="メガナダグローブ+2", hp=30,},
-        legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}, hp=41,},
-        feet={ name="ヘルクリアブーツ", augments={'Accuracy+25 Attack+25','Weapon skill damage +3%','DEX+10','Accuracy+2',}, hp=9},
+        head={ name="ニャメヘルム", augments={'Path: B',}, hp=91},
+        body={ name="ニャメメイル", augments={'Path: B',}, hp=136},
+        hands={ name="ニャメガントレ", augments={'Path: B',}, hp=91},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}, hp=114},
+        feet={ name="ニャメソルレット", augments={'Path: B',}, hp=68},
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -159,11 +172,11 @@ function init_gear_sets()
     
     sets.precast.WS.acc = {
         ammo="ヤメラング",
-        head={ name="アヤモツッケット+2", hp=45,},
-        body={ name="アヤモコラッツァ+2", hp=57,},
-        hands={ name="アヤモマノポラ+2", hp=22,},
-        legs={ name="アヤモコッシャレ+2", hp=45,},
-        feet={ name="アヤモガンビエラ+2", hp=11,},
+        head={ name="ニャメヘルム", augments={'Path: B',}, hp=91},
+        body={ name="ニャメメイル", augments={'Path: B',}, hp=136},
+        hands={ name="ニャメガントレ", augments={'Path: B',}, hp=91},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}, hp=114},
+        feet={ name="ニャメソルレット", augments={'Path: B',}, hp=68},
         neck={ name="サンクトネックレス", hp=35,},
         waist={ name="エスカンストーン", hp=20,},
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -482,6 +495,14 @@ end
 function job_self_command(cmdParams, eventArgs)
     if cmdParams[1] == 'rune' then
         windower.chat.input('/ja "'..windower.to_shift_jis(state.AutoRune.value) ..'" <me>')
+    elseif cmdParams[1] == 'phalanx' then
+        local set_equip = nil
+        set_equip = sets.midcast['強化魔法']['ファランクス'] 
+        if buffactive['エンボルド'] then
+            set_equip = set_combine(set_equip, {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},})
+        end
+        equip(set_equip)
+        set_priorities_by_hp()
     end
 end
 

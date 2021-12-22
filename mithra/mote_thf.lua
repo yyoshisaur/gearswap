@@ -12,6 +12,9 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('auto_thf')
+    include('mystyle')
 end
 
 function user_setup()
@@ -20,12 +23,15 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Gandring', 'Twashtar', 'Tauret', 'Centovente'}
 
+    init_auto_mode()
+
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hydrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'},
+        {label='Auto', mode='AutoMode'},
     }
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
@@ -37,6 +43,7 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
+    send_command('bind f3 gs c cycle AutoMode')
     -- send_command('bind f3 gs c cycle CastingMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
@@ -57,7 +64,7 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
+    send_command('unbind f3')
     -- send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
@@ -72,7 +79,7 @@ end
 function init_gear_sets()
     sets.weapons = {}
     sets.weapons.Gandring = { main={name="ガンドリング"}, sub={ name="トゥワシュトラ"}}
-    sets.weapons.Twashtar = { main={name="トゥワシュトラ"}, sub={ name="ターニオンダガー+1"}}
+    sets.weapons.Twashtar = { main={name="トゥワシュトラ"}, sub={ name="クレパスクラナイフ",}}
     sets.weapons.Tauret = { main={name="トーレット"}, sub={ name="トゥワシュトラ"}}
     sets.weapons.Centovente = { main={name="トゥワシュトラ"}, sub={ name="セントヴェンテ"}}
 
@@ -120,7 +127,7 @@ function init_gear_sets()
     sets.precast.WS.wsd = {
         ammo="パルーグストーン",
         head="ＰＬボンネット+3",
-        body="ＰＬベスト+3",
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="メガナダグローブ+2",
         legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
         -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
@@ -137,7 +144,7 @@ function init_gear_sets()
     sets.precast.WS.sata = {
         ammo="イェットシーラ+1",
         head="ＰＬボンネット+3",
-        body="ＰＬベスト+3",
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="メガナダグローブ+2",
         legs={ name="ＰＤキュロット+3", augments={'Enhances "Feint" effect',}},
         -- feet={ name="ＰＤプーレーヌ+3", augments={'Enhances "Assassin\'s Charge" effect',}},
@@ -160,8 +167,8 @@ function init_gear_sets()
         feet="ムンムゲマッシュ+2",
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
-        left_ear="オドルピアス",
-        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ear="シェリダピアス",
+        right_ear="オドルピアス",
         left_ring="ムンムリング",
         right_ring="イラブラットリング",
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
@@ -258,6 +265,8 @@ function init_gear_sets()
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
     }
     sets.engaged.DT.TH = set_combine(sets.engaged.DT, sets.TreasureHunter)
+
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -312,10 +321,26 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('シ', player.sub_job)
+    end
+end
+
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_equip_by_sub_job(newSubjob)
+end
+
 function select_default_macro_book()
     set_macro_page(1, 4)
 end
 
 function mogmaster(job)
     send_command('input /si '..job..';')
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

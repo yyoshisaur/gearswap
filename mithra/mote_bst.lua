@@ -6,18 +6,20 @@ function get_sets()
 end
 
 function job_setup()
+    state.Buff['アンリーシュ'] = buffactive['アンリーシュ'] or false
 
     init_ready_spell_map()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+    include('mystyle')
 end
 
 function user_setup()
-    state.OffenseMode:options('Normal','DW')
+    state.OffenseMode:options('Normal', 'SubtleBlow')
     state.HybridMode:options('Normal')
     state.WeaponskillMode:options('Normal', 'DmgLim')
-    state.Weapons = M{['description']='Use Weapons',}
+    state.Weapons = M{['description']='Use Weapons', 'Dolichenus', 'Agwu'}
 
     bool_state = {}
     mode_state = {
@@ -70,8 +72,10 @@ end
 
 function init_gear_sets()
     sets.weapons = {}
-    sets.weapons.Dolichenus = { main={name="ドリケナス"}, sub={name="デリベレンス+1"}}
-    sets.weapons.Dolichenus_DW = { main={name="ドリケナス"}, sub={name="ターニオンダガー+1"}}
+    dolichenus = { main={name="ドリケナス"}, sub={name="デリベレンス+1"}}
+    dolichenus_dw =  { main={name="ドリケナス"}, sub={name="ターニオンダガー+1"}}
+    agwu = { main={name="アグゥアクス"}, sub={name="デリベレンス+1"}}
+    agwu_dw = { main={name="アグゥアクス"}, sub={name="ターニオンダガー+1"}}
 
     sets.TreasureHunter = {
         head="白ララブキャップ+1",
@@ -93,11 +97,11 @@ function init_gear_sets()
     sets.precast.WS = { -- wsd
         ammo="オゲルミルオーブ+1",
         head={ name="ＡＫヘルム+3", augments={'Enhances "Killer Instinct" effect',}},
-        body={ name="ルストラハーネス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ＴＯグローブ+3",
-        legs="メガナダショウス+2",
-        feet={ name="ルストラレギンス+1", augments={'Attack+20','STR+8','"Dbl.Atk."+3',}},
-        neck="フォシャゴルゲット",
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
+        neck={ name="獣使いの首輪+2", augments={'Path: A',}},
         waist="フォシャベルト",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="スラッドピアス",
@@ -108,11 +112,11 @@ function init_gear_sets()
 
     sets.precast.WS.multi = {
         ammo="オゲルミルオーブ+1",
-        head={ name="ブリスタサリット+1", augments={'Path: A',}},
-        body={ name="アゴシホーバーク+1", augments={'STR+12','Attack+20','"Store TP"+6',}},
-        hands={ name="アゴシマフラ+1", augments={'STR+20','"Dbl.Atk."+3','Haste+3%',}},
+        head={ name="ＡＫヘルム+3", augments={'Enhances "Killer Instinct" effect',}},
+        body="グレティキュイラス",
+        hands="ＴＯグローブ+3",
         legs="メガナダショウス+2",
-        feet={ name="アゴシソルレット+1", augments={'HP+65','"Dbl.Atk."+3','"Store TP"+5',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck={ name="獣使いの首輪+2", augments={'Path: A',}},
         waist="フォシャベルト",
         left_ear="シェリダピアス",
@@ -140,11 +144,11 @@ function init_gear_sets()
 
     sets.precast.WS.magic = {
         ammo="ペムフレドタスラム",
-        head={ name="ＡＫヘルム+3", augments={'Enhances "Killer Instinct" effect',}},
-        body="サクロブレスト",
-        hands="ＴＯグローブ+3",
-        legs={ name="オーグリクウィス+1", augments={'Path: A',}},
-        feet="マリグナスブーツ",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="サンクトネックレス",
         waist="エスカンストーン",
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
@@ -154,7 +158,7 @@ function init_gear_sets()
         back="サクロマント",
     }
     
-    sets.precast.WS["スマッシュ"] = sets.precast.WS.multi
+    sets.precast.WS["スマッシュ"] = sets.precast.WS
     sets.precast.WS["ランページ"] = sets.precast.WS.critical
     sets.precast.WS["デシメーション"] = sets.precast.WS.multi
     sets.precast.WS["ルイネーター"] = sets.precast.WS.multi
@@ -168,12 +172,13 @@ function init_gear_sets()
 
     sets.precast.ready_delay = {
         -- hands="ＮＫマノプラス+1",
-        legs={ name="デサルタタセッツ", augments={'"Sic" and "Ready" ability delay -5','"Repair" potency +10%',}},
+        legs="グレティブリーチズ",
     }
     
-    sets.precast.call_beast = {hands={ name="ＡＫグローブ+1", augments={'Enhances "Beast Affinity" effect',}},}
+    sets.precast.call_beast = {hands={ name="ＡＫグローブ+3", augments={'Enhances "Beast Affinity" effect',}},}
 
     sets.precast.reward = {
+        ammo="ペットシータ",
         body="ＴＯジャック+3",
         legs={ name="ＡＫトラウザ+3", augments={'Enhances "Familiar" effect',}},
         back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
@@ -194,13 +199,13 @@ function init_gear_sets()
         ammo="ボルスパタスラム",
         head={ name="テーオンシャポー", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         body={ name="テーオンタバード", augments={'Pet: Attack+25 Pet: Rng.Atk.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
-        hands="ＮＫマノプラス+1",
+        hands={ name="テーオングローブ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         legs={ name="テーオンタイツ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Damage taken -4%',}},
         feet={ name="テーオンブーツ", augments={'Pet: Accuracy+25 Pet: Rng. Acc.+25','Pet: "Dbl. Atk."+5','Pet: Haste+5',}},
         neck="獣使いの首輪+2",
         waist="インカーネトサッシュ",
-        left_ear="カイリーンピアス",
-        right_ear="エンメルカルピアス",
+        left_ear="エンメルカルピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="ヴァラールリング+1",
         right_ring="パルーグリング",
         back={ name="パストラルマント", augments={'Pet: Accuracy+20 Pet: Rng. Acc.+20',}},
@@ -208,15 +213,15 @@ function init_gear_sets()
 
     sets.midcast.Pet.PhysicalAcc = {
         ammo="ボルスパタスラム",
-        head="タリアターバン+2",
-        body="タリアマンティル+2",
-        hands="ＮＫマノプラス+1",
+        head="ニャメヘルム",
+        body="ニャメメイル",
+        hands="グレティガントレ",
         legs="タリアサラウィル+2",
-        feet="タリアクラッコー+2",
+        feet="グレティブーツ",
         neck="獣使いの首輪+2",
         waist="インカーネトサッシュ",
-        left_ear="カイリーンピアス",
-        right_ear="エンメルカルピアス",
+        left_ear="エンメルカルピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="タリアリング",
         right_ring="パルーグリング",
         back={ name="パストラルマント", augments={'Pet: Accuracy+20 Pet: Rng. Acc.+20',}},
@@ -224,15 +229,15 @@ function init_gear_sets()
 
     sets.midcast.Pet.Magical = {
         ammo="ボルスパタスラム",
-        head="タリアターバン+2",
-        body="タリアマンティル+2",
-        hands="ＮＫマノプラス+1",
+        head="ニャメヘルム",
+        body="ニャメメイル",
+        hands="グレティガントレ",
         legs="タリアサラウィル+2",
-        feet="タリアクラッコー+2",
+        feet="グレティブーツ",
         neck="獣使いの首輪+2",
         waist="インカーネトサッシュ",
-        left_ear="カイリーンピアス",
-        right_ear="エンメルカルピアス",
+        left_ear="エンメルカルピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="タリアリング",
         right_ring="パルーグリング",
         back={ name="パストラルマント", augments={'Pet: Accuracy+20 Pet: Rng. Acc.+20',}},
@@ -240,15 +245,15 @@ function init_gear_sets()
 
     sets.midcast.Pet.MagicalAcc = {
         ammo="ボルスパタスラム",
-        head="タリアターバン+2",
-        body="タリアマンティル+2",
-        hands="ＮＫマノプラス+1",
+        head="ニャメヘルム",
+        body="ニャメメイル",
+        hands="グレティガントレ",
         legs="タリアサラウィル+2",
-        feet="タリアクラッコー+2",
+        feet="グレティブーツ",
         neck="獣使いの首輪+2",
         waist="インカーネトサッシュ",
-        left_ear="カイリーンピアス",
-        right_ear="エンメルカルピアス",
+        left_ear="エンメルカルピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="タリアリング",
         right_ring="パルーグリング",
         back={ name="パストラルマント", augments={'Pet: Accuracy+20 Pet: Rng. Acc.+20',}},
@@ -258,59 +263,83 @@ function init_gear_sets()
         ammo="ストンチタスラム+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
-        hands="マリグナスグローブ",
-        legs="マリグナスタイツ",
+        hands="グレティガントレ",
+        legs="グレティブリーチズ",
         feet="マリグナスブーツ",
         neck="ロリケートトルク+1",
         waist="キャリアーサッシュ",
-        left_ear="シェリダピアス",
+        left_ear="エンメルカルピアス",
         right_ear="エアバニピアス",
         left_ring="守りの指輪",
-        right_ring="シュネデックリング",
+        right_ring="パルーグリング",
         back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
-    sets.engaged = {
+    engaged_normal = {
         ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
-        -- body="サクロブレスト",
         hands="マリグナスグローブ",
-        legs="マリグナスタイツ",
+        legs="グレティブリーチズ",
         feet="マリグナスブーツ",
         neck="アヌートルク",
-        -- neck={ name="バーシチョーカー+1", augments={'Path: A',}},
         waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear="シェリダピアス",
         right_ear="昏黄の耳飾り",
-        -- left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
-        -- right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
         left_ring="エポナリング",
         right_ring="ゲリリング",
         back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
-    sets.engaged.DW = {
+    engaged_normal.SubtleBlow = {
+        ammo="オゲルミルオーブ+1",
+        head="マリグナスシャポー",
+        body="サクロブレスト",
+        hands="マリグナスグローブ",
+        legs="グレティブリーチズ",
+        feet="マリグナスブーツ",
+        neck="アヌートルク",
+        waist="サリサフロイベルト",
+        left_ear="シェリダピアス",
+        right_ear="ディグニタリピアス",
+        left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
+        right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
+        back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+    }
+
+    engaged_dw = {
         ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
         body="マリグナスタバード",
-        -- body="サクロブレスト",
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck="アヌートルク",
-        -- neck={ name="バーシチョーカー+1", augments={'Path: A',}},
         waist="霊亀腰帯",
         left_ear="シェリダピアス",
         right_ear="エアバニピアス",
-        -- left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
-        -- right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
         left_ring="エポナリング",
         right_ring="ゲリリング",
         back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
-    set_weapons_by_sub_job(player.sub_job)
+    engaged_dw.SubtleBlow = {
+        ammo="オゲルミルオーブ+1",
+        head="マリグナスシャポー",
+        body="サクロブレスト",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck={ name="バーシチョーカー+1", augments={'Path: A',}},
+        waist="霊亀腰帯",
+        left_ear="シェリダピアス",
+        right_ear="エアバニピアス",
+        left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
+        right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
+        back={ name="アルティオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
+    }
+
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -318,7 +347,11 @@ end
 
 function job_midcast(spell, action, spellMap, eventArgs)
     if spell.type == 'Monster' then
-        equip(get_pet_midcast_set(spell, spellMap))
+        local equip_set = get_pet_midcast_set(spell, spellMap)
+        if not state.Buff["アンリーシュ"] then
+            equip_set = set_combine(equip_set, sets.midcast.Pet.TP)
+        end
+        equip(equip_set)
         eventArgs.handled = true
     end
 end
@@ -334,6 +367,11 @@ function job_aftercast(spell, action, spellMap, eventArgs)
 end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
+    if spell.type == 'Monster' and state.Buff["アンリーシュ"] then
+        -- gearswap.log(spell.name)
+        local command = 'wait 4; input /pet ' .. windower.to_shift_jis(spell.name) .. ' <me>;'
+        send_command(command)
+    end
 end
 
 function get_custom_wsmode(spell, spellMap, default_wsmode)
@@ -360,6 +398,10 @@ function customize_melee_set(meleeSet)
     return meleeSet
 end
 
+function job_pet_status_change(newStatus, oldStatus, eventArgs)
+    handle_equipping_gear(player.status)
+end
+
 function job_buff_change(buff, gain)
     if state.DisplayMode.value then update_job_states() end
 end
@@ -371,18 +413,29 @@ function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
 end
 
-function set_weapons_by_sub_job(subJob)
-    state.Weapons:reset()
-    sub_job_suffix = S{'忍', '踊'}:contains(subJob) and '_DW' or ''
-    state.Weapons:options(
-        'Dolichenus'..sub_job_suffix
-    )
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('獣', player.sub_job)
+    end
+end
 
+function set_equip_by_sub_job(subJob)
+    state.Weapons:reset()    
+    if S{'忍', '踊'}:contains(subJob) then
+        sets.weapons.Dolichenus = dolichenus_dw
+        sets.weapons.Agwu = agwu_dw
+        sets.engaged = engaged_dw
+    else
+        sets.weapons.Dolichenus = dolichenus
+        sets.weapons.Agwu = agwu
+        sets.engaged = engaged_normal
+    end
     if state.DisplayMode.value then update_job_states() end
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end
 
 function job_sub_job_change(newSubjob, oldSubjob)
-    set_weapons_by_sub_job(newSubjob)
+    set_equip_by_sub_job(newSubjob)
 end
 
 function job_get_spell_map(spell, default_spell_map)

@@ -4,6 +4,7 @@ include('simple_auto')
 function init_auto_mode()
     state.AutoMode = M{['description']='Auto Mode', 'Off', 'Setup', 'Engage'}
     state.AutoRune = M{['description']='Auto Rune', 'テネブレイ', 'イグニス', 'ゲールス', 'フラブラ', 'テッルス', 'スルポール', 'ウンダ', 'ルックス'}
+    state.AutoWS = M(false, "Auto WS")
 end
 
 function simple_tick()
@@ -16,9 +17,13 @@ function simple_tick()
         if check_rune() then return true end
         if not moving and check_spell_buff() then return true end
     elseif current_auto_mode == 'Engage' then
+        if player.status ~= 'Engaged' then return false end
         if check_rune() then return true end
         if check_ability_buff() then return true end
         if not moving and check_spell_buff() then return true end
+        if state.AutoWS.current == 'on' then
+            if check_ws() then return true end
+        end
         if not moving and check_enmity() then return true end
     end
     return false
@@ -29,6 +34,7 @@ local rune_id = 92
 local rune_overwrite = 30
 rune_count = 0
 function check_rune()
+    if not check_can_use_ability() then return false end
     local last_rune_duration = 0
     local last_rune_name = nil
     local buffs = player.buff_details
@@ -81,13 +87,13 @@ function check_enmity()
     for i, v in pairs(enmity_lists) do
         if windower.ffxi.get_mob_by_target(v.t) then
             if v.pf == '/ja' then
-                if ability_recasts[v.id] == 0 then
+                if ability_recasts[v.id] == 0 and check_can_use_ability() then
                     windower.chat.input(v.pf..' "'..windower.to_shift_jis(v.name) ..'" <'..v.t..'>')
                     tickdelay = os.clock() + 2
                     return true
                 end
             elseif v.pf == '/ma' then
-                if spell_recasts[v.id] == 0 then
+                if spell_recasts[v.id] == 0 and check_can_use_magic() then
                     windower.chat.input(v.pf..' "'..windower.to_shift_jis(v.name) ..'" <'..v.t..'>')
                     tickdelay = os.clock() + 5
                     return true
@@ -100,12 +106,14 @@ function check_enmity()
         if player.sub_job == v.job and windower.ffxi.get_mob_by_target(v.t) then
             if v.pf == '/ja' then
                 if ability_recasts[v.id] == 0 then
-                    windower.chat.input(v.pf..' "'..windower.to_shift_jis(v.name) ..'" <'..v.t..'>')                    tickdelay = os.clock() + 2
+                    windower.chat.input(v.pf..' "'..windower.to_shift_jis(v.name) ..'" <'..v.t..'>')
+                    tickdelay = os.clock() + 2
                     return true
                 end
             elseif v.pf == '/ma' then
                 if spell_recasts[v.id] == 0 then
-                    windower.chat.input(v.pf..' "'..windower.to_shift_jis(v.name) ..'" <'..v.t..'>')                    tickdelay = os.clock() + 5
+                    windower.chat.input(v.pf..' "'..windower.to_shift_jis(v.name) ..'" <'..v.t..'>')
+                    tickdelay = os.clock() + 5
                     return true
                 end
             end
@@ -128,6 +136,7 @@ local ability_buff_lists = {
 
 local hasso = {name='八双', buff='八双', id=138, t='<me>', job='侍', overwrite=30}
 function check_ability_buff()
+    if not check_can_use_ability() then return false end
     local recasts = windower.ffxi.get_ability_recasts()
     local buffs = player.buff_details
 
@@ -137,7 +146,7 @@ function check_ability_buff()
             if not buffactive[v.buff] then
                 if recasts[v.id] == 0 then
                     windower.chat.input('/ja "'..windower.to_shift_jis(v.name) ..'" <me>')
-                    tickdelay = os.clock() + 2
+                    tickdelay = os.clock() + 5
                     return true
                 end
             else
@@ -200,9 +209,9 @@ local spell_buff_lists = {
         {name='クルセード', buff='敵対心アップ', id=476, overwrite=30},
         {name='アクアベール', buff='アクアベール', id=55, overwrite=30},
         {name='アイススパイク', buff='アイススパイク', id=250, overwrite=30},
-        {name='ストンスキン', buff='ストンスキン', id=54, overwrite=0},
-        {name='リフレシュ', buff='リフレシュ', id=109, overwrite=0},
-        {name='リジェネIV', buff='リジェネ', id=477, overwrite=0},
+        -- {name='ストンスキン', buff='ストンスキン', id=54, overwrite=0},
+        -- {name='リフレシュ', buff='リフレシュ', id=109, overwrite=0},
+        -- {name='リジェネIV', buff='リジェネ', id=477, overwrite=0},
     }
 }
 
@@ -210,6 +219,7 @@ local sub_job_spell_lists = {
     {name='コクーン', buff='防御力アップ',id=547, job='青', overwrite=30},
 }
 function check_spell_buff()
+    if not check_can_use_magic() then return false end
     mode = state.AutoMode.value
     local buffs = player.buff_details
     local recasts = windower.ffxi.get_spell_recasts()
@@ -254,6 +264,26 @@ function check_spell_buff()
                     end
                 end
             end
+        end
+    end
+
+    return false
+end
+
+local use_ws = 'デミディエーション'
+function check_ws()
+    if not check_can_use_ability() then return false end
+    if buffactive['アフターマス:Lv3'] then
+        if player.tp >= 1000 then
+            windower.chat.input('/ws "'..windower.to_shift_jis(use_ws) ..'" <t>')
+            tickdelay = os.clock() + 5
+            return true
+        end
+    else
+        if player.tp == 3000 then
+            windower.chat.input('/ws "'..windower.to_shift_jis(use_ws) ..'" <t>')
+            tickdelay = os.clock() + 5
+            return true
         end
     end
 

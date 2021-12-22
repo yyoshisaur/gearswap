@@ -577,7 +577,7 @@ local update_interval = 1
 --     end
 -- end)
 
-windower.register_event('time change', function(new, old)
+windower.raw_register_event('time change', function(new, old)
     local curr = os.clock()
     if curr > update_time + update_interval then
         update_time = curr

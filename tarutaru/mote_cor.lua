@@ -195,10 +195,10 @@ function init_gear_sets()
 
     sets.precast.WS.melee_wsd = {
         ammo="ホクスボクブレット",
-        head="メガナダバイザー+2",
-        body="ＬＫフラック+3",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
         hands="メガナダグローブ+2",
-        legs="メガナダショウス+2",
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="フォシャゴルゲット",
         waist={ name="セールフィベルト+1", augments={'Path: A',}},

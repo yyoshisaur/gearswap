@@ -19,7 +19,7 @@ spell_catcher_detect_spell_accession = {
 local accession_id = 218 -- 女神降臨の章
 local accession_player_id = nil
 
-windower.register_event('action', function(act)
+windower.raw_register_event('action', function(act)
     if act.category == 8 then
         if act.targets[1] and act.targets[1].id == windower.ffxi.get_player().id and act.targets[1].actions[1] then
             for k,v in pairs(spell_catcher_detect_spell) do

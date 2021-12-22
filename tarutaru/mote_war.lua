@@ -8,6 +8,11 @@ end
 function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('auto_war')
+    include('war_itemizer')
+    mogmaster('war')
+    select_default_macro_book()
 end
 
 function user_setup()
@@ -16,16 +21,18 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Ukonvasara', 'Chango', 'Polearm', 'Sword', 'Club'}
 
+    init_auto_mode()
+
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'},
-        {label='Combat', mode='CombatForm'}}
+        {label='Combat', mode='CombatForm'},
+        {label='Auto', mode='AutoMode'},
+    }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('war')
 end
 
 function binds_on_load()
@@ -33,6 +40,7 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
+    send_command('bind f3 gs c cycle AutoMode')
     -- send_command('bind f3 gs c cycle CastingMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
@@ -53,7 +61,7 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
+    send_command('unbind f3')
     -- send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
@@ -89,20 +97,24 @@ function init_gear_sets()
         right_ring="ラハブリング",
     }
 
+    sets.precast.RA = {
+        ammo="タスラム",
+    }
+
     sets.precast.WS = { -- Multi
-        ammo="オゲルミルオーブ+1",
-        head="フラマツッケット+2",
-        body="ＩＧキュイラス+3",
-        hands="フラママノポラ+2",
-        legs="ＩＧフランチャ+3",
-        feet="フラマガンビエラ+2",
-        neck="フォシャゴルゲット",
-        waist="フォシャベルト",
+        ammo="ノブキエリ",
+        head={ name="ＡＧマスク+3", augments={'Enhances "Savagery" effect',}},
+        body="ＰＭロリカ+3",
+        hands="サクパタガントレ",
+        legs="サクパタクウィス",
+        feet="ＰＭカリガ+3",
+        neck="戦士の数珠+2",
+        waist="イオスケハベルト+1",
         left_ear="スラッドピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ニックマドゥリング",
         right_ring="王将の指輪",
-        back={ name="アンコウマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        back={ name="シコルマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.precast.WS.vit = {
@@ -154,17 +166,17 @@ function init_gear_sets()
     }
     
     sets.precast.WS.str_sword = {
-        ammo="ノブキエリ",
+        ammo={ name="シーズボムレット+1", augments={'Path: A',}},
         head={ name="ＡＧマスク+3", augments={'Enhances "Savagery" effect',}},
         body="ＰＭロリカ+3",
-        hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},
-        legs={ name="バロラスホーズ", augments={'Accuracy+19 Attack+19','Weapon skill damage +5%','Accuracy+12',}},
-        feet="スレビアレギンス+2",
-        neck="戦士の数珠+2",
-        waist="エングレイブベルト",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
+        neck={ name="戦士の数珠+2", augments={'Path: A',}},
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
         left_ear="スラッドピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        left_ring="ルフェセントリング",
+        left_ring="ニックマドゥリング",
         right_ring="王将の指輪",
         back={ name="シコルマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -196,7 +208,7 @@ function init_gear_sets()
     sets.precast.WS['キングズジャスティス'] = sets.precast.WS.str
     sets.precast.WS['アーマーブレイク'] = sets.precast.WS.magic_acc
     sets.precast.WS['ウェポンブレイク'] = sets.precast.WS.magic_acc
-    sets.precast.WS['フルグレイク'] = sets.precast.WS.magic_acc
+    sets.precast.WS['フルブレイク'] = sets.precast.WS.magic_acc
     sets.precast.WS['ウッコフューリー'] = sets.precast.WS.critical
     sets.precast.WS['アップヒーバル'] = sets.precast.WS.vit
     -- 両手槍
@@ -212,11 +224,11 @@ function init_gear_sets()
     sets.precast.WS['ソニックスラスト'] = sets.precast.WS.str
     sets.precast.WS['スターダイバー'] = sets.precast.WS.str
     -- 片手剣
-    sets.precast.WS['サベッジブレード'] = sets.precast.WS.wsd
+    sets.precast.WS['サベッジブレード'] = sets.precast.WS.str_sword
     -- 片手棍
     sets.precast.WS['トゥルーストライク	'] = sets.precast.WS
-    sets.precast.WS['ジャッジメント'] = sets.precast.WS.wsd
-    sets.precast.WS['ブラックヘイロー'] = sets.precast.WS.wsd
+    sets.precast.WS['ジャッジメント'] = sets.precast.WS.str_sword
+    sets.precast.WS['ブラックヘイロー'] = sets.precast.WS.str_sword
     sets.precast.WS['レルムレイザー'] = sets.precast.WS.mulit
 
     sets.precast.JA['バーサク'] = {
@@ -323,7 +335,7 @@ end
 
 function customize_idle_set(idleSet)
     local weapons = sets.weapons
-    idleSet = set_combine(idleSet, weapons[state.Weapons.value], {sub=get_melee_set().sub})
+    idleSet = set_combine(idleSet, weapons[state.Weapons.value])
     return idleSet
 end
 
@@ -339,6 +351,40 @@ end
 
 function job_update(cmdParams, eventArgs)
     if state.DisplayMode.value then update_job_states() end
+end
+
+function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'abys' then
+        enable('main','head','neck')
+        if cmdParams[2] == 'dagger' then
+            equip({main="アーンダガー"})
+        elseif cmdParams[2] == 'sword' then
+            equip({main="エクスカリパー"})
+        elseif cmdParams[2] == 'gsword' then
+            equip({main="ブレイブブレイドII"})
+        elseif cmdParams[2] == 'scythe' then
+            equip({main="ロスシックル"})
+        elseif cmdParams[2] == 'polearm' then
+            equip({main="ヅェーシシュの薙刀"})
+        elseif cmdParams[2] == 'katana' then
+            equip({main="トレイニービュラン",neck="コンバタントトルク"})
+        elseif cmdParams[2] == 'gkatana' then
+            equip({main="斬魔刀改",head="剣豪鉢巻",neck="コンバタントトルク"})
+        elseif cmdParams[2] == 'club' then
+            equip({main="ソウルフレアワンド"})
+        elseif cmdParams[2] == 'staff' then
+            equip({main="ラムスタッフ"})
+        elseif cmdParams[2] == 'reset' then
+            send_command('gs c update user')
+            return
+        elseif cmdParams[2] == 'get' then
+            windower.send_command('jc sub nin')
+            itemizer_get_abyssea()
+        elseif cmdParams[2] == 'put' then
+            itemizer_put_abyssea()
+        end
+        disable('main','head','neck')
+    end
 end
 
 function select_default_macro_book()

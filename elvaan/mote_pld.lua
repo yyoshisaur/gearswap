@@ -12,7 +12,8 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
 
-    -- include('run_auto')
+    include('auto_pld')
+    include('mystyle')
 end
 
 function user_setup()
@@ -22,18 +23,20 @@ function user_setup()
     state.IdleMode:options('Priwen', 'Aegis')
     state.Weapons = M{['description']='Use Weapons', 'Priwen', 'Aegis'}
 
-    -- init_auto_mode()
+    init_auto_mode()
 
     state.SIRD = M(false, "SIRD")
 
-    bool_state = {{label='SIRD', mode='SIRD'}}
+    bool_state = {
+        {label='SIRD', mode='SIRD'},
+        {label='AutoWS', mode='AutoWS'},
+        }
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'},
-        -- {label='Auto', mode='AutoMode'},
-        -- {label='Rune', mode='AutoRune'},
+        {label='Auto', mode='AutoMode'},
         }
     init_job_states(bool_state, mode_state)
     select_default_macro_book()
@@ -46,9 +49,9 @@ function binds_on_load()
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
     send_command('bind f3 gs c cycle AutoMode')
-    send_command('bind ^f3 gs c cycle AutoRune')
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
+    send_command('bind f5 gs c cycle AutoWS')
 
     -- send_command('bind !f4 gs c reset DefenseMode')
     -- send_command('bind f2 gs c set DefenseMode Physical')
@@ -69,6 +72,7 @@ function binds_on_unload()
     send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
+    send_command('unbind f5')
 
     -- send_command('unbind ^-')
     -- send_command('unbind ^=')
@@ -252,13 +256,14 @@ function init_gear_sets()
     }
 
     sets.midcast['青魔法'] = {
-        ['ブランクゲイス'] = sets.midcast.sird_enmity,
+        ['ブランクゲイズ'] = sets.midcast.sird_enmity,
         ['ガイストウォール'] = sets.midcast.sird_enmity,
         ['シープソング'] = sets.midcast.sird_enmity,
         ['サペリフィック'] = sets.midcast.sird_enmity,
         ['スティンキングガス'] = sets.midcast.sird_enmity,
         ['ブラッドセイバー'] = sets.midcast.sird_enmity,
         ['ジェタチュラ'] = sets.midcast.sird_enmity,
+        ['コクーン'] = sets.midcast.sird_cure,
     }
 
     sets.idle = {}
@@ -329,6 +334,7 @@ function init_gear_sets()
         back={ name="ルディアノスマント", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%',}, hp=80},
     }
 
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -357,7 +363,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         if spellMap == 'Phalanx' then
             equip(sets.midcast.sird_phalanx)
         else
-            equip(sets.midcast.sird)
+            equip(sets.midcast.sird_cure)
         end
     end
 
@@ -396,6 +402,9 @@ function job_update(cmdParams, eventArgs)
 end
 
 function job_self_command(cmdParams, eventArgs)
+    if cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+        mystyle('ナ', player.sub_job)
+    end
 end
 
 function select_default_macro_book()
@@ -424,4 +433,10 @@ function set_priorities_by_hp()
         end
         -- windower.add_to_chat(123,future[i].name.." priority="..future[i].priority)
     end
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

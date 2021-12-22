@@ -492,7 +492,7 @@ function self_command(command)
     end
 end
 
-windower.register_event('time change', function(new, old)
+windower.raw_register_event('time change', function(new, old)
     local curr = os.clock()
     if auto_song then 
         if curr > (update_time + update_interval) then

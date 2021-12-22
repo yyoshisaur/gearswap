@@ -21,8 +21,14 @@ function lockstyle(lock_style_set, lock_style_name)
     local ls_set = {}
 
     for s, i in pairs(lock_style_set) do
-        if type(i) == 'table' and type(i.name) == 'string' then
-            ls_set[slots[s]] = {id = gearswap.res.items:with('name', i.name).id}
+        if type(i) == 'table' then 
+            if i.id then
+                ls_set[slots[s]] = {id = i.id}
+            else
+                if type(i.name) == 'string' then
+                    ls_set[slots[s]] = {id = gearswap.res.items:with('name', i.name).id}
+                end
+            end
         else
             ls_set[slots[s]] = {id = gearswap.res.items:with('name', i).id}
         end
@@ -47,6 +53,10 @@ function lockstyle(lock_style_set, lock_style_name)
     p['_unknown1'] = 1
     p['Count'] = 0
     for s, i in pairs(ls_set) do
+        if not i.slot or not i.bag then
+            gearswap.log('lockstyle item not found.')
+            return
+        end
         p['Count'] = p['Count'] + 1
         p['Inventory Index '..p['Count']] = i.slot
         p['Equipment Slot '..p['Count']] = s

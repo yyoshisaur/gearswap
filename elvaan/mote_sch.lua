@@ -16,6 +16,7 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
     include('weather_obi')
+    include('mystyle')
 end
 
 function user_setup()
@@ -101,7 +102,7 @@ function init_gear_sets()
         right_ear="エテオレートピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.precast.FC.Cure = {
@@ -117,7 +118,7 @@ function init_gear_sets()
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.precast.FC['インパクト'] = {
@@ -133,7 +134,7 @@ function init_gear_sets()
         right_ear="エテオレートピアス",
         left_ring="キシャールリング",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.precast.FC.Phalanx = {
@@ -143,7 +144,7 @@ function init_gear_sets()
         -- legs="ピンガズボン+1",
         -- feet={ name="マーリンクラッコー", augments={'Mag. Acc.+10 "Mag.Atk.Bns."+10','"Fast Cast"+7',}},
         waist="エンブラサッシュ",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.precast.FC['震天動地の章'] = {
@@ -216,16 +217,16 @@ function init_gear_sets()
         ammo="ペムフレドタスラム",
         head="ＡＣボード+3",
         body="ＡＣガウン+3",
-        hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
+        hands="ＡＣブレーサー+3",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＡＣローファー+3",
-        neck="アギュトストール+1",
+        neck="アギュトストール+2",
         waist="ルーミネリサッシュ",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.midcast['弱体魔法'] = sets.midcast.magic_acc
@@ -237,15 +238,15 @@ function init_gear_sets()
         ammo="ペムフレドタスラム",
         head=empty,
         body="トワイライトプリス",
-        hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
+        hands="ＡＣブレーサー+3",
         legs="ＡＣパンツ+3",
         feet="ＡＣローファー+3",
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
@@ -258,7 +259,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="バーカロルピアス",
         right_ear="マリグナスピアス",
@@ -279,7 +280,7 @@ function init_gear_sets()
         -- legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         -- feet="ジャリピガッシュ+2",
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="水影の首飾り",
+        neck="アギュトストール+2",
         waist="サクロコード",
         left_ear="電界の耳",
         -- left_ear="王将の耳飾り",
@@ -301,7 +302,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ＡＢローファー+1",
-        neck="水影の首飾り",
+        neck="アギュトストール+2",
         waist="サクロコード",
         left_ear="電界の耳",
         right_ear="マリグナスピアス",
@@ -319,7 +320,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
@@ -337,7 +338,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ジャリピガッシュ+2",
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
@@ -355,7 +356,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs="マルクィトルーズ+2",
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="怯懦の耳",
         right_ear="マリグナスピアス",
@@ -379,7 +380,7 @@ function init_gear_sets()
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         -- feet="ジャリピガッシュ+2",
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="アギュトストール+1",
+        neck="アギュトストール+2",
         waist="サクロコード",
         left_ear="電界の耳",
         -- left_ear="王将の耳飾り",
@@ -399,7 +400,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs="マルクィトルーズ+2",
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
@@ -417,7 +418,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ジャリピガッシュ+2",
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
@@ -435,7 +436,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs="マルクィトルーズ+2",
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
@@ -452,7 +453,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
         feet="ジャリピガッシュ+2",
-        neck={ name="アギュトストール+1", augments={'Path: A',}},
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="電界の耳",
         right_ear="マリグナスピアス",
@@ -476,7 +477,7 @@ function init_gear_sets()
         right_ear="マリグナスピアス",
         left_ring="アルコンリング",
         right_ring="エバネセンスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.midcast.Vagary = {
@@ -512,7 +513,7 @@ function init_gear_sets()
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring="プロリクスリング",
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
     
     sets.midcast.enhancing_skill = {
@@ -528,8 +529,8 @@ function init_gear_sets()
         waist="エンブラサッシュ",
         left_ear="ミミルピアス",
         right_ear="エテオレートピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back="フィフォレケープ+1",
     }
 
@@ -552,27 +553,27 @@ function init_gear_sets()
         main="マリグナスポール",
         sub="メンシストラップ+1",
         ammo="ホミリアリ",
-        head="ヴォルトキャップ",
+        head="ビファウルクラウン",
         body="シャマシュローブ",
-        hands={ name="ＰＤブレーサー+3", augments={'Enh. "Tranquility" and "Equanimity"',}},
-        legs="ピンガズボン+1",
-        feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
-        neck="ロリケートトルク+1",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
+        neck={ name="バーシチョーカー+1", augments={'Path: A',}},
         waist="キャリアーサッシュ",
         left_ear="ルガルバンダピアス",
         right_ear="驕慢の耳",
         left_ring="守りの指輪",
-        right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}},
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
 
     sets.idle.Sublimation = {
         main="マリグナスポール",
         sub="メンシストラップ+1",
-        ammo="ホミリアリ",
+        ammo="ストンチタスラム+1",
         head="ＡＣボード+3",
         body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},
-        hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+25','"Regen"+2','HP+50',}},
         neck={ name="バーシチョーカー+1", augments={'Path: A',}},
@@ -581,7 +582,7 @@ function init_gear_sets()
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",
         right_ring={ name="ゼラチナスリング+1", augments={'Path: A',}},
-        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Fast Cast"+10','"Regen"+5',}},
     }
     
     sets.idle.Refresh = set_combine(sets.idle, {
@@ -591,9 +592,9 @@ function init_gear_sets()
         hands={ name="マーリンダスタナ", augments={'Pet: Haste+2','AGI+1','"Refresh"+2','Accuracy+16 Attack+16',}},
         legs="アシドゥイズボン+1",
         feet={ name="マーリンクラッコー", augments={'INT+3','Pet: Crit.hit rate +1','"Refresh"+2','Accuracy+20 Attack+20',}},
-        waist="キャリアーサッシュ",
-        right_ear="エテオレートピアス",
     })
+
+    set_equip_by_sub_job(player.sub_job)
 end
 
 function job_precast(spell, action, spellMap, eventArgs)
@@ -677,6 +678,10 @@ end
 --     return new_spell_map
 -- end
 
+function job_sub_job_change(newSubjob, oldSubjob)
+    set_equip_by_sub_job(newSubjob)
+end
+
 function set_custom_class(spell)
     classes.CustomClass = nil
     if spell.skill == '精霊魔法' then
@@ -709,6 +714,8 @@ function job_self_command(cmdParams, eventArgs)
     elseif cmdParams[1]  == '2p' then
         send_command('input /macro book 5')
         windower.add_to_chat(122,'---> 震天動地 2ポチマクロ')
+    elseif cmdParams[1] == 'lockstyle' or cmdParams[1] == 'ls' then
+            mystyle('学', player.sub_job)
     end
 end
 
@@ -718,4 +725,10 @@ end
 
 function mogmaster(job)
     send_command('input /si '..job..';')
+end
+
+function set_equip_by_sub_job(subJob)
+    if state.DisplayMode.value then update_job_states() end
+
+    send_command('wait 1; input /lockstyle on; wait 1; gs c ls;')
 end

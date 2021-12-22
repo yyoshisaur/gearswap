@@ -16,7 +16,7 @@ local maneuvers_id = {
 
 state.AutoManuevers = M(false, "AutoManuevers")
 
-windower.register_event('time change', function(new, old)
+windower.raw_register_event('time change', function(new, old)
     local curr = os.clock()
     if curr > update_time + update_interval then
         update_time = curr
@@ -123,7 +123,7 @@ function exec_maneuver()
     end
 end
 
-windower.register_event('zone change', function()
+windower.raw_register_event('zone change', function()
     state.AutoManuevers:set(false)
     maneuver_time = 60
     if state.DisplayMode.value then update_job_states() end

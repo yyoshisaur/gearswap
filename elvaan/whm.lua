@@ -129,7 +129,7 @@ function get_sets()
     sets.midcast.cure = {
         main={ name="クェラーロッド", augments={'MP+80','"Cure" potency +15%','Enmity-5',}},
         sub="玄冥盾",
-        ammo="インカントストーン",
+        ammo="ペムフレドタスラム",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
         body="ＥＢブリオー+1",
         hands="ＴＥミトン+3",
