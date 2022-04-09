@@ -15,6 +15,7 @@ function job_setup()
 
     include('auto_thf')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()
@@ -174,6 +175,22 @@ function init_gear_sets()
         back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Crit.hit rate+10','Damage taken-5%',}},
     }
     
+    sets.precast.WS.magic = {
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
+        neck="サンクトネックレス",
+        waist="エスカンストーン",
+        left_ear="フリオミシピアス",
+        right_ear="イシュヴァラピアス",
+        left_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        right_ring="女王の指輪+1",
+        back={ name="トゥタティスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
     sets.precast.WS['ワスプスティング'] = sets.precast.WS.wsd
     sets.precast.WS['ガストスラッシュ'] = sets.precast.WS.wsd
     sets.precast.WS['シャドーステッチ'] = sets.precast.WS.wsd
@@ -183,7 +200,7 @@ function init_gear_sets()
     sets.precast.WS['エナジードレイン'] = sets.precast.WS.wsd
     sets.precast.WS['ダンシングエッジ'] = sets.precast.WS
     sets.precast.WS['シャークバイト'] = sets.precast.WS.wsd
-    sets.precast.WS['イオリアンエッジ'] = sets.precast.WS.wsd
+    sets.precast.WS['イオリアンエッジ'] = sets.precast.WS.magic
     sets.precast.WS['マーシーストローク'] = sets.precast.WS.wsd
     sets.precast.WS['エヴィサレーション'] = sets.precast.WS.critical
     sets.precast.WS['エクゼンテレター'] = sets.precast.WS

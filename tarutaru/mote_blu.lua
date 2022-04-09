@@ -15,6 +15,8 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('myexport')
 end
 
 function user_setup()
@@ -77,7 +79,7 @@ function init_gear_sets()
     sets.weapons.Almace = {main={name="アルマス"}, sub={name="斬鉄剣"},}
     sets.weapons.Tizona = {main={name="ティソーナ"}, sub={name="アルマス"},}
     sets.weapons.Sequence = {main={name="セクエンス"}, sub={name="アルマス"},}
-    sets.weapons.Magic = {main={name="ネイグリング"}, sub={name="マクセンチアス"},}
+    sets.weapons.Magic = {main={ name="ブンジロッド", augments={'Path: A',}}, sub={name="マクセンチアス"},}
     sets.weapons.Club = {main={name="マクセンチアス"}, sub={name="ネイグリング"},}
 
 
@@ -394,6 +396,7 @@ function init_gear_sets()
     sets.midcast['強化魔法'] = {}
     sets.midcast['強化魔法']['ファランクス'] = {
         ammo="ストンチタスラム+1",
+        head={ name="ヘルクリアヘルム", augments={'"Waltz" potency +3%','CHR+9','Phalanx +3','Accuracy+12 Attack+12',}},
         body={ name="ヘルクリアベスト", augments={'Magic dmg. taken -2%','Rng.Atk.+13','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}, hp=61,},
         hands={ name="ヘルクリアグローブ", augments={'INT+9','AGI+4','Phalanx +4','Accuracy+1 Attack+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}, hp=20,},
         legs={ name="ヘルクリアトラウザ", augments={'Accuracy+1 Attack+1','"Mag.Atk.Bns."+11','Phalanx +4','Mag. Acc.+11 "Mag.Atk.Bns."+11',}, hp=38,},

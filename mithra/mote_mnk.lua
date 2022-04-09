@@ -14,6 +14,7 @@ function job_setup()
     include('Mote-Display')
     
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()
@@ -174,6 +175,7 @@ function init_gear_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        -- right_ear="シテレアパール",
         left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'VIT+20','Accuracy+20 Attack+20','VIT+10','Weapon skill damage +10%','Damage taken-5%',}},
@@ -392,6 +394,7 @@ function init_gear_sets()
         waist="月虹帯+1",
         left_ear="シェリダピアス",
         right_ear="ブルタルピアス",
+        -- right_ear="シテレアパール",
         left_ring="守りの指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},

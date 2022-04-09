@@ -204,9 +204,9 @@ function pet_midcast(spell)
     -- windower.add_to_chat(122,'spell.type: '..spell.type)
     -- windower.add_to_chat(122,'spell.name: '..spell.name)
     local set_equip = nil
-    if spell.type == 'MonsterSkill' then
+    -- if spell.type == 'MonsterSkill' then
         set_equip = sets.midcast.pet_acc
-    end
+    -- end
 
     if set_equip then
         equip(set_equip)

@@ -13,6 +13,7 @@ function job_setup()
 
     include('auto_dnc')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()
@@ -76,7 +77,7 @@ end
 
 function init_gear_sets()
     sets.weapons = {}
-    sets.weapons.Twashtar = { main={name="トゥワシュトラ"}, sub={ name="ターニオンダガー+1"}}
+    sets.weapons.Twashtar = { main={name="トゥワシュトラ"}, sub={ name="クレパスクラナイフ"}}
     sets.weapons.Tauret = { main={name="トーレット"}, sub={ name="トゥワシュトラ"}}
     sets.weapons.Centovente = { main={name="トゥワシュトラ"}, sub={ name="セントヴェンテ"}}
 

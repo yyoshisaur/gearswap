@@ -13,6 +13,7 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()
@@ -73,9 +74,9 @@ end
 function init_gear_sets()
     sets.weapons = {}
     dolichenus = { main={name="ドリケナス"}, sub={name="デリベレンス+1"}}
-    dolichenus_dw =  { main={name="ドリケナス"}, sub={name="ターニオンダガー+1"}}
+    dolichenus_dw =  { main={name="ドリケナス"}, sub={name="クレパスクラナイフ"}}
     agwu = { main={name="アグゥアクス"}, sub={name="デリベレンス+1"}}
-    agwu_dw = { main={name="アグゥアクス"}, sub={name="ターニオンダガー+1"}}
+    agwu_dw = { main={name="アグゥアクス"}, sub={name="クレパスクラナイフ"}}
 
     sets.TreasureHunter = {
         head="白ララブキャップ+1",
@@ -171,7 +172,7 @@ function init_gear_sets()
     sets.precast.WS['サベッジブレード'] = sets.precast.WS
 
     sets.precast.ready_delay = {
-        -- hands="ＮＫマノプラス+1",
+        hands="ＮＫマノプラス+1",
         legs="グレティブリーチズ",
     }
     
@@ -346,24 +347,38 @@ function job_precast(spell, action, spellMap, eventArgs)
 end
 
 function job_midcast(spell, action, spellMap, eventArgs)
-    if spell.type == 'Monster' then
-        local equip_set = get_pet_midcast_set(spell, spellMap)
-        if not state.Buff["アンリーシュ"] then
-            equip_set = set_combine(equip_set, sets.midcast.Pet.TP)
-        end
-        equip(equip_set)
-        eventArgs.handled = true
-    end
 end
 
 function job_post_midcast(spell, action, spellMap, eventArgs)
 end
 
-function job_aftercast(spell, action, spellMap, eventArgs)
-    if spell.type == 'Monster' then
-        -- equip(get_pet_midcast_set(spell, spellMap))
-        eventArgs.handled = true
+function job_pet_midcast(spell, action, spellMap, eventArgs)
+    -- -- if spell.type == 'Monster' then
+    --     local equip_set = get_pet_midcast_set(spell, spellMap)
+    --     if not state.Buff["アンリーシュ"] then
+    --         equip_set = set_combine(equip_set, sets.midcast.Pet.TP)
+    --     end
+    --     equip(equip_set)
+    --     -- eventArgs.handled = true
+    -- -- end
+    -- eventArgs.handled = true
+end
+
+function job_post_pet_midcast(spell, action, spellMap, eventArgs)
+    if not state.Buff["アンリーシュ"] then
+        equip(sets.midcast.Pet.TP)
     end
+end
+
+function job_aftercast(spell, action, spellMap, eventArgs)
+    -- if spell.type == 'Monster' then
+    --     local equip_set = get_pet_midcast_set(spell, spellMap)
+    --     if not state.Buff["アンリーシュ"] then
+    --         equip_set = set_combine(equip_set, sets.midcast.Pet.TP)
+    --     end
+    --     equip(equip_set)
+    --     eventArgs.handled = true
+    -- end
 end
 
 function job_post_aftercast(spell, action, spellMap, eventArgs)
@@ -440,9 +455,9 @@ end
 
 function job_get_spell_map(spell, default_spell_map)
     local new_spell_map = default_spell_map
-    if spell.type == 'MonsterSkill' or spell.type == 'Monster'then
+    -- if spell.type == 'Monster'then
         new_spell_map = ready_spell_maps[spell.name]
-    end
+    -- end
 
     return new_spell_map
 end

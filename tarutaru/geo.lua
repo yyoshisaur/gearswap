@@ -1,3 +1,4 @@
+include('myexport')
 function get_sets()
     set_language('japanese')
     
@@ -50,7 +51,7 @@ function get_sets()
         head="ＡＺフード+1",
         body="ＡＺコート+1",
         hands="ＧＯミテーヌ+3",
-        legs={ name="ＢＡパンツ+1", augments={'Enhances "Mending Halation" effect',}},
+        legs={ name="ＢＡパンツ+3", augments={'Enhances "Mending Halation" effect',}},
         feet="ＡＺゲートル+1",
         neck="インカンタートルク",
         waist="イーサベルト",

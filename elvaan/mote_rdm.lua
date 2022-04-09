@@ -28,6 +28,7 @@ function job_setup()
     include('Mote-Display')
     include('weather_obi')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()
@@ -45,6 +46,7 @@ function user_setup()
         'Crocea_C_DayBreak',
         'D1',
         'DayBreak',
+        'Maxentius',
         'Crocea_C_Levante',
     }
     state.Hi_EnSpell = M(false, 'High EnSpell')
@@ -94,35 +96,40 @@ end
 function init_gear_sets()
     sets.weapons = {}
     -- sets.weapons.Crocea_C_DW = {main={ name="クロセアモース", augments={'Path: C',}}, sub="トーレット",}
-    crocea_c_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub="ターニオンダガー+1",}
-    crocea_b_dw = {main={ name="クロセアモース", augments={'Path: B',}}, sub="ターニオンダガー+1",}
-    crocea_c_daybreak_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub="デイブレイクワンド",}
-    crocea_c_levante_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub="レヴァンテダガー",}
-    daybreak_dw = {main="デイブレイクワンド", sub="トーレット"}
-    tauret_dw = {main="トーレット", sub="ターニオンダガー+1"}
-    mandau_dw = {main="マンダウ", sub="ターニオンダガー+1"}
-    d1_dw = {main="クトゥルブナイフ", sub="インフィルトレータ",}
+    crocea_c_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="ターニオンダガー+1",},}
+    crocea_b_dw = {main={ name="クロセアモース", augments={'Path: B',}}, sub={name="ターニオンダガー+1",},}
+    crocea_c_daybreak_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="デイブレイクワンド",},}
+    crocea_c_levante_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="レヴァンテダガー",},}
+    daybreak_dw = {main={name="デイブレイクワンド"}, sub={name="トーレット",},}
+    maxentius_dw =  {main={name="マクセンチアス"}, sub={name="ターニオンダガー+1",},}
+    tauret_dw = {main={name="トーレット"}, sub={name="ターニオンダガー+1",},}
+    mandau_dw = {main={name="マンダウ"}, sub={name="ターニオンダガー+1",},}
+    d1_dw = {main={name="クトゥルブナイフ"}, sub={name="インフィルトレータ",},}
 
-    crocea_c = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
-    crocea_b = {main={ name="クロセアモース", augments={'Path: B',}}, sub="サクロバルワーク",}
-    crocea_c_daybreak = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
-    crocea_c_levante = {main={ name="クロセアモース", augments={'Path: C',}}, sub="サクロバルワーク",}
-    daybreak = {main="デイブレイクワンド", sub="サクロバルワーク"}
-    tauret = {main="トーレット", sub="サクロバルワーク"}
-    mandau = {main="マンダウ", sub="サクロバルワーク"}
-    d1 = {main="クトゥルブナイフ", sub="サクロバルワーク",}
+    crocea_c = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="サクロバルワーク",},}
+    crocea_b = {main={ name="クロセアモース", augments={'Path: B',}}, sub={name="サクロバルワーク",},}
+    crocea_c_daybreak = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="サクロバルワーク",},}
+    crocea_c_levante = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="サクロバルワーク",},}
+    daybreak = {main={name="デイブレイクワンド"}, sub={name="サクロバルワーク",},}
+    maxentius =  {main={name="マクセンチアス"}, sub={name="サクロバルワーク",},}
+    tauret = {main={name="トーレット"}, sub={name="サクロバルワーク",},}
+    mandau = {main={name="マンダウ"}, sub={name="サクロバルワーク",},}
+    d1 = {main={name="クトゥルブナイフ"}, sub={name="サクロバルワーク",},}
 
-    sets.weapons.Enfeeble_MND = {main="デイブレイクワンド", sub="アムラピシールド",}
-    sets.weapons.Enfeeble_MND_DW = {main="マクセンチアス", sub="デイブレイクワンド",}
+    sets.weapons.Enfeeble_MND = {main={name="デイブレイクワンド"}, sub={name="アムラピシールド"},}
+    sets.weapons.Enfeeble_MND_DW = {main={name="マクセンチアス"}, sub={name="デイブレイクワンド"},}
 
-    sets.weapons.Enfeeble_dispelga = {main="デイブレイクワンド", sub="アムラピシールド",}
-    sets.weapons.Enfeeble_dispelga_DW = {main="デイブレイクワンド", sub="マクセンチアス",}
+    sets.weapons.Enfeeble_dispelga = {main={name="デイブレイクワンド"}, sub={name="アムラピシールド"},}
+    sets.weapons.Enfeeble_dispelga_DW = {main={name="デイブレイクワンド"}, sub={name="マクセンチアス"},}
 
-    sets.weapons.Enfeeble_INT = {main="ネイグリング", sub="アムラピシールド",}
-    sets.weapons.Enfeeble_INT_DW = {main="ネイグリング", sub="マクセンチアス",}
+    sets.weapons.Enfeeble_INT = {main={name="ネイグリング"}, sub={name="アムラピシールド"},}
+    sets.weapons.Enfeeble_INT_DW = {main={name="ネイグリング"}, sub={name="マクセンチアス"},}
 
-    sets.weapons.Enfeeble_Acc = {main="クロセアモース", sub="アムラピシールド",}
-    sets.weapons.Enfeeble_Acc_DW = {main="クロセアモース", sub="マクセンチアス",}
+    sets.weapons.Enfeeble_Acc = {main={name="クロセアモース"}, sub={name="アムラピシールド"},}
+    sets.weapons.Enfeeble_Acc_DW = {main={name="クロセアモース"}, sub={name="マクセンチアス"},}
+
+    sets.weapons.ElementalMagic = {main={ name="ブンジロッド", augments={'Path: A',}}, sub={name="アムラピシールド"},}
+    sets.weapons.ElementalMagic_DW =  {main={ name="ブンジロッド", augments={'Path: A',}}, sub={name="マクセンチアス"},}
 
     sets.TreasureHunter = {
         head="ヴォルトキャップ",
@@ -253,6 +260,8 @@ function init_gear_sets()
     sets.precast.WS['シャンデュシニュ'] = sets.precast.WS.critical
     sets.precast.WS['レクイエスカット'] = sets.precast.WS
     sets.precast.WS['サークルブレード'] = sets.precast.WS.wsd
+
+    sets.precast.WS['ブラックヘイロー'] = sets.precast.WS.wsd
 
     sets.precast.JA['連続魔'] =  {body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},}
 
@@ -597,9 +606,7 @@ function init_gear_sets()
     }
 
     sets.midcast['精霊魔法'] = {
-        main={ name="マランスタッフ+1", augments={'Path: A',}},
-        sub="エンキストラップ",
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="エアハット+1",
         body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
@@ -615,14 +622,12 @@ function init_gear_sets()
     }
 
     sets.midcast['精霊魔法'].MB = {
-        main={ name="マランスタッフ+1", augments={'Path: A',}},
-        sub="エンキストラップ",
-        ammo="ペムフレドタスラム",
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="エアハット+1",
         body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
-        feet="ジャリピガッシュ+2",
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="水影の首飾り",
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -772,14 +777,22 @@ function job_post_aftercast(spell, action, spellMap, eventArgs)
 end
 
 function customize_idle_set(idleSet)
-    local weapons = sets.weapons
-    idleSet = set_combine(idleSet, weapons[state.Weapons.value])
+    local weapon = sets.weapons[state.Weapons.value]
+    if player.equipment.sub == weapon.main.name then
+        weapon.sub.priority = 1
+        weapon.main.priority = 0
+    end
+    idleSet = set_combine(idleSet, weapon)
     return idleSet
 end
 
 function customize_melee_set(meleeSet)
-    local weapons = sets.weapons
-    meleeSet = set_combine(meleeSet, weapons[state.Weapons.value])
+    local weapon = sets.weapons[state.Weapons.value]
+    if player.equipment.sub == weapon.main.name then
+        weapon.sub.priority = 1
+        weapon.main.priority = 0
+    end
+    meleeSet = set_combine(meleeSet, weapon)
     return meleeSet
 end
 
@@ -817,6 +830,7 @@ function set_equip_by_sub_job(subJob)
         sets.weapons.Crocea_C_DayBreak = crocea_c_daybreak_dw
         sets.weapons.D1 = d1_dw
         sets.weapons.DayBreak = daybreak_dw
+        sets.weapons.Maxentius = maxentius_dw
         sets.weapons.Crocea_C_Levante = crocea_c_levante_dw
     else
         sets.weapons.Crocea_C = crocea_c
@@ -826,6 +840,7 @@ function set_equip_by_sub_job(subJob)
         sets.weapons.Crocea_C_DayBreak = crocea_c_daybreak
         sets.weapons.D1 = d1
         sets.weapons.DayBreak = daybreak
+        sets.weapons.Maxentius = maxentius
         sets.weapons.Crocea_C_Levante = crocea_c_levante
     end
 
@@ -840,6 +855,9 @@ function set_equip_by_sub_job(subJob)
     set_equip_weapon(sets.midcast['ディスペガ'], sets.weapons['Enfeeble_dispelga'..sub_job_suffix])
     set_equip_weapon(sets.midcast['インパクト'], sets.weapons['Enfeeble_Acc'..sub_job_suffix])
     set_equip_weapon(sets.midcast['弱体魔法'].Saboteur, sets.weapons['Enfeeble_MND'..sub_job_suffix])
+    set_equip_weapon(sets.midcast['精霊魔法'], sets.weapons['ElementalMagic'..sub_job_suffix])
+    set_equip_weapon(sets.midcast['精霊魔法'].MB, sets.weapons['ElementalMagic'..sub_job_suffix])
+
     sets.midcast.Phalanx_Self = sets.midcast['phalanx_self'..sub_job_suffix]
 
     if state.DisplayMode.value then update_job_states() end

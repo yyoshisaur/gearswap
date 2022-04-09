@@ -17,6 +17,7 @@ function job_setup()
     include('Mote-Display')
     include('weather_obi')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()

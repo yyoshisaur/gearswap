@@ -12,6 +12,7 @@ function job_setup()
     include('Mote-TreasureHunter')
     include('Mote-Display')
     include('weather_obi')
+    include('myexport')
 
     set_elemental_obi("闇輪の帯")
     set_elemental_obi("火輪の帯")
@@ -163,10 +164,10 @@ function init_gear_sets()
     }
     sets.precast.WS.ra_m = {
         ammo="ライヴブレット",
-        head={ name="ヘルクリアヘルム", augments={'"Mag.Atk.Bns."+24','"Triple Atk."+2','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
-        hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
-        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="コモドアチャーム+2",
         waist="エスカンストーン",
@@ -181,8 +182,8 @@ function init_gear_sets()
         ammo="ライヴブレット",
         head="妖蟲の髪飾り+1",
         body={ name="ＬＡフラック+3", augments={'Enhances "Loaded Deck" effect',}},
-        hands={ name="カマインフィンガ+1", augments={'Rng.Atk.+20','"Mag.Atk.Bns."+12','"Store TP"+6',}},
-        legs={ name="ヘルクリアトラウザ", augments={'"Mag.Atk.Bns."+29','STR+6','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
         feet={ name="ＬＡブーツ+3", augments={'Enhances "Wild Card" effect',}},
         neck="コモドアチャーム+2",
         waist="エスカンストーン",

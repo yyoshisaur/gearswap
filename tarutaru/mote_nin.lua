@@ -14,6 +14,7 @@ function job_setup()
     include('Mote-Display')
 
     include('auto_nin')
+    include('myexport')
 end
 
 function user_setup()

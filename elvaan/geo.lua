@@ -1,3 +1,4 @@
+include('myexport')
 function get_sets()
     set_language('japanese')
     
@@ -178,7 +179,8 @@ function get_sets()
         feet={ name="ＢＡサンダル+3", augments={'Enhances "Radial Arcana" effect',}},
         -- neck="ロリケートトルク+1",
         neck="バグアチャーム+2",
-        waist="イーサベルト",
+        -- waist="イーサベルト",
+        waist="キャリアーサッシュ",
         left_ear="エテオレートピアス",
         right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",

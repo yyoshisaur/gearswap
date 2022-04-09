@@ -20,6 +20,8 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('myexport')
 end
 
 function user_setup()
@@ -336,8 +338,8 @@ function init_gear_sets()
     sets.midcast['BardSong'].Resist = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
     sets.midcast['BardSong'].Mazurka = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
     sets.midcast['BardSong'].Hymnus = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
-    sets.midcast['BardSong'].Sirvente = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
-    sets.midcast['BardSong'].Dirge = set_combine(sets.midcast.song_base, {legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
+    sets.midcast['BardSong'].Sirvente = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1",legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
+    sets.midcast['BardSong'].Dirge = set_combine(sets.midcast.song_base, {body="ＦＬオングルリヌ+1", legs="インヤガシャルワ+2", feet="ＢＲスリッパー+3",})
     sets.midcast['BardSong'].Lullaby = sets.midcast.magic_acc
     sets.midcast['BardSong'].LullabyAoE = sets.midcast.magic_acc
     sets.midcast['BardSong'].Requiem = sets.midcast.magic_acc

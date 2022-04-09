@@ -1,3 +1,4 @@
+include('myexport')
 function get_sets()
     set_language('japanese')
     

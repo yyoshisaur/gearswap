@@ -17,6 +17,7 @@ function job_setup()
     include('Mote-Display')
     include('weather_obi')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()
@@ -269,22 +270,17 @@ function init_gear_sets()
     }
 
     sets.midcast['精霊魔法'].MB = {
-        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
-        sub="エンキストラップ",
+        main={ name="ブンジロッド", augments={'Path: A',}},
+        sub="アムラピシールド",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Magic burst dmg.+10%','INT+7','Mag. Acc.+10','"Mag.Atk.Bns."+12',}},
-        -- body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+20 "Mag.Atk.Bns."+20','Magic burst dmg.+5%','INT+10','"Mag.Atk.Bns."+14',}},
-        -- legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
-        -- feet="ジャリピガッシュ+2",
+        legs={ name="アグゥスロップス", augments={'Path: A',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="アギュトストール+2",
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
-        left_ear="電界の耳",
-        -- left_ear="王将の耳飾り",
-        -- left_ear="バーカロルピアス",
+        left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
@@ -294,17 +290,17 @@ function init_gear_sets()
     sets.midcast['精霊魔法']['虚誘掩殺の策'] = set_combine(sets.midcast['精霊魔法'], {feet="ＡＢローファー+1",})
 
     sets.midcast['精霊魔法']['虚誘掩殺の策'].MB = {
-        main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
-        sub="エンキストラップ",
+        main={ name="ブンジロッド", augments={'Path: A',}},
+        sub="アムラピシールド",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
+        legs={ name="アグゥスロップス", augments={'Path: A',}},
         feet="ＡＢローファー+1",
-        neck="アギュトストール+2",
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
-        left_ear="電界の耳",
+        left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
@@ -336,7 +332,7 @@ function init_gear_sets()
         head="妖蟲の髪飾り+1",
         body="ＡＣガウン+3",
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
+        legs={ name="アグゥスロップス", augments={'Path: A',}},
         feet="ジャリピガッシュ+2",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
@@ -366,27 +362,19 @@ function init_gear_sets()
     }
 
     sets.midcast.Helix.MB = {
-        -- main={ name="アカデモス", augments={'MP+80','INT+20','"Mag.Atk.Bns."+20',}},
-        -- sub="エンキストラップ",
-        main="ブンジロッド",
+        main={ name="ブンジロッド", augments={'Path: A',}},
         sub="アムラピシールド",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Magic burst dmg.+10%','INT+7','Mag. Acc.+10','"Mag.Atk.Bns."+12',}},
-        -- body={ name="マーリンジュバ", augments={'Mag. Acc.+21 "Mag.Atk.Bns."+21','Magic burst dmg.+6%','INT+7','Mag. Acc.+9','"Mag.Atk.Bns."+14',}},
+        body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        -- legs="マルクィトルーズ+2",
-        -- legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
-        -- feet="ジャリピガッシュ+2",
+        legs={ name="アグゥスロップス", augments={'Path: A',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="アギュトストール+2",
+        neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
-        left_ear="電界の耳",
-        -- left_ear="王将の耳飾り",
+        left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
-        -- right_ring="マルクィリング",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="ブックワームケープ", augments={'INT+4','MND+4','Helix eff. dur. +20',}},
     }
@@ -396,9 +384,9 @@ function init_gear_sets()
         sub="アムラピシールド",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
-        body="マルクィサイオ+2",
+        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs="マルクィトルーズ+2",
+        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
@@ -414,10 +402,10 @@ function init_gear_sets()
         sub="アムラピシールド",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head="妖蟲の髪飾り+1",
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Magic burst dmg.+10%','INT+7','Mag. Acc.+10','"Mag.Atk.Bns."+12',}},
+        body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
-        feet="ジャリピガッシュ+2",
+        legs={ name="アグゥスロップス", augments={'Path: A',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -449,13 +437,13 @@ function init_gear_sets()
         sub="アムラピシールド",
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
-        body={ name="マーリンジュバ", augments={'Mag. Acc.+15 "Mag.Atk.Bns."+15','Magic burst dmg.+10%','INT+7','Mag. Acc.+10','"Mag.Atk.Bns."+12',}},
+        body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        legs={ name="マーリンシャルワ", augments={'Mag. Acc.+24 "Mag.Atk.Bns."+24','Magic burst dmg.+8%','INT+15','Mag. Acc.+5','"Mag.Atk.Bns."+3',}},
-        feet="ジャリピガッシュ+2",
+        legs={ name="アグゥスロップス", augments={'Path: A',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
-        left_ear="電界の耳",
+        left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
         left_ring="フレキリング",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
@@ -542,7 +530,7 @@ function init_gear_sets()
 
     sets.midcast.Protect = set_combine(sets.midcast['強化魔法'], {right_ear="ブラキュラピアス",})
     sets.midcast.Shell = set_combine(sets.midcast['強化魔法'], {right_ear="ブラキュラピアス",})
-    sets.midcast.Refresh = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
+    sets.midcast.Refresh = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1",})
     sets.midcast.BarElement = set_combine(sets.midcast.enhancing_skill, {legs="シェダルサラウィル",})
     sets.midcast.Phalanx = sets.midcast.enhancing_skill
     sets.midcast['オーラ'] = sets.midcast.enhancing_skill

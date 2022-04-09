@@ -14,6 +14,7 @@ function job_setup()
     include('Mote-Display')
     include('pup_maneuvers')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()

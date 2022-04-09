@@ -12,6 +12,7 @@ function job_setup()
     include('auto_war')
     include('war_itemizer')
     mogmaster('war')
+    include('myexport')
     select_default_macro_book()
 end
 

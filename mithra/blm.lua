@@ -1,4 +1,5 @@
 include('weather_obi')
+include('myexport')
 function get_sets()
     set_language('japanese')
     

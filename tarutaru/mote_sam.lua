@@ -14,6 +14,8 @@ function job_setup()
     include('Mote-Display')
 
     include('auto_sam')
+    include('myexport')
+
 end
 
 function user_setup()
@@ -117,15 +119,33 @@ function init_gear_sets()
         body={ name="極左近士胴丸", augments={'Enhances "Overwhelm" effect',}},
         hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs="極脇戸板佩楯",
-        feet="フラマガンビエラ+2",
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
-        -- waist={ name="セールフィベルト+1", augments={'Path: A',}},
-        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        -- waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
-        right_ear="シェレピアス",
+        -- right_ear="シェレピアス",
+        right_ear="スラッドピアス",
         left_ring="王将の指輪",
         right_ring="ニックマドゥリング",
         back={ name="スメルトリオマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%',}},
+    }
+
+    sets.precast.WS.multi_acc = {
+        ammo="ノブキエリ",
+        head="フラマツッケット+2",
+        body="乾闥婆作務衣改",
+        hands="フラママノポラ+2",
+        legs="乾闥婆筒袴改",
+        feet="フラマガンビエラ+2",
+        neck="フォシャゴルゲット",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        -- waist={ name="ケンタークベルト+1", augments={'Path: A',}},
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="スラッドピアス",
+        left_ring="王将の指輪",
+        right_ring="ニックマドゥリング",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 
     sets.precast.WS.wsd = {
@@ -136,8 +156,8 @@ function init_gear_sets()
         legs="極脇戸板佩楯",
         feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
-        -- waist={ name="セールフィベルト+1", augments={'Path: A',}},
-        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        -- waist={ name="ケンタークベルト+1", augments={'Path: A',}},
         left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         right_ear="スラッドピアス",
         left_ring="王将の指輪",
@@ -204,7 +224,7 @@ function init_gear_sets()
     sets.precast.WS['六之太刀・光輝'] = sets.precast.WS.magic
     sets.precast.WS['七之太刀・雪風'] = sets.precast.WS.wsd
     sets.precast.WS['八之太刀・月光'] = sets.precast.WS.wsd
-    sets.precast.WS['九之太刀・花車'] = sets.precast.WS.wsd
+    sets.precast.WS['九之太刀・花車'] = sets.precast.WS.multi_acc
     sets.precast.WS['十一之太刀・鳳蝶'] = sets.precast.WS.magic_acc
     sets.precast.WS['祖之太刀・不動'] = sets.precast.WS.wsd
     sets.precast.WS['十二之太刀・照破'] = sets.precast.WS
@@ -263,16 +283,16 @@ function init_gear_sets()
         ammo="オゲルミルオーブ+1",
         -- head="フラマツッケット+2",
         head="乾闥婆陣鉢改",
-        -- body="乾闥婆作務衣改",
-        body="フラマコラジン+2",
+        body="乾闥婆作務衣改",
+        -- body="フラマコラジン+2",
         hands="極脇戸筒篭手",
-        legs={ name="楯無佩楯改", augments={'Path: A',}},
-        -- legs="乾闥婆筒袴改",
+        -- legs={ name="楯無佩楯改", augments={'Path: A',}},
+        legs="乾闥婆筒袴改",
         feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
         neck="月光の喉輪",
         waist={ name="セールフィベルト+1", augments={'Path: A',}},
         left_ear="セサンスピアス",
-        right_ear="ディグニタリピアス",
+        right_ear="テロスピアス",
         -- left_ring="守りの指輪",
         -- right_ring="フラマリング",
         left_ring={name="シーリチリング+1", bag="Wardrobe 3"},

@@ -14,6 +14,7 @@ function job_setup()
     include('Mote-Display')
 
     include('auto_drg')
+    include('myexport')
 end
 
 function user_setup()

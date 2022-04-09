@@ -26,8 +26,8 @@ local use_ws = {
 local ws_index = 1
 local ws_target_id = 0
 function check_ws()
-    if not check_can_use_ability() then return false end
-    if player.tp >= 1200 then
+    if not check_can_use_ws() then return false end
+    if player.tp >= 1000 then
         ws_target_id = windower.ffxi.get_mob_by_target('t').id
         windower.chat.input('/ws "'..windower.to_shift_jis(use_ws[ws_index]) ..'" <t>')
         ws_index = ws_index % #use_ws + 1

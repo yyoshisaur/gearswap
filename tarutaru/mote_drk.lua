@@ -12,11 +12,12 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+    include('myexport')
 end
 
 function user_setup()
-    state.OffenseMode:options('Normal', 'Stp', 'Gaol')
-    state.HybridMode:options('Normal', 'DT')
+    state.OffenseMode:options('Normal', 'Stp')
+    state.HybridMode:options('Normal')
     state.WeaponskillMode:options('Normal', 'Acc', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Caladbolg', 'Liberator', 'Anguta', 'Lycurgos'}
 
@@ -132,13 +133,13 @@ function init_gear_sets()
 
     sets.precast.WS.vit = {
         ammo="ノブキエリ",
-        head={ name="オディシアヘルム", augments={'Accuracy+25 Attack+25','Weapon skill damage +5%','Accuracy+5','Attack+4',}},
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="ＩＧキュイラス+3",
-        hands={ name="オディシアガントレ", augments={'Accuracy+27','Weapon skill damage +4%','VIT+10',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
         feet="スレビアレギンス+2",
-        neck="フォシャゴルゲット",
         neck="暗黒の数珠+2",
+        waist="フォシャベルト",
         left_ear="スラッドピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ニックマドゥリング",
@@ -148,9 +149,9 @@ function init_gear_sets()
     
     sets.precast.WS.str = {
         ammo="ノブキエリ",
-        head={ name="オディシアヘルム", augments={'Accuracy+25 Attack+25','Weapon skill damage +5%','Accuracy+5','Attack+4',}},
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="ＩＧキュイラス+3",
-        hands={ name="オディシアガントレ", augments={'Accuracy+27','Weapon skill damage +4%','VIT+10',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
         feet="スレビアレギンス+2",
         neck="暗黒の数珠+2",
@@ -171,8 +172,8 @@ function init_gear_sets()
         feet="フラマガンビエラ+2",
         neck="暗黒の数珠+2",
         waist="エスカンストーン",
-        left_ear="昏黄の耳飾り",
-        right_ear="ディグニタリピアス",
+        left_ear="ディグニタリピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="守りの指輪",
         right_ring="フラマリング",
         back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
@@ -196,9 +197,9 @@ function init_gear_sets()
     
     sets.precast.WS.scythe_wsd = {
         ammo="ノブキエリ",
-        head="ラトリサリット+1",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="ＩＧキュイラス+3",
-        hands="ラトリガドリング+1",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
         feet="スレビアレギンス+2",
         neck={ name="暗黒の数珠+2", augments={'Path: A',}},
@@ -228,9 +229,9 @@ function init_gear_sets()
 
     sets.precast.WS.scythe_mythic = {
         ammo="ノブキエリ",
-        head="ラトリサリット+1",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="ＩＧキュイラス+3",
-        hands="ラトリガドリング+1",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs="ＩＧフランチャ+3",
         feet="スレビアレギンス+2",
         neck="フォシャゴルゲット",
@@ -358,8 +359,8 @@ function init_gear_sets()
         feet="ラトリソルレット",
         neck="エーラペンダント",
         waist="エスカンストーン",
-        left_ear="昏黄の耳飾り",
-        right_ear="ディグニタリピアス",
+        left_ear="ディグニタリピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="スティキニリング+1",
         right_ring="キシャールリング",
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10',}},
@@ -409,8 +410,8 @@ function init_gear_sets()
         feet="ＨＴソルレット+1",
         neck="ロリケートトルク+1",
         waist="オネイロスロープ",
-        left_ear="昏黄の耳飾り",
-        right_ear="ディグニタリピアス",
+        left_ear="ディグニタリピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
         back={ name="アンコウマント", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -420,9 +421,9 @@ function init_gear_sets()
         ammo="ストンチタスラム+1",
         head="ラトリサリット+1",
         body="サクロブレスト",
-        hands="スレビアガントレ+2",
+        hands={ name="サクパタガントレ", augments={'Path: A',}},
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet="サクパタレギンス",
+        feet={ name="サクパタレギンス", augments={'Path: A',}},
         neck="ロリケートトルク+1",
         waist="フルームベルト+1",
         left_ear={ name="オノワイヤリング+1", augments={'Path: A',}},
@@ -434,16 +435,16 @@ function init_gear_sets()
 
     sets.engaged = {
         sub="ウトゥグリップ",
-        ammo="オゲルミルオーブ+1",
-        head="フラマツッケット+2",
-        body={ name="ＥＭオーベール+1", augments={'HP+65','DEX+12','Accuracy+20',}},
-        hands={ name="ＥＭガントレ+1", augments={'HP+65','DEX+12','Accuracy+20',}},
+        ammo={ name="シーズボムレット+1", augments={'Path: A',}},
+        head="フロプトヘルム",
+        body="サクパタブレスト",
+        hands={ name="サクパタガントレ", augments={'Path: A',}},
         legs="ＩＧフランチャ+3",
-        feet="フラマガンビエラ+2",
-        neck="暗黒の数珠+2",
+        feet={ name="サクパタレギンス", augments={'Path: A',}},
+        neck={ name="暗黒の数珠+2", augments={'Path: A',}},
         waist="イオスケハベルト+1",
         left_ear="テロスピアス",
-        right_ear="ブルタルピアス",
+        right_ear="昏黄の耳飾り",
         left_ring="守りの指輪",
         right_ring="月光の指輪",
         back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
@@ -456,35 +457,11 @@ function init_gear_sets()
     -- 八双 + ラスリゾ (820-(448+256))/1024 = 116/1024 = 0.113 (装備ヘイスト 12%)
     -- ラスリゾ (820-(448+255))/1024 = 115/1024 (装備ヘイスト 12%)
     sets.engaged['ラストリゾート'] = set_combine(sets.engaged, {
-        body="デーゴンブレスト",
-        hands="スレビアガントレ+2",
-    })
-
-    sets.engaged.DT = {
-        sub="コーンスー",
         ammo="オゲルミルオーブ+1",
-        head="フラマツッケット+2",
         body="フロプトブレスト",
-        -- hands="フラママノポラ+2",
-        hands="サクパタガントレ",
-        legs="ＩＧフランチャ+3",
-        feet="フラマガンビエラ+2",
-        neck={ name="暗黒の数珠+2", augments={'Path: A',}},
-        waist="イオスケハベルト+1",
-        left_ear="テロスピアス",
-        right_ear="ブルタルピアス",
-        -- left_ring="守りの指輪",
-        -- right_ring="月光の指輪",
+        legs={ name="サクパタクウィス", augments={'Path: A',}},
         left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
         right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
-        back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
-    }
-
-    sets.engaged['ラストリゾート'].DT = set_combine(sets.engaged.DT,{
-        head="フロプトヘルム",
-        body="デーゴンブレスト",
-        feet={ name="ＦＬソルレット+3", augments={'Enhances "Desperate Blows" effect',}},
-        -- waist="サリサフロイベルト",
     })
 
     sets.engaged.Stp = {
@@ -509,51 +486,6 @@ function init_gear_sets()
         hands="フラママノポラ+2",
     })
 
-    sets.engaged.Stp.DT = {
-        sub="コーンスー",
-        ammo={ name="シーズボムレット+1", augments={'Path: A',}},
-        head="フロプトヘルム",
-        body="フロプトブレスト",
-        hands="フラママノポラ+2",
-        legs="フラマディル+2",
-        feet="フラマガンビエラ+2",
-        neck={ name="暗黒の数珠+2", augments={'Path: A',}},
-        waist="イオスケハベルト+1",
-        left_ear="テロスピアス",
-        right_ear="デディションピアス",
-        left_ring="守りの指輪",
-        right_ring="月光の指輪",
-        back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
-    }
-
-    sets.engaged['ラストリゾート'].Stp.DT = set_combine(sets.engaged.Stp.DT, {
-        ammo="オゲルミルオーブ+1",
-        waist="ウィンバフベルト+1",
-    })
-
-    sets.engaged.Gaol = {
-        sub="コーンスー",
-        ammo={ name="シーズボムレット+1", augments={'Path: A',}},
-        head="フロプトヘルム",
-        body="フラマコラジン+2",
-        hands="サクパタガントレ",
-        legs="フラマディル+2",
-        feet="フラマガンビエラ+2",
-        neck={ name="暗黒の数珠+2", augments={'Path: A',}},
-        waist="イオスケハベルト+1",
-        left_ear="昏黄の耳飾り",
-        right_ear="シェレピアス",
-        left_ring="守りの指輪",
-        right_ring="シーリチリング+1",
-        back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},
-    }
-
-    sets.engaged['ラストリゾート'].Gaol = set_combine(sets.engaged.Gaol, {
-        ammo="オゲルミルオーブ+1",
-        body="デーゴンブレスト",
-        feet={ name="ＦＬソルレット+3", augments={'Enhances "Desperate Blows" effect',}},
-        waist="サリサフロイベルト",
-    })
 end
 
 function job_precast(spell, action, spellMap, eventArgs)

@@ -1,4 +1,5 @@
 include('weather_obi')
+include('myexport')
 local texts = require('texts')
 sublimation_box = texts.new('${state}',{text={font='ＭＳ ゴシック', size=12}, pos={x=400, y=530}, padding = 5})
 sublimation_box:show()

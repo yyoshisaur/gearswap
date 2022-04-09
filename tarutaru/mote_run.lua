@@ -13,8 +13,8 @@ function job_setup()
     include('Mote-Display')
 
     include('auto_run')
-
     include('spell_catcher')
+    include('myexport')
 
     spell_catcher_detect_spell.phalanx_2.begin_cmd = 'gs c phalanx'
     spell_catcher_detect_spell.phalanx_2.finish_cmd = 'gs c update user'

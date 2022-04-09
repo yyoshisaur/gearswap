@@ -1,4 +1,5 @@
 -- TODO: 間隔、WSでサムライロール装備を分ける
+include('myexport')
 function get_sets()
     set_language('japanese')
     

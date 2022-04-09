@@ -14,6 +14,7 @@ function job_setup()
 
     include('auto_run')
     include('mystyle')
+    include('myexport')
 end
 
 function user_setup()

@@ -14,6 +14,8 @@ function job_setup()
 
     include('auto_pld')
     include('mystyle')
+    include('myexport')
+
 end
 
 function user_setup()

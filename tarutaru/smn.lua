@@ -1,4 +1,5 @@
 include('smn_avatar')
+include('myexport')
 function get_sets()
     set_language('japanese')
     

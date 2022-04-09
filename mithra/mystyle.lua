@@ -49,6 +49,21 @@ lockstyle_set['学'] = {
     feet={ name="ＨＯトーシュー+3", augments={'Enhances "Closed Position" effect',}},
 }
 
+lockstyle_set['獣'] = {
+    sub = 'リフキンガード',
+    head = 'アイパッチ',
+    body = 'サベジトップ+1',
+    legs = 'ギーヴトラウザ',
+    feet={ name="ＨＯトーシュー+3", augments={'Enhances "Closed Position" effect',}},
+}
+
+lockstyle_set['獣']['二刀流'] = {
+    head = 'アイパッチ',
+    body = 'サベジトップ+1',
+    legs = 'ギーヴトラウザ',
+    feet={ name="ＨＯトーシュー+3", augments={'Enhances "Closed Position" effect',}},
+}
+
 function mystyle(main, sub)
     if lockstyle_set[main] then
         if S{'忍', '踊'}:contains(sub) and lockstyle_set[main]['二刀流'] then
