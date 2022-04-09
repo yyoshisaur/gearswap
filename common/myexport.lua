@@ -67,11 +67,9 @@ function myexp.check()
     local f_results = io.open(path..'_results.csv','w+')
     local f_lonely = io.open(path..'_lonely.csv', 'w+')
     for _,ward_name in ipairs(ward_names) do
-        f_results:write(ward_name..',\n')
-        f_lonely:write(ward_name..',\n')
         for index, i in ipairs(ward[ward_name]) do
             if i.id ~= 0 then 
-                f_results:write(index..','..i.slot..','..i.name..',')
+                f_results:write(ward_name..','..index..','..i.slot..','..i.name..',')
                 if i.augments then
                     for n, aug in ipairs(i.augments) do
                         if aug ~= 'none' then
@@ -93,7 +91,7 @@ function myexp.check()
                 f_results:write(used..',')
                 
                 if used == 0 then
-                    f_lonely:write(index..','..i.slot..','..i.name..',')
+                    f_lonely:write(ward_name..','..index..','..i.slot..','..i.name..',')
                     if i.augments then
                         for n, aug in ipairs(i.augments) do
                             if aug ~= 'none' then
