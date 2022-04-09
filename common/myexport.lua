@@ -51,15 +51,12 @@ function myexp.check()
     for ward_name, w in pairs(ward) do -- ワードローブ1-8
         for ward_index, v in ipairs(w) do -- ワードローブ内のアイテム1-80
             for job_name, n in pairs(job_sets) do -- ジョブの使用アイテムリスト
-                for _, s in pairs(n) do -- ジョブのワードローブ毎のアイテムリスト
-                    for _, i in ipairs(s) do
-                        if v.id == i.id then
-                            if v.augments and i.augments and gearswap.extdata.compare_augments(v.augments, i.augments) then
-                                ward[ward_name][ward_index][job_name] = true
-                            elseif not i.augments then
-                                ward[ward_name][ward_index][job_name] = true
-                                -- print(ward[ward_name][ward_index].id)
-                            end
+                for _, i in ipairs(n[ward_name]) do
+                    if v.id == i.id then
+                        if v.augments and i.augments and gearswap.extdata.compare_augments(i.augments, v.augments) then
+                            ward[ward_name][ward_index][job_name] = true
+                        elseif not i.augments then
+                            ward[ward_name][ward_index][job_name] = true
                         end
                     end
                 end
@@ -116,7 +113,7 @@ function myexp.check()
 end
 
 function myexp.export_set()
-    windower.add_to_chat(123,'myexport: export set')
+    windower.add_to_chat(123,'myexport: export '..windower.ffxi.get_player().main_job..' sets')
     -- Makes a big table keyed to item resource tables, with values that are 1-based
     -- numerically indexed tables of different entries for each of the items from the sets table.
     local item_list = myexp.unpack_names({},'L1',sets,{})
