@@ -92,13 +92,13 @@ function get_sets()
         back={ name="ベーンケープ", augments={'Elem. magic skill +10','Dark magic skill +7',}, mp=90},
     }
 
-    sets.precast.ability["魔力の泉"] = {body={ name="ＡＲコート+3", augments={'Enhances "Manafont" effect',}, mp=79},}
+    sets.precast.ability["魔力の泉"] = {body={ name="ＡＲコート+3", mp=79},}
 
     sets.midcast.aspir = {
         ammo="ペムフレドタスラム",
         head={ name="妖蟲の髪飾り+1", mp=120},
         body={ name="エアウプランド+1", mp=109},
-        hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}, mp=34,},
+        hands={ name="ＡＲグローブ+3", mp=34,},
         legs={ name="ＳＰトンバン+3", mp=158},
         feet={ name="ＳＰサボ+3", mp=43},
         neck="エーラペンダント",
@@ -114,12 +114,12 @@ function get_sets()
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
         head={ name="妖蟲の髪飾り+1", mp=120},
         body={ name="ＳＰコート+3", mp=98},
-        hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}, mp=34,},
+        hands={ name="ＡＲグローブ+3", mp=34,},
         -- hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},
         neck="ソーサラストール+2",
-        waist={ name="山吹の帯", mp=35},
+        waist={ name="サクロコード", mp=0},
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
@@ -170,14 +170,14 @@ function get_sets()
 
     sets.midcast.elemental = {
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
-        head={ name="ＡＲペタソス+3", augments={'Increases Ancient Magic II damage',}, mp=52},
+        head={ name="ＡＲペタソス+3", mp=52},
         body={ name="ＳＰコート+3", mp=98},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
-        feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
+        feet={ name="ＡＲサボ+3", mp=34},
         -- neck={ name="サンクトネックレス", mp=35},
         neck="ソーサラストール+2",
-        waist={ name="山吹の帯", mp=35},
+        waist="サクロコード",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
@@ -217,7 +217,7 @@ function get_sets()
         feet={ name="ＳＰサボ+3", mp=43},
         -- neck="エーラペンダント",
         neck="ソーサラストール+2",
-        waist={ name="山吹の帯", mp=35},
+        waist="サクロコード",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="スティキニリング+1",
@@ -227,7 +227,7 @@ function get_sets()
 
     sets.midcast.magic_acc = {
         ammo="ペムフレドタスラム",
-        head={ name="マーリンフード", augments={'Mag. Acc.+25 "Mag.Atk.Bns."+25','INT+9','Mag. Acc.+12','"Mag.Atk.Bns."+10',}, mp=56},
+        head={ name="エアハット+1", mp=65},
         body={ name="ＳＰコート+3", mp=98},
         hands={ name="王将の袖飾り", mp=88},
         legs={ name="ＳＰトンバン+3", mp=158},
@@ -243,8 +243,8 @@ function get_sets()
     }
 
     sets.midcast.elementally_enfeeble = {
-        legs={ name="ＡＲトンバン+3", augments={'Increases Ancient Magic II accuracy',},mp=85},
-        feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
+        legs={ name="ＡＲトンバン+3",mp=85},
+        feet={ name="ＡＲサボ+3", mp=34},
     }
 
     sets.midcast.mb_sp = {
@@ -255,7 +255,7 @@ function get_sets()
         legs={ name="エアスロップス+1", mp=100},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},
         neck="水影の首飾り",
-        waist={ name="山吹の帯", mp=35},
+        waist="サクロコード",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
@@ -272,7 +272,7 @@ function get_sets()
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=106},
         neck="水影の首飾り",
-        waist={ name="山吹の帯", mp=35},
+        waist="サクロコード",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
@@ -286,9 +286,9 @@ function get_sets()
         body={ name="エアウプランド+1", mp=109},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=185},
-        feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
+        feet={ name="ＡＲサボ+3", mp=34},
         neck="水影の首飾り",
-        waist={ name="山吹の帯", mp=35},
+        waist="サクロコード",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
@@ -301,10 +301,10 @@ function get_sets()
         head={ name="エアハット+1", mp=65},
         body={ name="エアウプランド+1", mp=109},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}, mp=29},
-        legs={ name="ＡＲトンバン+3", augments={'Increases Ancient Magic II accuracy',}, mp=85},
-        feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
+        legs={ name="ＡＲトンバン+3", mp=85},
+        feet={ name="ＡＲサボ+3", mp=34},
         neck="水影の首飾り",
-        waist={ name="山吹の帯", mp=35},
+        waist="サクロコード",
         left_ear={ name="王将の耳飾り", mp=20},
         right_ear={ name="バーカロルピアス", mp=25},
         left_ring="フレキリング",
@@ -315,13 +315,13 @@ function get_sets()
     -- mb ラシA acc 320 atk 390
     sets.midcast.mb_lathi = {
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}, mp=35},
-        head={ name="ＡＲペタソス+3", augments={'Increases Ancient Magic II damage',}},
+        head={ name="ＡＲペタソス+3"},
         body="エアウプランド+1",
-        hands={ name="ＡＲグローブ+3", augments={'Reduces Ancient Magic II casting time',}},
+        hands={ name="ＡＲグローブ+3"},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="ソーサラストール+2",
-        waist="山吹の帯",
+        waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="バーカロルピアス",
         left_ring="フレキリング",
@@ -355,7 +355,7 @@ function get_sets()
         body={ name="シャマシュローブ", mp=88},
         hands={ name="エアカフス+1", mp=29},
         legs={ name="エアスロップス+1", mp=100},
-        feet={ name="ＡＲサボ+3", augments={'Reduces Ancient Magic II MP cost',}, mp=34},
+        feet={ name="ＡＲサボ+3", mp=34},
         -- neck="ロリケートトルク+1",
         neck="ソーサラストール+2",
         waist={ name="風鳥の帯", mp=30},

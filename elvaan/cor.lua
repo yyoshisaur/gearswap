@@ -15,7 +15,7 @@ function get_sets()
 
     sets.cp = {back="アピトマント+1"}
     
-    sets.rolls = {
+    rolls = {
         ['コルセアズロール'] = {enhances='得経験値量アップ', lucky = 5, unlucky = 9,},
         ['ニンジャロール'] = {enhances='回避アップ', lucky = 4, unlucky = 8,},
         ['ハンターズロール'] = {enhances='命中・飛命アップ', lucky = 4, unlucky = 8,},
@@ -249,9 +249,9 @@ end
 function pretarget(spell)
     local set_equip = nil
     if spell.type == 'CorsairRoll' then
-        local enhances = sets.rolls[spell.name].enhances
-        local lucky = sets.rolls[spell.name].lucky
-        local unlucky = sets.rolls[spell.name].unlucky
+        local enhances = rolls[spell.name].enhances
+        local lucky = rolls[spell.name].lucky
+        local unlucky = rolls[spell.name].unlucky
         windower.add_to_chat(2, spell.name .. ' [' ..enhances ..'] ')
         windower.add_to_chat(2, 'Lucky = ' .. lucky .. ' '.. 'Unluck = '.. unlucky)
         if is_luzaf then

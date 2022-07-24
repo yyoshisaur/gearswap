@@ -133,6 +133,22 @@ function init_gear_sets()
         back={ name="ブリガンチアマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
+    sets.precast.WS.critical_wsd = {
+        ammo="ノブキエリ",
+        head={ name="ブリスタサリット+1", augments={'Path: A',}},
+        body="デーゴンブレスト",
+        hands={ name="ＰＴフィンガー+3", augments={'Enhances "Angon" effect',}},
+        legs="ＶＳブレー+3",
+        feet="スレビアレギンス+2",
+        neck="共和プラチナ章",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="スラッドピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="ニックマドゥリング",
+        right_ring="王将の指輪",
+        back={ name="ブリガンチアマント", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
     sets.precast.WS.magic_acc = {
         ammo="ペムフレドタスラム",
         head="フラマツッケット+2",
@@ -157,7 +173,7 @@ function init_gear_sets()
     sets.precast.WS['ボーパルスラスト'] = sets.precast.WS.wsd
     sets.precast.WS['スキュアー'] = sets.precast.WS
     sets.precast.WS['大車輪'] = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",})
-    sets.precast.WS['インパルスドライヴ'] = sets.precast.WS.wsd
+    sets.precast.WS['インパルスドライヴ'] = sets.precast.WS.critical_wsd
     sets.precast.WS['ソニックスラスト'] = sets.precast.WS.wsd
     sets.precast.WS['雲蒸竜変'] = sets.precast.WS
     sets.precast.WS['カムラン'] = set_combine(sets.precast.WS.wsd, {right_ear="スラッドピアス",})
@@ -219,13 +235,13 @@ function init_gear_sets()
 
     sets.idle = {
         ammo="ストンチタスラム+1",
-        head="フロプトヘルム",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
         body="サクロブレスト",
-        hands="スレビアガントレ+2",
-        legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}},
-        feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
-        neck="ロリケートトルク+1",
-        waist="フルームベルト+1",
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
+        neck={ name="ウォーダチャーム+1", augments={'Path: A',}},
+        waist="キャリアーサッシュ",
         left_ear={ name="オノワイヤリング+1", augments={'Path: A',}},
         right_ear="エテオレートピアス",
         left_ring="守りの指輪",

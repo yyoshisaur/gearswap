@@ -96,7 +96,7 @@ end
 function init_gear_sets()
     sets.weapons = {}
     -- sets.weapons.Crocea_C_DW = {main={ name="クロセアモース", augments={'Path: C',}}, sub="トーレット",}
-    crocea_c_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="ターニオンダガー+1",},}
+    crocea_c_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={ name="グレティナイフ", augments={'Path: A',}},}
     crocea_b_dw = {main={ name="クロセアモース", augments={'Path: B',}}, sub={name="ターニオンダガー+1",},}
     crocea_c_daybreak_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="デイブレイクワンド",},}
     crocea_c_levante_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="レヴァンテダガー",},}
@@ -144,9 +144,9 @@ function init_gear_sets()
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
-    sets.precast.FC.Phalanx = {
-        back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
-    }
+    -- sets.precast.FC.Phalanx = {
+    --     back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
+    -- }
 
     sets.precast.FC['インパクト'] = {
         head=empty,
@@ -320,6 +320,7 @@ function init_gear_sets()
     sets.midcast['強化魔法'].EnSpell = sets.midcast.enhancing_skill
     sets.midcast['強化魔法'].Temper = sets.midcast.enhancing_skill
     sets.midcast['強化魔法'].BarElement = set_combine(sets.midcast.enhancing_skill_500, {legs="シェダルサラウィル",})
+    sets.midcast['強化魔法'].BarStatus = set_combine(sets.midcast.enhancing_skill_500, {neck="スローダネックレス",})
     sets.midcast['強化魔法'].BoostStat = set_combine(sets.midcast.enhancing_skill_500, {hands="ＶＩグローブ+3",})
 
     -- 強化スキル 500, 被ファランクス 17 (35+17=52)
@@ -612,7 +613,7 @@ function init_gear_sets()
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         feet={ name="ＶＩブーツ+3", augments={'Immunobreak Chance',}},
-        neck="水影の首飾り",
+        neck="シビルスカーフ",
         waist="サクロコード",
         left_ear="王将の耳飾り",
         right_ear="マリグナスピアス",
@@ -728,8 +729,8 @@ function init_gear_sets()
     }
 
     sets.melee_hi_enspell = {
-        range="ウルル",
-        ammo=empty,
+        range=empty,
+        ammo="スローダタスラム",
         head="ウムシクハット",
         body="アヤモコラッツァ+2",
         hands="アヤモマノポラ+2",

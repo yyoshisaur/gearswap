@@ -16,10 +16,10 @@ function job_setup()
     include('spell_catcher')
     include('myexport')
 
-    spell_catcher_detect_spell.phalanx_2.begin_cmd = 'gs c phalanx'
-    spell_catcher_detect_spell.phalanx_2.finish_cmd = 'gs c update user'
-    spell_catcher_detect_spell_accession.phalanx.begin_cmd = 'gs c phalanx'
-    spell_catcher_detect_spell_accession.phalanx.finish_cmd = 'gs c update user'
+    -- spell_catcher_detect_spell.phalanx_2.begin_cmd = 'gs c phalanx'
+    -- spell_catcher_detect_spell.phalanx_2.finish_cmd = 'gs c update user'
+    -- spell_catcher_detect_spell_accession.phalanx.begin_cmd = 'gs c phalanx'
+    -- spell_catcher_detect_spell_accession.phalanx.finish_cmd = 'gs c update user'
 end
 
 function user_setup()
@@ -114,7 +114,7 @@ function init_gear_sets()
         right_ear={ name="トゥイストピアス", hp=150,},
         left_ring={ name="アイワツリング", hp=70,},
         right_ring={ name="月光の指輪", hp=110,},
-        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60},
+        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}, hp=60,},
     }
 
     sets.precast.FC = {
@@ -198,7 +198,13 @@ function init_gear_sets()
     sets.precast.WS['ウェポンブレイク'] = sets.precast.WS.acc
     sets.precast.WS['フルグレイク'] = sets.precast.WS.acc
 
-    sets.precast.JA['ヴァレション'] = set_combine(sets.EnmityBoost, {body={ name="ＲＮコート+3", hp=218,}, legs={ name="ＦＵトラウザ+3", augments={'Enhances "Inspire" effect',}, hp=107,}, back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Damage taken-5%',}, hp=60},})
+    sets.precast.JA['ヴァレション'] = set_combine(
+        sets.EnmityBoost,
+        {
+            body={ name="ＲＮコート+3", hp=218,},
+            legs={ name="ＦＵトラウザ+3", augments={'Enhances "Inspire" effect',}, hp=107,},
+            back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Phys. dmg. taken-10%',}, hp=60,},
+        })
     sets.precast.JA['ヴァリエンス'] = sets.precast.JA['ヴァレション']
     sets.precast.JA['リエモン'] = set_combine(sets.precast.JA['ヴァレション'], {body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
     sets.precast.JA['エンボルド'] = {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},}
@@ -257,7 +263,7 @@ function init_gear_sets()
         head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}, hp=56,},
         body={ name="ヘルクリアベスト", augments={'Magic dmg. taken -2%','Rng.Atk.+13','Phalanx +5','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}, hp=61,},
         hands={ name="ヘルクリアグローブ", augments={'INT+9','AGI+4','Phalanx +4','Accuracy+1 Attack+1','Mag. Acc.+8 "Mag.Atk.Bns."+8',}, hp=20,},
-        legs={ name="ヘルクリアトラウザ", augments={'Accuracy+1 Attack+1','"Mag.Atk.Bns."+11','Phalanx +4','Mag. Acc.+11 "Mag.Atk.Bns."+11',}, hp=38,},
+        legs={ name="ヘルクリアトラウザ", augments={'"Dbl.Atk."+1','Mag. Acc.+4 "Mag.Atk.Bns."+4','Phalanx +5','Accuracy+10 Attack+10',}, hp=38,},
         feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',}, hp=9,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist="オリンポスサッシュ",
@@ -298,7 +304,7 @@ function init_gear_sets()
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
     }
     
-    sets.midcast['強化魔法'].Regen = set_combine(sets.midcast.enhance_duration, {head="ＲＮバンド+3",})
+    sets.midcast['強化魔法'].Regen = set_combine(sets.midcast.enhance_duration, {head="ＲＮバンド+3", neck="サクロゴルゲット", waist="スローダベルト",})
     sets.midcast['強化魔法'].Refresh = set_combine(sets.midcast.enhance_duration, {waist="ギシドゥバサッシュ",})
     sets.midcast['強化魔法']['ストライ'] = sets.midcast.enhancing_skill
     sets.midcast['強化魔法'].BarElement = sets.midcast.enhancing_skill
@@ -313,6 +319,14 @@ function init_gear_sets()
         ['スタン'] = sets.EnmityBoost
     }
 
+    sets.midcast['回復魔法'] = {}
+    sets.midcast['回復魔法'].Cure = {
+        neck="サクロゴルゲット",
+        waist="スローダベルト",
+        left_ear="メンデカントピアス",
+        right_ring="ＶＣリング+1",
+    }
+
     sets.midcast['青魔法'] = {
         ['ブランクゲイス'] = sets.EnmityBoost,
         ['ガイストウォール'] = sets.EnmityBoost,
@@ -321,6 +335,8 @@ function init_gear_sets()
         ['スティンキングガス'] = sets.EnmityBoost,
         ['ブラッドセイバー'] = sets.EnmityBoost,
         ['ジェタチュラ'] = sets.EnmityBoost,
+        ['いやしの風'] = sets.midcast['回復魔法'].Cure,
+        ['マジックフルーツ'] = sets.midcast['回復魔法'].Cure,
     }
 
     sets.idle = {
@@ -424,6 +440,11 @@ function init_gear_sets()
         right_ring={ name="月光の指輪", hp=110,},
         back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
+
+    spell_catcher_detect_spell.phalanx_2.begin = sets.midcast['強化魔法']['ファランクス']
+    spell_catcher_detect_spell.phalanx_2.finish = 'gs c update user'
+    spell_catcher_detect_spell_accession.phalanx.begin = sets.midcast['強化魔法']['ファランクス']
+    spell_catcher_detect_spell_accession.phalanx.finish = 'gs c update user'
 end
 
 function job_precast(spell, action, spellMap, eventArgs)

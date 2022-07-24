@@ -295,8 +295,8 @@ function init_gear_sets()
         right_ear="テロスピアス",
         -- left_ring="守りの指輪",
         -- right_ring="フラマリング",
-        left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
-        right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
+        left_ring={name="シーリチリング+1", bag="Wardrobe"},
+        right_ring={name="シーリチリング+1", bag="Wardrobe 2"},
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 end

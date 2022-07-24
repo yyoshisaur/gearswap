@@ -139,6 +139,22 @@ function init_gear_sets()
     sets.precast.WS.acc = {
     }
 
+    sets.precast.WS.enmity = {
+        ammo="サピエンスオーブ",
+        head={ name="ロースバルブータ+1", augments={'Path: A',}, hp=105},
+        body={ name="ＳＶキュイラス+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=171,},
+        hands={ name="ＳＶハントシュ+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=239,},
+        legs={ name="ＳＶディヒリン+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=162,},
+        feet={ name="ＳＶシュー+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=227,},
+        neck="月光の首飾り",
+        waist={ name="クリードボードリエ", hp=40,},
+        left_ear={ name="クリプティクピアス", hp=40,},
+        right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
+        left_ring={ name="アイワツリング", hp=70,},
+        right_ring={ name="アペリエリング+1", augments={'Path: A',}},
+        back={ name="ルディアノスマント", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','Enmity+10','Damage taken-5%',}, hp=80,},
+    }
+
     -- 片手剣
     sets.precast.WS['ファストブレード'] = sets.precast.WS
     sets.precast.WS['バーニングブレード'] = sets.precast.WS
@@ -152,7 +168,7 @@ function init_gear_sets()
     sets.precast.WS['スウィフトブレード'] = sets.precast.WS
     sets.precast.WS['サベッジブレード'] = sets.precast.WS
     sets.precast.WS['サンギンブレード'] = sets.precast.WS
-    sets.precast.WS['ロイエ'] = sets.precast.WS
+    sets.precast.WS['ロイエ'] = sets.precast.WS.enmity
     sets.precast.WS['シャンデュシニュ'] = sets.precast.WS
     sets.precast.WS['レクイエスカット'] = sets.precast.WS
 
@@ -192,10 +208,10 @@ function init_gear_sets()
         head={ name="ＳＶシャレル+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=280,},
         body={ name="ＳＶキュイラス+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=171,},
         hands={ name="ＳＶハントシュ+1", augments={'HP+105','Enmity+9','Potency of "Cure" effect received +15%',}, hp=239,},
-        legs={ name="ＣＢブリーチズ+3", augments={'Enhances "Invincible" effect',}, hp=72,},
+        legs={ name="ファウンダホーズ", augments={'MND+5','Mag. Acc.+2','Breath dmg. taken -2%',}, hp=54,},
         feet={ name="オディシアグリーヴ", augments={'"Mag.Atk.Bns."+4','"Fast Cast"+6','VIT+6',}, hp=20},
-        neck="月光の首飾り",
-        waist="オドンブラサッシュ",
+        neck={ name="ロリケートトルク+1", augments={'Path: A',}},
+        waist="スローダベルト",
         left_ear="ナイトリーピアス",
         right_ear={ name="オノワイヤリング+1", augments={'Path: A',}, hp=110,},
         left_ring="守りの指輪",
@@ -266,6 +282,8 @@ function init_gear_sets()
         ['ブラッドセイバー'] = sets.midcast.sird_enmity,
         ['ジェタチュラ'] = sets.midcast.sird_enmity,
         ['コクーン'] = sets.midcast.sird_cure,
+        ['いやしの風'] = sets.midcast.sird_cure,
+        ['マジックフルーツ'] = sets.midcast.sird_cure,
     }
 
     sets.idle = {}

@@ -336,9 +336,9 @@ function init_gear_sets()
 
     sets.midcast['ドレッドスパイク'] = {
         ammo="ストンチタスラム+1",
-        head={ name="オディシアヘルム", augments={'Accuracy+25 Attack+25','Weapon skill damage +5%','Accuracy+5','Attack+4',}},
+        head="ラトリサリット+1",
         body="ＨＴキュイラス+1",
-        hands={ name="ＥＭガントレ+1", augments={'HP+65','DEX+12','Accuracy+20',}},
+        hands={ name="サクパタガントレ", augments={'Path: A',}},
         legs="ラトリクウィス",
         feet="ラトリソルレット",
         neck="サンクトネックレス",
@@ -460,8 +460,8 @@ function init_gear_sets()
         ammo="オゲルミルオーブ+1",
         body="フロプトブレスト",
         legs={ name="サクパタクウィス", augments={'Path: A',}},
-        left_ring={name="シーリチリング+1", bag="Wardrobe 3"},
-        right_ring={name="シーリチリング+1", bag="Wardrobe 4"},
+        left_ring={name="シーリチリング+1", bag="Wardrobe"},
+        right_ring={name="シーリチリング+1", bag="Wardrobe 2"},
     })
 
     sets.engaged.Stp = {
