@@ -20,54 +20,42 @@ function simple_tick()
 end
 
 local ability_buff_lists = {
-    {name='剣の舞い', buff='剣の舞い', id=219},
+    {name='インピタス', buff='インピタス', id=31},
+    {name='猫足立ち', buff='猫足立ち', id=21},
 }
 
-local samba = {name='ヘイストサンバ', buff='ヘイストサンバ', id=216, t='<me>', overwrite=30, use_tp=350}
 function check_ability_buff()
     if not check_can_use_ability() then return false end
     local recasts = windower.ffxi.get_ability_recasts()
     local buffs = player.buff_details
 
     for i, v in pairs(ability_buff_lists) do
-        if recasts[v.id] == 0 then
+        if not buffactive[v.buff] and recasts[v.id] == 0 then
             windower.chat.input('/ja "'..windower.to_shift_jis(v.name) ..'" <me>')
             tickdelay = os.clock() + 2
             return true
         end
     end
 
-    if player.tp > samba.use_tp + 1000 then
-        if not buffactive[samba.buff] then
-            windower.chat.input('/ja "'..windower.to_shift_jis(samba.name) ..'" <me>')
-            tickdelay = os.clock() + 2
-            return true
-        else
-            for i = 1, #buffs do
-                if buffs[i] and buffs[i].name == samba.buff and 
-                    buffs[i].duration < samba.overwrite and
-                    recasts[samba.id] == 0 then
-                    windower.chat.input('/ja "'..windower.to_shift_jis(samba.name) ..'" <me>')
-                    tickdelay = os.clock() + 2
-                    return true
-                end
-            end
-        end
-    end
     return false
 end
 
 local use_ws = {
-    [1] = 'エヴィサレーション',
-    [2] = 'ルドラストーム',
-    [3] = 'ルドラストーム',
+    [1] = '四神円舞',
+    [2] = 'ビクトリースマイト',
+    [3] = 'ビクトリースマイト',
 }
 local ws_index = 1
 local ws_target_id = 0
 function check_ws()
     if not check_can_use_ws() then return false end
-    if player.tp >= 1200 then
-        ws_target_id = windower.ffxi.get_mob_by_target('t').id
+    if player.tp >= 1000 then
+        t = windower.ffxi.get_mob_by_target('t')
+        if t then 
+            ws_target_id = t.id
+        else
+            return false
+        end
         windower.chat.input('/ws "'..windower.to_shift_jis(use_ws[ws_index]) ..'" <t>')
         ws_index = ws_index % #use_ws + 1
         tickdelay = os.clock() + 5

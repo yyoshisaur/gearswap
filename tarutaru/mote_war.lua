@@ -83,7 +83,7 @@ function init_gear_sets()
     sets.weapons.Club = {main="ロクソテクメイス+1", sub="ブラーシールド+1",}
 
     sets.TreasureHunter = {
-        head="白ララブキャップ+1",
+        ammo="完璧な幸運の卵",
         hands={ name="バロラスミトン", augments={'Pet: Haste+1','Rng.Acc.+16','"Treasure Hunter"+2','Accuracy+19 Attack+19','Mag. Acc.+7 "Mag.Atk.Bns."+7',}},
         waist="チャークベルト",
     }
@@ -240,7 +240,7 @@ function init_gear_sets()
     sets.precast.JA['ディフェンダー'] = {hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},}
     sets.precast.JA['アグレッサー'] = {head="ＰＭマスク+3", body={ name="ＡＧロリカ+3", augments={'Enhances "Aggressive Aim" effect',}},}
     sets.precast.JA['ウォークライ'] = {head={ name="ＡＧマスク+3", augments={'Enhances "Savagery" effect',}},}
-    sets.precast.JA['ブラッドレイジ'] = {body="ＢＩロリカ+1",}
+    sets.precast.JA['ブラッドレイジ'] = {body="ＢＩロリカ+2",}
     sets.precast.JA['トマホーク'] = {ammo="Ｔ．トマホーク", feet={ name="ＡＧカリガ+3", augments={'Enhances "Tomahawk" effect',}},}
     sets.precast.JA['マイティストライク'] = {hands={ name="ＡＧマフラ+3", augments={'Enhances "Mighty Strikes" effect',}},}
     sets.precast.JA['挑発'] = {
@@ -370,7 +370,7 @@ function job_self_command(cmdParams, eventArgs)
         elseif cmdParams[2] == 'katana' then
             equip({main="トレイニービュラン",neck="コンバタントトルク"})
         elseif cmdParams[2] == 'gkatana' then
-            equip({main="斬魔刀改",head="剣豪鉢巻",neck="コンバタントトルク"})
+            equip({main="斬魔刀改", neck="コンバタントトルク"})
         elseif cmdParams[2] == 'club' then
             equip({main="ソウルフレアワンド"})
         elseif cmdParams[2] == 'staff' then
@@ -385,6 +385,7 @@ function job_self_command(cmdParams, eventArgs)
             itemizer_put_abyssea()
         end
         disable('main','head','neck')
+        send_command('gs c update user')
     end
 end
 

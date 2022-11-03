@@ -14,6 +14,9 @@ function job_setup()
     include('Mote-Display')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('bst')
 end
 
 function user_setup()
@@ -30,8 +33,6 @@ function user_setup()
         {label='Weapon', mode='Weapons'},
     }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('bst')
 end
 
 function binds_on_load()
@@ -172,7 +173,7 @@ function init_gear_sets()
     sets.precast.WS['サベッジブレード'] = sets.precast.WS
 
     sets.precast.ready_delay = {
-        hands="ＮＫマノプラス+1",
+        hands="ＮＫマノプラス+2",
         legs="グレティブリーチズ",
     }
     
@@ -193,7 +194,7 @@ function init_gear_sets()
     sets.precast.JA['K.インスティンクト'] = {head={ name="ＡＫヘルム+3", augments={'Enhances "Killer Instinct" effect',}},}
 
     sets.midcast.Pet.TP = {
-        hands="ＮＫマノプラス+1",
+        hands="ＮＫマノプラス+2",
     }
 
     sets.midcast.Pet.Physical = {

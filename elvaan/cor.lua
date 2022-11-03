@@ -55,7 +55,7 @@ function get_sets()
         ['コアサーズロール'] = {feet="ＣＳブーツ+1"},
         ['ブリッツァロール'] = {}, -- {head="ＣＳトリコルヌ+1"}
         ['タクティックロール'] = {body="ＣＳフラック+1",}, 
-        ['アライズロール'] = {hands="ＣＳガントリー+1",},
+        ['アライズロール'] = {hands="ＣＳガントリー+2",},
     }
 
     sets.precast.snap = {
@@ -189,15 +189,12 @@ function get_sets()
         main={ name="ロスタム", augments={'Path: C',}},
         range="コンペンセーター",
         head={ name="ＬＡトリコルヌ+1", augments={'Enhances "Winning Streak" effect',}},
-        hands="ＣＳガントリー+1",
-        -- legs={ name="デサルタタセッツ", augments={'"Sic" and "Ready" ability delay -5','"Phantom Roll" ability delay -5',}},
+        hands="ＣＳガントリー+2",
         neck="王将の首飾り",
-        left_ring="ルザフリング",
-        right_ring="バラタリアリング",
         back="カムラスマント",
     }
 
-    sets.midcast.roll_luzaf = {left_ring="ルザフリング",}
+    sets.midcast.roll_luzaf = {right_ring="ルザフリング",}
 
     sets.midcast.cure = {
         -- neck="ファライナロケット",
@@ -301,9 +298,7 @@ function precast(spell)
     elseif spell.type == 'JobAbility' then
         if spell.name == 'ダブルアップ' then
             if is_luzaf then
-                set_equip = set_combine(sets.midcast.roll, sets.midcast.roll_luzaf)
-            else
-                set_equip = sets.midcast.roll
+                set_equip = sets.midcast.roll_luzaf
             end
         elseif sets.precast.ability[spell.name] then
             set_equip = sets.precast.ability[spell.name]

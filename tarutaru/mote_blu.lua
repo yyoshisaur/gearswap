@@ -19,6 +19,9 @@ function job_setup()
     include('spell_catcher')
 
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('blu')
 end
 
 function user_setup()
@@ -26,17 +29,19 @@ function user_setup()
     state.HybridMode:options('Normal')
     state.WeaponskillMode:options('Normal')
     state.IdleMode:options('Normal', 'Evasion')
-    state.Weapons = M{['description']='Use Weapons', 'Almace', 'Tizona', 'Magic', 'Sequence', 'Club'}
+    state.CastingMode:options('Normal', 'DT')
+    state.Weapons = M{['description']='Use Weapons', 'Almace', 'Tizona', 'Magic', 'Sequence', 'Club', 'Sakpata'}
 
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
-        {label='Weapon', mode='Weapons'},}
+        {label='Weapon', mode='Weapons'},
+        {label='Idle', mode='IdleMode'},
+        {label='Casting', mode='CastingMode'},
+    }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('blu')
 end
 
 function binds_on_load()
@@ -44,8 +49,8 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
-    -- send_command('bind f3 gs c cycle CastingMode')
     send_command('bind f3 gs c cycle IdleMode')
+    send_command('bind ^f3 gs c cycle CastingMode')
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
 
@@ -64,8 +69,8 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
-    -- send_command('unbind ^f3')
+    send_command('unbind f3')
+    send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
 
@@ -83,12 +88,14 @@ function init_gear_sets()
     sets.weapons.Sequence = {main={name="セクエンス"}, sub={name="アルマス"},}
     sets.weapons.Magic = {main={ name="ブンジロッド", augments={'Path: A',}}, sub={name="マクセンチアス"},}
     sets.weapons.Club = {main={name="マクセンチアス"}, sub={name="ネイグリング"},}
+    sets.weapons.Sakpata = {main={name="サクパタソード"}, sub={name="ブンジロッド"},}
 
 
     sets.TreasureHunter = {
-        head="白ララブキャップ+1",
+        ammo="完璧な幸運の卵",
         body={ name="ヘルクリアベスト", augments={'Spell interruption rate down -6%','Pet: "Mag.Atk.Bns."+15','"Treasure Hunter"+2',}},
         waist="チャークベルト",
+        left_ring="守りの指輪",
     }
 
     sets.EnmityBoost = {
@@ -113,6 +120,22 @@ function init_gear_sets()
         ammo="ストンチタスラム+1",
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
         body="ピンガチュニック+1",
+        hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
+        legs="アヤモコッシャレ+2",
+        feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
+        neck="ボルトサージトルク",
+        waist="フルームベルト+1",
+        left_ear="ロケイシャスピアス",
+        right_ear="エテオレートピアス",
+        left_ring="守りの指輪",
+        right_ring="ＶＣリング+1",
+        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+    }
+
+    sets.precast.FC['青魔法'] = {
+        ammo="ストンチタスラム+1",
+        head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
+        body="ＨＳミンタン+2",
         hands={ name="レイライングローブ", augments={'Accuracy+15','Mag. Acc.+15','"Mag.Atk.Bns."+15','"Fast Cast"+3',}},
         legs="アヤモコッシャレ+2",
         feet={ name="カマイングリーヴ+1", augments={'HP+80','MP+80','Phys. dmg. taken -4',}},
@@ -207,7 +230,7 @@ function init_gear_sets()
     
     sets.precast.WS.magic = {
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
-        head="ＡＳケフィエ+3",
+        head="ＨＳカヴク+2",
         body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ジャリカフス+2",
         legs={ name="ＬＬシャルワー+3", augments={'Enhances "Assimilation" effect',}},
@@ -282,7 +305,7 @@ function init_gear_sets()
         ammo="ストンチタスラム+1",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+23','"Cure" potency +8%','Enh. Mag. eff. dur. +10',}},
         body="ピンガチュニック+1",
-        hands="ＨＳバズバンド+1",
+        hands="ＨＳバズバンド+2",
         legs="ギーヴトラウザ",
         feet={ name="ミディアムサボ", augments={'MP+45','MND+9','"Conserve MP"+5','"Cure" potency +4%',}},
         neck="ファライナロケット",
@@ -318,10 +341,10 @@ function init_gear_sets()
     sets.midcast.magic_acc = {
         ammo="ペムフレドタスラム",
         head="ＡＳケフィエ+3",
-        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        hands="レテクバングル+1",
-        legs="ＡＳシャルワー+3",
-        feet={ name="ＬＬチャルク+3", augments={'Enhances "Diffusion" effect',}},
+        body="ＨＳミンタン+2",
+        hands="ＨＳバズバンド+2",
+        legs="ＨＳタイト+2",
+        feet="ＨＳバシュマク+2",
         neck={ name="ミラージストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -345,7 +368,23 @@ function init_gear_sets()
         right_ear="フリオミシピアス",
         left_ring="女王の指輪+1",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
-        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.midcast.magic_dt = {
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
+        head={ name="ヘルクリアヘルム", augments={'"Mag.Atk.Bns."+24','"Triple Atk."+2','Accuracy+5 Attack+5','Mag. Acc.+20 "Mag.Atk.Bns."+20',}},
+        body="ＨＳミンタン+2",
+        hands="ＨＳバズバンド+2",
+        legs="ＨＳタイト+2",
+        feet="ＨＳバシュマク+2",
+        neck={ name="ミラージストール+2", augments={'Path: A',}},
+        waist="オルペウスサッシュ",
+        left_ear="王将の耳飾り",
+        right_ear="フリオミシピアス",
+        left_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.midcast.magic_drk = {
@@ -361,15 +400,31 @@ function init_gear_sets()
         right_ear="フリオミシピアス",
         left_ring="アルコンリング",
         right_ring={ name="メタモルリング+1", augments={'Path: A',}},
-        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','Mag. Acc.+10','"Fast Cast"+10','Damage taken-5%',}},
+        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.midcast.magic_drk_dt = {
+        ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
+        head="妖蟲の髪飾り+1",
+        body="ＨＳミンタン+2",
+        hands="ＨＳバズバンド+2",
+        legs="ＨＳタイト+2",
+        feet="ＨＳバシュマク+2",
+        neck={ name="ミラージストール+2", augments={'Path: A',}},
+        waist="オルペウスサッシュ",
+        left_ear="王将の耳飾り",
+        right_ear="フリオミシピアス",
+        left_ring="アルコンリング",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        back={ name="ロスメルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Phys. dmg. taken-10%',}},
     }
 
     sets.midcast.blue_magic_skill = {
         ammo="ストンチタスラム+1",
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}},
         body="ＡＳジュバ+3",
-        hands="ＨＳバズバンド+1",
-        legs="ＨＳタイト+1",
+        hands="ＨＳバズバンド+2",
+        legs="ＨＳタイト+2",
         feet={ name="ＬＬチャルク+3", augments={'Enhances "Diffusion" effect',}},
         neck="ミラージストール+2",
         waist="フルームベルト+1",
@@ -391,10 +446,15 @@ function init_gear_sets()
     sets.midcast['青魔法'].Refresh = sets.midcast.refresh
     sets.midcast['青魔法'].MagicDrk = sets.midcast.magic_drk
     sets.midcast['青魔法'].Enmity = sets.EnmityBoost
-    sets.midcast['青魔法'].MagicEarth = set_combine(sets.midcast.magic, {hands="ＨＳバズバンド+1", neck="クアンプネックレス",})
+    sets.midcast['青魔法'].MagicEarth = set_combine(sets.midcast.magic, {hands="ＨＳバズバンド+2", neck="クアンプネックレス",})
+
+    sets.midcast['青魔法'].Magic.DT = sets.midcast.magic_dt
+    sets.midcast['青魔法'].MagicDrk.DT = sets.midcast.magic_drk_dt
+    sets.midcast['青魔法'].MagicEarth.DT = set_combine(sets.midcast.magic_dt, {neck="クアンプネックレス",})
+
 
     sets.midcast['ディフュージョン'] = {feet={ name="ＬＬチャルク+3", augments={'Enhances "Diffusion" effect',}},}
-    sets.midcast['エフラックス'] = {legs="ＨＳタイト+1",}
+    sets.midcast['エフラックス'] = {legs="ＨＳタイト+2",}
 
     sets.midcast['強化魔法'] = {}
     sets.midcast['強化魔法']['ファランクス'] = {
@@ -405,8 +465,8 @@ function init_gear_sets()
         legs={ name="ヘルクリアトラウザ", augments={'"Dbl.Atk."+1','Mag. Acc.+4 "Mag.Atk.Bns."+4','Phalanx +5','Accuracy+10 Attack+10',}},
         feet={ name="ヘルクリアブーツ", augments={'STR+6','AGI+6','Phalanx +5','Accuracy+17 Attack+17',}, hp=9,},
         waist="オリンポスサッシュ",
-        left_ear={ name="エテオレートピアス", hp=50,},
-        right_ear={ name="トゥイストピアス", hp=150,},
+        left_ear={ name="トゥイストピアス", hp=150,},
+        right_ear={ name="エテオレートピアス", hp=50,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="月光の羽衣", hp=275,},
@@ -440,19 +500,19 @@ function init_gear_sets()
     }
 
     sets.idle.Evasion = {
-        ammo="ストンチタスラム+1",
+        ammo="アマークラスター",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="ロリケートトルク+1",
-        waist="フルームベルト+1",
+        neck={ name="バーシチョーカー+1", augments={'Path: A',}},
+        waist="カシリベルト",
         left_ear="エアバニピアス",
-        right_ear="エテオレートピアス",
+        right_ear="インフューズピアス",
         left_ring="守りの指輪",
-        right_ring="ＶＣリング+1",
-        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        right_ring="イラブラットリング",
+        back={ name="ロスメルタケープ", augments={'AGI+20','Eva.+20 /Mag. Eva.+20','Evasion+10','"Fast Cast"+10','Evasion+15',}},
     }
 
     sets.engaged = {
@@ -506,19 +566,19 @@ function init_gear_sets()
     }
 
     sets.engaged.Evasion = {
-        ammo="ストンチタスラム+1",
+        ammo="アマークラスター",
         head="マリグナスシャポー",
         body="マリグナスタバード",
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
-        neck="ロリケートトルク+1",
-        waist="フルームベルト+1",
+        neck={ name="バーシチョーカー+1", augments={'Path: A',}},
+        waist="カシリベルト",
         left_ear="エアバニピアス",
-        right_ear="エテオレートピアス",
+        right_ear="インフューズピアス",
         left_ring="守りの指輪",
-        right_ring="ＶＣリング+1",
-        back={ name="ロスメルタケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+        right_ring="イラブラットリング",
+        back={ name="ロスメルタケープ", augments={'AGI+20','Eva.+20 /Mag. Eva.+20','Evasion+10','"Fast Cast"+10','Evasion+15',}},
     }
 
     spell_catcher_detect_spell.phalanx_2.begin = sets.midcast['強化魔法']['ファランクス']
@@ -541,7 +601,7 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
         end
     end
 
-    if state.TreasureMode.value == 'Tag' then
+    if state.IdleMode.value == 'Evasion' then
         if L{'吶喊'}:contains(spell.name) then
             equip(sets.TreasureHunter)
         end

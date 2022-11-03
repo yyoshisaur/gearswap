@@ -18,6 +18,9 @@ function job_setup()
     include('weather_obi')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('sch')
 end
 
 function user_setup()
@@ -36,8 +39,6 @@ function user_setup()
         {label='Sublimation', mode='SublimationMode'},
     }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('sch')
 end
 
 function binds_on_load()

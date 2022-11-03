@@ -8,13 +8,18 @@ end
 function job_setup()
     state.Buff['インピタス'] = buffactive['インピタス'] or false
     state.Buff['ためる'] = buffactive['ためる'] or false
+    state.Buff['猫足立ち'] = buffactive['猫足立ち'] or false
 
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
     
+    include('auto_mnk')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('mnk')
 end
 
 function user_setup()
@@ -23,16 +28,18 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Sagitta', 'Verethragna', 'Karambit', 'Xoanon'}
 
+    init_auto_mode()
+
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         -- {label='Hybrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'},
-        {label='Combat', mode='CombatForm'}}
+        {label='Combat', mode='CombatForm'},
+        {label='Auto', mode='AutoMode'},
+    }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('mnk')
 end
 
 function binds_on_load()
@@ -40,7 +47,7 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
-    -- send_command('bind f3 gs c cycle CastingMode')
+    send_command('bind f3 gs c cycle AutoMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
@@ -60,7 +67,7 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
+    send_command('unbind f3')
     -- send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
@@ -183,9 +190,9 @@ function init_gear_sets()
 
     sets.precast.WS.multi_dex = {
         ammo="オゲルミルオーブ+1",
-        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        head="マリグナスシャポー",
         body="乾闥婆作務衣改",
-        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        hands="マリグナスグローブ",
         legs="蓐収佩楯",
         feet="乾闥婆脛当改",
         neck="フォシャゴルゲット",
@@ -228,9 +235,9 @@ function init_gear_sets()
     sets.precast.WS["ビクトリースマイト"] = sets.precast.WS.critical
     sets.precast.WS["四神円舞"] = sets.precast.WS.multi_dex
 
-    sets.precast.WS["バックハンドブロー"]['インピタス'] = set_combine(sets.precast.WS.critical, {body="ＢＫシクラス+1",})
-    sets.precast.WS["アスケーテンツォルン"]['インピタス'] = set_combine(sets.precast.WS.critical, {body="ＢＫシクラス+1",})
-    sets.precast.WS["ビクトリースマイト"]['インピタス'] = set_combine(sets.precast.WS.critical, {body="ＢＫシクラス+1",})
+    sets.precast.WS["バックハンドブロー"]['インピタス'] = set_combine(sets.precast.WS.critical, {body="ＢＫシクラス+2",})
+    sets.precast.WS["アスケーテンツォルン"]['インピタス'] = set_combine(sets.precast.WS.critical, {body="ＢＫシクラス+2",})
+    sets.precast.WS["ビクトリースマイト"]['インピタス'] = set_combine(sets.precast.WS.critical, {body="ＢＫシクラス+2",})
 
     sets.precast.WS["シェルクラッシャー"] = sets.precast.WS.acc
 
@@ -252,9 +259,9 @@ function init_gear_sets()
     sets.precast.WS["ビクトリースマイト"].DmgLim = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim)
     sets.precast.WS["四神円舞"].DmgLim = set_combine(sets.precast.WS.multi_dex, sets.precast.WS.dmglim)
 
-    sets.precast.WS["バックハンドブロー"]['インピタスDmgLim'] = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim, {body="ＢＫシクラス+1",})
-    sets.precast.WS["アスケーテンツォルン"]['インピタスDmgLim'] = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim, {body="ＢＫシクラス+1",})
-    sets.precast.WS["ビクトリースマイト"]['インピタスDmgLim'] = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim, {body="ＢＫシクラス+1",})
+    sets.precast.WS["バックハンドブロー"]['インピタスDmgLim'] = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim, {body="ＢＫシクラス+2",})
+    sets.precast.WS["アスケーテンツォルン"]['インピタスDmgLim'] = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim, {body="ＢＫシクラス+2",})
+    sets.precast.WS["ビクトリースマイト"]['インピタスDmgLim'] = set_combine(sets.precast.WS.critical, sets.precast.WS.dmglim, {body="ＢＫシクラス+2",})
 
     sets.precast.JA['百烈拳'] = {name={"ＨＥホーズ+3", augments={'Enhances "Hundred Fists" effect',}},}
     sets.precast.JA['集中'] = {head="ＡＮクラウン+1"}
@@ -323,7 +330,16 @@ function init_gear_sets()
     }
 
     sets.engaged['インピタス'] = set_combine(sets.engaged, {
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
+    })
+
+    sets.engaged['猫足立ち'] = set_combine(sets.engaged, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'] = set_combine(sets.engaged, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
     })
 
     sets.engaged.DT = {
@@ -343,7 +359,16 @@ function init_gear_sets()
     }
 
     sets.engaged['インピタス'].DT = set_combine(sets.engaged.DT,{
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
+    })
+
+    sets.engaged['猫足立ち'].DT = set_combine(sets.engaged.DT, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].DT = set_combine(sets.engaged.DT, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
     })
 
     sets.engaged.Sagitta = {
@@ -361,15 +386,26 @@ function init_gear_sets()
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
+
     sets.engaged['インピタス'].Sagitta = set_combine(sets.engaged.Sagitta, {
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
     })
+
+    sets.engaged['猫足立ち'].Sagitta = set_combine(sets.engaged.Sagitta, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].Sagitta = set_combine(sets.engaged.Sagitta, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
+    })
+
     sets.engaged.Sagitta.DT = {
         ammo="オゲルミルオーブ+1",
-        head="マリグナスシャポー",
-        body="マリグナスタバード",
-        hands="マリグナスグローブ",
-        legs={ name="ムパカホーズ", augments={'Path: A',}},
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="ムパカダブレット", augments={'Path: A',}},
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="ＢＫホーズ+3",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
@@ -379,8 +415,21 @@ function init_gear_sets()
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
+
     sets.engaged['インピタス'].Sagitta.DT = set_combine(sets.engaged.Sagitta.DT, {
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
+        right_ear="ブルタルピアス",
+        left_ring="守りの指輪",
+    })
+
+    sets.engaged['猫足立ち'].Sagitta.DT = set_combine(sets.engaged.Sagitta.DT, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].Sagitta.DT = set_combine(sets.engaged.Sagitta.DT, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
+        right_ear="ブルタルピアス",
     })
 
     sets.engaged.Verethragna = {
@@ -400,26 +449,45 @@ function init_gear_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     sets.engaged['インピタス'].Verethragna = set_combine(sets.engaged.Verethragna, {
-        body="ＢＫシクラス+1",
-        left_ring="王将の指輪",
+        body="ＢＫシクラス+2",
     })
+
+    sets.engaged['猫足立ち'].Verethragna = set_combine(sets.engaged.Verethragna, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].Verethragna = set_combine(sets.engaged.Verethragna, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
+    })
+
     sets.engaged.Verethragna.DT = {
         ammo="オゲルミルオーブ+1",
-        head="マリグナスシャポー",
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         body={ name="ムパカダブレット", augments={'Path: A',}},
-        hands="マリグナスグローブ",
-        legs={ name="ムパカホーズ", augments={'Path: A',}},
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="ＢＫホーズ+3",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
         left_ear="シェリダピアス",
-        right_ear="ブルタルピアス",
+        right_ear="テロスピアス",        
         left_ring="守りの指輪",
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
+
     sets.engaged['インピタス'].Verethragna.DT = set_combine(sets.engaged.Verethragna.DT, {
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
+    })
+
+    sets.engaged['猫足立ち'].Verethragna.DT = set_combine(sets.engaged.Verethragna.DT, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].Verethragna.DT = set_combine(sets.engaged.Verethragna.DT, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
     })
 
     sets.engaged.Karambit = {
@@ -437,15 +505,26 @@ function init_gear_sets()
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
+
     sets.engaged['インピタス'].Karambit = set_combine(sets.engaged.Karambit, {
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
     })
+
+    sets.engaged['猫足立ち'].Karambit = set_combine(sets.engaged.Karambit, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].Karambit = set_combine(sets.engaged.Karambit, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
+    })
+
     sets.engaged.Karambit.DT = {
         ammo="オゲルミルオーブ+1",
-        head="マリグナスシャポー",
-        body="マリグナスタバード",
-        hands="マリグナスグローブ",
-        legs={ name="ムパカホーズ", augments={'Path: A',}},
+        head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        body={ name="ムパカダブレット", augments={'Path: A',}},
+        hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
+        legs="ＢＫホーズ+3",
         feet="ＡＮゲートル+3",
         neck={ name="モンクの喉輪+2", augments={'Path: A',}},
         waist="月虹帯+1",
@@ -455,8 +534,18 @@ function init_gear_sets()
         right_ring="ニックマドゥリング",
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
+
     sets.engaged['インピタス'].Karambit.DT = set_combine(sets.engaged.Karambit.DT, {
-        body="ＢＫシクラス+1",
+        body="ＢＫシクラス+2",
+    })
+
+    sets.engaged['猫足立ち'].Karambit.DT = set_combine(sets.engaged.Karambit.DT, {
+        feet="ＢＫゲートル+2",
+    })
+
+    sets.engaged['猫インピ'].Karambit.DT = set_combine(sets.engaged.Karambit.DT, {
+        body="ＢＫシクラス+2",
+        feet="ＢＫゲートル+2",
     })
 
     sets.engaged.Xoanon = {
@@ -475,6 +564,10 @@ function init_gear_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     sets.engaged['インピタス'].Xoanon = set_combine(sets.engaged.Xoanon, {})
+    sets.engaged['猫足立ち'].Xoanon = set_combine(sets.engaged.Xoanon, {})
+    sets.engaged['猫インピ'].Xoanon = set_combine(sets.engaged.Xoanon, {})
+
+    
     sets.engaged.Xoanon.DT = {
         ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
@@ -491,6 +584,8 @@ function init_gear_sets()
         back={ name="セゴモマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
     sets.engaged['インピタス'].Xoanon.DT =  set_combine(sets.engaged.Xoanon.DT, {})
+    sets.engaged['猫足立ち'].Xoanon.DT =  set_combine(sets.engaged.Xoanon.DT, {})
+    sets.engaged['猫インピ'].Xoanon.DT =  set_combine(sets.engaged.Xoanon.DT, {})
 
     set_equip_by_sub_job(player.sub_job)
 end
@@ -542,7 +637,7 @@ function customize_melee_set(meleeSet)
 end
 
 function job_buff_change(buff, gain)
-    if buff == 'インピタス' then
+    if buff == 'インピタス' or buff == '猫足立ち' then
         update_combat_form()
 
         if not S{'precast', 'midcast'}:contains(_global.current_event) then
@@ -554,8 +649,12 @@ end
 
 function update_combat_form()
 
-    if state.Buff['インピタス'] then
+    if state.Buff['インピタス'] and state.Buff['猫足立ち'] then
+        state.CombatForm:set('猫インピ')
+    elseif state.Buff['インピタス'] then
         state.CombatForm:set('インピタス')
+    elseif state.Buff['猫足立ち'] then
+        state.CombatForm:set('猫足立ち')  
     else
         state.CombatForm:reset()
     end

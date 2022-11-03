@@ -26,13 +26,17 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+    include('auto_rdm')
     include('weather_obi')
     include('mystyle')
     include('myexport')
+    
+    select_default_macro_book()
+    mogmaster('rdm')
 end
 
 function user_setup()
-    state.OffenseMode:options('Normal', 'SubtleBlow', 'DW31', 'EnSpell')
+    state.OffenseMode:options('Normal', 'SubtleBlow', 'Stp', 'DW31', 'EnSpell')
     state.HybridMode:options('Normal')
     state.WeaponskillMode:options('Normal')
     state.CastingMode:options('MB', 'Normal')
@@ -41,6 +45,7 @@ function user_setup()
         ['description']='Use Weapons', 
         'Crocea_C',
         'Crocea_B',
+        'Naegling',
         'Tauret',
         'Mandau',
         'Crocea_C_DayBreak',
@@ -52,6 +57,8 @@ function user_setup()
     state.Hi_EnSpell = M(false, 'High EnSpell')
     state.Immunobreak = M(false, "Immunobreak")
 
+    init_auto_mode()
+
     bool_state = {
         {label='Hi-EnSpell', mode='Hi_EnSpell', alys_disp=false},
         {label='Immunobreak', mode='Immunobreak', alys_disp=false}}
@@ -59,10 +66,10 @@ function user_setup()
         {label='Offense', mode='OffenseMode'},
         {label='Cast', mode='CastingMode'},
         {label='Idle', mode='IdleMode'},
-        {label='Weapon', mode='Weapons'}}
+        {label='Weapon', mode='Weapons'},
+        {label='Auto', mode='AutoMode'},
+    }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('rdm')
 end
 
 function binds_on_load()
@@ -75,6 +82,7 @@ function binds_on_load()
     send_command('bind f4 gs c update user')
     send_command('bind ^f4 gs c cycle TreasureMode')
     send_command('bind f5 gs c toggle Hi_EnSpell')
+    send_command('bind f6 gs c cycle AutoMode')
 
 end
 
@@ -88,6 +96,7 @@ function binds_on_unload()
     send_command('unbind f4')
     send_command('unbind ^f4')
     send_command('unbind f5')
+    send_command('unbind f6')
 end
 
 function user_unload()
@@ -100,6 +109,7 @@ function init_gear_sets()
     crocea_b_dw = {main={ name="クロセアモース", augments={'Path: B',}}, sub={name="ターニオンダガー+1",},}
     crocea_c_daybreak_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="デイブレイクワンド",},}
     crocea_c_levante_dw = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="レヴァンテダガー",},}
+    naegling_dw = { main={name="ネイグリング"}, sub={name="ターニオンダガー+1",}}
     daybreak_dw = {main={name="デイブレイクワンド"}, sub={name="トーレット",},}
     maxentius_dw =  {main={name="マクセンチアス"}, sub={name="ターニオンダガー+1",},}
     tauret_dw = {main={name="トーレット"}, sub={name="ターニオンダガー+1",},}
@@ -110,6 +120,7 @@ function init_gear_sets()
     crocea_b = {main={ name="クロセアモース", augments={'Path: B',}}, sub={name="サクロバルワーク",},}
     crocea_c_daybreak = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="サクロバルワーク",},}
     crocea_c_levante = {main={ name="クロセアモース", augments={'Path: C',}}, sub={name="サクロバルワーク",},}
+    naegling = { main={name="ネイグリング"}, sub={name="サクロバルワーク",},}
     daybreak = {main={name="デイブレイクワンド"}, sub={name="サクロバルワーク",},}
     maxentius =  {main={name="マクセンチアス"}, sub={name="サクロバルワーク",},}
     tauret = {main={name="トーレット"}, sub={name="サクロバルワーク",},}
@@ -184,14 +195,14 @@ function init_gear_sets()
         head={ name="ニャメヘルム", augments={'Path: B',}},
         body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ジャリカフス+2",
-        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet="ＬＴウゾー+2",
         neck="フォシャゴルゲット",
         waist="オルペウスサッシュ",
         left_ear="マリグナスピアス",
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="フレキリング",
-        right_ring="女王の指輪+1",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -200,9 +211,9 @@ function init_gear_sets()
         head="妖蟲の髪飾り+1",
         body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ジャリカフス+2",
-        legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        neck="水影の首飾り",
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet="ＬＴウゾー+2",
+        neck="シビルスカーフ",
         waist="オルペウスサッシュ",
         left_ear="マリグナスピアス",
         right_ear="王将の耳飾り",
@@ -270,21 +281,23 @@ function init_gear_sets()
         body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands="ＡＴグローブ+3",
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        feet="ＬＴウゾー+1",
+        feet="ＬＴウゾー+2",
         neck="デュエルトルク+2",
         waist="エンブラサッシュ",
+        right_ear={ name="レサジーピアス", },
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
     -- sets.midcast.Enhancing_Others = {
     sets.midcast['強化魔法'].Others = {
-        head="ＬＴシャペル+1",
-        body="ＬＴサヨン+1",
+        head="ＬＴシャペル+2",
+        body="ＬＴサヨン+2",
         hands="ＡＴグローブ+3",
-        legs="ＬＴフュゾー+1",
-        feet="ＬＴウゾー+1",
+        legs="ＬＴフュゾー+2",
+        feet="ＬＴウゾー+2",
         neck="デュエルトルク+2",
         waist="エンブラサッシュ",
+        right_ear={ name="レサジーピアス", },
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -295,11 +308,11 @@ function init_gear_sets()
         body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands="ＶＩグローブ+3",
         legs="ＡＴタイツ+3",
-        feet="ＬＴウゾー+1",
+        feet="ＬＴウゾー+2",
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
-        left_ear="アンドアーピアス",
-        right_ear="ミミルピアス",
+        left_ear="ミミルピアス",
+        right_ear="アンドアーピアス",
         left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
@@ -311,9 +324,10 @@ function init_gear_sets()
         body={ name="ＶＩタバード+3", augments={'Enhances "Chainspell" effect',}},
         hands="ＡＴグローブ+3",
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+24','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        feet="ＬＴウゾー+1",
+        feet="ＬＴウゾー+2",
         neck="デュエルトルク+2",
         waist="エンブラサッシュ",
+        right_ear={ name="レサジーピアス", },
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -325,24 +339,22 @@ function init_gear_sets()
 
     -- 強化スキル 500, 被ファランクス 17 (35+17=52)
     sets.midcast.phalanx_self = {
-        main="エグキング",
+        main="サクパタソード",
         sub="アムラピシールド",
         head={ name="テーオンシャポー", augments={'Phalanx +3',}},
         body={ name="テーオンタバード", augments={'Phalanx +3',}},
         hands={ name="テーオングローブ", augments={'Phalanx +3',}},
         legs={ name="テーオンタイツ", augments={'Phalanx +3',}},
         feet={ name="テーオンブーツ", augments={'Phalanx +3',}},
-        neck="インカンタートルク",
+        neck="デュエルトルク+2",
         waist="エンブラサッシュ",
-        left_ear="アンドアーピアス",
-        right_ear="ミミルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
-        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
+        left_ear="ミミルピアス",
+        right_ear={ name="レサジーピアス", },
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
     sets.midcast.phalanx_self_DW = {
-        main="プクラトムージュ+1",
+        main="サクパタソード",
         sub="エグキング",
         head={ name="テーオンシャポー", augments={'Phalanx +3',}},
         body={ name="テーオンタバード", augments={'Phalanx +3',}},
@@ -351,21 +363,19 @@ function init_gear_sets()
         feet={ name="テーオンブーツ", augments={'Phalanx +3',}},
         neck="デュエルトルク+2",
         waist="エンブラサッシュ",
-        left_ear="アンドアーピアス",
-        right_ear="ミミルピアス",
-        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
-        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
+        left_ear="ミミルピアス",
+        right_ear={ name="レサジーピアス", },
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
     sets.midcast['強化魔法'].Phalanx = sets.midcast.phalanx_self
 
-    sets.midcast['強化魔法'].Phalanx_Others = set_combine(sets.midcast['強化魔法'].Others, {left_ear="アンドアーピアス", right_ring="スティキニリング+1",})
+    sets.midcast['強化魔法'].Phalanx_Others = sets.midcast['強化魔法'].Others
 
     sets.midcast['強化魔法']['ストンスキン'] = set_combine(sets.midcast['強化魔法'], {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     sets.midcast['強化魔法']['アクアベール'] = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1", legs="シェダルサラウィル",})
-    sets.midcast['強化魔法'].Refresh = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
-    sets.midcast['強化魔法'].Refresh_Others = set_combine(sets.midcast['強化魔法'].Others, {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+1",})
+    sets.midcast['強化魔法'].Refresh = set_combine(sets.midcast['強化魔法'], {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+2",})
+    sets.midcast['強化魔法'].Refresh_Others = set_combine(sets.midcast['強化魔法'].Others, {head="ＡＭコイフ+1", body="ＡＴタバード+3",legs="ＬＴフュゾー+2",})
     sets.midcast['強化魔法'].Regen = set_combine(sets.midcast['強化魔法'], {main="ボレラブンガ", sub="アムラピシールド",})
     sets.midcast['強化魔法'].Regen_Others = set_combine(sets.midcast['強化魔法'].Others, {main="ボレラブンガ", sub="アムラピシールド",})
     sets.midcast['強化魔法'].Protect = set_combine(sets.midcast['強化魔法'], {right_ear="ブラキュラピアス",})
@@ -425,15 +435,15 @@ function init_gear_sets()
     sets.midcast.magic_acc = {
         range="ウルル",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -448,15 +458,15 @@ function init_gear_sets()
         ammo="クォーツタスラム+1",
         head="ＶＩシャポー+3",
         body="ＡＴタバード+3",
-        hands="ＬＴガントロ+1",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
         neck="インカンタートルク",
         waist="ルミネートサッシュ",
         left_ear="ヴォルピアス",
         right_ear="インフィブルピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ゴストファイケープ", augments={'Enfb.mag. skill +10','Enha.mag. skill +10','Mag. Acc.+1','Enh. Mag. eff. dur. +19',}},
     }
 
@@ -465,15 +475,15 @@ function init_gear_sets()
     sets.midcast['弱体魔法'].MND = {
         ammo="王将の玉",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -481,16 +491,16 @@ function init_gear_sets()
     sets.midcast['弱体魔法'].MND_Skill = {
         ammo="王将の玉",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルミネートサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
 
@@ -498,14 +508,14 @@ function init_gear_sets()
         range="ウルル",
         head="ＶＩシャポー+3",
         body="ＡＴタバード+3",
-        hands="ＬＴガントロ+1",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+30','"Fast Cast"+4','MND+15','"Mag.Atk.Bns."+6',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -513,15 +523,15 @@ function init_gear_sets()
     sets.midcast['弱体魔法'].INT = {
         ammo="王将の玉",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -529,16 +539,16 @@ function init_gear_sets()
     sets.midcast['弱体魔法'].INT_Skill = {
         ammo="クォーツタスラム+1",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
@@ -546,14 +556,14 @@ function init_gear_sets()
         ammo="ペムフレドタスラム",
         head="ＶＩシャポー+3",
         body="ＡＴタバード+3",
-        hands="ＬＴガントロ+1",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
@@ -561,15 +571,15 @@ function init_gear_sets()
     sets.midcast['弱体魔法'].Saboteur = {
         range="ウルル",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
-        legs="ＬＴフュゾー+1",
-        feet="ＬＴウゾー+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
+        legs="ＬＴフュゾー+2",
+        feet="ＬＴウゾー+2",
         neck={ name="デュエルトルク+2", augments={'Path: A',}},
         waist="ルーミネリサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -577,15 +587,15 @@ function init_gear_sets()
     sets.midcast['ディスペガ'] = {
         range="ウルル",
         head="ＶＩシャポー+3",
-        body="ＬＴサヨン+1",
-        hands="ＬＴガントロ+1",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="カイロンホーズ", augments={'Mag. Acc.+23 "Mag.Atk.Bns."+23','"Drain" and "Aspir" potency +2','INT+14','Mag. Acc.+13',}},
         feet="ＶＩブーツ+3",
         neck="デュエルトルク+2",
         waist="ルーミネリサッシュ",
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
         right_ring="キシャールリング",
         back={ name="スセロスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
     }
@@ -601,18 +611,18 @@ function init_gear_sets()
         waist={ name="アキュイテベルト+1", augments={'Path: A',}},
         left_ear="スノトラピアス",
         right_ear="マリグナスピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="スセロスケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
 
     sets.midcast['精霊魔法'] = {
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
-        head="エアハット+1",
-        body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        head="ＬＴシャペル+2",
+        body="ＬＴサヨン+2",
+        hands="ＬＴガントロ+2",
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        feet={ name="ＶＩブーツ+3", augments={'Immunobreak Chance',}},
+        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         neck="シビルスカーフ",
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -686,6 +696,23 @@ function init_gear_sets()
         legs="マリグナスタイツ",
         feet="マリグナスブーツ",
         neck={ name="バーシチョーカー+1", augments={'Path: A',}},
+        waist="霊亀腰帯",
+        left_ear="シェリダピアス",
+        right_ear="エアバニピアス",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="スセロスケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Phys. dmg. taken-10%',}},
+    }
+
+    sets.engaged.Stp = {
+        range=empty,
+        ammo="オゲルミルオーブ+1",
+        head="マリグナスシャポー",
+        body="マリグナスタバード",
+        hands="マリグナスグローブ",
+        legs="マリグナスタイツ",
+        feet="マリグナスブーツ",
+        neck="アヌートルク",
         waist="霊亀腰帯",
         left_ear="シェリダピアス",
         right_ear="エアバニピアス",
@@ -833,6 +860,7 @@ function set_equip_by_sub_job(subJob)
         sets.weapons.DayBreak = daybreak_dw
         sets.weapons.Maxentius = maxentius_dw
         sets.weapons.Crocea_C_Levante = crocea_c_levante_dw
+        sets.weapons.Naegling = naegling_dw
     else
         sets.weapons.Crocea_C = crocea_c
         sets.weapons.Crocea_B = crocea_b
@@ -843,6 +871,7 @@ function set_equip_by_sub_job(subJob)
         sets.weapons.DayBreak = daybreak
         sets.weapons.Maxentius = maxentius
         sets.weapons.Crocea_C_Levante = crocea_c_levante
+        sets.weapons.Naegling = naegling
     end
 
     set_equip_weapon(sets.midcast['弱体魔法'].MND, sets.weapons['Enfeeble_MND'..sub_job_suffix])
@@ -859,7 +888,7 @@ function set_equip_by_sub_job(subJob)
     set_equip_weapon(sets.midcast['精霊魔法'], sets.weapons['ElementalMagic'..sub_job_suffix])
     set_equip_weapon(sets.midcast['精霊魔法'].MB, sets.weapons['ElementalMagic'..sub_job_suffix])
 
-    sets.midcast.Phalanx_Self = sets.midcast['phalanx_self'..sub_job_suffix]
+    sets.midcast.Phalanx = sets.midcast['phalanx_self'..sub_job_suffix]
 
     if state.DisplayMode.value then update_job_states() end
 

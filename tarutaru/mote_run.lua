@@ -96,7 +96,7 @@ function init_gear_sets()
     sets.weapons.Lycurgos = {main="ライカーゴス",}
 
     sets.TreasureHunter = {
-        head="白ララブキャップ+1",
+        ammo="完璧な幸運の卵",
         body={ name="ヘルクリアベスト", augments={'Spell interruption rate down -6%','Pet: "Mag.Atk.Bns."+15','"Treasure Hunter"+2',}},
         waist="チャークベルト",
     }
@@ -106,8 +106,8 @@ function init_gear_sets()
         head={ name="ハリタスヘルム", hp=88,},
         body={ name="エメットハーネス+1", hp=61,},
         hands={ name="クーリスグローブ",  hp=25,},
-        legs={ name="ＥＲレグガード+1", hp=80,},
-        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        legs={ name="ＥＲレグガード+2", hp=90,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist={ name="カシリベルト", hp=30,},
         left_ear={ name="クリプティクピアス", hp=40,},
@@ -208,7 +208,7 @@ function init_gear_sets()
     sets.precast.JA['ヴァリエンス'] = sets.precast.JA['ヴァレション']
     sets.precast.JA['リエモン'] = set_combine(sets.precast.JA['ヴァレション'], {body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
     sets.precast.JA['エンボルド'] = {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},}
-    sets.precast.JA['ビベイシャス'] = {head={ name="ＥＲガレア+1", hp=91,}}
+    sets.precast.JA['ビベイシャス'] = {head={ name="ＥＲガレア+2", hp=101,}}
     sets.precast.JA['ガンビット'] = set_combine(sets.EnmityBoost, {hands={ name="ＲＮミトン+3", hp=85,}})
     sets.precast.JA['レイク'] = set_combine(sets.EnmityBoost, {feet={ name="ＦＵブーツ+1", augments={'Enhances "Rayke" effect',}, hp=13,}})
     sets.precast.JA['バットゥタ'] = set_combine(sets.EnmityBoost, {head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}, hp=56,}})
@@ -241,14 +241,21 @@ function init_gear_sets()
     -- sub drk
     sets.precast.JA['ラストリゾート'] = sets.EnmityBoost
     
-    sets.midcast['強化魔法'] = {}
+    sets.midcast.enhance_duration = {
+        head={ name="ＥＲガレア+2", hp=101,},
+        legs={ name="ＦＵトラウザ+3", augments={'Enhances "Inspire" effect',}, hp=107},
+        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
+    }
+
+    sets.midcast['強化魔法'] = sets.midcast.enhance_duration
+
     sets.midcast.enhancing_skill = {
         ammo="ストンチタスラム+1",
         head={ name="カマインマスク+1", augments={'Accuracy+20','Mag. Acc.+12','"Fast Cast"+4',}, hp=38,},
         body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
         hands={ name="ＲＮミトン+3", hp=85,},
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}, hp=130},
-        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear={ name="エテオレートピアス", hp=50,},
@@ -276,15 +283,15 @@ function init_gear_sets()
 
     sets.midcast.sird = {
         ammo="ストンチタスラム+1",
-        head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}, hp=56,},
+        head={ name="ＥＲガレア+2", hp=101,},
         body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
         hands={ name="ローハイドグローブ", augments={'HP+50','Accuracy+15','Evasion+20',}, hp=75,},
         legs={ name="カマインクウィス+1", augments={'HP+80','STR+12','INT+12',}, hp=130},
-        feet={ name="テーオンブーツ", augments={'DEF+20','Spell interruption rate down -10%','HP+50',}, hp=63,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck="月光の首飾り",
         waist="オドンブラサッシュ",
-        left_ear="ハラサズピアス",
-        right_ear="磁界の耳",
+        left_ear="磁界の耳",
+        right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="守りの指輪",
         right_ring="ＶＣリング+1",
         back={ name="月光の羽衣", hp=275,},
@@ -298,11 +305,6 @@ function init_gear_sets()
         right_ring={ name="月光の指輪", hp=110,},
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
     }
-    sets.midcast.enhance_duration = {
-        head={ name="ＥＲガレア+1", hp=91,},
-        legs={ name="ＦＵトラウザ+3", augments={'Enhances "Inspire" effect',}, hp=107},
-        back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
-    }
     
     sets.midcast['強化魔法'].Regen = set_combine(sets.midcast.enhance_duration, {head="ＲＮバンド+3", neck="サクロゴルゲット", waist="スローダベルト",})
     sets.midcast['強化魔法'].Refresh = set_combine(sets.midcast.enhance_duration, {waist="ギシドゥバサッシュ",})
@@ -310,6 +312,7 @@ function init_gear_sets()
     sets.midcast['強化魔法'].BarElement = sets.midcast.enhancing_skill
     sets.midcast['強化魔法']['エンボルド'] = {back={ name="ディバートケープ", augments={'Enmity+3','"Embolden"+15','Damage taken-4%',}},}
     sets.midcast['強化魔法']['フォイル'] = sets.EnmityBoost
+    sets.midcast['強化魔法']['アクアベール'] = sets.midcast.sird
 
     sets.midcast['神聖魔法'] = {
         ['フラッシュ'] = sets.EnmityBoost
@@ -340,15 +343,15 @@ function init_gear_sets()
     }
 
     sets.idle = {
-        sub="コーンスー",
+        sub={ name="ウトゥグリップ", hp=70,},
         ammo="ヤメラング",
         head={ name="ニャメヘルム", hp=91,},
         body={ name="アシェーラハーネス", hp=182,},
         hands={ name="トゥルムミトン+1", hp=74,},
-        legs={ name="ニャメフランチャ", hp=114,},
-        feet={ name="トゥルムレギンス+1", hp=76,},
+        legs={ name="ＥＲレグガード+2", hp=90,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck={ name="フサルクトルク+2", hp=60,},
-        waist="エングレイブベルト",
+        waist="イオスケハベルト+1",
         left_ear="テロスピアス",
         right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="シーリチリング+1",
@@ -362,13 +365,13 @@ function init_gear_sets()
         head={ name="ニャメヘルム", hp=91,},
         body={ name="ＲＮコート+3", hp=218,},
         hands={ name="トゥルムミトン+1", hp=74,},
-        legs={ name="ニャメフランチャ", hp=114,},
-        feet={ name="トゥルムレギンス+1", hp=76,},
+        legs={ name="ＥＲレグガード+2", hp=90,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist="エングレイブベルト",
         left_ear={ name="クリプティクピアス", hp=40,},
         right_ear={ name="オノワイヤリング+1", hp=110,},
-        left_ring="守りの指輪",
+        left_ring={ name="ヴェクサーリング+1", hp=55,},
         right_ring="ＶＣリング+1",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Parrying rate+5%',}, hp=60,},
     }
@@ -391,15 +394,15 @@ function init_gear_sets()
     }
 
     sets.engaged = {
-        sub="コーンスー",
+        sub={ name="ウトゥグリップ", hp=70,},
         ammo="ヤメラング",
         head={ name="ニャメヘルム", hp=91,},
         body={ name="アシェーラハーネス", hp=182,},
         hands={ name="トゥルムミトン+1", hp=74,},
-        legs={ name="ニャメフランチャ", hp=114,},
-        feet={ name="トゥルムレギンス+1", hp=76,},
+        legs={ name="ＥＲレグガード+2", hp=90,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck={ name="フサルクトルク+2", hp=60,},
-        waist="エングレイブベルト",
+        waist="イオスケハベルト+1",
         left_ear="テロスピアス",
         right_ear={ name="オノワイヤリング+1", hp=110,},
         left_ring="シーリチリング+1",
@@ -413,13 +416,13 @@ function init_gear_sets()
         head={ name="ニャメヘルム", hp=91,},
         body={ name="ＲＮコート+3", hp=218,},
         hands={ name="トゥルムミトン+1", hp=74,},
-        legs={ name="ニャメフランチャ", hp=114,},
-        feet={ name="トゥルムレギンス+1", hp=76,},
+        legs={ name="ＥＲレグガード+2", hp=90,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist="エングレイブベルト",
         left_ear={ name="クリプティクピアス", hp=40,},
         right_ear={ name="オノワイヤリング+1", hp=110,},
-        left_ring="守りの指輪",
+        left_ring={ name="ヴェクサーリング+1", hp=55,},
         right_ring="ＶＣリング+1",
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Enmity+10','Parrying rate+5%',}, hp=60,},
     }
@@ -441,9 +444,16 @@ function init_gear_sets()
         back={ name="オーグマケープ", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Phys. dmg. taken-10%',}},
     }
 
-    spell_catcher_detect_spell.phalanx_2.begin = sets.midcast['強化魔法']['ファランクス']
+    -- spell_catcher_detect_spell.phalanx_2.begin = sets.midcast['強化魔法']['ファランクス']
+    equip_phalanx = function()
+        gearswap.equip_sets('equip_command', nil, sets.midcast['強化魔法']['ファランクス'])
+        if state.Buff['エンボルド'] then
+            gearswap.equip_sets('equip_command', nil, sets.midcast['強化魔法']['エンボルド'])
+        end
+    end
+    spell_catcher_detect_spell.phalanx_2.begin = equip_phalanx
     spell_catcher_detect_spell.phalanx_2.finish = 'gs c update user'
-    spell_catcher_detect_spell_accession.phalanx.begin = sets.midcast['強化魔法']['ファランクス']
+    spell_catcher_detect_spell_accession.phalanx.begin = equip_phalanx
     spell_catcher_detect_spell_accession.phalanx.finish = 'gs c update user'
 end
 

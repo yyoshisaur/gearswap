@@ -5,9 +5,10 @@
 
 -- ex. 
 -- begin:効果アップ装備などに着替える装備セット、またはコマンド
--- finish:詠唱完了後に着替える装備セット、またはコマンド
+-- finish:詠唱完了後に着替える装備セット、またはコマンド、または関数
 -- spell_catcher_detect_spell.phalanx_2.begin = 'gs equip phalanx_equipment_set'
 -- spell_catcher_detect_spell.phalanx_2.begin = sets.midcast.phalanx
+-- spell_catcher_detect_spell.phalanx_2.begin = some_equip_function
 -- spell_catcher_detect_spell.phalanx_2.finish = 'gs equip idle or engaged set'
 spell_catcher_detect_spell = {
     phalanx_2 = {id = 107, begin = nil, finish = nil},
@@ -29,6 +30,8 @@ windower.raw_register_event('action', function(act)
                         windower.send_command(v.begin)
                     elseif type(v.begin) == 'table' then
                         gearswap.equip_sets('equip_command', nil, v.begin)
+                    elseif type(v.begin) == 'function' then
+                        v.begin()
                     end
                     add_to_chat(160, 'spell_catcher: Begin spell casting ('..k..')')
                 end
@@ -40,6 +43,8 @@ windower.raw_register_event('action', function(act)
                         windower.send_command(v.begin)
                     elseif type(v.begin) == 'table' then
                         gearswap.equip_sets('equip_command', nil, v.begin)
+                    elseif type(v.begin) == 'function' then
+                        v.begin()
                     end
                     add_to_chat(160, 'spell_catcher: Begin spell casting (Accession '..k..')')
                 end
@@ -53,6 +58,8 @@ windower.raw_register_event('action', function(act)
                         windower.send_command(v.finish)
                     elseif type(v.finish) == 'table' then
                         gearswap.equip_sets('equip_command', nil, v.finish)
+                    elseif type(v.finish) == 'function' then
+                        v.finish()
                     end
                     add_to_chat(160, 'spell_catcher: Finish spell casting ('..k..')')
                 end
@@ -64,6 +71,8 @@ windower.raw_register_event('action', function(act)
                         windower.send_command(v.finish)
                     elseif type(v.finish) == 'table' then
                         gearswap.equip_sets('equip_command', nil, v.finish)
+                    elseif type(v.finish) == 'function' then
+                        v.finish()
                     end
                     add_to_chat(160, 'spell_catcher: Finish spell casting (Accession '..k..')')
                 end

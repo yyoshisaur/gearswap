@@ -19,8 +19,8 @@ function job_setup()
 end
 
 function user_setup()
-    state.OffenseMode:options('Normal')
-    state.HybridMode:options('Normal')
+    state.OffenseMode:options('Normal','Zanshin')
+    state.HybridMode:options('Normal', 'DT')
     state.WeaponskillMode:options('Normal', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Dojikiri', 'ShiningOne'}
 
@@ -117,7 +117,7 @@ function init_gear_sets()
         ammo="ノブキエリ",
         head="ムパカキャップ",
         body={ name="極左近士胴丸", augments={'Enhances "Overwhelm" effect',}},
-        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        hands="真春日筒篭手",
         legs="極脇戸板佩楯",
         feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
@@ -152,7 +152,7 @@ function init_gear_sets()
         ammo="ノブキエリ",
         head="ムパカキャップ",
         body={ name="極左近士胴丸", augments={'Enhances "Overwhelm" effect',}},
-        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        hands="真春日筒篭手",
         legs="極脇戸板佩楯",
         feet={ name="ニャメソルレット", augments={'Path: B',}},
         neck="フォシャゴルゲット",
@@ -278,25 +278,73 @@ function init_gear_sets()
     -- 攻撃間隔短縮 820/1024
     -- 魔法 448/1024
     -- アビリティ 256/1024
+    -- 装備 256/1024
+    -- 八双(+3) 132/1024
     sets.engaged = {
         sub="ウトゥグリップ",
         ammo="オゲルミルオーブ+1",
-        -- head="フラマツッケット+2",
         head="乾闥婆陣鉢改",
-        body="乾闥婆作務衣改",
-        -- body="フラマコラジン+2",
-        hands="極脇戸筒篭手",
-        -- legs={ name="楯無佩楯改", augments={'Path: A',}},
-        legs="乾闥婆筒袴改",
-        feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
-        neck="月光の喉輪",
+        body="真春日胴丸",
+        hands="乾闥婆手甲改",
+        legs="真春日板佩楯",
+        feet="乾闥婆脛当改",
+        neck={ name="侍の喉輪+2", augments={'Path: A',}},
         waist={ name="セールフィベルト+1", augments={'Path: A',}},
         left_ear="セサンスピアス",
         right_ear="テロスピアス",
-        -- left_ring="守りの指輪",
-        -- right_ring="フラマリング",
-        left_ring={name="シーリチリング+1", bag="Wardrobe"},
-        right_ring={name="シーリチリング+1", bag="Wardrobe 2"},
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.engaged.DT = {
+        sub="ウトゥグリップ",
+        ammo="オゲルミルオーブ+1",
+        head="真春日烏帽子形兜",
+        body="真春日胴丸",
+        hands="乾闥婆手甲改",
+        legs="真春日板佩楯",
+        feet="乾闥婆脛当改",
+        neck={ name="侍の喉輪+2", augments={'Path: A',}},
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="ブルタルピアス",
+        right_ear="テロスピアス",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.engaged.Zanshin = {
+        sub="ウトゥグリップ",
+        ammo="オゲルミルオーブ+1",
+        head="フラマツッケット+2",
+        body="真春日胴丸",
+        hands={ name="楯無篭手改", augments={'Path: A',}},
+        legs="真春日板佩楯",
+        feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
+        neck="月光の喉輪",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="ディグニタリピアス",
+        right_ear="テロスピアス",
+        left_ring="守りの指輪",
+        right_ring="フラマリング",
+        back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
+    }
+
+    sets.engaged.Zanshin.DT = {
+        sub="ウトゥグリップ",
+        ammo="オゲルミルオーブ+1",
+        head="真春日烏帽子形兜",
+        body="真春日胴丸",
+        hands={ name="楯無篭手改", augments={'Path: A',}},
+        legs="真春日板佩楯",
+        feet={ name="龍王脛当改", augments={'STR+12','DEX+12','Accuracy+20',}},
+        neck="月光の喉輪",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="ディグニタリピアス",
+        right_ear="テロスピアス",
+        left_ring="守りの指輪",
+        right_ring="シーリチリング+1",
         back={ name="スメルトリオマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
 end

@@ -15,6 +15,9 @@ function job_setup()
 
     include('auto_drg')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('drg')
 end
 
 function user_setup()
@@ -34,8 +37,6 @@ function user_setup()
         {label='Auto', mode='AutoMode'},
     }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('drg')
 end
 
 function binds_on_load()
@@ -82,7 +83,7 @@ function init_gear_sets()
     sets.weapons.ShiningOne = {main="シャイニングワン",}
 
     sets.TreasureHunter = {
-        head="白ララブキャップ+1",
+        ammo="完璧な幸運の卵",
         hands={ name="バロラスミトン", augments={'Pet: Haste+1','Rng.Acc.+16','"Treasure Hunter"+2','Accuracy+19 Attack+19','Mag. Acc.+7 "Mag.Atk.Bns."+7',}},
         waist="チャークベルト",
     }
@@ -231,7 +232,7 @@ function init_gear_sets()
 
     sets.precast.JA['エンシェントサークル'] = {legs="ＶＳブレー+3",}
 
-    sets.precast.JA['スピリットリンク'] = {hands="ＰＥバンブレス+1", right_ear="プラティクピアス",}
+    sets.precast.JA['スピリットリンク'] = {hands="ＰＥバンブレス+2", right_ear="プラティクピアス",}
 
     sets.idle = {
         ammo="ストンチタスラム+1",
@@ -258,17 +259,15 @@ function init_gear_sets()
         sub="ウトゥグリップ",
         ammo="オゲルミルオーブ+1",
         head="フラマツッケット+2",
-        -- body="デーゴンブレスト",
-        -- hands="スレビアガントレ+2",
-        body={ name="ＥＭオーベール+1", augments={'HP+65','DEX+12','Accuracy+20',}},
-        hands={ name="ＥＭガントレ+1", augments={'HP+65','DEX+12','Accuracy+20',}},
+        body={ name="グレティキュイラス", augments={'Path: A',}},
+        hands="ＰＥバンブレス+2",
         legs={ name="ＰＴブレー+3", augments={'Enhances "Strafe" effect',}},
         feet="フラマガンビエラ+2",
         neck="シュルマヌカラー",
         waist="イオスケハベルト+1",
         left_ear="シェリダピアス",
         right_ear="テロスピアス",
-        left_ring="ニックマドゥリング",
+        left_ring="守りの指輪",
         right_ring="月光の指輪",
         back={ name="ブリガンチアマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},
     }
@@ -277,8 +276,8 @@ function init_gear_sets()
         sub="コーンスー",
         ammo="オゲルミルオーブ+1",
         head="フロプトヘルム",
-        body="フロプトブレスト",
-        hands="フラママノポラ+2",
+        body={ name="グレティキュイラス", augments={'Path: A',}},
+        hands="ＰＥバンブレス+2",
         legs={ name="ＰＴブレー+3", augments={'Enhances "Strafe" effect',}},
         feet="フラマガンビエラ+2",
         neck="シュルマヌカラー",

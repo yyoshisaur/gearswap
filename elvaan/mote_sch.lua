@@ -10,6 +10,7 @@ function job_setup()
     state.Buff['令狸執鼠の章'] = buffactive['令狸執鼠の章'] or false
     state.Buff['虚誘掩殺の策'] = buffactive['虚誘掩殺の策'] or false
     state.Buff['疾風迅雷の章'] = buffactive['疾風迅雷の章'] or false
+    state.Buff['気炎万丈の章'] = buffactive['気炎万丈の章'] or false
     state.Buff['机上演習:蓄積中'] = buffactive['机上演習:蓄積中'] or false
     state.Buff['机上演習:蓄積完了'] = buffactive['机上演習:蓄積完了'] or false
 
@@ -18,6 +19,9 @@ function job_setup()
     include('weather_obi')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('sch')
 end
 
 function user_setup()
@@ -36,8 +40,6 @@ function user_setup()
         {label='Sublimation', mode='SublimationMode'},
     }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('sch')
 end
 
 function binds_on_load()
@@ -184,7 +186,26 @@ function init_gear_sets()
         back="フィフォレケープ+1",
     }
 
+    
+    sets.precast.WS.wsd_mnd = { -- MAX MP
+        ammo="ペムフレドタスラム",
+        head={ name="ニャメヘルム", augments={'Path: B',}},
+        body={ name="ニャメメイル", augments={'Path: B',}},
+        hands={ name="ニャメガントレ", augments={'Path: B',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
+        feet={ name="ニャメソルレット", augments={'Path: B',}},
+        neck="フォシャゴルゲット",
+        waist="オルペウスサッシュ",
+        left_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        right_ear="マリグナスピアス",
+        left_ring="フレキリング",
+        right_ring={ name="メタモルリング+1", augments={'Path: A',}},
+        back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
+    }
+
     sets.precast.WS['ミルキル'] = sets.precast.WS
+    sets.precast.WS['セラフストライク'] = sets.precast.WS.wsd_mnd
+
 
     sets.precast.JA['連環計'] = {legs={ name="ＰＤパンツ+3", augments={'Enhances "Tabula Rasa" effect',}},}
     sets.precast.JA['大悟徹底'] = {body={ name="ＰＤガウン+3", augments={'Enhances "Enlightenment" effect',}},}
@@ -209,8 +230,9 @@ function init_gear_sets()
 
     sets.midcast['疾風迅雷の章'] = {feet={ name="ＰＤローファー+3", augments={'Enhances "Stormsurge" effect',}},}
     sets.midcast['陣頭指揮'] = {feet={ name="ＰＤローファー+3", augments={'Enhances "Stormsurge" effect',}},}
-    sets.midcast['令狸執鼠の章'] = {hands='ＡＢブレーサー+1',}
+    sets.midcast['令狸執鼠の章'] = {hands='ＡＢブレーサー+2',}
     sets.midcast['オルペウスサッシュ'] = {waist="オルペウスサッシュ",}
+    sets.midcast['気炎万丈の章'] = {head="ＡＢボネット+2",}
 
     sets.midcast.magic_acc = {
         main="マクセンチアス",
@@ -287,7 +309,7 @@ function init_gear_sets()
         back={ name="ルッフケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10','Damage taken-5%',}},
     }
 
-    sets.midcast['精霊魔法']['虚誘掩殺の策'] = set_combine(sets.midcast['精霊魔法'], {feet="ＡＢローファー+1",})
+    sets.midcast['精霊魔法']['虚誘掩殺の策'] = set_combine(sets.midcast['精霊魔法'], {feet="ＡＢローファー+3",})
 
     sets.midcast['精霊魔法']['虚誘掩殺の策'].MB = {
         main={ name="ブンジロッド", augments={'Path: A',}},
@@ -297,7 +319,7 @@ function init_gear_sets()
         body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="アグゥスロップス", augments={'Path: A',}},
-        feet="ＡＢローファー+1",
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -351,7 +373,7 @@ function init_gear_sets()
         body="マルクィサイオ+2",
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs="マルクィトルーズ+2",
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="怯懦の耳",
@@ -369,7 +391,7 @@ function init_gear_sets()
         body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="アグゥスロップス", augments={'Path: A',}},
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -387,7 +409,7 @@ function init_gear_sets()
         body={ name="ＡＭダブレット+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="ＡＭスロップス+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -405,7 +427,7 @@ function init_gear_sets()
         body={ name="アグゥローブ", augments={'Path: A',}},
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs={ name="アグゥスロップス", augments={'Path: A',}},
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -423,7 +445,7 @@ function init_gear_sets()
         body="マルクィサイオ+2",
         hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
         legs="マルクィトルーズ+2",
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -438,9 +460,9 @@ function init_gear_sets()
         ammo={ name="ガストリタスラム+1", augments={'Path: A',}},
         head={ name="ＰＤボード+3", augments={'Enh. "Altruism" and "Focalization"',}},
         body={ name="アグゥローブ", augments={'Path: A',}},
-        hands={ name="ＡＭゲージ+1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        hands="ＡＢブレーサー+2",
         legs={ name="アグゥスロップス", augments={'Path: A',}},
-        feet={ name="ＡＭネール+1", augments={'MP+80','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
+        feet="ＡＢローファー+3",
         neck={ name="アギュトストール+2", augments={'Path: A',}},
         waist="サクロコード",
         left_ear="王将の耳飾り",
@@ -523,7 +545,7 @@ function init_gear_sets()
     }
 
     sets.midcast.Regen = set_combine(sets.midcast['強化魔法'],{
-            head="ＡＢボネット+1",
+            head="ＡＢボネット+2",
             body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
             back={ name="ブックワームケープ", augments={'INT+2','MND+1','Helix eff. dur. +10','"Regen" potency+10',}},
         })
@@ -613,12 +635,22 @@ function job_post_midcast(spell, action, spellMap, eventArgs)
             equip(sets.midcast['令狸執鼠の章'])
         end
     elseif spell.skill == '精霊魔法' then
+        if state.Buff['気炎万丈の章'] then
+            equip(sets.midcast['気炎万丈の章'])
+        end
+
         if spellMap == 'Helix' then
             if spell.target.distance < 10 then
                 equip(sets.midcast['オルペウスサッシュ'])
             end
         else
             equip(get_hachirin(spell.element))
+        end
+    elseif spell.skill == '暗黒魔法' then
+        if spell.name == 'メルトン' then
+            if state.Buff['気炎万丈の章'] then
+                equip(sets.midcast['気炎万丈の章'])
+            end
         end
     end
 end
@@ -677,8 +709,8 @@ function set_custom_class(spell)
             classes.CustomClass = '震天動地の章'
         elseif state.VagaryMode.value then
             classes.CustomClass = 'Vagary'
-        -- elseif state.Buff['虚誘掩殺の策'] and spell.element == world.weather_element then
-        --     classes.CustomClass = '虚誘掩殺の策'
+        elseif state.Buff['虚誘掩殺の策'] and spell.element == world.weather_element then
+            classes.CustomClass = '虚誘掩殺の策'
         end
     end
 end

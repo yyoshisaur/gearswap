@@ -53,11 +53,11 @@ function get_sets()
     
     sets.midcast.geo_skill = {
         main="イドリス",
-        head="ＡＺフード+1",
+        head="ＡＺフード+2",
         body="ＡＺコート+1",
         hands="ＧＯミテーヌ+3",
         legs={ name="ＢＡパンツ+3", augments={'Enhances "Mending Halation" effect',}},
-        feet="ＡＺゲートル+1",
+        feet="ＡＺゲートル+2",
         neck="バグアチャーム+2",
         left_ring="守りの指輪",
         right_ring="ゼラチナスリング+1",
@@ -93,8 +93,8 @@ function get_sets()
         waist="オリンポスサッシュ",
         left_ear="ミミルピアス",
         right_ear="アンドアーピアス",
-        left_ring="スティキニリング+1",
-        right_ring="スティキニリング+1",
+        left_ring={name="スティキニリング+1", bag="Wardrobe 2"},
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back="フィフォレケープ+1",
     }
 
@@ -111,7 +111,7 @@ function get_sets()
         left_ear="マリグナスピアス",
         right_ear="王将の耳飾り",
         left_ring="キシャールリング",
-        right_ring="スティキニリング+1",
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ナントセルタケープ", augments={'INT+20','Mag. Acc+20 /Mag. Dmg.+20','INT+10','"Mag.Atk.Bns."+10',}},
     }
     
@@ -153,10 +153,10 @@ function get_sets()
         main="イドリス",
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head={ name="テルキネキャップ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        head="ＡＺフード+2",
         body="シャマシュローブ",
         hands={ name="ＢＡミテーヌ+3", augments={'Enhances "Curative Recantation" effect',}},
-        legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        legs={ name="ニャメフランチャ", augments={'Path: B',}},
         feet="ＧＯサンダル+3",
         neck="ロリケートトルク+1",
         -- neck="バグアチャーム+2",
@@ -164,7 +164,8 @@ function get_sets()
         left_ear="エテオレートピアス",
         right_ear="ルガルバンダピアス",
         left_ring="守りの指輪",
-        right_ring="ゼラチナスリング+1",
+        -- right_ring="ゼラチナスリング+1",
+        right_ring={name="スティキニリング+1", bag="Wardrobe 3"},
         back={ name="ナントセルタケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','Mag. Evasion+10','Pet: "Regen"+10','Pet: "Regen"+5',}},
     }
     
@@ -172,7 +173,7 @@ function get_sets()
         main="イドリス",
         sub="玄冥盾",
         range={ name="デュンナ", augments={'MP+20','Mag. Acc.+10','"Fast Cast"+3',}},
-        head={ name="テルキネキャップ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
+        head="ＡＺフード+2",
         body="シャマシュローブ",
         hands={ name="テルキネグローブ", augments={'Mag. Evasion+24','Pet: "Regen"+3','Pet: Damage taken -3%',}},
         legs={ name="テルキネブラコーニ", augments={'Mag. Evasion+25','Pet: "Regen"+3','Pet: Damage taken -4%',}},
@@ -223,7 +224,7 @@ function precast(spell)
         set_equip = sets.precast.fc
     elseif spell.type == 'JobAbility' then
         if spell.name == 'フルサークル' then
-            set_equip = {head="ＡＺフード+1",}
+            set_equip = {head="ＡＺフード+2",}
         elseif spell.name == 'ライフサイクル' then
             set_equip = {body="ＧＯチュニック+3", back = "ナントセルタケープ",}
         elseif spell.name == 'レイディアルアルカナ' then

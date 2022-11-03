@@ -15,6 +15,9 @@ function job_setup()
     include('auto_run')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('run')
 end
 
 function user_setup()
@@ -41,8 +44,7 @@ function user_setup()
         {label='Rune', mode='AutoRune'},
         }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('run')
+
 end
 
 function binds_on_load()
@@ -100,8 +102,8 @@ function init_gear_sets()
         head={ name="ラビッドバイザー", hp=38,},
         body={ name="エメットハーネス+1", hp=61,},
         hands={ name="クーリスグローブ",  hp=25,},
-        legs={ name="ＥＲレグガード+1", hp=80,},
-        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        legs={ name="ＥＲレグガード+2", hp=90,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck={ name="フサルクトルク+2", hp=60,},
         waist={ name="カシリベルト", hp=30,},
         left_ear={ name="クリプティクピアス", hp=40,},
@@ -183,7 +185,7 @@ function init_gear_sets()
     sets.precast.JA['ヴァリエンス'] = sets.precast.JA['ヴァレション']
     sets.precast.JA['リエモン'] = set_combine(sets.precast.JA['ヴァレション'], {body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},})
     sets.precast.JA['エンボルド'] = {back={ name="ディバートケープ", augments={'"Embolden"+15',}},}
-    sets.precast.JA['ビベイシャス'] = {head={ name="ＥＲガレア+1", hp=91,}}
+    sets.precast.JA['ビベイシャス'] = {head={ name="ＥＲガレア+2", hp=101,}}
     sets.precast.JA['ガンビット'] = set_combine(sets.EnmityBoost, {hands={ name="ＲＮミトン+3", hp=85,}})
     sets.precast.JA['レイク'] = set_combine(sets.EnmityBoost, {feet={ name="ＦＵブーツ+1", augments={'Enhances "Rayke" effect',}, hp=13,}})
     sets.precast.JA['バットゥタ'] = set_combine(sets.EnmityBoost, {head={ name="ＦＵバンド+3", augments={'Enhances "Battuta" effect',}, hp=56,}})
@@ -223,7 +225,7 @@ function init_gear_sets()
         body={ name="ＦＵコート+3", augments={'Enhances "Elemental Sforzo" effect',}, hp=119,},
         hands={ name="ＲＮミトン+3", hp=85,},
         legs={ name="カマインクウィス+1", augments={'Accuracy+20','Attack+12','"Dual Wield"+6',}, hp=50},
-        feet={ name="ＥＲグリーヴ+1", hp=18,},
+        feet={ name="ＥＲグリーヴ+2", hp=38,},
         neck="インカンタートルク",
         waist="オリンポスサッシュ",
         left_ear={ name="エテオレートピアス", hp=50,},
@@ -274,7 +276,7 @@ function init_gear_sets()
         back={ name="月光の羽衣", hp=275,},
     }
     sets.midcast.enhance_duration = {
-        head={ name="ＥＲガレア+1", hp=91,},
+        head={ name="ＥＲガレア+2", hp=101,},
         legs={ name="ＦＵトラウザ+3", augments={'Enhances "Inspire" effect',}, hp=107},
         back={ name="オーグマケープ", augments={'HP+60','Eva.+20 /Mag. Eva.+20','HP+20','"Fast Cast"+10','Phys. dmg. taken-10%',}, fc=0.1, hp=80},
     }

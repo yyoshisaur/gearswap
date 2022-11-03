@@ -12,7 +12,12 @@ function job_setup()
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
+
+    include('auto_drk')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('drk')
 end
 
 function user_setup()
@@ -21,16 +26,18 @@ function user_setup()
     state.WeaponskillMode:options('Normal', 'Acc', 'DmgLim')
     state.Weapons = M{['description']='Use Weapons', 'Caladbolg', 'Liberator', 'Anguta', 'Lycurgos'}
 
+    init_auto_mode()
+
     bool_state = {}
     mode_state = {
         {label='Offense', mode='OffenseMode'},
         {label='Hybrid', mode='HybridMode'},
         {label='WS', mode='WeaponskillMode'},
         {label='Weapon', mode='Weapons'},
-        {label='Combat', mode='CombatForm'}}
+        {label='Combat', mode='CombatForm'},
+        {label='Auto', mode='AutoMode'},
+    }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('drk')
 end
 
 function binds_on_load()
@@ -38,6 +45,7 @@ function binds_on_load()
     send_command('bind ^f1 gs c cycle HybridMode')
     send_command('bind f2 gs c cycle WeaponskillMode')
     send_command('bind ^f2 gs c cycle Weapons')
+    send_command('bind f3 gs c cycle AutoMode')
     -- send_command('bind f3 gs c cycle CastingMode')
     -- send_command('bind f3 gs c cycle IdleMode')
     send_command('bind f4 gs c update user')
@@ -58,7 +66,7 @@ function binds_on_unload()
     send_command('unbind ^f1')
     send_command('unbind f2')
     send_command('unbind ^f2')
-    -- send_command('unbind f3')
+    send_command('unbind f3')
     -- send_command('unbind ^f3')
     send_command('unbind f4')
     send_command('unbind ^f4')
@@ -137,7 +145,7 @@ function init_gear_sets()
         body="ＩＧキュイラス+3",
         hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        feet="スレビアレギンス+2",
+        feet="ＨＴソルレット+3",
         neck="暗黒の数珠+2",
         waist="フォシャベルト",
         left_ear="スラッドピアス",
@@ -153,7 +161,7 @@ function init_gear_sets()
         body="ＩＧキュイラス+3",
         hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        feet="スレビアレギンス+2",
+        feet="ＨＴソルレット+3",
         neck="暗黒の数珠+2",
         waist="フォシャベルト",
         left_ear="スラッドピアス",
@@ -169,7 +177,7 @@ function init_gear_sets()
         body="フラマコラジン+2",
         hands="フラママノポラ+2",
         legs="フラマディル+2",
-        feet="フラマガンビエラ+2",
+        feet="ＨＴソルレット+3",
         neck="暗黒の数珠+2",
         waist="エスカンストーン",
         left_ear="ディグニタリピアス",
@@ -185,7 +193,7 @@ function init_gear_sets()
         body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},
         hands={ name="ＦＬガントレット+3", augments={'Enhances "Diabolic Eye" effect',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        feet="フラマガンビエラ+2",
+        feet="ＨＴソルレット+3",
         neck="サンクトネックレス",
         waist="エスカンストーン",
         left_ear="ノーヴィオピアス",
@@ -201,7 +209,7 @@ function init_gear_sets()
         body="ＩＧキュイラス+3",
         hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        feet="スレビアレギンス+2",
+        feet="ＨＴソルレット+3",
         neck={ name="暗黒の数珠+2", augments={'Path: A',}},
         waist="フォシャベルト",
         left_ear="スラッドピアス",
@@ -213,14 +221,14 @@ function init_gear_sets()
 
     sets.precast.WS.scythe_multi_int = {
         ammo="ノブキエリ",
-        head="フラマツッケット+2",
+        head="フロプトヘルム",
         body="ＩＧキュイラス+3",
         hands="レテクバングル+1",
         legs="ＩＧフランチャ+3",
-        feet="フラマガンビエラ+2",
+        feet="ＨＴソルレット+3",
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
-        left_ear="スラッドピアス",
+        left_ear={ name="ヒーズンピアス+1",},
         right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
         left_ring="ニックマドゥリング",
         right_ring="王将の指輪",
@@ -233,7 +241,7 @@ function init_gear_sets()
         body="ＩＧキュイラス+3",
         hands={ name="ニャメガントレ", augments={'Path: B',}},
         legs="ＩＧフランチャ+3",
-        feet="スレビアレギンス+2",
+        feet="ＨＴソルレット+3",
         neck="フォシャゴルゲット",
         waist="フォシャベルト",
         left_ear="スラッドピアス",
@@ -312,7 +320,7 @@ function init_gear_sets()
 
     sets.precast.JA['ラストリゾート'] = {feet="ＦＬソルレット+3", back={ name="アンコウマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Dbl.Atk."+10','Damage taken-5%',}},}
     sets.precast.JA['ウェポンバッシュ'] = {hands="ＩＧガントレ+3",}
-    sets.precast.JA['ネザーヴォイド'] = {legs="ＨＴフランチャ+1",}
+    sets.precast.JA['ネザーヴォイド'] = {legs="ＨＴフランチャ+2",}
     sets.precast.JA['アルケインサークル'] = {feet='ＩＧソルレット+3',}
     sets.precast.JA['ブラッドウェポン'] = {body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},}
 
@@ -321,7 +329,7 @@ function init_gear_sets()
         head={ name="ＦＬバーゴネット+3", augments={'Enhances "Dark Seal" effect',}},
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="ＦＬガントレット+3", augments={'Enhances "Diabolic Eye" effect',}},
-        legs="ＨＴフランチャ+1",
+        legs="ＨＴフランチャ+2",
         feet="ラトリソルレット",
         neck="エーラペンダント",
         waist="エスカンストーン",
@@ -337,7 +345,7 @@ function init_gear_sets()
     sets.midcast['ドレッドスパイク'] = {
         ammo="ストンチタスラム+1",
         head="ラトリサリット+1",
-        body="ＨＴキュイラス+1",
+        body="ＨＴキュイラス+2",
         hands={ name="サクパタガントレ", augments={'Path: A',}},
         legs="ラトリクウィス",
         feet="ラトリソルレット",
@@ -356,7 +364,7 @@ function init_gear_sets()
         body={ name="カマインスケイル+1", augments={'Attack+20','"Mag.Atk.Bns."+12','"Dbl.Atk."+4',}},
         hands={ name="ＦＬガントレット+3", augments={'Enhances "Diabolic Eye" effect',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        feet="ラトリソルレット",
+        feet="ＨＴソルレット+3",
         neck="エーラペンダント",
         waist="エスカンストーン",
         left_ear="ディグニタリピアス",
@@ -371,7 +379,7 @@ function init_gear_sets()
         body={ name="ＦＬキュイラス+3", augments={'Enhances "Blood Weapon" effect',}},
         hands={ name="ＦＬガントレット+3", augments={'Enhances "Diabolic Eye" effect',}},
         legs={ name="ＦＬフランチャー+3", augments={'Enhances "Muted Soul" effect',}},
-        feet='ＩＧソルレット+3',
+        feet="ＨＴソルレット+3",
         neck="エーラペンダント",
         waist="エスカンストーン",
         left_ear="ノーヴィオピアス",
@@ -390,7 +398,7 @@ function init_gear_sets()
         right_ring="メフィタスリング+1",
     })
 
-    sets.drain_nether_void = {legs="ＨＴフランチャ+1",}
+    sets.drain_nether_void = {legs="ＨＴフランチャ+2",}
 
     sets.midcast.Absorb = set_combine(sets.midcast.magic_acc, {
         -- main={ name="リベレーター", augments={'Path: A',}},
@@ -407,7 +415,7 @@ function init_gear_sets()
         body="トワイライトプリス",
         hands="フラママノポラ+2",
         legs="フラマディル+2",
-        feet="ＨＴソルレット+1",
+        feet="ＨＴソルレット+3",
         neck="ロリケートトルク+1",
         waist="オネイロスロープ",
         left_ear="ディグニタリピアス",

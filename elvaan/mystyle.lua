@@ -6,9 +6,9 @@ lockstyle_set['ナ']={
     sub = 'リフキンガード',
     head="ＡＴシャポー+3",
     body = 'フリアベスト',
-    hands="ＣＳガントリー+1",
+    hands="ＣＳガントリー+2",
     legs = 'ＧＯパンツ+3',
-    feet = 'ＡＢローファー+1',
+    feet = 'ＡＢローファー+3',
 }
 
 lockstyle_set['赤']={
@@ -16,9 +16,9 @@ lockstyle_set['赤']={
     sub = 'リフキンガード',
     head="ＡＴシャポー+3",
     body = 'フリアベスト',
-    hands="ＣＳガントリー+1",
+    hands="ＣＳガントリー+2",
     legs = 'ＧＯパンツ+3',
-    feet = 'ＡＢローファー+1',
+    feet = 'ＡＢローファー+3',
 }
 
 lockstyle_set['赤']['二刀流'] = {
@@ -26,18 +26,18 @@ lockstyle_set['赤']['二刀流'] = {
     sub = 'ロスタム',
     head="ＡＴシャポー+3",
     body = 'フリアベスト',
-    hands="ＣＳガントリー+1",
+    hands="ＣＳガントリー+2",
     legs = 'ＧＯパンツ+3',
-    feet = 'ＡＢローファー+1',
+    feet = 'ＡＢローファー+3',
 }
 
 lockstyle_set['学'] = {
     main = 'ムサ',
     head="ＡＴシャポー+3",
     body = 'フリアベスト',
-    hands="ＣＳガントリー+1",
+    hands="ＣＳガントリー+2",
     legs = 'ＧＯパンツ+3',
-    feet = 'ＡＢローファー+1',
+    feet = 'ＡＢローファー+3',
 }
 
 lockstyle_set['風'] = {
@@ -45,17 +45,17 @@ lockstyle_set['風'] = {
     sub = 'リフキンガード',
     head="ＡＴシャポー+3",
     body = 'フリアベスト',
-    hands="ＣＳガントリー+1",
+    hands="ＣＳガントリー+2",
     legs = 'ＧＯパンツ+3',
-    feet = 'ＡＢローファー+1',
+    feet = 'ＡＢローファー+3',
 }
 
 lockstyle_set['剣'] = {
     head="ＡＴシャポー+3",
     body = 'フリアベスト',
-    hands="ＣＳガントリー+1",
+    hands="ＣＳガントリー+2",
     legs = 'ＧＯパンツ+3',
-    feet = 'ＡＢローファー+1',
+    feet = 'ＡＢローファー+3',
 }
 
 function mystyle(main, sub)

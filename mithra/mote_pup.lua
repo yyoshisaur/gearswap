@@ -15,6 +15,9 @@ function job_setup()
     include('pup_maneuvers')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('pup')
 end
 
 function user_setup()
@@ -44,8 +47,6 @@ function user_setup()
         {label='A', mode='Animator'},
     }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('pup')
 end
 
 function binds_on_load()

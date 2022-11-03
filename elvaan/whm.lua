@@ -15,11 +15,15 @@ function get_sets()
     
     sets.sa_na = T{'ポイゾナ', 'パラナ', 'ブライナ', 'サイレナ', 'カーズナ', 'ウィルナ', 'ストナ', 'イレース'}
     sets.addi = T{'アディバイト', 'アディマイン', 'アディカリス', 'アディアジル', 'アディスト', 'アディイン', 'アディデック'}
-    sets.ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ','バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
-
+    sets.ba = T{'バストンラ', 'バウォタラ', 'バエアロラ', 'バファイラ', 'バブリザラ', 'バサンダラ',
+                'バストン', 'バウォタ', 'バエアロ', 'バファイ', 'バブリザ', 'バサンダ'}
+    sets.bastat = T{'バスリプル', 'バスリプラ', 'バポイズン', 'バポイゾラ',
+                    'バパライズ', 'バパライラ', 'バブライン', 'バブライラ',
+                    'バサイレス', 'バサイレラ', 'バウィルス', 'バウィルラ',
+                    'バブレイク', 'バブレクラ', 'バアムネジア', 'バアムネジラ'}
     -- 女神の愛撫
     sets.caress = {
-        hands="ＥＢミトン+1",
+        hands="ＥＢミトン+2",
         back={ name="メンディングケープ", augments={'Healing magic skill +9','Enha.mag. skill +9',}},
     }
     
@@ -42,7 +46,7 @@ function get_sets()
     sets.precast.fc_cure = {
         body="インヤガジュバ+2",
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs="ＥＢパンタロン+1",
+        legs="ＥＢパンタロン+2",
         feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         right_ring="プロリクスリング",
         back={ name="アラウナスケープ", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','"Fast Cast"+10','Damage taken-5%',}},
@@ -54,7 +58,7 @@ function get_sets()
         head="ＥＢキャップ+1",
         body={ name="テルキネシャジュブ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         hands={ name="ＧＥゲージ+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" spellcasting time -5%',}},
-        legs="ＥＢパンタロン+1",
+        legs="ＥＢパンタロン+2",
         feet={ name="テルキネピガッシュ", augments={'Mag. Evasion+23','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
         neck="クレリクトルク",
         waist="ニヌルタサッシュ",
@@ -69,13 +73,13 @@ function get_sets()
         main="ガンバンテイン",
         ammo="ヘイストピニオン+1",
         head={ name="ヴァニヤフード", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
-        body="ＥＢブリオー+1",
+        body="ＥＢブリオー+2",
         hands={ name="ファナチクグローブ", augments={'MP+50','Healing magic skill +10','"Conserve MP"+7','"Fast Cast"+7',}},
         legs="ＴＥパンタロン+3",
         feet={ name="ヴァニヤクロッグ", augments={'Healing magic skill +20','"Cure" spellcasting time -7%','Magic dmg. taken -3',}},
         neck="デビリスメダル",
         waist="ギシドゥバサッシュ",
-        left_ear="ビティフィクピアス",
+        left_ear="エーベルピアス+1",
         right_ear="メイリピアス",
         left_ring="メネロスリング",
         right_ring="ハオマリング",
@@ -131,9 +135,9 @@ function get_sets()
         sub="玄冥盾",
         ammo="ペムフレドタスラム",
         head={ name="ＧＥカウビーン+1", augments={'Phys. dmg. taken -4%','Magic dmg. taken -4%','"Cure" potency +8%',}},
-        body="ＥＢブリオー+1",
+        body="ＥＢブリオー+2",
         hands="ＴＥミトン+3",
-        legs="ＥＢパンタロン+1",
+        legs="ＥＢパンタロン+2",
         feet={ name="ＰＩダックビル+3", augments={'Enhances "Afflatus Solace" effect',}},
         neck={ name="クレリクトルク", augments={'Path: A',}},
         waist="ニヌルタサッシュ",
@@ -147,16 +151,17 @@ function get_sets()
     sets.midcast.protect = set_combine(sets.midcast.enhance_duration, {right_ear="ブラキュラピアス",})
     sets.midcast.shell = set_combine(sets.midcast.enhance_duration, {right_ear="ブラキュラピアス",})
     sets.midcast.auspice = set_combine(sets.midcast.enhance_duration, {feet="ＥＢダックビル+1",})
-    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {main="ボレラブンガ", head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+1", legs="ＴＥパンタロン+3",})
+    sets.midcast.rejen = set_combine(sets.midcast.enhance_duration, {main="ボレラブンガ", head="インヤガティアラ+2", body="ＰＩブリオー+3", hands="ＥＢミトン+2", legs="ＴＥパンタロン+3",})
     sets.midcast.skin = set_combine(sets.midcast.enhance_duration, {legs="シェダルサラウィル", neck='ノデンズゴルゲット', left_ear='アースクライピアス', waist="ジーゲルサッシュ",})
     sets.midcast.aquaveil = set_combine(sets.midcast.enhance_duration, {main="バドースロッド", legs="シェダルサラウィル"})
-    
+    sets.midcast.bastat = set_combine(sets.midcast.enhance_duration, {neck="スローダネックレス",})
+
     sets.midcast.ba = {
         main="ベニフィクス",
         sub="アムラピシールド",
         ammo="インカントストーン",
         head={ name="テルキネキャップ", augments={'Mag. Evasion+25','"Fast Cast"+5','Enh. Mag. eff. dur. +10',}},
-        body="ＥＢブリオー+1",
+        body="ＥＢブリオー+2",
         hands="ダイナスティミトン",
         legs={ name="ＰＩパンタロン+3", augments={'Enhances "Afflatus Misery" effect',}},
         feet="ＴＥダックビル+3",
@@ -269,7 +274,7 @@ function precast(spell)
             end
         end
     elseif spell.skill == '回復魔法' then
-        set_equip = set_combine(sets.precast.fc, {legs="ＥＢパンタロン+1",})
+        set_equip = set_combine(sets.precast.fc, {legs="ＥＢパンタロン+2",})
     elseif spell.skill == '強化魔法' then
         set_equip = set_combine(sets.precast.fc, {waist="ジーゲルサッシュ"})
     elseif string.find(spell.type, 'Magic') then
@@ -328,6 +333,8 @@ function midcast(spell)
         set_equip = sets.midcast.addi
     elseif sets.ba:contains(spell.name) then
         set_equip = sets.midcast.ba
+    elseif sets.bastat:contains(spell.name) then
+        set_equip = sets.midcast.bastat
     elseif string.find(spell.name, 'デジョン') or string.find(spell.name, 'テレポ') or string.find(spell.name, 'リコール') or spell.name == 'リトレース' or spell.name == 'エスケプ' then
         set_equip = {waist="ニヌルタサッシュ",}
     elseif spell.skill == '強化魔法' and spell.name ~= 'イレース' then

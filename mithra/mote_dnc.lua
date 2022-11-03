@@ -7,6 +7,7 @@ end
 
 function job_setup()
     state.Buff['C.フラリッシュ'] = buffactive['C.フラリッシュ'] or false
+    state.Buff['S.フラリッシュ'] = buffactive['S.フラリッシュ'] or false
 
     include('Mote-TreasureHunter')
     include('Mote-Display')
@@ -14,6 +15,9 @@ function job_setup()
     include('auto_dnc')
     include('mystyle')
     include('myexport')
+
+    select_default_macro_book()
+    mogmaster('dnc')
 end
 
 function user_setup()
@@ -33,8 +37,6 @@ function user_setup()
         {label='Auto', mode='AutoMode'},
     }
     init_job_states(bool_state, mode_state)
-    select_default_macro_book()
-    mogmaster('dnc')
 end
 
 function binds_on_load()
@@ -119,7 +121,7 @@ function init_gear_sets()
         ammo="パルーグストーン",
         -- head="マリグナスシャポー",
         -- body="マリグナスタバード",
-        head={ name="ニャメヘルム", augments={'Path: B',}},
+        head="ＭＣティアラ+2",
         body={ name="ニャメメイル", augments={'Path: B',}},
         hands="ＭＸバングル+3",
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
@@ -135,7 +137,7 @@ function init_gear_sets()
     
     sets.precast.WS.cf = {
         ammo="カリスフェザー",
-        head="ＭＣティアラ+1",
+        head="ＭＣティアラ+2",
         body="メガナダクウィリ+2",
         hands="ＭＸバングル+3",
         legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
@@ -149,6 +151,22 @@ function init_gear_sets()
         back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
     }
     
+    sets.precast.WS.sf = {
+        ammo="カリスフェザー",
+        head="ＭＣティアラ+2",
+        body="ＭＣカザク+2",
+        hands="ＭＸバングル+3",
+        legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}},
+        feet={ name="ヘルクリアブーツ", augments={'VIT+5','"Fast Cast"+1','Weapon skill damage +9%','Accuracy+15 Attack+15',}},
+        neck="エトワールゴルゲ+2",
+        waist={ name="ケンタークベルト+1", augments={'Path: A',}},
+        left_ear="オドルピアス",
+        right_ear={ name="胡蝶のイヤリング", augments={'Accuracy+4','TP Bonus +250',}},
+        left_ring="王将の指輪",
+        right_ring="エパミノダスリング",
+        back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','Weapon skill damage +10%','Damage taken-5%',}},
+    }
+
     sets.precast.WS.critical = {
         -- ammo="カリスフェザー",
         -- head={ name="ブリスタサリット+1", augments={'Path: A',}},
@@ -197,7 +215,13 @@ function init_gear_sets()
     sets.precast.WS['バイパーバイト'].CF = sets.precast.WS.cf
     sets.precast.WS['シャークバイト'].CF = sets.precast.WS.cf
     sets.precast.WS['ルドラストーム'].CF = sets.precast.WS.cf
-    sets.precast.WS['エヴィサレーション'].CF = set_combine(sets.precast.WS.critical, {head="ＭＣティアラ+1", body="メガナダクウィリ+2",})
+    sets.precast.WS['エヴィサレーション'].CF = set_combine(sets.precast.WS.critical, {head="ＭＣティアラ+2", body="メガナダクウィリ+2",})
+
+    sets.precast.WS['ワスプスティング'].SF = sets.precast.WS.sf
+    sets.precast.WS['バイパーバイト'].SF = sets.precast.WS.sf
+    sets.precast.WS['シャークバイト'].SF = sets.precast.WS.sf
+    sets.precast.WS['ルドラストーム'].SF = sets.precast.WS.sf
+    sets.precast.WS['エヴィサレーション'].SF = set_combine(sets.precast.WS.critical, {head="ＭＣティアラ+2", body="ＭＣカザク+2",})
 
     sets.precast.acc = {
         ammo="ヤメラング",
@@ -215,7 +239,7 @@ function init_gear_sets()
         back="サクロマント",
     }
     sets.precast.JA.Step = set_combine(sets.precast.acc, {feet={ name="ＨＯトーシュー+3", augments={'Enhances "Closed Position" effect',}},})
-    sets.precast.JA.Step['フェザーステップ'] = set_combine(sets.precast.acc, {feet="ＭＣトーシュー+1",})
+    sets.precast.JA.Step['フェザーステップ'] = set_combine(sets.precast.acc, {feet="ＭＣトーシュー+2",})
     sets.precast.JA.Waltz = {
         ammo="ヤメラング",
         head="ムンムボンネット+2",
@@ -237,10 +261,10 @@ function init_gear_sets()
     sets.precast.JA.Jig = {legs={ name="ＨＯタイツ+3", augments={'Enhances "Saber Dance" effect',}}, feet="ＭＸトーシュー+3",}
     sets.precast.JA.Samba = {head="ＭＸティアラ+1", back={ name="セヌーナマント", augments={'DEX+20','Accuracy+20 Attack+20','DEX+10','"Store TP"+10','Damage taken-5%',}},}
     sets.precast.JA['Flourish3'] = {
-        ['C.フラリッシュ'] = {head="ＭＣティアラ+1",}
+        ['C.フラリッシュ'] = {head="ＭＣティアラ+2",}
     }
     sets.precast.JA['Flourish2'] = {
-        ['R.フラリッシュ'] = {hands="ＭＣバングル+1", back={ name="トータッパーマント", augments={'"Store TP"+1','"Dual Wield"+4','"Rev. Flourish"+30','Weapon skill damage +4%',}},}
+        ['R.フラリッシュ'] = {hands="ＭＣバングル+2", back={ name="トータッパーマント", augments={'"Store TP"+1','"Dual Wield"+4','"Rev. Flourish"+30','Weapon skill damage +4%',}},}
     }
     sets.precast.JA['Flourish1'] = {
         ['D.フラリッシュ'] = sets.precast.acc,
@@ -271,7 +295,7 @@ function init_gear_sets()
     sets.engaged = {
         ammo="オゲルミルオーブ+1",
         head={ name="アデマボンネット+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
-        body="マリグナスタバード",
+        body={ name="グレティキュイラス", augments={'Path: A',}},
         hands={ name="アデマリスト+1", augments={'DEX+12','AGI+12','Accuracy+20',}},
         legs={ name="サムヌータイツ", augments={'STR+10','DEX+10','"Dbl.Atk."+3','"Triple Atk."+3',}},
         feet="マリグナスブーツ",
@@ -287,13 +311,13 @@ function init_gear_sets()
     sets.engaged.DT = {
         ammo="オゲルミルオーブ+1",
         head="マリグナスシャポー",
-        body="マリグナスタバード",
+        body={ name="グレティキュイラス", augments={'Path: A',}},
         hands="マリグナスグローブ",
         legs="マリグナスタイツ",
-        feet="マリグナスブーツ",
+        feet="ＭＣトーシュー+2",
         neck={ name="エトワールゴルゲ+2", augments={'Path: A',}},
-        waist="ウィンバフベルト+1",
-        left_ear="デディションピアス",
+        waist={ name="セールフィベルト+1", augments={'Path: A',}},
+        left_ear="テロスピアス",
         right_ear="シェリダピアス",
         left_ring="守りの指輪",
         right_ring="ゲリリング",
@@ -318,6 +342,8 @@ end
 function get_custom_wsmode(spell, spellMap, default_wsmode)
     if state.Buff['C.フラリッシュ'] then
         return 'CF'
+    elseif state.Buff['S.フラリッシュ'] then
+        return 'SF'
     end
 end
 
